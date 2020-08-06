@@ -1,9 +1,9 @@
 package main.java.message;
 
-import main.java.data.PBFTVote;
+import main.java.data.Vote;
 import main.java.node.nodes.Node;
 
-public class VoteMessage<V extends PBFTVote> extends Message {
+public class VoteMessage<V extends Vote> extends Message {
     private final V vote;
 
     public VoteMessage(int size, Node from, Node to, V vote, V vote1) {

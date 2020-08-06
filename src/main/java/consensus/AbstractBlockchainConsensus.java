@@ -14,4 +14,6 @@ public abstract class AbstractBlockchainConsensus<B extends Block<B>, T extends 
     public LocalBlockTree<B> getLocalBlockTree() {
         return this.localBlockTree;
     }
+
+    public abstract B getCanonicalChainHead();
 }

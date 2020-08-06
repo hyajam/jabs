@@ -36,6 +36,4 @@ public abstract class AbstractConsensusAlgorithm<B extends Block<B>, T extends T
     public int getNumOfAcceptedTxs() {
         return acceptedTxs.size();
     }
-
-    public abstract B getCanonicalChainHead();
 }
