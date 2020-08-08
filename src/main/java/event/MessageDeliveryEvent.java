@@ -1,15 +1,16 @@
 package main.java.event;
 
 import main.java.message.Message;
+import main.java.message.Packet;
 
 public class MessageDeliveryEvent implements Event {
-    private final Message message;
+    private final Packet packet;
 
-    public MessageDeliveryEvent(Message message) {
-        this.message = message;
+    public MessageDeliveryEvent(Packet packet) {
+        this.packet = packet;
     }
 
     public void execute(){
-        this.message.getTo().getNodeNetworkInterface().addToDownLinkQueue(this.message);
+        this.packet.getTo().getNodeNetworkInterface().addToDownLinkQueue(this.packet);
     }
 }

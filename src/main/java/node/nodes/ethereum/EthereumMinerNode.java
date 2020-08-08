@@ -3,7 +3,8 @@ package main.java.node.nodes.ethereum;
 import main.java.data.ethereum.EthereumBlock;
 import main.java.data.ethereum.EthereumBlockWithTx;
 import main.java.data.ethereum.EthereumTx;
-import main.java.message.BlockMessage;
+import main.java.message.DataMessage;
+import main.java.message.Packet;
 import main.java.node.nodes.MinerNode;
 import main.java.node.nodes.Node;
 import main.java.simulator.AbstractSimulator;
@@ -28,7 +29,11 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
         EthereumBlockWithTx ethereumBlockWithTx = new EthereumBlockWithTx(
                 canonicalChainHead.getHeight()+1, AbstractSimulator.getCurrentTime(), this,
                 this.getConsensusAlgorithm().getCanonicalChainHead(), tipBlocks, memPool, ETHEREUM_MIN_DIFFICULTY); // TODO: Difficulty?
-        this.processIncomingMessage(new BlockMessage<>(ethereumBlockWithTx.getSize(), this, this, ethereumBlockWithTx));
+        this.processIncomingMessage(
+                new Packet(
+                        this, this, new DataMessage<>(ethereumBlockWithTx)
+                )
+        );
         this.processNewBlock(ethereumBlockWithTx);
     }
 
@@ -46,7 +51,7 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
 
     @Override
     protected void processNewBlock(EthereumBlock ethereumBlock) {
-        this.consensusAlgorithm.newBlock(ethereumBlock);
+        this.consensusAlgorithm.newIncomingBlock(ethereumBlock);
 
         // remove from memPool
         if (ethereumBlock instanceof EthereumBlockWithTx) {

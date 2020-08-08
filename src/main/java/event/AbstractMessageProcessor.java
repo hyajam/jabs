@@ -1,24 +1,24 @@
 package main.java.event;
 
+import main.java.message.Packet;
 import main.java.node.nodes.Node;
-import main.java.message.Message;
 import main.java.simulator.AbstractSimulator;
 
 import java.util.PriorityQueue;
 
 public abstract class AbstractMessageProcessor implements Event {
-    protected final PriorityQueue<TimedMessage> packetsQueue = new PriorityQueue<>();
+    protected final PriorityQueue<TimedPacket> packetsQueue = new PriorityQueue<>();
 
-    private static class TimedMessage implements Comparable<TimedMessage> {
-        private final Message message;
+    private static class TimedPacket implements Comparable<TimedPacket> {
+        private final Packet packet;
         private final long time;
 
-        private TimedMessage(Message message, long time){
-            this.message = message;
+        private TimedPacket(Packet packet, long time){
+            this.packet = packet;
             this.time = time;
         }
 
-        public int compareTo(TimedMessage o) {
+        public int compareTo(TimedPacket o) {
             return Long.compare(this.time, o.time);
         }
     }
@@ -33,21 +33,21 @@ public abstract class AbstractMessageProcessor implements Event {
         return (packetsQueue.isEmpty());
     }
 
-    public void addToQueue(Message message) {
-        TimedMessage timedMessage = new TimedMessage(message, AbstractSimulator.getCurrentTime());
-        packetsQueue.add(timedMessage);
+    public void addToQueue(Packet packet) {
+        TimedPacket timedPacket = new TimedPacket(packet, AbstractSimulator.getCurrentTime());
+        packetsQueue.add(timedPacket);
     }
 
     public void execute() {
-        TimedMessage timedMessage = this.packetsQueue.poll();
-        if (timedMessage != null) {
+        TimedPacket timedPacket = this.packetsQueue.poll();
+        if (timedPacket != null) {
             if (!this.packetsQueue.isEmpty()) {
-                AbstractSimulator.putEvent(this, processingTime(timedMessage.message));
+                AbstractSimulator.putEvent(this, processingTime(timedPacket.packet));
             }
-            this.sendPacketToNextProcess(timedMessage.message);
+            this.sendPacketToNextProcess(timedPacket.packet);
         }
     }
 
-    abstract long processingTime(Message message);
-    abstract void sendPacketToNextProcess(Message message);
+    abstract long processingTime(Packet packet);
+    abstract void sendPacketToNextProcess(Packet packet);
 }

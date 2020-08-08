@@ -1,17 +1,18 @@
 package main.java.node.nodes.bitcoin;
 
+import main.java.data.Vote;
 import main.java.data.bitcoin.*;
-import main.java.message.BlockInvMessage;
-import main.java.message.TxInvMessage;
+import main.java.message.InvMessage;
 import main.java.blockchain.LocalBlockTree;
 import main.java.consensus.NakamotoConsensus;
+import main.java.message.Packet;
 import main.java.node.nodes.BlockchainNode;
 import main.java.node.nodes.Node;
 import main.java.p2p.BitcoinCoreP2P;
 
 import static main.java.network.TransactionFactory.sampleBitcoinTransaction;
 
-public class BitcoinNode extends BlockchainNode<BitcoinTx, BitcoinBlock> {
+public class BitcoinNode extends BlockchainNode<BitcoinBlock, BitcoinTx> {
     public static final BitcoinBlock BITCOIN_GENESIS_BLOCK =
             new BitcoinBlock(0, 0, 0, null, null);
 
@@ -28,14 +29,21 @@ public class BitcoinNode extends BlockchainNode<BitcoinTx, BitcoinBlock> {
 
     @Override
     protected void processNewBlock(BitcoinBlock bitcoinBlock) {
-        this.consensusAlgorithm.newBlock(bitcoinBlock);
+        this.consensusAlgorithm.newIncomingBlock(bitcoinBlock);
         this.broadcastBlockInvMessage(bitcoinBlock);
+    }
+
+    @Override
+    protected void processNewVote(Vote vote) {
+
     }
 
     protected void broadcastTxInvMessage(BitcoinTx tx) {
         for (Node neighbor:this.p2pConnections.getNeighbors()) {
             this.nodeNetworkInterface.addToUpLinkQueue(
-                    new TxInvMessage<>(tx.getSize(), this, neighbor, tx.getHash())
+                    new Packet(this, neighbor,
+                            new InvMessage<>(tx.getHash().getSize(), tx.getHash())
+                    )
             );
         }
     }
@@ -43,7 +51,9 @@ public class BitcoinNode extends BlockchainNode<BitcoinTx, BitcoinBlock> {
     protected void broadcastBlockInvMessage(BitcoinBlock block) {
         for (Node neighbor:this.p2pConnections.getNeighbors()) {
             this.nodeNetworkInterface.addToUpLinkQueue(
-                    new BlockInvMessage<>(block.getSize(), this, neighbor, block.getHash())
+                    new Packet(this, neighbor,
+                            new InvMessage<>(block.getHash().getSize(), block.getHash())
+                    )
             );
         }
     }

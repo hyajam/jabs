@@ -11,7 +11,8 @@ public class EthereumBlock extends Block<EthereumBlock> {
     private final Set<EthereumBlock> uncles;
     private final long difficulty;
 
-    public EthereumBlock(int size, int height, long creationTime, EthereumMinerNode creator, EthereumBlock parent, Set<EthereumBlock> uncles, long difficulty) {
+    public EthereumBlock(int size, int height, long creationTime, EthereumMinerNode creator, EthereumBlock parent,
+                         Set<EthereumBlock> uncles, long difficulty) {
         super(size, height, creationTime, creator, parent, ETHEREUM_BLOCK_HASH_SIZE);
         this.uncles = uncles;
         this.difficulty = difficulty;

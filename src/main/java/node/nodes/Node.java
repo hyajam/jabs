@@ -1,5 +1,6 @@
 package main.java.node.nodes;
 
+import main.java.message.Packet;
 import main.java.network.Network;
 import main.java.node.NodeNetworkInterface;
 import main.java.p2p.AbstractP2PConnections;
@@ -20,7 +21,7 @@ public abstract class Node {
                 Network.sampleDownloadBandwidth(region), Network.sampleUploadBandwidth(region));
     }
 
-    public abstract void processIncomingMessage(Message message);
+    public abstract void processIncomingMessage(Packet packet);
     public abstract void generateNewTransaction();
 
     public NodeNetworkInterface getNodeNetworkInterface() {
@@ -29,6 +30,14 @@ public abstract class Node {
 
     public AbstractP2PConnections getP2pConnections() {
         return this.p2pConnections;
+    }
+
+    public void broadcastMessage(Message message) {
+        for (Node neighbor:this.p2pConnections.getNeighbors()) {
+            this.nodeNetworkInterface.addToUpLinkQueue(
+                    new Packet(this, neighbor, message)
+            );
+        }
     }
 }
 

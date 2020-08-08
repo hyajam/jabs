@@ -1,12 +1,13 @@
 package main.java.node.nodes.ethereum;
 
+import main.java.data.Vote;
 import main.java.data.ethereum.EthereumBlock;
 import main.java.data.ethereum.EthereumTx;
-import main.java.message.BlockInvMessage;
-import main.java.message.BlockMessage;
-import main.java.message.TxMessage;
+import main.java.message.InvMessage;
+import main.java.message.DataMessage;
 import main.java.blockchain.LocalBlockTree;
 import main.java.consensus.GhostProtocol;
+import main.java.message.Packet;
 import main.java.node.nodes.BlockchainNode;
 import main.java.node.nodes.Node;
 import main.java.p2p.EthereumGethP2P;
@@ -17,7 +18,7 @@ import static main.java.network.BlockFactory.ETHEREUM_MIN_DIFFICULTY;
 import static main.java.network.TransactionFactory.sampleEthereumTransaction;
 import static org.apache.commons.math3.util.FastMath.sqrt;
 
-public class EthereumNode extends BlockchainNode<EthereumTx, EthereumBlock> {
+public class EthereumNode extends BlockchainNode<EthereumBlock, EthereumTx> {
     public static final EthereumBlock ETHEREUM_GENESIS_BLOCK =
             new EthereumBlock(0, 0, 0, null, null, Collections.emptySet(),
                     ETHEREUM_MIN_DIFFICULTY);
@@ -35,8 +36,13 @@ public class EthereumNode extends BlockchainNode<EthereumTx, EthereumBlock> {
 
     @Override
     protected void processNewBlock(EthereumBlock ethereumBlock) {
-        this.consensusAlgorithm.newBlock(ethereumBlock);
+        this.consensusAlgorithm.newIncomingBlock(ethereumBlock);
         this.broadcastNewBlockAndBlockHashes(ethereumBlock);
+    }
+
+    @Override
+    protected void processNewVote(Vote vote) {
+
     }
 
     @Override
@@ -49,10 +55,16 @@ public class EthereumNode extends BlockchainNode<EthereumTx, EthereumBlock> {
             Node neighbor = this.p2pConnections.getNeighbors().get(i);
             if (i < sqrt(this.p2pConnections.getNeighbors().size())){
                 this.nodeNetworkInterface.addToUpLinkQueue(
-                        new BlockMessage<>(ethereumBlock.getSize(), this, neighbor, ethereumBlock));
+                        new Packet(this, neighbor,
+                                new DataMessage<>(ethereumBlock)
+                        )
+                );
             } else {
                 this.nodeNetworkInterface.addToUpLinkQueue(
-                        new BlockInvMessage<>(ethereumBlock.getSize(), this, neighbor, ethereumBlock.getHash()));
+                        new Packet(this, neighbor,
+                                new InvMessage<>(ethereumBlock.getHash().getSize(), ethereumBlock.getHash())
+                        )
+                );
             }
         }
     }
@@ -61,7 +73,9 @@ public class EthereumNode extends BlockchainNode<EthereumTx, EthereumBlock> {
         for (Node neighbor:this.p2pConnections.getNeighbors()) {
             if (neighbor != excludeNeighbor){
                 this.nodeNetworkInterface.addToUpLinkQueue(
-                        new TxMessage<>(tx.getSize(), this, neighbor, tx)
+                        new Packet(this, neighbor,
+                                new DataMessage<>(tx)
+                        )
                 );
             }
         }

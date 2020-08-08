@@ -3,6 +3,7 @@ package main.java.node;
 import main.java.node.nodes.bitcoin.BitcoinNode;
 import main.java.node.nodes.ethereum.EthereumMinerNode;
 import main.java.node.nodes.ethereum.EthereumNode;
+import main.java.node.nodes.pbft.PBFTNode;
 
 import static main.java.config.NetworkStats.*;
 import static main.java.random.RandomSampling.sampleDistributionWithBins;
@@ -19,6 +20,10 @@ public final class NodeFactory {
 
     public static BitcoinNode createNewBitcoinNode(int nodeID) {
         return new BitcoinNode(nodeID, sampleRegionBitcoin());
+    }
+
+    public static PBFTNode createNewPBFTNode(int nodeID, int numAllParticipants) {
+        return new PBFTNode(nodeID, sampleRegionBitcoin(), numAllParticipants);
     }
 
     private static int sampleRegionEthereum() {
