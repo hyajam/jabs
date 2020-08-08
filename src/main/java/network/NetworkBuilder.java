@@ -24,4 +24,14 @@ public class NetworkBuilder {
             node.getP2pConnections().connectToNetwork();
         }
     }
+
+    public static void buildSamplePBFTNetwork(int numOfNodes) {
+        for (int i = 0; i < numOfNodes; i++) {
+            Network.addNode(NodeFactory.createNewPBFTNode(i, numOfNodes));
+        }
+
+        for (Node node:getAllNodes()) {
+            node.getP2pConnections().connectToNetwork();
+        }
+    }
 }

@@ -26,6 +26,10 @@ public abstract class Block<B extends Block<B>> extends Data {
         return this.creationTime;
     }
 
+    public Node getCreator() {
+        return this.creator;
+    }
+
     public B getParent() {
         return (B) this.parent;
     }

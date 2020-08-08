@@ -1,5 +1,6 @@
 package main.java.event;
 
+import main.java.message.Packet;
 import main.java.network.Network;
 import main.java.node.nodes.Node;
 import main.java.message.Message;
@@ -12,13 +13,13 @@ public class MessageSendingProcess extends AbstractMessageProcessor {
         super(node);
     }
 
-    protected void sendPacketToNextProcess(Message message) {
-        MessageDeliveryEvent transfer = new MessageDeliveryEvent(message);
-        long latency = Network.getLatency(message.getFrom().region, message.getTo().region);
+    protected void sendPacketToNextProcess(Packet packet) {
+        MessageDeliveryEvent transfer = new MessageDeliveryEvent(packet);
+        long latency = Network.getLatency(packet.getFrom().region, packet.getTo().region);
         AbstractSimulator.putEvent(transfer, latency);
     }
 
-    protected long processingTime(Message message) {
-        return ((message.getSize()*8) / (node.getNodeNetworkInterface().uploadBandwidth/1000)) + PACKET_PROCESSING_TIME;
+    protected long processingTime(Packet packet) {
+        return ((packet.getSize()*8) / (node.getNodeNetworkInterface().uploadBandwidth/1000)) + PACKET_PROCESSING_TIME;
     }
 }

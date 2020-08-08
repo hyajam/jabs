@@ -1,19 +1,23 @@
 package main.java.message;
 
-import main.java.node.nodes.Node;
-
 public abstract class Message {
     private final int size;
-    private final Node from;
-    private final Node to;
+    private final MessageType messageType;
+
+    public enum MessageType {
+        DATA,
+        INV,
+        REQUEST_DATA,
+        VOTE
+    }
 
     public int getSize(){ return this.size; }
-    public Node getFrom(){ return this.from; }
-    public Node getTo(){ return this.to; }
+    public MessageType getMessageType() {
+        return this.messageType;
+    }
 
-    public Message(int size, Node from, Node to) {
+    public Message(int size, MessageType messageType) {
         this.size = size;
-        this.from = from;
-        this.to = to;
+        this.messageType = messageType;
     }
 }

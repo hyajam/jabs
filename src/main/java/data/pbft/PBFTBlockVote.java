@@ -4,19 +4,20 @@ import main.java.data.Block;
 import main.java.data.Vote;
 import main.java.node.nodes.Node;
 
-public class PBFTBlockVote<B extends Block<B>> extends Vote {
-    static final int VOTE_SIZE = 60;
-
+public abstract class PBFTBlockVote<B extends Block<B>> extends Vote {
     private final B block;
     private final VoteType voteType;
+
+    public static final int PBFT_VOTE_SIZE_OVERHEAD = 10;
+
     public enum VoteType {
         PRE_PREPARE,
         PREPARE,
         COMMIT
     }
 
-    protected PBFTBlockVote(Node voter, B block, VoteType voteType) {
-        super(VOTE_SIZE, voter);
+    protected PBFTBlockVote(int size, Node voter, B block, VoteType voteType) {
+        super(size, voter);
         this.block = block;
         this.voteType = voteType;
     }

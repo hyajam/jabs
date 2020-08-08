@@ -3,7 +3,7 @@ package main.java.data.pbft;
 import main.java.data.Vote;
 import main.java.node.nodes.Node;
 
-public class PBFTViewVote extends Vote {
+public abstract class PBFTViewVote extends Vote {
     static final int VOTE_SIZE = 60;
     private final VoteType voteType;
 

@@ -1,5 +1,6 @@
 package main.java.p2p;
 
+import main.java.data.Data;
 import main.java.node.nodes.Node;
 
 import java.util.ArrayList;

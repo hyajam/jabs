@@ -2,24 +2,23 @@ package main.java.consensus;
 
 import main.java.blockchain.LocalBlockTree;
 import main.java.data.Block;
-import main.java.data.Transaction;
+import main.java.data.Tx;
 
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class GhostProtocol<B extends Block<B>, T extends Transaction<T>> extends AbstractBlockchainConsensus<B, T> {
-    private B currentMainChainHead = null;
+public class GhostProtocol<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchainConsensus<B, T> {
     private final HashMap<B, Integer> totalWeights;
     public static int DEFAULT_GHOST_WEIGHT = 1;
 
     public GhostProtocol(LocalBlockTree<B> localBlockTree) {
         super(localBlockTree);
         this.totalWeights = new HashMap<>();
-        this.newBlock(localBlockTree.getGenesisBlock());
+        this.newIncomingBlock(localBlockTree.getGenesisBlock());
     }
 
     @Override
-    public void newBlock(B block) {
+    public void newIncomingBlock(B block) {
         totalWeights.put(block, DEFAULT_GHOST_WEIGHT);
         if (this.localBlockTree.getLocalBlock(block).isConnectedToGenesis) {
             for (B ancestor:this.localBlockTree.getAllAncestors(block)) {
@@ -50,10 +49,5 @@ public class GhostProtocol<B extends Block<B>, T extends Transaction<T>> extends
                 }
             }
         }
-    }
-
-    @Override
-    public B getCanonicalChainHead() {
-        return currentMainChainHead;
     }
 }

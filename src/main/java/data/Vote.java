@@ -2,7 +2,7 @@ package main.java.data;
 
 import main.java.node.nodes.Node;
 
-public abstract class Vote extends Data {
+public abstract class Vote extends BasicData {
     private final Node voter;
 
     protected Vote(int size, Node voter) {

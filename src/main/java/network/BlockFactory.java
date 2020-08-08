@@ -1,5 +1,15 @@
 package main.java.network;
 
+import main.java.data.bitcoin.BitcoinBlock;
+import main.java.data.ethereum.EthereumBlock;
+import main.java.data.pbft.PBFTBlock;
+import main.java.node.nodes.bitcoin.BitcoinMinerNode;
+import main.java.node.nodes.ethereum.EthereumMinerNode;
+import main.java.node.nodes.pbft.PBFTNode;
+import main.java.simulator.AbstractSimulator;
+
+import java.util.Set;
+
 import static main.java.random.RandomSampling.sampleDistributionWithBins;
 
 public final class BlockFactory {
@@ -25,5 +35,21 @@ public final class BlockFactory {
 
     public static int sampleBitcoinBlockSize() {
         return (int) sampleDistributionWithBins(BITCOIN_BLOCK_SIZE_2020, BITCOIN_BLOCK_SIZE_2020_BINS);
+    }
+
+    public static BitcoinBlock sampleBitcoinBlock(BitcoinMinerNode creator, BitcoinBlock parent) {
+        return new BitcoinBlock(sampleBitcoinBlockSize(), parent.getHeight() + 1,
+                AbstractSimulator.getCurrentTime(), creator, parent);
+    }
+
+    public static PBFTBlock samplePBFTBlock(PBFTNode creator, PBFTBlock parent) {
+        return new PBFTBlock(sampleBitcoinBlockSize(), parent.getHeight() + 1,
+                AbstractSimulator.getCurrentTime(), creator, parent); // TODO: Size of PBFT Blocks
+    }
+
+    public static EthereumBlock sampleEthereumBlock(EthereumMinerNode creator, EthereumBlock parent,
+                                                    Set<EthereumBlock> uncles) {
+        return new EthereumBlock(sampleBitcoinBlockSize(), parent.getHeight() + 1,
+                AbstractSimulator.getCurrentTime(), creator, parent, uncles, ETHEREUM_MIN_DIFFICULTY); // TODO: Block Size
     }
 }

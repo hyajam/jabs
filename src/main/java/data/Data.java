@@ -1,11 +1,7 @@
 package main.java.data;
 
-public abstract class Data {
-    protected int size;
-
+public abstract class Data extends BasicData {
     protected Data(int size) {
-        this.size = size;
+        super(size);
     }
-
-    public int getSize() { return size; };
 }
