@@ -2,15 +2,15 @@ package main.java.message;
 
 import main.java.data.Data;
 
-public class DataMessage<D extends Data> extends Message {
-    private final D data;
+public class DataMessage extends Message {
+    private final Data data;
 
-    public DataMessage(D data) {
-        super(data.getSize(), MessageType.DATA);
+    public DataMessage(Data data) {
+        super(data.getSize());
         this.data = data;
     }
 
-    public D getData() {
-        return this.data;
+    public Data getData() {
+        return data;
     }
 }

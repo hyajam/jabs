@@ -2,20 +2,18 @@ package main.java.data;
 
 import main.java.node.nodes.Node;
 
-public abstract class Block<B extends Block<B>> extends Data {
+public abstract class Block<B extends Block<B>> extends Data implements Comparable<Block<B>> {
     private final int height;
     private final long creationTime;
     private final B parent;
     private final Node creator;
-    final BlockHash<B> blockHash;
 
     protected Block(int size, int height, long creationTime, Node creator, B parent, int hashSize) {
-        super(size);
+        super(size, hashSize);
         this.height = height;
         this.creationTime = creationTime;
         this.creator = creator;
         this.parent = parent;
-        this.blockHash = new BlockHash<>(hashSize, this);
     }
 
     public int getHeight() {
@@ -31,10 +29,10 @@ public abstract class Block<B extends Block<B>> extends Data {
     }
 
     public B getParent() {
-        return (B) this.parent;
+        return this.parent;
     }
 
-    public BlockHash<B> getHash(){
-        return  this.blockHash;
+    public int compareTo(Block<B> b) {
+        return Long.compare(this.height, b.getHeight());
     }
 }

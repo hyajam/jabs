@@ -5,7 +5,7 @@ import main.java.event.Event;
 import java.util.PriorityQueue;
 
 public abstract class AbstractSimulator {
-    private static final PriorityQueue<ScheduledEvent> eventQueue = new PriorityQueue<ScheduledEvent>();
+    private static final PriorityQueue<ScheduledEvent> eventQueue = new PriorityQueue<>();
 
     private static class ScheduledEvent implements Comparable<ScheduledEvent> {
         private final Event event;

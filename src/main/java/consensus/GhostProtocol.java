@@ -28,8 +28,11 @@ public class GhostProtocol<B extends Block<B>, T extends Tx<T>> extends Abstract
                 totalWeights.put(ancestor, totalWeights.get(ancestor) + DEFAULT_GHOST_WEIGHT);
             }
         }
-        this.currentMainChainHead = this.ghost();
-        this.acceptedBlocks = this.localBlockTree.getAllAncestors(this.currentMainChainHead);
+        B ghostMainChainHead = this.ghost();
+        if (this.currentMainChainHead != ghostMainChainHead) {
+            this.currentMainChainHead = ghostMainChainHead;
+            updateChain();
+        }
     }
 
     public B ghost() {
@@ -49,5 +52,10 @@ public class GhostProtocol<B extends Block<B>, T extends Tx<T>> extends Abstract
                 }
             }
         }
+    }
+
+    @Override
+    protected void updateChain() {
+        this.acceptedBlocks = this.localBlockTree.getAllAncestors(this.currentMainChainHead);
     }
 }

@@ -15,7 +15,8 @@ import java.util.HashSet;
 
 // based on: https://sawtooth.hyperledger.org/docs/pbft/nightly/master/architecture.html
 
-public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchainConsensus<B, T> {
+public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchainConsensus<B, T>
+        implements VotingBasedConsensus<B, T> {
     private final int numAllParticipants;
     private final HashMap<B, HashMap<Node, Vote>> prepareVotes = new HashMap<>();
     private final HashMap<B, HashMap<Node, Vote>> commitVotes = new HashMap<>();
@@ -57,7 +58,7 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
                     if (this.localBlockTree.getLocalBlock(block).isConnectedToGenesis) {
                         this.pbftPhase = PBFTPhase.PREPARING;
                         this.blockchainNode.broadcastMessage(
-                                new VoteMessage<>(
+                                new VoteMessage(
                                         new PBFTPrepareVote<>(this.blockchainNode, blockVote.getBlock())
                                 )
                         );
@@ -82,9 +83,10 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
                     case PRE_PREPARING -> {
                         this.currentViewNumber += 1;
                         this.currentMainChainHead = block;
+                        updateChain();
                         if (this.blockchainNode.nodeID == this.getCurrentPrimaryNumber()){
                             this.blockchainNode.broadcastMessage(
-                                    new VoteMessage<>(
+                                    new VoteMessage(
                                             new PBFTPrePrepareVote<>(this.blockchainNode,
                                                     BlockFactory.samplePBFTBlock(
                                                             (PBFTNode) this.blockchainNode, (PBFTBlock) block)
@@ -94,7 +96,7 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
                         }
                     }
                     case COMMITTING -> this.blockchainNode.broadcastMessage(
-                                new VoteMessage<>(
+                                new VoteMessage(
                                         new PBFTCommitVote<>(this.blockchainNode, block)
                                 )
                         );
@@ -122,5 +124,10 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
 
     public PBFTPhase getPbftPhase() {
         return this.pbftPhase;
+    }
+
+    @Override
+    protected void updateChain() {
+        this.acceptedBlocks.add(this.currentMainChainHead);
     }
 }

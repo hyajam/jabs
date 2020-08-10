@@ -29,9 +29,9 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
         EthereumBlockWithTx ethereumBlockWithTx = new EthereumBlockWithTx(
                 canonicalChainHead.getHeight()+1, AbstractSimulator.getCurrentTime(), this,
                 this.getConsensusAlgorithm().getCanonicalChainHead(), tipBlocks, memPool, ETHEREUM_MIN_DIFFICULTY); // TODO: Difficulty?
-        this.processIncomingMessage(
+        this.processIncomingPacket(
                 new Packet(
-                        this, this, new DataMessage<>(ethereumBlockWithTx)
+                        this, this, new DataMessage(ethereumBlockWithTx)
                 )
         );
         this.processNewBlock(ethereumBlockWithTx);

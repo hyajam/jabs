@@ -6,7 +6,7 @@ import main.java.simulator.AbstractSimulator;
 
 import java.util.PriorityQueue;
 
-public abstract class AbstractMessageProcessor implements Event {
+public abstract class AbstractPacketProcessor implements Event {
     protected final PriorityQueue<TimedPacket> packetsQueue = new PriorityQueue<>();
 
     private static class TimedPacket implements Comparable<TimedPacket> {
@@ -25,7 +25,7 @@ public abstract class AbstractMessageProcessor implements Event {
 
     public final Node node;
 
-    public AbstractMessageProcessor(Node node) {
+    public AbstractPacketProcessor(Node node) {
         this.node = node;
     }
 
@@ -48,6 +48,6 @@ public abstract class AbstractMessageProcessor implements Event {
         }
     }
 
-    abstract long processingTime(Packet packet);
-    abstract void sendPacketToNextProcess(Packet packet);
+    public abstract long processingTime(Packet packet);
+    protected abstract void sendPacketToNextProcess(Packet packet);
 }

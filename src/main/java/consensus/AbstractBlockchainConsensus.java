@@ -25,4 +25,6 @@ public abstract class AbstractBlockchainConsensus<B extends Block<B>, T extends 
     public void setNode(BlockchainNode<B, T> blockchainNode) {
         this.blockchainNode = blockchainNode;
     }
+
+    abstract protected void updateChain();
 }

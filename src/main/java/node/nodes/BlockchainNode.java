@@ -12,8 +12,9 @@ import java.util.HashSet;
 public abstract class BlockchainNode<B extends Block<B>, T extends Tx<T>> extends Node {
     protected final AbstractBlockchainConsensus<B, T> consensusAlgorithm;
 
-    protected final HashMap<TxHash<T>, T> alreadySeenTxs = new HashMap<>();
-    protected final HashMap<BlockHash<B>, B> alreadySeenBlocks = new HashMap<>();
+    protected final HashMap<Hash, T> alreadySeenTxs = new HashMap<>();
+    protected final HashMap<Hash, B> alreadySeenBlocks = new HashMap<>();
+    protected final HashSet<Vote> alreadySeenVotes = new HashSet<>();
     protected final LocalBlockTree<B> localBlockTree;
 
     public BlockchainNode(int nodeID, int region, AbstractP2PConnections routingTable,
@@ -25,10 +26,9 @@ public abstract class BlockchainNode<B extends Block<B>, T extends Tx<T>> extend
     }
 
     @Override
-    public void processIncomingMessage(Packet packet) {
+    public void processIncomingPacket(Packet packet) {
         Message message = packet.getMessage();
-        Message.MessageType messageType = message.getMessageType();
-        if (messageType == Message.MessageType.DATA) {
+        if (message instanceof DataMessage) {
             Data data = ((DataMessage) message).getData();
             if (data instanceof Block) {
                 B block = (B) data;
@@ -56,59 +56,58 @@ public abstract class BlockchainNode<B extends Block<B>, T extends Tx<T>> extend
                     this.processNewTx(tx, packet.getFrom());
                 }
             }
-        } else if (messageType == Message.MessageType.INV) {
+        } else if (message instanceof InvMessage) {
             Hash hash = ((InvMessage) message).getHash();
-            if (hash instanceof TxHash){
-                TxHash<T> txHash = (TxHash<T>) hash;
+            if (hash.getData() instanceof Block){
                 if (!alreadySeenTxs.containsKey(hash)) {
-                    alreadySeenTxs.put(txHash, null);
+                    alreadySeenTxs.put(hash, null);
                     this.nodeNetworkInterface.addToUpLinkQueue(
                             new Packet(this, packet.getFrom(),
-                                    new RequestDataMessage(txHash)
+                                    new RequestDataMessage(hash)
                             )
                     );
                 }
-            } else if (hash instanceof BlockHash) {
-                BlockHash<B> blockHash = (BlockHash<B>) hash;
-                if (!alreadySeenBlocks.containsKey(blockHash)) {
-                    alreadySeenBlocks.put(blockHash, null);
+            } else if (hash.getData() instanceof Tx) {
+                if (!alreadySeenBlocks.containsKey(hash)) {
+                    alreadySeenBlocks.put(hash, null);
                     this.nodeNetworkInterface.addToUpLinkQueue(
                             new Packet(this, packet.getFrom(),
-                                    new RequestDataMessage( blockHash)
+                                    new RequestDataMessage(hash)
                             )
                     );
                 }
             }
-        } else if (messageType == Message.MessageType.REQUEST_DATA) {
+        } else if (message instanceof RequestDataMessage) {
             Hash hash = ((RequestDataMessage) message).getHash();
-            if (hash instanceof BlockHash) {
-                BlockHash<B> blockHash = (BlockHash<B>) hash;
-                if (alreadySeenBlocks.containsKey(blockHash)) {
-                    B block = alreadySeenBlocks.get(blockHash);
+            if (hash.getData() instanceof Block) {
+                if (alreadySeenBlocks.containsKey(hash)) {
+                    B block = alreadySeenBlocks.get(hash);
                     if (block != null) {
                         this.nodeNetworkInterface.addToUpLinkQueue(
                                 new Packet(this, packet.getFrom(),
-                                        new DataMessage<>(block)
+                                        new DataMessage(block)
                                 )
                         );
                     }
                 }
-            } else if (hash instanceof TxHash) {
-                TxHash<T> txHash = (TxHash<T>) hash;
-                if (alreadySeenTxs.containsKey(txHash)) {
-                    T tx = alreadySeenTxs.get(txHash);
+            } else if (hash.getData() instanceof Tx) {
+                if (alreadySeenTxs.containsKey(hash)) {
+                    T tx = alreadySeenTxs.get(hash);
                     if (tx != null) {
                         this.nodeNetworkInterface.addToUpLinkQueue(
                                 new Packet(this, packet.getFrom(),
-                                        new DataMessage<>(tx)
+                                        new DataMessage(tx)
                                 )
                         );
                     }
                 }
             }
-        } else if (messageType == Message.MessageType.VOTE) {
+        } else if (message instanceof VoteMessage) {
             Vote vote = ((VoteMessage) message).getVote();
-            this.processNewVote(vote);
+            if (!alreadySeenVotes.contains(vote)) {
+                alreadySeenVotes.add(vote);
+                this.processNewVote(vote);
+            }
         }
     }
 

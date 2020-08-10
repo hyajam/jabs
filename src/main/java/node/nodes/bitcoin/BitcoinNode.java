@@ -42,7 +42,7 @@ public class BitcoinNode extends BlockchainNode<BitcoinBlock, BitcoinTx> {
         for (Node neighbor:this.p2pConnections.getNeighbors()) {
             this.nodeNetworkInterface.addToUpLinkQueue(
                     new Packet(this, neighbor,
-                            new InvMessage<>(tx.getHash().getSize(), tx.getHash())
+                            new InvMessage(tx.getHash().getSize(), tx.getHash())
                     )
             );
         }
@@ -52,7 +52,7 @@ public class BitcoinNode extends BlockchainNode<BitcoinBlock, BitcoinTx> {
         for (Node neighbor:this.p2pConnections.getNeighbors()) {
             this.nodeNetworkInterface.addToUpLinkQueue(
                     new Packet(this, neighbor,
-                            new InvMessage<>(block.getHash().getSize(), block.getHash())
+                            new InvMessage(block.getHash().getSize(), block.getHash())
                     )
             );
         }

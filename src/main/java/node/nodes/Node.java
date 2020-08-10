@@ -21,7 +21,7 @@ public abstract class Node {
                 Network.sampleDownloadBandwidth(region), Network.sampleUploadBandwidth(region));
     }
 
-    public abstract void processIncomingMessage(Packet packet);
+    public abstract void processIncomingPacket(Packet packet);
     public abstract void generateNewTransaction();
 
     public NodeNetworkInterface getNodeNetworkInterface() {

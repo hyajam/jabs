@@ -17,7 +17,12 @@ public class NakamotoConsensus<B extends Block<B>, T extends Tx<T>> extends Abst
         if (block.getHeight() > longestChainLen) {
             this.longestChainLen = block.getHeight();
             this.currentMainChainHead = block;
-            this.acceptedBlocks = this.localBlockTree.getAllAncestors(block);
+            this.updateChain();
         }
+    }
+
+    @Override
+    protected void updateChain() {
+        this.acceptedBlocks = this.localBlockTree.getAllAncestors(this.currentMainChainHead);
     }
 }

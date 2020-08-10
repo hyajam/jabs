@@ -1,6 +1,6 @@
 package main.java.data;
 
-public abstract class Hash extends Data {
+public class Hash extends BasicData {
     private final Data data;
 
     public Hash(int size, Data data) {
@@ -8,7 +8,7 @@ public abstract class Hash extends Data {
         this.data = data;
     }
 
-    private Data getBasicData() {
+    public Data getData() {
         return this.data;
     }  // should never be used
 }
