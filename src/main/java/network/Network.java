@@ -16,7 +16,7 @@ public abstract class Network {
     private static final List<MinerNode> miners = new ArrayList<>();
     private static long totalHashPower = 0;
 
-    public static void addNode(Node node){
+    public static void addNode(Node node) {
         nodes.add(node);
     }
 
@@ -26,7 +26,7 @@ public abstract class Network {
         totalHashPower += node.getHashPower();
     }
 
-    public static List<Node> getAllNodes(){
+    public static List<Node> getAllNodes() {
         return nodes;
     }
 
@@ -39,7 +39,7 @@ public abstract class Network {
     }
 
     // latency by pareto dist
-    public static long getLatency(int from, int to){
+    public static long getLatency(int from, int to) {
         long mean = main.java.config.NetworkStats.LATENCY[from][to];
         double scale = ((LATENCY_PARETO_SHAPE-1)/LATENCY_PARETO_SHAPE) * (double)mean;
         ParetoDistribution pareto = new ParetoDistribution(Main.random, scale, LATENCY_PARETO_SHAPE);

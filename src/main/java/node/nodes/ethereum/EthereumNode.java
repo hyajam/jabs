@@ -1,6 +1,7 @@
 package main.java.node.nodes.ethereum;
 
 import main.java.consensus.CasperFFG;
+import main.java.consensus.DAGsper;
 import main.java.consensus.VotingBasedConsensus;
 import main.java.data.Vote;
 import main.java.data.ethereum.EthereumBlock;
@@ -17,7 +18,6 @@ import main.java.p2p.EthereumGethP2P;
 
 import java.util.Collections;
 
-import static main.java.Main.numAllStakeHolders;
 import static main.java.network.BlockFactory.ETHEREUM_MIN_DIFFICULTY;
 import static main.java.network.TransactionFactory.sampleEthereumTransaction;
 import static org.apache.commons.math3.util.FastMath.sqrt;
@@ -30,7 +30,7 @@ public class EthereumNode extends BlockchainNode<EthereumBlock, EthereumTx> {
     public EthereumNode(int nodeID, int region) {
         super(nodeID, region,
                 new EthereumGethP2P(),
-                new CasperFFG<>(new LocalBlockTree<>(ETHEREUM_GENESIS_BLOCK), 60, numAllStakeHolders));
+                new DAGsper<>(new LocalBlockTree<>(ETHEREUM_GENESIS_BLOCK), 3, 40));
     }
 
     @Override

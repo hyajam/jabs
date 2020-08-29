@@ -11,6 +11,17 @@ public final class TransactionFactory {
             0.0175110, 0.00219022, 0.00126404, 0.00041145
     };
 
+    private static final long[] ETHEREUM_TRANSACTION_GAS_BINS = {
+            21001, 21003, 21007, 21015, 21031, 21063, 21127, 21255, 21511, 22023, 23048, 25097, 29204, 37401, 53785,
+            86553, 152114, 283357, 548945, 1141405, 12475587
+    };
+
+    private static final double[] BITCOIN_TRANSACTION_GAS_DISTRIBUTION = {
+            0.000016894, 0.000069723, 0.000020709, 0.000260152, 0.001366569, 0.000187092, 0.000253752, 0.000358685,
+            0.002723765, 0.001816119, 0.003954819, 0.012228619, 0.023134672, 0.139374064, 0.146851576, 0.241159595,
+            0.110655111, 0.060103259, 0.032087937, 0.023120530
+    };
+
     private static final long[] ETHEREUM_TRANSACTION_SIZE_BINS = {
             214, 216, 220, 228, 244, 276, 340, 470, 729, 1298, 2639, 5084, 12630, 296985
     };
@@ -25,8 +36,11 @@ public final class TransactionFactory {
     };
 
     public static EthereumTx sampleEthereumTransaction() {
-        return new EthereumTx((int) sampleDistributionWithBins(
-                ETHEREUM_TRANSACTION_SIZE_DISTRIBUTION, ETHEREUM_TRANSACTION_SIZE_BINS));
+        return new EthereumTx(
+                (int) sampleDistributionWithBins(
+                ETHEREUM_TRANSACTION_SIZE_DISTRIBUTION, ETHEREUM_TRANSACTION_SIZE_BINS),
+                (int) sampleDistributionWithBins(
+                        BITCOIN_TRANSACTION_GAS_DISTRIBUTION, ETHEREUM_TRANSACTION_GAS_BINS));
     }
 
     public static BitcoinTx sampleBitcoinTransaction() {

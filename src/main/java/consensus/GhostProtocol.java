@@ -8,12 +8,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class GhostProtocol<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchainConsensus<B, T> {
-    private final HashMap<B, Integer> totalWeights;
+    private final HashMap<B, Integer> totalWeights = new HashMap<>();
     public static int DEFAULT_GHOST_WEIGHT = 1;
 
     public GhostProtocol(LocalBlockTree<B> localBlockTree) {
         super(localBlockTree);
-        this.totalWeights = new HashMap<>();
         this.newIncomingBlock(localBlockTree.getGenesisBlock());
     }
 

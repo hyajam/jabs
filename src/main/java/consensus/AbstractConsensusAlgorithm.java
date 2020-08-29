@@ -13,13 +13,13 @@ public abstract class AbstractConsensusAlgorithm<B extends Block<B>, T extends T
     public abstract void newIncomingBlock(B block);
 
     @Override
-    public boolean isBlockAccepted(B block) {
-        return acceptedBlocks.contains(block);
-    }
-
-    @Override
     public boolean isBlockValid(B block) { // TODO: This should check that the block meets required difficulty
         return true;
+    } // for checking difficulty signature and etc
+
+    @Override
+    public boolean isBlockAccepted(B block) {
+        return acceptedBlocks.contains(block);
     }
 
     @Override

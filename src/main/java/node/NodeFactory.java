@@ -42,11 +42,4 @@ public final class NodeFactory {
         return sampleDistributionWithBins(ETHEREUM_HASH_POWER_DISTRIBUTION, ETHEREUM_HASH_POWER_DISTRIBUTION_BIN);
     }
 
-//    private static long sampleNumOfConnectionsEthereum() {
-//        return sampleDistributionWithBins(ETHEREUM_DEGREE_DISTRIBUTION_2020, ETHEREUM_DEGREE_DISTRIBUTION_2020_BIN);
-//    }
-//
-//    private static long sampleNumOfConnectionsBitcoin() {
-//        return sampleDistributionWithBins(BITCOIN_DEGREE_DISTRIBUTION_2015, BITCOIN_DEGREE_DISTRIBUTION_2015_BIN);
-//    }
 }

@@ -1,23 +1,24 @@
 package main.java.consensus;
 
 import main.java.data.Block;
+import main.java.data.BlockWithTx;
 import main.java.data.Tx;
 import main.java.blockchain.LocalBlockTree;
 import main.java.data.Vote;
 import main.java.data.casper.CasperFFGLink;
 import main.java.data.casper.CasperFFGVote;
+import main.java.message.Packet;
 import main.java.message.VoteMessage;
 import main.java.node.nodes.Node;
 
-import java.util.HashMap;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class CasperFFG<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<B, T>
-        implements VotingBasedConsensus<B, T> {
+        implements VotingBasedConsensus<B, T>, DeterministicFinalityConsensus<B,T> {
     private final HashMap<CasperFFGLink<B>, HashMap<Node, CasperFFGVote<B>>> votes = new HashMap<>();
     private final SortedSet<B> justifiedBlocks = new TreeSet<>();
     private final SortedSet<B> finalizedBlocks = new TreeSet<>();
+    private final Set<T> finalizedTxs = new HashSet<>();
     private final int checkpointSpace;
     private final int numOfStakeholders;
     private int latestCheckpoint = 0;
@@ -42,6 +43,9 @@ public class CasperFFG<B extends Block<B>, T extends Tx<T>> extends GhostProtoco
             if (votes.get(casperFFGLink).size() > (((numOfStakeholders / 3) * 2) + 1)) {
                 justifiedBlocks.add(casperFFGLink.getToBeJustified());
                 finalizedBlocks.add(casperFFGLink.getToBeFinalized());
+                if (casperFFGLink.getToBeFinalized() instanceof BlockWithTx) {
+                    finalizedTxs.addAll(((BlockWithTx<T>) casperFFGLink.getToBeFinalized()).getTxs());
+                }
             }
         }
     }
@@ -56,7 +60,8 @@ public class CasperFFG<B extends Block<B>, T extends Tx<T>> extends GhostProtoco
             CasperFFGLink<B> casperFFGLink = new CasperFFGLink<>(toBeFinalizedBlock, toBeJustifiedBlock);
             CasperFFGVote<B> casperFFGVote = new CasperFFGVote<>(this.blockchainNode, casperFFGLink);
             VoteMessage voteMessage = new VoteMessage(casperFFGVote);
-            this.blockchainNode.broadcastMessage(voteMessage);
+            Packet packet = new Packet(this.blockchainNode, this.blockchainNode, voteMessage);
+            this.blockchainNode.processIncomingPacket(packet);
         }
     }
 
@@ -64,7 +69,22 @@ public class CasperFFG<B extends Block<B>, T extends Tx<T>> extends GhostProtoco
         return this.justifiedBlocks.size();
     }
 
+    @Override
+    public boolean isBlockFinalized(B block) {
+        return this.finalizedBlocks.contains(block);
+    }
+
+    @Override
+    public boolean isTxFinalized(T tx) {
+        return this.finalizedTxs.contains(tx);
+    }
+
     public int getNumOfFinalizedBlocks() {
-        return this.finalizedBlocks.size();
+        return localBlockTree.getAllAncestors(this.finalizedBlocks.last()).size();
+    }
+
+    @Override
+    public int getNumOfFinalizedTxs() {
+        return this.finalizedTxs.size();
     }
 }

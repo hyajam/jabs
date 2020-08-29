@@ -1,5 +1,6 @@
 package main.java.data.ethereum;
 
+import main.java.data.BlockWithTx;
 import main.java.node.nodes.ethereum.EthereumMinerNode;
 
 import static main.java.network.BlockFactory.ETHEREUM_BLOCK_HEADER_SIZE;
@@ -8,8 +9,9 @@ import static main.java.network.BlockFactory.ETHEREUM_BLOCK_HASH_SIZE;
 import java.util.HashSet;
 import java.util.Set;
 
-public class EthereumBlockWithTx extends EthereumBlock {
+public class EthereumBlockWithTx extends EthereumBlock implements BlockWithTx<EthereumTx> {
     private final Set<EthereumTx> Txs;
+    private final long totalGas;
 
     public EthereumBlockWithTx(int height, long creationTime, EthereumMinerNode creator, EthereumBlock parent, Set<EthereumBlock> uncles, Set<EthereumTx> txs, long difficulty) {
         super(0, height, creationTime, creator, parent, uncles, difficulty);
@@ -21,7 +23,19 @@ public class EthereumBlockWithTx extends EthereumBlock {
         }
 
         this.size = totalSize + (uncles.size() * ETHEREUM_BLOCK_HASH_SIZE);
+
+        long totalGasTemp = 0;
+        for (EthereumTx tx:txs) {
+            totalGasTemp += tx.getGas();
+        }
+
+        totalGas = totalGasTemp;
     }
 
+    @Override
     public Set<EthereumTx> getTxs() { return new HashSet<>(this.Txs); }
+
+    public long getTotalGas() {
+        return totalGas;
+    }
 }

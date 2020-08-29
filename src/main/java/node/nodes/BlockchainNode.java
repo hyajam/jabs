@@ -118,4 +118,8 @@ public abstract class BlockchainNode<B extends Block<B>, T extends Tx<T>> extend
     public AbstractBlockchainConsensus<B, T> getConsensusAlgorithm() {
         return this.consensusAlgorithm;
     }
+
+    public int numberOfAlreadySeenBlocks() {
+        return alreadySeenBlocks.size();
+    }
 }

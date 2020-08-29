@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 // based on: https://sawtooth.hyperledger.org/docs/pbft/nightly/master/architecture.html
+// another good source: http://ug93tad.github.io/pbft/
 
 public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchainConsensus<B, T>
         implements VotingBasedConsensus<B, T> {

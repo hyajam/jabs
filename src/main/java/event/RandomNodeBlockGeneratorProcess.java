@@ -15,7 +15,7 @@ public class RandomNodeBlockGeneratorProcess extends AbstractBlockGeneratorProce
 
     @Override
     public void generate() {
-        long randomNodeHashPowerShare = (long) Main.random.nextDouble() * Network.getTotalHashPower();
+        long randomNodeHashPowerShare = (long) (Main.random.nextDouble() * Network.getTotalHashPower());
         for (MinerNode miner:Network.getAllMiners()) {
             randomNodeHashPowerShare -= miner.getHashPower();
             if (randomNodeHashPowerShare < 0) {

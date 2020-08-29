@@ -106,6 +106,47 @@ public class LocalBlockTree<B extends Block<B>> {
         }
     }
 
+    public List<B> getPathBetween(B block1, B block2) {
+        if (!this.localBlockTree.containsKey(block1) | !this.localBlockTree.containsKey(block2)) {
+            return null;
+        }
+
+        if (block1.getHeight() == block2.getHeight()) {
+            if (block1 == block2) {
+                return Collections.emptyList();
+            } else {
+                return null;
+            }
+        }
+
+        B blockNew = block1;
+        B blockOld = block2;
+        if (block1.getHeight() < block2.getHeight()) {
+            blockNew = block2;
+            blockOld = block1;
+        }
+
+        List<B> path = new ArrayList<>();
+        path.add(blockNew);
+
+        B ancestor = blockNew.getParent();
+        while (true) {
+            if (this.localBlockTree.containsKey(ancestor)) {
+                if (ancestor.getHeight() == blockOld.getHeight()) {
+                    if (ancestor == blockOld) {
+                        return path;
+                    } else {
+                        return null;
+                    }
+                }
+                path.add(ancestor);
+            } else {
+                return null;
+            }
+            ancestor = ancestor.getParent();
+        }
+    }
+
     public B getCommonAncestor(B blockA, B blockB) {
         // these are going to be same height blocks which are ancestors of A and B
         B blockX = blockA;

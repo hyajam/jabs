@@ -17,7 +17,7 @@ public class NetworkBuilder {
         }
 
         for (int i = 0; i < numOfMiner; i++) {
-            Network.addMiner(NodeFactory.createNewEthereumMiner(i));
+            Network.addMiner(NodeFactory.createNewEthereumMiner(numOfNonMiner + i));
         }
 
         for (Node node:getAllNodes()) {
