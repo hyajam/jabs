@@ -30,7 +30,7 @@ public class EthereumNode extends BlockchainNode<EthereumBlock, EthereumTx> {
     public EthereumNode(int nodeID, int region) {
         super(nodeID, region,
                 new EthereumGethP2P(),
-                new DAGsper<>(new LocalBlockTree<>(ETHEREUM_GENESIS_BLOCK), 3, 40));
+                new CasperFFG<>(new LocalBlockTree<>(ETHEREUM_GENESIS_BLOCK), 3, 40));
     }
 
     @Override

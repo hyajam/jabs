@@ -111,6 +111,7 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
                     if (finalizedBlocks.contains(localBlockTree.getAncestorOfHeight(block, finalizableHeight))) {
                         finalizedBlocks.add(block);
                         updateFinalizedBlocks(finalizedBlocks.last());
+                        this.originOfGhost = finalizedBlocks.last();
                     }
                 }
             } else { // it is a justification vote

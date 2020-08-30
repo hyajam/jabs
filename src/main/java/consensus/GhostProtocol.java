@@ -10,10 +10,12 @@ import java.util.HashSet;
 public class GhostProtocol<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchainConsensus<B, T> {
     private final HashMap<B, Integer> totalWeights = new HashMap<>();
     public static int DEFAULT_GHOST_WEIGHT = 1;
+    protected B originOfGhost;
 
     public GhostProtocol(LocalBlockTree<B> localBlockTree) {
         super(localBlockTree);
         this.newIncomingBlock(localBlockTree.getGenesisBlock());
+        this.originOfGhost = localBlockTree.getGenesisBlock();
     }
 
     @Override
@@ -35,7 +37,14 @@ public class GhostProtocol<B extends Block<B>, T extends Tx<T>> extends Abstract
     }
 
     public B ghost() {
-        B block = this.localBlockTree.getGenesisBlock();
+        B block;
+
+        if (this.originOfGhost == null) {
+            block = localBlockTree.getGenesisBlock();
+        } else {
+            block = this.originOfGhost;
+        }
+
 
         while (true) {
             if (totalWeights.get(block) == 1) {
