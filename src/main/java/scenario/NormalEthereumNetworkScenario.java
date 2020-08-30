@@ -16,8 +16,8 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
     @Override
     public void simulationSetup() {
         NetworkBuilder.buildSampleEthereumNetwork(0, 40);
-        AbstractSimulator.putEvent(new RandomNodeTxGeneratorProcess(1000, 100), AbstractSimulator.getCurrentTime());
-        AbstractSimulator.putEvent(new RandomNodeBlockGeneratorProcess(1000, 100), AbstractSimulator.getCurrentTime());
+        AbstractSimulator.putEvent(new RandomNodeTxGeneratorProcess(500, 500), AbstractSimulator.getCurrentTime());
+        AbstractSimulator.putEvent(new RandomNodeBlockGeneratorProcess(500, 500), AbstractSimulator.getCurrentTime());
     }
 
     @Override

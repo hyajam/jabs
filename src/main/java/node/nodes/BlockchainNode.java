@@ -8,6 +8,7 @@ import main.java.p2p.AbstractP2PConnections;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.SortedSet;
 
 public abstract class BlockchainNode<B extends Block<B>, T extends Tx<T>> extends Node {
     protected final AbstractBlockchainConsensus<B, T> consensusAlgorithm;
@@ -37,7 +38,7 @@ public abstract class BlockchainNode<B extends Block<B>, T extends Tx<T>> extend
                     alreadySeenBlocks.put(block.getHash(), block);
                     if (localBlockTree.getLocalBlock(block).isConnectedToGenesis) {
                         this.processNewBlock(block);
-                        HashSet<B> newBlocks = localBlockTree.getAllSuccessors(block);
+                        SortedSet<B> newBlocks = localBlockTree.getAllSuccessors(block);
                         for (B newBlock:newBlocks){
                             this.processNewBlock(newBlock);
                         }

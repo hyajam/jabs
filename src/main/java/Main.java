@@ -24,7 +24,7 @@ import static main.java.node.nodes.pbft.PBFTNode.PBFT_GENESIS_BLOCK;
 import static main.java.simulator.AbstractSimulator.*;
 
 public class Main {
-    public static RandomGenerator random = new MersenneTwister(100);
+    public static RandomGenerator random = new MersenneTwister(500);
 
     public static void main(String[] args) {
         AbstractScenario scenario = new NormalEthereumNetworkScenario();

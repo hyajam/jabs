@@ -201,14 +201,14 @@ public class LocalBlockTree<B extends Block<B>> {
         }
     }
 
-    public HashSet<B> getAllSuccessors(B block) {
+    public SortedSet<B> getAllSuccessors(B block) {
         if (localBlockTree.get(block).children.isEmpty()) {
-            return new HashSet<>();
+            return new TreeSet<>();
         }
 
-        HashSet<B> successors = new HashSet<>();
-        HashSet<B> inCurrentHeight = new HashSet<>();
-        HashSet<B> inNextHeight = new HashSet<>();
+        SortedSet<B> successors = new TreeSet<>();
+        SortedSet<B> inCurrentHeight = new TreeSet<>();
+        SortedSet<B> inNextHeight = new TreeSet<>();
         inCurrentHeight.add(block);
         do {
             for (B successor:inCurrentHeight) {

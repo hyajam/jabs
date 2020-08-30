@@ -45,9 +45,11 @@ public class GhostProtocol<B extends Block<B>, T extends Tx<T>> extends Abstract
             int maxWeight = 0;
             HashSet<B> children = this.localBlockTree.getChildren(block);
             for (B child: children) {
-                if (totalWeights.get(child) > maxWeight) {
-                    maxWeight = totalWeights.get(child);
-                    block = child;
+                if (localBlockTree.getLocalBlock(child).isConnectedToGenesis) {
+                    if (totalWeights.get(child) > maxWeight) {
+                        maxWeight = totalWeights.get(child);
+                        block = child;
+                    }
                 }
             }
         }

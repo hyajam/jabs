@@ -71,7 +71,7 @@ public class CasperFFG<B extends Block<B>, T extends Tx<T>> extends GhostProtoco
 
     @Override
     public boolean isBlockFinalized(B block) {
-        return this.finalizedBlocks.contains(block);
+        return localBlockTree.getAllAncestors(this.finalizedBlocks.last()).contains(block);
     }
 
     @Override
