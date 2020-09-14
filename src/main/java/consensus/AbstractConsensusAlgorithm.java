@@ -5,7 +5,8 @@ import main.java.data.Tx;
 
 import java.util.HashSet;
 
-public abstract class AbstractConsensusAlgorithm<B extends Block<B>, T extends Tx<T>> implements ConsensusAlgorithm<B, T> {
+public abstract class AbstractConsensusAlgorithm<B extends Block<B>, T extends Tx<T>>
+        implements ConsensusAlgorithm<B, T> {
     protected HashSet<B> acceptedBlocks = new HashSet<>();
     protected final HashSet<T> acceptedTxs = new HashSet<>();
 

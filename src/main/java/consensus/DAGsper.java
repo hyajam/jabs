@@ -1,5 +1,6 @@
 package main.java.consensus;
 
+import main.java.Main;
 import main.java.blockchain.LocalBlockTree;
 import main.java.data.Block;
 import main.java.data.BlockWithTx;
@@ -10,6 +11,7 @@ import main.java.data.ethereum.EthereumBlock;
 import main.java.message.Packet;
 import main.java.message.VoteMessage;
 import main.java.node.nodes.Node;
+import main.java.simulator.AbstractSimulator;
 
 import java.util.*;
 
@@ -40,14 +42,15 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
         this.numOfStakeholders = numOfStakeholders;
         finalizedBlocks.add(localBlockTree.getGenesisBlock());
         justifiedBlocks.add(localBlockTree.getGenesisBlock());
+        indirectlyFinalizedBlocks.add(localBlockTree.getGenesisBlock());
     }
 
     @Override
     public void newIncomingVote(Vote vote) {
         if (vote instanceof DAGsperVote) {
-            B latestFinalized = (B) ((DAGsperVote) vote).latestFinalized;
-            B toBeFinalized = (B) ((DAGsperVote) vote).toBeFinalized;
             B toBeJustified = (B) ((DAGsperVote) vote).toBeJustified;
+            B latestFinalized = localBlockTree.getAncestorOfHeight(toBeJustified, ((DAGsperVote) vote).latestFinalizedHeight);
+            B toBeFinalized = localBlockTree.getAncestorOfHeight(toBeJustified, ((DAGsperVote) vote).toBeFinalizedHeight);
             HashSet<Integer> unaffectedHeights = ((DAGsperVote) vote).unaffectedHeights;
             List<B> toBeJustifiedPath = localBlockTree.getPathBetween(toBeJustified, toBeFinalized);
             if (toBeJustifiedPath != null) {
@@ -101,17 +104,19 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
                 }
 
                 // did block gain enough votes?
-                if (blockVotes.get(block).size() > (((numOfStakeholders / 3) * 2) + 1)) {
-                    int finalizableHeight = block.getHeight() - 1;
+                if (!finalizedBlocks.contains(block)) {
+                    if (blockVotes.get(block).size() > (((numOfStakeholders / 3) * 2) + 1)) {
+                        int finalizableHeight = block.getHeight() - 1;
 
-                    while (unfinalizableHeights.contains(finalizableHeight)) {
-                        finalizableHeight--;
-                    }
+                        while (unfinalizableHeights.contains(finalizableHeight)) {
+                            finalizableHeight--;
+                        }
 
-                    if (finalizedBlocks.contains(localBlockTree.getAncestorOfHeight(block, finalizableHeight))) {
-                        finalizedBlocks.add(block);
-                        updateFinalizedBlocks(finalizedBlocks.last());
-                        this.originOfGhost = finalizedBlocks.last();
+                        if (finalizedBlocks.contains(localBlockTree.getAncestorOfHeight(block, finalizableHeight))) {
+                            finalizedBlocks.add(block);
+                            updateFinalizedBlocks(finalizedBlocks.last());
+                            this.originOfGhost = finalizedBlocks.last();
+                        }
                     }
                 }
             } else { // it is a justification vote
@@ -123,8 +128,11 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
         }
     }
 
-    protected void updateFinalizedBlocks(B newlyFinalizedBlock) {
-        indirectlyFinalizedBlocks.add(newlyFinalizedBlock);
+    private void updateFinalizedBlocks(B newlyFinalizedBlock) {
+        if (!indirectlyFinalizedBlocks.contains(newlyFinalizedBlock)) {
+            indirectlyFinalizedBlocks.add(newlyFinalizedBlock);
+            Main.timeToFinalize.add((double) (AbstractSimulator.getCurrentTime() - newlyFinalizedBlock.getCreationTime()));
+        }
 
         Set<B> ancestors = new HashSet<>();
         Set<B> nextAncestors = new HashSet<>();
@@ -144,12 +152,16 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
                     }
                 }
             }
+
             indirectlyFinalizedBlocks.addAll(ancestors);
+
             for (B block:ancestors) {
+                Main.timeToFinalize.add((double) (AbstractSimulator.getCurrentTime() - block.getCreationTime()));
                 if (block instanceof BlockWithTx) {
                     finalizedTxs.addAll(((BlockWithTx<T>) block).getTxs());
                 }
             }
+
             nextAncestors.clear();
         }
     }
@@ -165,7 +177,7 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
                     latestConnectedJBlock = justifiedBlocks.last();
                 } else {
                     for (B jBlock:justifiedBlocks) {
-                        if (localBlockTree.areBlocksConnected(currentMainChainHead, justifiedBlocks.last()))
+                        if (localBlockTree.areBlocksConnected(currentMainChainHead, jBlock))
                             latestConnectedJBlock = jBlock;
                     }
                 }
@@ -178,8 +190,8 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
                 List<B> jPath = localBlockTree.getPathBetween(currentMainChainHead, latestConnectedJBlock);
                 removePreviouslyVotedHeights(unaffectedHeights, jPath, previousJVotes);
 
-                DAGsperVote<B> daGsperVote = new DAGsperVote<>(blockchainNode, finalizedBlocks.last(),
-                        latestConnectedJBlock, currentMainChainHead, unaffectedHeights);
+                DAGsperVote<B> daGsperVote = new DAGsperVote<>(blockchainNode, finalizedBlocks.last().getHeight(),
+                        latestConnectedJBlock.getHeight(), currentMainChainHead, unaffectedHeights);
                 VoteMessage voteMessage = new VoteMessage(daGsperVote);
                 Packet packet = new Packet(this.blockchainNode, this.blockchainNode, voteMessage);
                 this.blockchainNode.processIncomingPacket(packet);
@@ -211,6 +223,7 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
         return this.finalizedTxs.contains(tx);
     }
 
+    @Override
     public int getNumOfFinalizedBlocks() {
         return this.indirectlyFinalizedBlocks.size();
     }

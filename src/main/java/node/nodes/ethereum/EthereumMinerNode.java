@@ -1,5 +1,6 @@
 package main.java.node.nodes.ethereum;
 
+import main.java.consensus.AbstractBlockchainConsensus;
 import main.java.data.ethereum.EthereumBlock;
 import main.java.data.ethereum.EthereumBlockWithTx;
 import main.java.data.ethereum.EthereumTx;
@@ -22,6 +23,12 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
 
     public EthereumMinerNode(int nodeID, int region, long hashPower) {
         super(nodeID, region);
+        this.hashPower = hashPower;
+    }
+
+    public EthereumMinerNode(int nodeID, int region, long hashPower,
+                             AbstractBlockchainConsensus<EthereumBlock, EthereumTx> consensusAlgorithm) {
+        super(nodeID, region, consensusAlgorithm);
         this.hashPower = hashPower;
     }
 

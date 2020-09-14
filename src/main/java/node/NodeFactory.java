@@ -1,8 +1,7 @@
 package main.java.node;
 
 import main.java.node.nodes.bitcoin.BitcoinNode;
-import main.java.node.nodes.ethereum.EthereumMinerNode;
-import main.java.node.nodes.ethereum.EthereumNode;
+import main.java.node.nodes.ethereum.*;
 import main.java.node.nodes.pbft.PBFTNode;
 
 import static main.java.config.NetworkStats.*;
@@ -16,6 +15,22 @@ public final class NodeFactory {
 
     public static EthereumMinerNode createNewEthereumMiner(int nodeID) {
         return new EthereumMinerNode(nodeID, sampleMinerRegionBitcoin(), sampleHashPowerEthereum());
+    }
+
+    public static EthereumCasperNode createNewEthereumCasperNode(int nodeID, int checkpointSpace, int numOfStakeholders) {
+        return new EthereumCasperNode(nodeID, sampleRegionEthereum(), checkpointSpace, numOfStakeholders);
+    }
+
+    public static EthereumCasperMiner createNewEthereumCasperMiner(int nodeID, int checkpointSpace, int numOfStakeholders) {
+        return new EthereumCasperMiner(nodeID, sampleMinerRegionBitcoin(), sampleHashPowerEthereum(), checkpointSpace, numOfStakeholders);
+    }
+
+    public static EthereumDAGsperNode createNewEthereumDAGsperNode(int nodeID, int checkpointSpace, int numOfStakeholders) {
+        return new EthereumDAGsperNode(nodeID, sampleRegionEthereum(), checkpointSpace, numOfStakeholders);
+    }
+
+    public static EthereumDAGsperMiner createNewEthereumDAGsperMiner(int nodeID, int checkpointSpace, int numOfStakeholders) {
+        return new EthereumDAGsperMiner(nodeID, sampleMinerRegionBitcoin(), sampleHashPowerEthereum(), checkpointSpace, numOfStakeholders);
     }
 
     public static BitcoinNode createNewBitcoinNode(int nodeID) {

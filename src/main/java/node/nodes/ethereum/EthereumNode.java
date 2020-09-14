@@ -1,15 +1,12 @@
 package main.java.node.nodes.ethereum;
 
-import main.java.consensus.CasperFFG;
-import main.java.consensus.DAGsper;
-import main.java.consensus.VotingBasedConsensus;
+import main.java.consensus.*;
 import main.java.data.Vote;
 import main.java.data.ethereum.EthereumBlock;
 import main.java.data.ethereum.EthereumTx;
 import main.java.message.InvMessage;
 import main.java.message.DataMessage;
 import main.java.blockchain.LocalBlockTree;
-import main.java.consensus.GhostProtocol;
 import main.java.message.Packet;
 import main.java.message.VoteMessage;
 import main.java.node.nodes.BlockchainNode;
@@ -30,7 +27,14 @@ public class EthereumNode extends BlockchainNode<EthereumBlock, EthereumTx> {
     public EthereumNode(int nodeID, int region) {
         super(nodeID, region,
                 new EthereumGethP2P(),
-                new CasperFFG<>(new LocalBlockTree<>(ETHEREUM_GENESIS_BLOCK), 3, 40));
+                new GhostProtocol<>(new LocalBlockTree<>(ETHEREUM_GENESIS_BLOCK)));
+    }
+
+    public EthereumNode(int nodeID, int region,
+                        AbstractBlockchainConsensus<EthereumBlock, EthereumTx> consensusAlgorithm) {
+        super(nodeID, region,
+                new EthereumGethP2P(),
+                consensusAlgorithm);
     }
 
     @Override

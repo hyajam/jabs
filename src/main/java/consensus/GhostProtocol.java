@@ -14,8 +14,8 @@ public class GhostProtocol<B extends Block<B>, T extends Tx<T>> extends Abstract
 
     public GhostProtocol(LocalBlockTree<B> localBlockTree) {
         super(localBlockTree);
-        this.newIncomingBlock(localBlockTree.getGenesisBlock());
         this.originOfGhost = localBlockTree.getGenesisBlock();
+        this.newIncomingBlock(localBlockTree.getGenesisBlock());
     }
 
     @Override
@@ -37,14 +37,7 @@ public class GhostProtocol<B extends Block<B>, T extends Tx<T>> extends Abstract
     }
 
     public B ghost() {
-        B block;
-
-        if (this.originOfGhost == null) {
-            block = localBlockTree.getGenesisBlock();
-        } else {
-            block = this.originOfGhost;
-        }
-
+        B block = this.originOfGhost;
 
         while (true) {
             if (totalWeights.get(block) == 1) {
