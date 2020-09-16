@@ -9,8 +9,7 @@ import main.java.message.VoteMessage;
 import main.java.network.Network;
 import main.java.network.NetworkBuilder;
 import main.java.node.nodes.BlockchainNode;
-import main.java.node.nodes.Node;
-import main.java.simulator.AbstractSimulator;
+import main.java.simulator.Simulator;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 public class EthereumCasperNetworkScenario extends AbstractScenario {
@@ -18,21 +17,21 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
     long totalVoteMassageTraffic = 0;
 
     @Override
-    public void simulationSetup() {
+    public void setupSimulation() {
         NetworkBuilder.buildSampleEthereumCasperNetwork(100,40, 10);
-        AbstractSimulator.putEvent(new RandomNodeTxGeneratorProcess(1000, 100), AbstractSimulator.getCurrentTime());
-        AbstractSimulator.putEvent(new RandomNodeBlockGeneratorProcess(1000, 100), AbstractSimulator.getCurrentTime());
+        Simulator.putEvent(new RandomNodeTxGeneratorProcess(1000, 100), Simulator.getCurrentTime());
+        Simulator.putEvent(new RandomNodeBlockGeneratorProcess(1000, 100), Simulator.getCurrentTime());
     }
 
     @Override
     public boolean simulationStopCondition() {
-        if (AbstractSimulator.peekEvent() instanceof MessageDeliveryEvent) {
-            if (((MessageDeliveryEvent) AbstractSimulator.peekEvent()).packet.getMessage() instanceof VoteMessage) {
-                totalVoteMassageTraffic += ((MessageDeliveryEvent) AbstractSimulator.peekEvent()).packet.getSize();
+        if (Simulator.peekEvent() instanceof MessageDeliveryEvent) {
+            if (((MessageDeliveryEvent) Simulator.peekEvent()).packet.getMessage() instanceof VoteMessage) {
+                totalVoteMassageTraffic += ((MessageDeliveryEvent) Simulator.peekEvent()).packet.getSize();
             }
         }
-        if (AbstractSimulator.getCurrentTime() - 10000 >= simulationTime) {
-            simulationTime = AbstractSimulator.getCurrentTime();
+        if (Simulator.getCurrentTime() - 10000 >= simulationTime) {
+            simulationTime = Simulator.getCurrentTime();
             System.out.printf("simulation time: %s, number of already seen blocks for miner 0: %s, number of finalized blocks: %s\n",
                     simulationTime,
                     ((BlockchainNode) Network.getAllNodes().get(0)).numberOfAlreadySeenBlocks()
@@ -40,11 +39,11 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
                             ((BlockchainNode) Network.getAllNodes().get(0)).getConsensusAlgorithm()
                     ).getNumOfFinalizedBlocks());
         }
-        return AbstractSimulator.thereIsMoreEvents();
+        return Simulator.thereIsMoreEvents();
     }
 
     @Override
-    public void postSimulation() {
+    public void outputResults() {
         DescriptiveStatistics descriptiveStatistics = new DescriptiveStatistics();
 
         for (Double time: Main.timeToFinalize){

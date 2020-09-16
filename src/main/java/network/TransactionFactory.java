@@ -3,7 +3,7 @@ package main.java.network;
 import main.java.data.bitcoin.BitcoinTx;
 import main.java.data.ethereum.EthereumTx;
 
-import static main.java.random.RandomSampling.sampleDistributionWithBins;
+import static main.java.random.Random.sampleDistributionWithBins;
 
 public final class TransactionFactory {
     private static final double[] ETHEREUM_TRANSACTION_SIZE_DISTRIBUTION = {

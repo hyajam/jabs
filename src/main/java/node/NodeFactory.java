@@ -5,8 +5,8 @@ import main.java.node.nodes.ethereum.*;
 import main.java.node.nodes.pbft.PBFTNode;
 
 import static main.java.config.NetworkStats.*;
-import static main.java.random.RandomSampling.sampleDistributionWithBins;
-import static main.java.random.RandomSampling.sampleFromDistribution;
+import static main.java.random.Random.sampleDistributionWithBins;
+import static main.java.random.Random.sampleFromDistribution;
 
 public final class NodeFactory {
     public static EthereumNode createNewEthereumNode(int nodeID) {

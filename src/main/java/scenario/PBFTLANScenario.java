@@ -6,13 +6,13 @@ import main.java.network.BlockFactory;
 import main.java.network.Network;
 import main.java.network.NetworkBuilder;
 import main.java.node.nodes.pbft.PBFTNode;
-import main.java.simulator.AbstractSimulator;
+import main.java.simulator.Simulator;
 
 import static main.java.node.nodes.pbft.PBFTNode.PBFT_GENESIS_BLOCK;
 
 public class PBFTLANScenario extends AbstractScenario {
     @Override
-    public void simulationSetup() {
+    public void setupSimulation() {
         NetworkBuilder.buildSamplePBFTNetwork(4);
 
         Network.getAllNodes().get(0).broadcastMessage(
@@ -27,11 +27,11 @@ public class PBFTLANScenario extends AbstractScenario {
 
     @Override
     public boolean simulationStopCondition() {
-        return (AbstractSimulator.getCurrentTime() > 10000);
+        return (Simulator.getCurrentTime() > 10000);
     }
 
     @Override
-    public void postSimulation() {
+    public void outputResults() {
 
     }
 }

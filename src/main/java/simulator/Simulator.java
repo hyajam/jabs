@@ -4,7 +4,7 @@ import main.java.event.Event;
 
 import java.util.PriorityQueue;
 
-public abstract class AbstractSimulator {
+public class Simulator {
     private static final PriorityQueue<ScheduledEvent> eventQueue = new PriorityQueue<>();
 
     private static class ScheduledEvent implements Comparable<ScheduledEvent> {
@@ -50,11 +50,6 @@ public abstract class AbstractSimulator {
 
     public static void putEvent(Event event, long remainingTimeToExecution){
         ScheduledEvent sEvent = new ScheduledEvent(event, currentTime + remainingTimeToExecution);
-        eventQueue.add(sEvent);
-    }
-
-    public static void putEventWithAbsoluteTime(Event Event, long AbsoluteTime){
-        ScheduledEvent sEvent = new ScheduledEvent(Event, AbsoluteTime);
         eventQueue.add(sEvent);
     }
 

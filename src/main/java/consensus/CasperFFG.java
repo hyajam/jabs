@@ -11,7 +11,7 @@ import main.java.data.casper.CasperFFGVote;
 import main.java.message.Packet;
 import main.java.message.VoteMessage;
 import main.java.node.nodes.Node;
-import main.java.simulator.AbstractSimulator;
+import main.java.simulator.Simulator;
 
 import java.util.*;
 
@@ -64,7 +64,7 @@ public class CasperFFG<B extends Block<B>, T extends Tx<T>> extends GhostProtoco
     private void updateFinalizedBlocks(B newlyFinalizedBlock) {
         if (!indirectlyFinalizedBlocks.contains(newlyFinalizedBlock)) {
             indirectlyFinalizedBlocks.add(newlyFinalizedBlock);
-            Main.timeToFinalize.add((double) (AbstractSimulator.getCurrentTime() - newlyFinalizedBlock.getCreationTime()));
+            Main.timeToFinalize.add((double) (Simulator.getCurrentTime() - newlyFinalizedBlock.getCreationTime()));
         }
 
         HashSet<B> ancestors = localBlockTree.getAllAncestors(newlyFinalizedBlock);
@@ -72,7 +72,7 @@ public class CasperFFG<B extends Block<B>, T extends Tx<T>> extends GhostProtoco
         for (B block:ancestors) {
             if (!indirectlyFinalizedBlocks.contains(block)) {
                 indirectlyFinalizedBlocks.add(block);
-                Main.timeToFinalize.add((double) (AbstractSimulator.getCurrentTime() - block.getCreationTime()));
+                Main.timeToFinalize.add((double) (Simulator.getCurrentTime() - block.getCreationTime()));
                 if (block instanceof BlockWithTx) {
                     finalizedTxs.addAll(((BlockWithTx<T>) block).getTxs());
                 }

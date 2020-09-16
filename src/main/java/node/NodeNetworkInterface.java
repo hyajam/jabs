@@ -5,7 +5,7 @@ import main.java.event.PacketReceivingProcess;
 import main.java.event.PacketSendingProcess;
 import main.java.message.Packet;
 import main.java.node.nodes.Node;
-import main.java.simulator.AbstractSimulator;
+import main.java.simulator.Simulator;
 
 public class NodeNetworkInterface {
     public final long downloadBandwidth;
@@ -25,7 +25,7 @@ public class NodeNetworkInterface {
     public void addToUpLinkQueue(Packet packet) { this.addToLinkQueue(packet, this.messageSendingProcess); }
     private void addToLinkQueue(Packet packet, AbstractPacketProcessor processor) {
         if (processor.isQueueEmpty()) {
-            AbstractSimulator.putEvent(processor, processor.processingTime(packet));
+            Simulator.putEvent(processor, processor.processingTime(packet));
         }
         processor.addToQueue(packet);
     }

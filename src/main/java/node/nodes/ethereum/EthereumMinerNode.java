@@ -8,7 +8,7 @@ import main.java.message.DataMessage;
 import main.java.message.Packet;
 import main.java.node.nodes.MinerNode;
 import main.java.node.nodes.Node;
-import main.java.simulator.AbstractSimulator;
+import main.java.simulator.Simulator;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -50,7 +50,7 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
         }
 
         EthereumBlockWithTx ethereumBlockWithTx = new EthereumBlockWithTx(
-                canonicalChainHead.getHeight()+1, AbstractSimulator.getCurrentTime(), this,
+                canonicalChainHead.getHeight()+1, Simulator.getCurrentTime(), this,
                 this.getConsensusAlgorithm().getCanonicalChainHead(), tipBlocks, blockTxs, ETHEREUM_MIN_DIFFICULTY); // TODO: Difficulty?
 
         this.processIncomingPacket(

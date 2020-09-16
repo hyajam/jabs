@@ -2,7 +2,7 @@ package main.java.event;
 
 import main.java.message.Packet;
 import main.java.node.nodes.Node;
-import main.java.simulator.AbstractSimulator;
+import main.java.simulator.Simulator;
 
 import java.util.PriorityQueue;
 
@@ -34,7 +34,7 @@ public abstract class AbstractPacketProcessor implements Event {
     }
 
     public void addToQueue(Packet packet) {
-        TimedPacket timedPacket = new TimedPacket(packet, AbstractSimulator.getCurrentTime());
+        TimedPacket timedPacket = new TimedPacket(packet, Simulator.getCurrentTime());
         packetsQueue.add(timedPacket);
     }
 
@@ -42,7 +42,7 @@ public abstract class AbstractPacketProcessor implements Event {
         TimedPacket timedPacket = this.packetsQueue.poll();
         if (timedPacket != null) {
             if (!this.packetsQueue.isEmpty()) {
-                AbstractSimulator.putEvent(this, processingTime(timedPacket.packet));
+                Simulator.putEvent(this, processingTime(timedPacket.packet));
             }
             this.sendPacketToNextProcess(timedPacket.packet);
         }

@@ -11,7 +11,7 @@ import main.java.data.ethereum.EthereumBlock;
 import main.java.message.Packet;
 import main.java.message.VoteMessage;
 import main.java.node.nodes.Node;
-import main.java.simulator.AbstractSimulator;
+import main.java.simulator.Simulator;
 
 import java.util.*;
 
@@ -131,7 +131,7 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
     private void updateFinalizedBlocks(B newlyFinalizedBlock) {
         if (!indirectlyFinalizedBlocks.contains(newlyFinalizedBlock)) {
             indirectlyFinalizedBlocks.add(newlyFinalizedBlock);
-            Main.timeToFinalize.add((double) (AbstractSimulator.getCurrentTime() - newlyFinalizedBlock.getCreationTime()));
+            Main.timeToFinalize.add((double) (Simulator.getCurrentTime() - newlyFinalizedBlock.getCreationTime()));
         }
 
         Set<B> ancestors = new HashSet<>();
@@ -156,7 +156,7 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
             indirectlyFinalizedBlocks.addAll(ancestors);
 
             for (B block:ancestors) {
-                Main.timeToFinalize.add((double) (AbstractSimulator.getCurrentTime() - block.getCreationTime()));
+                Main.timeToFinalize.add((double) (Simulator.getCurrentTime() - block.getCreationTime()));
                 if (block instanceof BlockWithTx) {
                     finalizedTxs.addAll(((BlockWithTx<T>) block).getTxs());
                 }

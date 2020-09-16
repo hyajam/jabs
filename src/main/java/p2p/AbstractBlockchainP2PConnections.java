@@ -6,7 +6,7 @@ import main.java.node.nodes.Node;
 import java.util.ArrayList;
 import java.util.List;
 
-import static main.java.random.RandomSampling.sampleFromList;
+import static main.java.random.Random.sampleFromList;
 
 public abstract class AbstractBlockchainP2PConnections extends AbstractP2PConnections {
     protected final int numOutboundConnections;

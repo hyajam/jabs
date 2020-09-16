@@ -1,8 +1,8 @@
 package main.java.event;
 
-import main.java.Main;
-import main.java.simulator.AbstractSimulator;
-import org.apache.commons.math3.distribution.ExponentialDistribution;
+import main.java.simulator.Simulator;
+
+import static main.java.random.Random.sampleExponentialDistribution;
 
 public abstract class AbstractGeneratorProcess implements Event {
     private final long averageTimeBetweenGenerations;
@@ -22,18 +22,17 @@ public abstract class AbstractGeneratorProcess implements Event {
         if (this.remainingNumberOfTxs > 0) {
             this.remainingNumberOfTxs--;
             this.generate();
-            AbstractSimulator.putEvent(this, this.timeToNextGeneration());
+            Simulator.putEvent(this, this.timeToNextGeneration());
         } else if (this.remainingNumberOfTxs == 0) {
             this.generate();
         } else {
             this.generate();
-            AbstractSimulator.putEvent(this, this.timeToNextGeneration());
+            Simulator.putEvent(this, this.timeToNextGeneration());
         }
     }
 
     protected long timeToNextGeneration() {
-        ExponentialDistribution expDist = new ExponentialDistribution(Main.random, averageTimeBetweenGenerations);
-        return (long) expDist.sample();
+        return sampleExponentialDistribution(averageTimeBetweenGenerations);
     }
 
     protected abstract void generate();

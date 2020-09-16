@@ -1,6 +1,5 @@
 package main.java.event;
 
-import main.java.Main;
 import main.java.network.Network;
 
 public class RandomNodeTxGeneratorProcess extends AbstractTxGeneratorProcess {
@@ -14,7 +13,6 @@ public class RandomNodeTxGeneratorProcess extends AbstractTxGeneratorProcess {
 
     @Override
     public void generate() {
-        this.node = Network.getAllNodes().get(Main.random.nextInt(Network.getAllNodes().size()));
-        this.node.generateNewTransaction();
+        Network.sampleNode().generateNewTransaction();
     }
 }
