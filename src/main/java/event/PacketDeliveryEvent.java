@@ -2,10 +2,10 @@ package main.java.event;
 
 import main.java.message.Packet;
 
-public class MessageDeliveryEvent implements Event {
+public class PacketDeliveryEvent implements Event {
     public final Packet packet;
 
-    public MessageDeliveryEvent(Packet packet) {
+    public PacketDeliveryEvent(Packet packet) {
         this.packet = packet;
     }
 

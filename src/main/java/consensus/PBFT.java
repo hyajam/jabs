@@ -17,7 +17,7 @@ import java.util.HashSet;
 // another good source: http://ug93tad.github.io/pbft/
 
 public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchainConsensus<B, T>
-        implements VotingBasedConsensus<B, T> {
+        implements VotingBasedConsensus<B, T>, DeterministicFinalityConsensus<B, T> {
     private final int numAllParticipants;
     private final HashMap<B, HashMap<Node, Vote>> prepareVotes = new HashMap<>();
     private final HashMap<B, HashMap<Node, Vote>> commitVotes = new HashMap<>();
@@ -29,6 +29,26 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
 
     private PBFTMode pbftMode = PBFTMode.NORMAL_MODE;
     private PBFTPhase pbftPhase = PBFTPhase.PRE_PREPARING;
+
+    @Override
+    public boolean isBlockFinalized(B block) {
+        return false;
+    }
+
+    @Override
+    public boolean isTxFinalized(T tx) {
+        return false;
+    }
+
+    @Override
+    public int getNumOfFinalizedBlocks() {
+        return 0;
+    }
+
+    @Override
+    public int getNumOfFinalizedTxs() {
+        return 0;
+    }
 
     public enum PBFTMode {
         NORMAL_MODE,

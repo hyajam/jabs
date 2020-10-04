@@ -21,14 +21,14 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
     protected final long hashPower;
     static final long MAXIMUM_BLOCK_GAS = 12500000;
 
-    public EthereumMinerNode(int nodeID, int region, long hashPower) {
-        super(nodeID, region);
+    public EthereumMinerNode(int nodeID, long downloadBandwidth, long uploadBandwidth, long hashPower) {
+        super(nodeID, downloadBandwidth, uploadBandwidth);
         this.hashPower = hashPower;
     }
 
-    public EthereumMinerNode(int nodeID, int region, long hashPower,
+    public EthereumMinerNode(int nodeID, long downloadBandwidth, long uploadBandwidth, long hashPower,
                              AbstractBlockchainConsensus<EthereumBlock, EthereumTx> consensusAlgorithm) {
-        super(nodeID, region, consensusAlgorithm);
+        super(nodeID, downloadBandwidth, uploadBandwidth, consensusAlgorithm);
         this.hashPower = hashPower;
     }
 

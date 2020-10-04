@@ -1,5 +1,6 @@
 package main.java.node;
 
+import main.java.network.Network;
 import main.java.node.nodes.bitcoin.BitcoinNode;
 import main.java.node.nodes.ethereum.*;
 import main.java.node.nodes.pbft.PBFTNode;
@@ -33,8 +34,9 @@ public final class NodeFactory {
         return new EthereumDAGsperMiner(nodeID, sampleMinerRegionBitcoin(), sampleHashPowerEthereum(), checkpointSpace, numOfStakeholders);
     }
 
-    public static BitcoinNode createNewBitcoinNode(int nodeID) {
-        return new BitcoinNode(nodeID, sampleRegionBitcoin());
+    public static BitcoinNode createNewBitcoinNode(Network network, int nodeID) {
+        int region = sampleRegionBitcoin();
+        return new BitcoinNode(network, nodeID, network.sampleDownloadBandwidth(region), network.sampleUploadBandwidth(region));
     }
 
     public static PBFTNode createNewPBFTNode(int nodeID, int numAllParticipants) {

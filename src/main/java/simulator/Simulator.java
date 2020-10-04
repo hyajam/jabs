@@ -1,6 +1,7 @@
 package main.java.simulator;
 
 import main.java.event.Event;
+import main.java.network.Network;
 
 import java.util.PriorityQueue;
 
@@ -54,6 +55,10 @@ public class Simulator {
     }
 
     public static long getCurrentTime(){ return currentTime; }
+
+    public static void reset() {
+        eventQueue.clear();
+    }
 }
 
 

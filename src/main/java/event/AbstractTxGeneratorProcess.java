@@ -5,8 +5,8 @@ import main.java.node.nodes.Node;
 public abstract class AbstractTxGeneratorProcess extends AbstractGeneratorProcess {
     protected Node node;
 
-    public AbstractTxGeneratorProcess(long averageTimeBetweenTxs, int maxNumOfTxs) {
-        super(averageTimeBetweenTxs, maxNumOfTxs);
+    public AbstractTxGeneratorProcess(long averageTimeBetweenTxs) {
+        super(averageTimeBetweenTxs);
     }
 
     protected abstract void generate();

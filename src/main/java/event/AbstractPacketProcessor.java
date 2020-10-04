@@ -1,12 +1,14 @@
 package main.java.event;
 
 import main.java.message.Packet;
+import main.java.network.Network;
 import main.java.node.nodes.Node;
 import main.java.simulator.Simulator;
 
 import java.util.PriorityQueue;
 
 public abstract class AbstractPacketProcessor implements Event {
+    protected final Network network;
     protected final PriorityQueue<TimedPacket> packetsQueue = new PriorityQueue<>();
 
     private static class TimedPacket implements Comparable<TimedPacket> {
@@ -25,7 +27,8 @@ public abstract class AbstractPacketProcessor implements Event {
 
     public final Node node;
 
-    public AbstractPacketProcessor(Node node) {
+    public AbstractPacketProcessor(Network network, Node node) {
+        this.network = network;
         this.node = node;
     }
 

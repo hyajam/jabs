@@ -1,9 +1,9 @@
 package main.java.node.nodes;
 
-import main.java.data.*;
-import main.java.message.*;
 import main.java.blockchain.LocalBlockTree;
 import main.java.consensus.AbstractBlockchainConsensus;
+import main.java.data.*;
+import main.java.message.*;
 import main.java.p2p.AbstractP2PConnections;
 
 import java.util.HashMap;
@@ -18,9 +18,9 @@ public abstract class BlockchainNode<B extends Block<B>, T extends Tx<T>> extend
     protected final HashSet<Vote> alreadySeenVotes = new HashSet<>();
     protected final LocalBlockTree<B> localBlockTree;
 
-    public BlockchainNode(int nodeID, int region, AbstractP2PConnections routingTable,
+    public BlockchainNode(int nodeID, long downloadBandwidth, long uploadBandwidth, AbstractP2PConnections routingTable,
                           AbstractBlockchainConsensus<B, T> consensusAlgorithm) {
-        super(nodeID, region, routingTable);
+        super(nodeID, downloadBandwidth, uploadBandwidth, routingTable);
         this.consensusAlgorithm = consensusAlgorithm;
         this.localBlockTree = consensusAlgorithm.getLocalBlockTree();
         this.consensusAlgorithm.setNode(this);

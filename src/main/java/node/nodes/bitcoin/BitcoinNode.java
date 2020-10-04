@@ -6,6 +6,7 @@ import main.java.message.InvMessage;
 import main.java.blockchain.LocalBlockTree;
 import main.java.consensus.NakamotoConsensus;
 import main.java.message.Packet;
+import main.java.network.Network;
 import main.java.node.nodes.BlockchainNode;
 import main.java.node.nodes.Node;
 import main.java.p2p.BitcoinCoreP2P;
@@ -16,8 +17,8 @@ public class BitcoinNode extends BlockchainNode<BitcoinBlock, BitcoinTx> {
     public static final BitcoinBlock BITCOIN_GENESIS_BLOCK =
             new BitcoinBlock(0, 0, 0, null, null);
 
-    public BitcoinNode(int nodeID, int region) {
-        super(nodeID, region,
+    public BitcoinNode(Network network, int nodeID, long downloadBandwidth, long uploadBandwidth) {
+        super(network, nodeID, downloadBandwidth, uploadBandwidth,
                 new BitcoinCoreP2P(),
                 new NakamotoConsensus<>(new LocalBlockTree<>(BITCOIN_GENESIS_BLOCK)));
     }

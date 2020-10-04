@@ -15,15 +15,18 @@ public abstract class AbstractBlockchainP2PConnections extends AbstractP2PConnec
     private final List<Node> outbound = new ArrayList<>();
     private final List<Node> inbound = new ArrayList<>();
 
+    protected final Network network;
 
-    public AbstractBlockchainP2PConnections(int numOutboundConnections, int maxConnections) {
+
+    public AbstractBlockchainP2PConnections(Network network, int numOutboundConnections, int maxConnections) {
+        this.network = network;
         this.numOutboundConnections = numOutboundConnections;
         this.maxConnections = maxConnections;
     }
 
     public void connectToNetwork(){
         while (this.outbound.size() < this.numOutboundConnections) {
-            Node remoteNode = sampleFromList(Network.getAllNodes());
+            Node remoteNode = sampleFromList(network.getAllNodes());
             if (remoteNode != this.getNode() &&
                     !this.outbound.contains(remoteNode) &&
                     !this.inbound.contains(remoteNode)) {

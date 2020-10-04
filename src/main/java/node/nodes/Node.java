@@ -1,24 +1,20 @@
 package main.java.node.nodes;
 
+import main.java.message.Message;
 import main.java.message.Packet;
-import main.java.network.Network;
 import main.java.node.NodeNetworkInterface;
 import main.java.p2p.AbstractP2PConnections;
-import main.java.message.Message;
 
 public abstract class Node {
     public final int nodeID;
-    public final int region;
     protected final NodeNetworkInterface nodeNetworkInterface;
     protected final AbstractP2PConnections p2pConnections;
 
-    public Node(int nodeID, int region, AbstractP2PConnections p2pConnections) {
+    public Node(int nodeID, long downloadBandwidth, long uploadBandwidth, AbstractP2PConnections p2pConnections) {
         this.nodeID = nodeID;
-        this.region = region;
+        this.nodeNetworkInterface = new NodeNetworkInterface(this, downloadBandwidth, uploadBandwidth);
         this.p2pConnections = p2pConnections;
         this.p2pConnections.setNode(this);
-        this.nodeNetworkInterface = new NodeNetworkInterface(this,
-                Network.sampleDownloadBandwidth(region), Network.sampleUploadBandwidth(region));
     }
 
     public abstract void processIncomingPacket(Packet packet);

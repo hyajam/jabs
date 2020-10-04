@@ -6,11 +6,9 @@ import static main.java.random.Random.sampleExponentialDistribution;
 
 public abstract class AbstractGeneratorProcess implements Event {
     private final long averageTimeBetweenGenerations;
-    private int remainingNumberOfTxs;
 
-    public AbstractGeneratorProcess(long averageTimeBetweenGenerations, int maxNumOfGeneration) {
+    public AbstractGeneratorProcess(long averageTimeBetweenGenerations) {
         this.averageTimeBetweenGenerations = averageTimeBetweenGenerations;
-        this.remainingNumberOfTxs = maxNumOfGeneration-1;
     }
 
     @Override
@@ -19,16 +17,8 @@ public abstract class AbstractGeneratorProcess implements Event {
     }
 
     protected void generateAndSetNextEvent() {
-        if (this.remainingNumberOfTxs > 0) {
-            this.remainingNumberOfTxs--;
-            this.generate();
-            Simulator.putEvent(this, this.timeToNextGeneration());
-        } else if (this.remainingNumberOfTxs == 0) {
-            this.generate();
-        } else {
-            this.generate();
-            Simulator.putEvent(this, this.timeToNextGeneration());
-        }
+        this.generate();
+        Simulator.putEvent(this, this.timeToNextGeneration());
     }
 
     protected long timeToNextGeneration() {

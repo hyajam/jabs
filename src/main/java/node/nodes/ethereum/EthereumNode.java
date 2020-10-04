@@ -1,12 +1,14 @@
 package main.java.node.nodes.ethereum;
 
-import main.java.consensus.*;
+import main.java.blockchain.LocalBlockTree;
+import main.java.consensus.AbstractBlockchainConsensus;
+import main.java.consensus.GhostProtocol;
+import main.java.consensus.VotingBasedConsensus;
 import main.java.data.Vote;
 import main.java.data.ethereum.EthereumBlock;
 import main.java.data.ethereum.EthereumTx;
-import main.java.message.InvMessage;
 import main.java.message.DataMessage;
-import main.java.blockchain.LocalBlockTree;
+import main.java.message.InvMessage;
 import main.java.message.Packet;
 import main.java.message.VoteMessage;
 import main.java.node.nodes.BlockchainNode;
@@ -24,15 +26,15 @@ public class EthereumNode extends BlockchainNode<EthereumBlock, EthereumTx> {
             new EthereumBlock(0, 0, 0, null, null, Collections.emptySet(),
                     ETHEREUM_MIN_DIFFICULTY);
 
-    public EthereumNode(int nodeID, int region) {
-        super(nodeID, region,
+    public EthereumNode(int nodeID, long downloadBandwidth, long uploadBandwidth) {
+        super(nodeID, downloadBandwidth, uploadBandwidth,
                 new EthereumGethP2P(),
                 new GhostProtocol<>(new LocalBlockTree<>(ETHEREUM_GENESIS_BLOCK)));
     }
 
-    public EthereumNode(int nodeID, int region,
+    public EthereumNode(int nodeID, long downloadBandwidth, long uploadBandwidth,
                         AbstractBlockchainConsensus<EthereumBlock, EthereumTx> consensusAlgorithm) {
-        super(nodeID, region,
+        super(nodeID, downloadBandwidth, uploadBandwidth,
                 new EthereumGethP2P(),
                 consensusAlgorithm);
     }

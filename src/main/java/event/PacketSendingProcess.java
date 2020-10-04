@@ -8,13 +8,13 @@ import main.java.simulator.Simulator;
 import static main.java.config.SimulationConfig.PACKET_PROCESSING_TIME;
 
 public class PacketSendingProcess extends AbstractPacketProcessor {
-    public PacketSendingProcess(Node node) {
-        super(node);
+    public PacketSendingProcess(Network network, Node node) {
+        super(network, node);
     }
 
     protected void sendPacketToNextProcess(Packet packet) {
-        MessageDeliveryEvent transfer = new MessageDeliveryEvent(packet);
-        long latency = Network.getLatency(packet.getFrom().region, packet.getTo().region);
+        PacketDeliveryEvent transfer = new PacketDeliveryEvent(packet);
+        long latency = network.getLatency(packet.getFrom(), packet.getTo());
         Simulator.putEvent(transfer, latency);
     }
 

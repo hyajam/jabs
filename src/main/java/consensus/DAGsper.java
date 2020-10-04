@@ -1,6 +1,5 @@
 package main.java.consensus;
 
-import main.java.Main;
 import main.java.blockchain.LocalBlockTree;
 import main.java.data.Block;
 import main.java.data.BlockWithTx;
@@ -12,6 +11,7 @@ import main.java.message.Packet;
 import main.java.message.VoteMessage;
 import main.java.node.nodes.Node;
 import main.java.simulator.Simulator;
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 import java.util.*;
 
@@ -36,6 +36,8 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
     private final HashMap<Integer, B> previousFVotes = new HashMap<>();
     private final HashMap<Integer, B> previousJVotes = new HashMap<>();
 
+    private DescriptiveStatistics blockFinalizationTimes = null;
+
     public DAGsper(LocalBlockTree<B> localBlockTree, int checkpointSpace, int numOfStakeholders) {
         super(localBlockTree);
         this.checkpointSpace = checkpointSpace;
@@ -43,6 +45,10 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
         finalizedBlocks.add(localBlockTree.getGenesisBlock());
         justifiedBlocks.add(localBlockTree.getGenesisBlock());
         indirectlyFinalizedBlocks.add(localBlockTree.getGenesisBlock());
+    }
+
+    public void enableFinalizationTimeRecords(DescriptiveStatistics blockFinalizationTimes) {
+        this.blockFinalizationTimes = blockFinalizationTimes;
     }
 
     @Override
@@ -131,7 +137,9 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
     private void updateFinalizedBlocks(B newlyFinalizedBlock) {
         if (!indirectlyFinalizedBlocks.contains(newlyFinalizedBlock)) {
             indirectlyFinalizedBlocks.add(newlyFinalizedBlock);
-            Main.timeToFinalize.add((double) (Simulator.getCurrentTime() - newlyFinalizedBlock.getCreationTime()));
+            if (blockFinalizationTimes != null) {
+                blockFinalizationTimes.addValue(Simulator.getCurrentTime() - newlyFinalizedBlock.getCreationTime());
+            }
         }
 
         Set<B> ancestors = new HashSet<>();
@@ -156,7 +164,9 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
             indirectlyFinalizedBlocks.addAll(ancestors);
 
             for (B block:ancestors) {
-                Main.timeToFinalize.add((double) (Simulator.getCurrentTime() - block.getCreationTime()));
+                if (blockFinalizationTimes != null) {
+                    blockFinalizationTimes.addValue(Simulator.getCurrentTime() - block.getCreationTime());
+                }
                 if (block instanceof BlockWithTx) {
                     finalizedTxs.addAll(((BlockWithTx<T>) block).getTxs());
                 }

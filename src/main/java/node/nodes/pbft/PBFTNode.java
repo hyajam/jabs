@@ -13,8 +13,8 @@ public class PBFTNode extends BlockchainNode<PBFTBlock, PBFTTx> {
                         public static final PBFTBlock PBFT_GENESIS_BLOCK =
             new PBFTBlock(0, 0, 0, null, null);
 
-    public PBFTNode(int nodeID, int region, int numAllParticipants) {
-        super(nodeID, region,
+    public PBFTNode(int nodeID, long downloadBandwidth, long uploadBandwidth, int numAllParticipants) {
+        super(nodeID, downloadBandwidth, uploadBandwidth,
                 new PBFTP2P(),
                 new PBFT<>(numAllParticipants, new LocalBlockTree<>(PBFT_GENESIS_BLOCK)));
     }
