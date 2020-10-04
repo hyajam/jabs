@@ -1,11 +1,13 @@
 package main.java.simulator;
 
 import main.java.event.Event;
+import main.java.network.Network;
 
 import java.util.PriorityQueue;
 
 public class Simulator {
     private static final PriorityQueue<ScheduledEvent> eventQueue = new PriorityQueue<>();
+    private static long currentTime = 0L;
 
     private static class ScheduledEvent implements Comparable<ScheduledEvent> {
         private final Event event;
@@ -23,8 +25,6 @@ public class Simulator {
             return Long.compare(this.scheduledTime, o.scheduledTime);
         }
     }
-
-    private static long currentTime = 0L;
 
     public static void executeNextEvent(){
         if (!eventQueue.isEmpty()) {
@@ -53,7 +53,13 @@ public class Simulator {
         eventQueue.add(sEvent);
     }
 
-    public static long getCurrentTime(){ return currentTime; }
+    public static long getCurrentTime() { return currentTime; }
+
+    public static void reset() {
+        Network.clear();
+        eventQueue.clear();
+        currentTime = 0;
+    }
 }
 
 

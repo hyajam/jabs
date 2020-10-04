@@ -78,5 +78,12 @@ public abstract class Network {
     public static long sampleUploadBandwidth(int region) {
         return sampleBandwidthByRegion(region, UPLOAD_BANDWIDTH_DISTRIBUTION, UPLOAD_BANDWIDTH_BIN);
     }
+
+    public static void clear() {
+        nodes.clear();
+        miners.clear();
+        totalHashPower = 0;
+        minersHashPower.clear();
+    }
 }
 
