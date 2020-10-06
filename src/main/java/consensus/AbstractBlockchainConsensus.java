@@ -1,8 +1,8 @@
 package main.java.consensus;
 
+import main.java.blockchain.LocalBlockTree;
 import main.java.data.Block;
 import main.java.data.Tx;
-import main.java.blockchain.LocalBlockTree;
 import main.java.node.nodes.BlockchainNode;
 
 public abstract class AbstractBlockchainConsensus<B extends Block<B>, T extends Tx<T>> extends AbstractConsensusAlgorithm<B, T> {

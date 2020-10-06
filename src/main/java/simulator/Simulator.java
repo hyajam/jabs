@@ -1,42 +1,42 @@
 package main.java.simulator;
 
 import main.java.event.Event;
-import main.java.network.Network;
-
 import java.util.PriorityQueue;
 
 public class Simulator {
-    private static final PriorityQueue<ScheduledEvent> eventQueue = new PriorityQueue<>();
+    private final PriorityQueue<ScheduledEvent> eventQueue = new PriorityQueue<>();
+    private long currentTime = 0L;
+    private long insertedEvents = 0;
 
     private static class ScheduledEvent implements Comparable<ScheduledEvent> {
         private final Event event;
-        private final long scheduledTime;
+        private final long time;
+        private final long number;
 
-        private ScheduledEvent(Event event, long scheduledTime){
+        private ScheduledEvent(Event event, long time, long number){
             this.event = event;
-            this.scheduledTime = scheduledTime;
+            this.time = time;
+            this.number = number;
         }
 
         private Event getEvent(){ return this.event; }
-        private long getScheduledTime(){ return this.scheduledTime; }
+        private long getTime(){ return this.time; }
 
         public int compareTo(ScheduledEvent o) {
-            return Long.compare(this.scheduledTime, o.scheduledTime);
+            return (this.time < o.time) ? -1 : ((this.time > o.time) ? 1 : (Long.compare(this.number, o.number)));
         }
     }
 
-    private static long currentTime = 0L;
-
-    public static void executeNextEvent(){
+    public void executeNextEvent(){
         if (!eventQueue.isEmpty()) {
             ScheduledEvent currentScheduledEvent = eventQueue.poll();
             Event currentEvent = currentScheduledEvent.getEvent();
-            currentTime = currentScheduledEvent.getScheduledTime();
+            currentTime = currentScheduledEvent.getTime();
             currentEvent.execute();
         }
     }
 
-    public static Event peekEvent(){
+    public Event peekEvent(){
         if (!eventQueue.isEmpty()) {
             ScheduledEvent currentEvent = eventQueue.peek();
             return currentEvent.getEvent();
@@ -45,19 +45,21 @@ public class Simulator {
         }
     }
 
-    public static boolean thereIsMoreEvents() {
+    public boolean thereIsMoreEvents() {
         return !eventQueue.isEmpty();
     }
 
-    public static void putEvent(Event event, long remainingTimeToExecution){
-        ScheduledEvent sEvent = new ScheduledEvent(event, currentTime + remainingTimeToExecution);
+    public void putEvent(Event event, long remainingTimeToExecution){
+        ScheduledEvent sEvent = new ScheduledEvent(event, currentTime + remainingTimeToExecution, insertedEvents);
         eventQueue.add(sEvent);
+        insertedEvents++;
     }
 
-    public static long getCurrentTime(){ return currentTime; }
+    public long getCurrentTime() { return currentTime; }
 
-    public static void reset() {
+    public void reset() {
         eventQueue.clear();
+        currentTime = 0;
     }
 }
 

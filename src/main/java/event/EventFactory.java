@@ -6,19 +6,19 @@ import main.java.simulator.Simulator;
 import main.java.network.Network;
 
 public class EventFactory {
-    public static void createBlockGenerationEvents(Network network, int num, long timeBetweenGenerations) {
+    public static void createBlockGenerationEvents(Simulator simulator, Network network, int num, long timeBetweenGenerations) {
         long time = 0;
         for (int i = 0; i < num; i++) {
             time += Random.sampleExponentialDistribution(timeBetweenGenerations);
-            Simulator.putEvent(new BlockGenerationEvent(network.getRandomMinerByHashPower()), time);
+            simulator.putEvent(new BlockGenerationEvent(network.getRandomMinerByHashPower(), simulator), time);
         }
     }
 
-    public static void createTxGenerationEvents(Network network, int num, long timeBetweenGenerations) {
+    public static void createTxGenerationEvents(Simulator simulator, Network network, int num, long timeBetweenGenerations) {
         long time = 0;
         for (int i = 0; i < num; i++) {
             time += Random.sampleExponentialDistribution(timeBetweenGenerations);
-            Simulator.putEvent(new TxGenerationEvent(network.getRandomNode()), time);
+            simulator.putEvent(new TxGenerationEvent(network.getRandomNode()), time);
         }
     }
 }

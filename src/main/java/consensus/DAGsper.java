@@ -10,7 +10,6 @@ import main.java.data.ethereum.EthereumBlock;
 import main.java.message.Packet;
 import main.java.message.VoteMessage;
 import main.java.node.nodes.Node;
-import main.java.simulator.Simulator;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 import java.util.*;
@@ -138,7 +137,7 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
         if (!indirectlyFinalizedBlocks.contains(newlyFinalizedBlock)) {
             indirectlyFinalizedBlocks.add(newlyFinalizedBlock);
             if (blockFinalizationTimes != null) {
-                blockFinalizationTimes.addValue(Simulator.getCurrentTime() - newlyFinalizedBlock.getCreationTime());
+                blockFinalizationTimes.addValue(blockchainNode.getSimulator().getCurrentTime() - newlyFinalizedBlock.getCreationTime());
             }
         }
 
@@ -165,7 +164,7 @@ public class DAGsper<B extends Block<B>, T extends Tx<T>> extends GhostProtocol<
 
             for (B block:ancestors) {
                 if (blockFinalizationTimes != null) {
-                    blockFinalizationTimes.addValue(Simulator.getCurrentTime() - block.getCreationTime());
+                    blockFinalizationTimes.addValue(blockchainNode.getSimulator().getCurrentTime() - block.getCreationTime());
                 }
                 if (block instanceof BlockWithTx) {
                     finalizedTxs.addAll(((BlockWithTx<T>) block).getTxs());

@@ -1,13 +1,14 @@
 package main.java.event;
 
+import main.java.random.Random;
 import main.java.simulator.Simulator;
-
-import static main.java.random.Random.sampleExponentialDistribution;
 
 public abstract class AbstractGeneratorProcess implements Event {
     private final long averageTimeBetweenGenerations;
+    protected final Simulator simulator;
 
-    public AbstractGeneratorProcess(long averageTimeBetweenGenerations) {
+    public AbstractGeneratorProcess(Simulator simulator, long averageTimeBetweenGenerations) {
+        this.simulator = simulator;
         this.averageTimeBetweenGenerations = averageTimeBetweenGenerations;
     }
 
@@ -18,11 +19,11 @@ public abstract class AbstractGeneratorProcess implements Event {
 
     protected void generateAndSetNextEvent() {
         this.generate();
-        Simulator.putEvent(this, this.timeToNextGeneration());
+        simulator.putEvent(this, this.timeToNextGeneration());
     }
 
-    protected long timeToNextGeneration() {
-        return sampleExponentialDistribution(averageTimeBetweenGenerations);
+    protected long timeToNextGeneration(Random random) {
+        return random.sampleExponentialDistribution(averageTimeBetweenGenerations);
     }
 
     protected abstract void generate();

@@ -9,6 +9,7 @@ import main.java.message.VoteMessage;
 import main.java.network.BlockFactory;
 import main.java.node.nodes.Node;
 import main.java.node.nodes.pbft.PBFTNode;
+import main.java.simulator.Simulator;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -61,7 +62,7 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
         COMMITTING
     }
 
-    public PBFT(int numAllParticipants, LocalBlockTree<B> localBlockTree) {
+    public PBFT(Simulator simulator, int numAllParticipants, LocalBlockTree<B> localBlockTree) {
         super(localBlockTree);
         this.numAllParticipants = numAllParticipants;
         this.currentMainChainHead = localBlockTree.getGenesisBlock();
@@ -109,7 +110,7 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
                             this.blockchainNode.broadcastMessage(
                                     new VoteMessage(
                                             new PBFTPrePrepareVote<>(this.blockchainNode,
-                                                    BlockFactory.samplePBFTBlock(
+                                                    BlockFactory.samplePBFTBlock(blockchainNode.getSimulator(),
                                                             (PBFTNode) this.blockchainNode, (PBFTBlock) block)
                                             )
                                     )

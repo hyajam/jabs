@@ -11,14 +11,16 @@ import main.java.message.DataMessage;
 import main.java.message.InvMessage;
 import main.java.message.Packet;
 import main.java.message.VoteMessage;
+import main.java.network.Network;
 import main.java.node.nodes.BlockchainNode;
 import main.java.node.nodes.Node;
 import main.java.p2p.EthereumGethP2P;
+import main.java.random.Random;
+import main.java.simulator.Simulator;
 
 import java.util.Collections;
 
 import static main.java.network.BlockFactory.ETHEREUM_MIN_DIFFICULTY;
-import static main.java.network.TransactionFactory.sampleEthereumTransaction;
 import static org.apache.commons.math3.util.FastMath.sqrt;
 
 public class EthereumNode extends BlockchainNode<EthereumBlock, EthereumTx> {
@@ -26,15 +28,15 @@ public class EthereumNode extends BlockchainNode<EthereumBlock, EthereumTx> {
             new EthereumBlock(0, 0, 0, null, null, Collections.emptySet(),
                     ETHEREUM_MIN_DIFFICULTY);
 
-    public EthereumNode(int nodeID, long downloadBandwidth, long uploadBandwidth) {
-        super(nodeID, downloadBandwidth, uploadBandwidth,
+    public EthereumNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth) {
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new EthereumGethP2P(),
                 new GhostProtocol<>(new LocalBlockTree<>(ETHEREUM_GENESIS_BLOCK)));
     }
 
-    public EthereumNode(int nodeID, long downloadBandwidth, long uploadBandwidth,
+    public EthereumNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
                         AbstractBlockchainConsensus<EthereumBlock, EthereumTx> consensusAlgorithm) {
-        super(nodeID, downloadBandwidth, uploadBandwidth,
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new EthereumGethP2P(),
                 consensusAlgorithm);
     }
@@ -66,7 +68,7 @@ public class EthereumNode extends BlockchainNode<EthereumBlock, EthereumTx> {
 
     @Override
     public void generateNewTransaction() {
-        broadcastTransaction(sampleEthereumTransaction());
+        broadcastTransaction(network.sampleEthereumTransaction());
     }
 
     protected void broadcastNewBlockAndBlockHashes(EthereumBlock ethereumBlock){

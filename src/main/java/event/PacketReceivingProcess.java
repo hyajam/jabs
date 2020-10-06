@@ -3,12 +3,14 @@ package main.java.event;
 import main.java.message.Packet;
 import main.java.network.Network;
 import main.java.node.nodes.Node;
+import main.java.random.Random;
+import main.java.simulator.Simulator;
 
 import static main.java.config.SimulationConfig.PACKET_PROCESSING_TIME;
 
 public class PacketReceivingProcess extends AbstractPacketProcessor {
-    public PacketReceivingProcess(Network network, Node node) {
-        super(network, node);
+    public PacketReceivingProcess(Simulator simulator, Network network, Random random, Node node) {
+        super(simulator, network, random, node);
     }
 
     protected void sendPacketToNextProcess(Packet packet) {

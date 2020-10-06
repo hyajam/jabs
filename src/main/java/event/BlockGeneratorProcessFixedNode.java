@@ -4,12 +4,12 @@ import main.java.node.nodes.MinerNode;
 import main.java.simulator.Simulator;
 
 public class BlockGeneratorProcessFixedNode extends AbstractBlockGeneratorProcess {
-    public BlockGeneratorProcessFixedNode(MinerNode miner, long averageTimeBetweenBlocks) {
-        super(averageTimeBetweenBlocks);
+    public BlockGeneratorProcessFixedNode(Simulator simulator,MinerNode miner, long averageTimeBetweenBlocks) {
+        super(simulator, averageTimeBetweenBlocks);
     }
 
     @Override
     public void generate() {
-        Simulator.putEvent(new BlockGenerationEvent(miner), 0);
+        simulator.putEvent(new BlockGenerationEvent(miner, simulator), 0);
     }
 }

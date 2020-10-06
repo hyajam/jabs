@@ -6,8 +6,13 @@ import main.java.scenario.EthereumCasperNetworkScenario;
 
 public class Main {
     public static void main(String[] args) {
-        Random.setSeed(125);
-        AbstractScenario scenario = new EthereumCasperNetworkScenario(40, 100, 10, 100, 1, 2);
+        AbstractScenario scenario;
+        Random.setSeed(100);
+        scenario = new EthereumCasperNetworkScenario(40, 100, 10, 100, 1, 2);
+        scenario.run();
+
+        Random.setSeed(100);
+        scenario = new EthereumCasperNetworkScenario(40, 100, 10, 100, 1, 2);
         scenario.run();
     }
 }

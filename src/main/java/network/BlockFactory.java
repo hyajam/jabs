@@ -6,11 +6,10 @@ import main.java.data.pbft.PBFTBlock;
 import main.java.node.nodes.bitcoin.BitcoinMinerNode;
 import main.java.node.nodes.ethereum.EthereumMinerNode;
 import main.java.node.nodes.pbft.PBFTNode;
+import main.java.random.Random;
 import main.java.simulator.Simulator;
 
 import java.util.Set;
-
-import static main.java.random.Random.sampleDistributionWithBins;
 
 public final class BlockFactory {
     public static final int ETHEREUM_BLOCK_HEADER_SIZE = 543; // A header could have variable size but mostly its really close this value
@@ -33,23 +32,23 @@ public final class BlockFactory {
             0.0481, 0.0477, 0.0479, 0.0484, 0.0482, 0.0475, 0.0464, 0.0454, 0.0434, 0.0420
     };
 
-    public static int sampleBitcoinBlockSize() {
-        return (int) sampleDistributionWithBins(BITCOIN_BLOCK_SIZE_2020, BITCOIN_BLOCK_SIZE_2020_BINS);
+    public static int sampleBitcoinBlockSize(Random random) {
+        return (int) random.sampleDistributionWithBins(BITCOIN_BLOCK_SIZE_2020, BITCOIN_BLOCK_SIZE_2020_BINS);
     }
 
-    public static BitcoinBlock sampleBitcoinBlock(BitcoinMinerNode creator, BitcoinBlock parent) {
-        return new BitcoinBlock(sampleBitcoinBlockSize(), parent.getHeight() + 1,
-                Simulator.getCurrentTime(), creator, parent);
+    public static BitcoinBlock sampleBitcoinBlock(Simulator simulator, Random random, BitcoinMinerNode creator, BitcoinBlock parent) {
+        return new BitcoinBlock(sampleBitcoinBlockSize(random), parent.getHeight() + 1,
+                simulator.getCurrentTime(), creator, parent);
     }
 
-    public static PBFTBlock samplePBFTBlock(PBFTNode creator, PBFTBlock parent) {
-        return new PBFTBlock(sampleBitcoinBlockSize(), parent.getHeight() + 1,
-                Simulator.getCurrentTime(), creator, parent); // TODO: Size of PBFT Blocks
+    public static PBFTBlock samplePBFTBlock(Simulator simulator, Random random, PBFTNode creator, PBFTBlock parent) {
+        return new PBFTBlock(sampleBitcoinBlockSize(random), parent.getHeight() + 1,
+                simulator.getCurrentTime(), creator, parent); // TODO: Size of PBFT Blocks
     }
 
-    public static EthereumBlock sampleEthereumBlock(EthereumMinerNode creator, EthereumBlock parent,
+    public static EthereumBlock sampleEthereumBlock(Simulator simulator, Random random, EthereumMinerNode creator, EthereumBlock parent,
                                                     Set<EthereumBlock> uncles) {
-        return new EthereumBlock(sampleBitcoinBlockSize(), parent.getHeight() + 1,
-                Simulator.getCurrentTime(), creator, parent, uncles, ETHEREUM_MIN_DIFFICULTY); // TODO: Block Size
+        return new EthereumBlock(sampleBitcoinBlockSize(random), parent.getHeight() + 1,
+                simulator.getCurrentTime(), creator, parent, uncles, ETHEREUM_MIN_DIFFICULTY); // TODO: Block Size
     }
 }

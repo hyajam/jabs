@@ -6,6 +6,7 @@ import main.java.data.ethereum.EthereumBlockWithTx;
 import main.java.data.ethereum.EthereumTx;
 import main.java.message.DataMessage;
 import main.java.message.Packet;
+import main.java.network.Network;
 import main.java.node.nodes.MinerNode;
 import main.java.node.nodes.Node;
 import main.java.simulator.Simulator;
@@ -21,14 +22,14 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
     protected final long hashPower;
     static final long MAXIMUM_BLOCK_GAS = 12500000;
 
-    public EthereumMinerNode(int nodeID, long downloadBandwidth, long uploadBandwidth, long hashPower) {
-        super(nodeID, downloadBandwidth, uploadBandwidth);
+    public EthereumMinerNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, long hashPower) {
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth);
         this.hashPower = hashPower;
     }
 
-    public EthereumMinerNode(int nodeID, long downloadBandwidth, long uploadBandwidth, long hashPower,
+    public EthereumMinerNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, long hashPower,
                              AbstractBlockchainConsensus<EthereumBlock, EthereumTx> consensusAlgorithm) {
-        super(nodeID, downloadBandwidth, uploadBandwidth, consensusAlgorithm);
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, consensusAlgorithm);
         this.hashPower = hashPower;
     }
 
@@ -50,7 +51,7 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
         }
 
         EthereumBlockWithTx ethereumBlockWithTx = new EthereumBlockWithTx(
-                canonicalChainHead.getHeight()+1, Simulator.getCurrentTime(), this,
+                canonicalChainHead.getHeight()+1, simulator.getCurrentTime(), this,
                 this.getConsensusAlgorithm().getCanonicalChainHead(), tipBlocks, blockTxs, ETHEREUM_MIN_DIFFICULTY); // TODO: Difficulty?
 
         this.processIncomingPacket(

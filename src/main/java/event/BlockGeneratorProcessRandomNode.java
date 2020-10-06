@@ -6,14 +6,14 @@ import main.java.simulator.Simulator;
 public class BlockGeneratorProcessRandomNode extends AbstractBlockGeneratorProcess {
     private final Network network;
 
-    public BlockGeneratorProcessRandomNode(Network network, long averageTimeBetweenBlocks) {
-        super(averageTimeBetweenBlocks);
+    public BlockGeneratorProcessRandomNode(Simulator simulator, Network network, long averageTimeBetweenBlocks) {
+        super(simulator, averageTimeBetweenBlocks);
         this.network = network;
     }
 
     @Override
     public void generate() {
-        this.miner = Network.getRandomMinerByHashPower();
-        Simulator.putEvent(new BlockGenerationEvent(miner), 0);
+        this.miner = network.getRandomMinerByHashPower();
+        simulator.putEvent(new BlockGenerationEvent(miner, simulator), 0);
     }
 }

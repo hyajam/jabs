@@ -1,10 +1,11 @@
 package main.java.node.nodes.bitcoin;
 
 import main.java.node.nodes.MinerNode;
+import main.java.simulator.Simulator;
 
 public class BitcoinMinerNode extends BitcoinNode implements MinerNode {
-    public BitcoinMinerNode(int nodeID, int region) {
-        super(nodeID, region);
+    public BitcoinMinerNode(Simulator simulator, int nodeID, long downloadBandwidth, long uploadBandwidth) {
+        super(simulator, nodeID, downloadBandwidth, uploadBandwidth);
     }
 
     @Override

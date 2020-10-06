@@ -4,10 +4,10 @@ import main.java.consensus.CasperFFG;
 import main.java.consensus.DeterministicFinalityConsensus;
 import main.java.event.PacketDeliveryEvent;
 import main.java.message.VoteMessage;
-import main.java.network.NetworkBuilder;
+import main.java.network.CasperFFGGlobalBlockchainNetwork;
+import main.java.network.GlobalBlockchainNetwork;
 import main.java.node.nodes.BlockchainNode;
 import main.java.node.nodes.Node;
-import main.java.simulator.Simulator;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 import static main.java.event.EventFactory.createBlockGenerationEvents;
@@ -27,6 +27,7 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
 
     public EthereumCasperNetworkScenario(int numOfMiners, int numOfNonMiners, int checkpointSpace,
                                           long simulationStopTime, double txGenerationRate, double blockGenerationRate) {
+        this.network = new CasperFFGGlobalBlockchainNetwork(checkpointSpace);
         this.numOfMiners = numOfMiners;
         this.numOfNonMiners = numOfNonMiners;
         this.checkpointSpace = checkpointSpace;
@@ -37,9 +38,9 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
 
     @Override
     public void setupSimulation() {
-        NetworkBuilder.buildSampleEthereumCasperNetwork(network, numOfNonMiners, numOfMiners, checkpointSpace);
-        createTxGenerationEvents(network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
-        createBlockGenerationEvents(network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
+        ((GlobalBlockchainNetwork) network).populateNetwork(simulator, numOfMiners, numOfNonMiners);
+        createTxGenerationEvents(simulator, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
+        createBlockGenerationEvents(simulator, network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
 
         for (Node node:network.getAllNodes()) {
             ((CasperFFG) ((BlockchainNode) node).getConsensusAlgorithm()).enableFinalizationTimeRecords(blockFinalizationTimes);
@@ -48,13 +49,13 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
 
     @Override
     public boolean simulationStopCondition() {
-        if (Simulator.peekEvent() instanceof PacketDeliveryEvent) {
-            if (((PacketDeliveryEvent) Simulator.peekEvent()).packet.getMessage() instanceof VoteMessage) {
-                totalVoteMassageTraffic += ((PacketDeliveryEvent) Simulator.peekEvent()).packet.getSize();
+        if (simulator.peekEvent() instanceof PacketDeliveryEvent) {
+            if (((PacketDeliveryEvent) simulator.peekEvent()).packet.getMessage() instanceof VoteMessage) {
+                totalVoteMassageTraffic += ((PacketDeliveryEvent) simulator.peekEvent()).packet.getSize();
             }
         }
-        if (Simulator.getCurrentTime() - 10000 >= simulationTime) {
-            simulationTime = Simulator.getCurrentTime();
+        if (simulator.getCurrentTime() - 10000 >= simulationTime) {
+            simulationTime = simulator.getCurrentTime();
             System.out.printf("\rsimulation time: %s, number of already seen blocks for miner 0: %s, number of finalized blocks: %s\n",
                     simulationTime,
                     ((BlockchainNode) network.getAllNodes().get(0)).numberOfAlreadySeenBlocks()
@@ -62,7 +63,7 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
                             ((BlockchainNode) network.getAllNodes().get(0)).getConsensusAlgorithm()
                     ).getNumOfFinalizedBlocks());
         }
-        return (Simulator.getCurrentTime() > simulationStopTime*1000);
+        return (simulator.getCurrentTime() > simulationStopTime*1000);
     }
 
     @Override

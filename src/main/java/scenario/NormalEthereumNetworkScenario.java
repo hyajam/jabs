@@ -1,9 +1,6 @@
 package main.java.scenario;
 
-import main.java.network.Network;
-import main.java.network.NetworkBuilder;
 import main.java.node.nodes.BlockchainNode;
-import main.java.simulator.Simulator;
 
 import static main.java.event.EventFactory.createBlockGenerationEvents;
 import static main.java.event.EventFactory.createTxGenerationEvents;
@@ -27,23 +24,19 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
 
     @Override
     public void setupSimulation() {
-        NetworkBuilder.buildSampleEthereumNetwork(numOfNonMiners,numOfMiners);
-        createTxGenerationEvents(((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
-        createBlockGenerationEvents(((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
-
-        createTxGenerationEvents(((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
-        createBlockGenerationEvents(((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
+        createTxGenerationEvents(simulator, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
+        createBlockGenerationEvents(simulator, network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
     }
 
     @Override
     public boolean simulationStopCondition() {
-        if (Simulator.getCurrentTime() - 10000 >= simulationTime) {
-            simulationTime = Simulator.getCurrentTime();
+        if (simulator.getCurrentTime() - 10000 >= simulationTime) {
+            simulationTime = simulator.getCurrentTime();
             System.out.printf("\rsimulation time: %s, number of already seen blocks for miner 0: %s\n",
                     simulationTime,
-                    ((BlockchainNode) Network.getAllNodes().get(0)).numberOfAlreadySeenBlocks());
+                    ((BlockchainNode) network.getAllNodes().get(0)).numberOfAlreadySeenBlocks());
         }
-        return (Simulator.getCurrentTime() > simulationStopTime*1000);
+        return (simulator.getCurrentTime() > simulationStopTime*1000);
     }
 
     @Override

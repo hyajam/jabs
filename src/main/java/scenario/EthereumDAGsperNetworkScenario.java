@@ -4,11 +4,10 @@ import main.java.consensus.DAGsper;
 import main.java.consensus.DeterministicFinalityConsensus;
 import main.java.event.PacketDeliveryEvent;
 import main.java.message.VoteMessage;
-import main.java.network.Network;
-import main.java.network.NetworkBuilder;
+import main.java.network.DAGsperGlobalBlockchainNetwork;
+import main.java.network.GlobalBlockchainNetwork;
 import main.java.node.nodes.BlockchainNode;
 import main.java.node.nodes.Node;
-import main.java.simulator.Simulator;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 import static main.java.event.EventFactory.createBlockGenerationEvents;
@@ -29,6 +28,7 @@ public class EthereumDAGsperNetworkScenario extends AbstractScenario {
 
     public EthereumDAGsperNetworkScenario(int numOfMiners, int numOfNonMiners, int checkpointSpace,
                                           long simulationStopTime, long txGenerationRate, double blockGenerationRate) {
+        this.network = new DAGsperGlobalBlockchainNetwork(checkpointSpace);
         this.numOfMiners = numOfMiners;
         this.numOfNonMiners = numOfNonMiners;
         this.checkpointSpace = checkpointSpace;
@@ -39,32 +39,32 @@ public class EthereumDAGsperNetworkScenario extends AbstractScenario {
 
     @Override
     public void setupSimulation() {
-        NetworkBuilder.buildSampleEthereumDAGsperNetwork(numOfNonMiners,numOfMiners, checkpointSpace);
-        createTxGenerationEvents(((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
-        createBlockGenerationEvents(((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
+        ((GlobalBlockchainNetwork) network).populateNetwork(simulator, numOfMiners, numOfNonMiners);
+        createTxGenerationEvents(simulator, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
+        createBlockGenerationEvents(simulator, network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
 
-        for (Node node:Network.getAllNodes()) {
+        for (Node node:network.getAllNodes()) {
             ((DAGsper) ((BlockchainNode) node).getConsensusAlgorithm()).enableFinalizationTimeRecords(blockFinalizationTimes);
         }
     }
 
     @Override
     public boolean simulationStopCondition() {
-        if (Simulator.peekEvent() instanceof PacketDeliveryEvent) {
-            if (((PacketDeliveryEvent) Simulator.peekEvent()).packet.getMessage() instanceof VoteMessage) {
-                totalVoteMassageTraffic += ((PacketDeliveryEvent) Simulator.peekEvent()).packet.getSize();
+        if (simulator.peekEvent() instanceof PacketDeliveryEvent) {
+            if (((PacketDeliveryEvent) simulator.peekEvent()).packet.getMessage() instanceof VoteMessage) {
+                totalVoteMassageTraffic += ((PacketDeliveryEvent) simulator.peekEvent()).packet.getSize();
             }
         }
-        if (Simulator.getCurrentTime() - 10000 >= simulationTime) {
-            simulationTime = Simulator.getCurrentTime();
+        if (simulator.getCurrentTime() - 10000 >= simulationTime) {
+            simulationTime = simulator.getCurrentTime();
             System.out.printf("\rsimulation time: %s, number of already seen blocks for miner 0: %s, number of finalized blocks: %s\n",
                     simulationTime,
-                    ((BlockchainNode) Network.getAllNodes().get(0)).numberOfAlreadySeenBlocks()
+                    ((BlockchainNode) network.getAllNodes().get(0)).numberOfAlreadySeenBlocks()
                     , ((DeterministicFinalityConsensus)
-                            ((BlockchainNode) Network.getAllNodes().get(0)).getConsensusAlgorithm()
+                            ((BlockchainNode) network.getAllNodes().get(0)).getConsensusAlgorithm()
                     ).getNumOfFinalizedBlocks());
         }
-        return (Simulator.getCurrentTime() > simulationStopTime*1000);
+        return (simulator.getCurrentTime() > simulationStopTime*1000);
     }
 
     @Override
@@ -81,6 +81,6 @@ public class EthereumDAGsperNetworkScenario extends AbstractScenario {
         System.out.printf("Average Finalization Time : %s ms\n", blockFinalizationTimes.getMean());
         System.out.printf("Standard Deviation Finalization Time : %s ms\n", blockFinalizationTimes.getStandardDeviation());
         System.out.printf("Total Vote Traffic : %s byte\n", totalVoteMassageTraffic);
-        System.out.printf("Percentage of Finalized Blocks: %s\n", ((double) ((DeterministicFinalityConsensus) ((BlockchainNode) Network.getNode(0)).getConsensusAlgorithm()).getNumOfFinalizedBlocks()) / ((double) ((BlockchainNode) Network.getNode(0)).numberOfAlreadySeenBlocks()));
+        System.out.printf("Percentage of Finalized Blocks: %s\n", ((double) ((DeterministicFinalityConsensus) ((BlockchainNode) network.getNode(0)).getConsensusAlgorithm()).getNumOfFinalizedBlocks()) / ((double) ((BlockchainNode) network.getNode(0)).numberOfAlreadySeenBlocks()));
     }
 }
