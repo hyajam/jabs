@@ -45,5 +45,9 @@ public abstract class Node {
     public Simulator getSimulator() {
         return this.simulator;
     }
+
+    public Network getNetwork() {
+        return this.network;
+    }
 }
 

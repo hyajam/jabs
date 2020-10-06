@@ -3,12 +3,14 @@ package main.java.network;
 import main.java.node.nodes.Node;
 import main.java.node.nodes.ethereum.EthereumCasperMiner;
 import main.java.node.nodes.ethereum.EthereumCasperNode;
+import main.java.random.Random;
 import main.java.simulator.Simulator;
 
 public class CasperFFGGlobalBlockchainNetwork extends EthereumGlobalBlockchainNetwork {
     protected final int checkpointSpace;
 
-    public CasperFFGGlobalBlockchainNetwork(int checkpointSpace) {
+    public CasperFFGGlobalBlockchainNetwork(Random random, int checkpointSpace) {
+        super(random);
         this.checkpointSpace = checkpointSpace;
     }
 
@@ -29,11 +31,11 @@ public class CasperFFGGlobalBlockchainNetwork extends EthereumGlobalBlockchainNe
 
     public EthereumCasperNode createNewEthereumCasperNode(Simulator simulator, Network network, int nodeID, int checkpointSpace, int numOfStakeholders) {
         int region = sampleRegion();
-        return new EthereumCasperNode(simulator, nodeID, network.sampleDownloadBandwidth(region), network.sampleUploadBandwidth(region), checkpointSpace, numOfStakeholders);
+        return new EthereumCasperNode(simulator, network, nodeID, network.sampleDownloadBandwidth(region), network.sampleUploadBandwidth(region), checkpointSpace, numOfStakeholders);
     }
 
     public EthereumCasperMiner createNewEthereumCasperMiner(Simulator simulator, Network network, int nodeID, int checkpointSpace, int numOfStakeholders) {
         int region = sampleRegion();
-        return new EthereumCasperMiner(simulator, nodeID, network.sampleDownloadBandwidth(region), network.sampleUploadBandwidth(region), sampleHashPower(), checkpointSpace, numOfStakeholders);
+        return new EthereumCasperMiner(simulator, network, nodeID, network.sampleDownloadBandwidth(region), network.sampleUploadBandwidth(region), sampleHashPower(), checkpointSpace, numOfStakeholders);
     }
 }

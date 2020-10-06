@@ -15,7 +15,6 @@ import main.java.network.Network;
 import main.java.node.nodes.BlockchainNode;
 import main.java.node.nodes.Node;
 import main.java.p2p.EthereumGethP2P;
-import main.java.random.Random;
 import main.java.simulator.Simulator;
 
 import java.util.Collections;
@@ -68,7 +67,7 @@ public class EthereumNode extends BlockchainNode<EthereumBlock, EthereumTx> {
 
     @Override
     public void generateNewTransaction() {
-        broadcastTransaction(network.sampleEthereumTransaction());
+        broadcastTransaction((EthereumTx) blockchainNetwork.sampleTransaction());
     }
 
     protected void broadcastNewBlockAndBlockHashes(EthereumBlock ethereumBlock){

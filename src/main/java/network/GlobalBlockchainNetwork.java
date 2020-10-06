@@ -1,5 +1,7 @@
 package main.java.network;
 
+import main.java.data.Block;
+import main.java.data.Tx;
 import main.java.node.nodes.MinerNode;
 import main.java.node.nodes.Node;
 import main.java.random.Random;
@@ -10,7 +12,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class GlobalBlockchainNetwork extends BlockchainNetwork {
+public abstract class GlobalBlockchainNetwork<B extends Block<B>, T extends Tx<T>> extends BlockchainNetwork<B, T> {
     public final HashMap<Node, Integer> nodeRegion = new HashMap<>();
 
     public static final List<String> REGION_LIST = new ArrayList<>(Arrays.asList("NORTH_AMERICA", "EUROPE", "SOUTH_AMERICA", "ASIA_PACIFIC", "JAPAN", "AUSTRALIA"));

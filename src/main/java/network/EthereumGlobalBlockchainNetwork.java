@@ -1,5 +1,8 @@
 package main.java.network;
 
+import main.java.data.Block;
+import main.java.data.Tx;
+import main.java.data.ethereum.EthereumBlock;
 import main.java.data.ethereum.EthereumTx;
 import main.java.node.nodes.Node;
 import main.java.node.nodes.ethereum.EthereumMinerNode;
@@ -7,10 +10,12 @@ import main.java.node.nodes.ethereum.EthereumNode;
 import main.java.random.Random;
 import main.java.simulator.Simulator;
 
+import java.util.Set;
+
 import static main.java.config.NetworkStats.ETHEREUM_HASH_POWER_DISTRIBUTION;
 import static main.java.config.NetworkStats.ETHEREUM_HASH_POWER_DISTRIBUTION_BIN;
 
-public class EthereumGlobalBlockchainNetwork extends GlobalBlockchainNetwork {
+public class EthereumGlobalBlockchainNetwork extends GlobalBlockchainNetwork<EthereumBlock, EthereumTx> {
     private static final double[] ETHEREUM_TRANSACTION_SIZE_DISTRIBUTION = {
             0.33566250, 0.00029251, 0.03196772, 0.00135259, 0.00431051, 0.04577845, 0.46076570, 0.05192406, 0.03867314,
             0.0175110, 0.00219022, 0.00126404, 0.00041145
@@ -33,6 +38,8 @@ public class EthereumGlobalBlockchainNetwork extends GlobalBlockchainNetwork {
 
     private static final double[] ETHEREUM_REGION_DISTRIBUTION_2020 = {0.3503, 0.3563, 0.0100, 0.2358, 0.0414, 0.0062};
     public static final double[] ETHEREUM_MINER_REGION_DISTRIBUTION_2020 = {0.0875, 0.0863, 0.0111, 0.8146, 0.0000, 0.0005};
+
+    public static final long ETHEREUM_MIN_DIFFICULTY = 17146335232L;
 
     public static final int ETHEREUM_NUM_NODES_2020 = 6203;
     public static final int ETHEREUM_NUM_MINERS_2020 = 56;
@@ -81,15 +88,37 @@ public class EthereumGlobalBlockchainNetwork extends GlobalBlockchainNetwork {
         return random.sampleFromDistribution(ETHEREUM_MINER_REGION_DISTRIBUTION_2020);
     }
 
+    @Override
     protected long sampleHashPower() {
         return random.sampleDistributionWithBins(ETHEREUM_HASH_POWER_DISTRIBUTION, ETHEREUM_HASH_POWER_DISTRIBUTION_BIN);
     }
 
-    public EthereumTx sampleEthereumTransaction() {
+    @Override
+    public Tx<EthereumTx> sampleTransaction() {
         return new EthereumTx(
                 (int) random.sampleDistributionWithBins(
                         ETHEREUM_TRANSACTION_SIZE_DISTRIBUTION, ETHEREUM_TRANSACTION_SIZE_BINS),
                 (int) random.sampleDistributionWithBins(
                         BITCOIN_TRANSACTION_GAS_DISTRIBUTION, ETHEREUM_TRANSACTION_GAS_BINS));
+    }
+
+    private static final long[] BITCOIN_BLOCK_SIZE_2020_BINS = {
+            196, 119880, 254789, 396047, 553826, 726752, 917631, 1021479, 1054560, 1084003, 1113136, 1138722, 1161695,
+            1183942, 1205734, 1227090, 1248408, 1270070, 1293647, 1320186, 1354939, 1423459, 2422858
+    };
+
+    private static final double[] BITCOIN_BLOCK_SIZE_2020 = {
+            0.0000, 0.0482, 0.0422, 0.0422, 0.0421, 0.0422, 0.0421, 0.0445, 0.0455, 0.0458, 0.0461, 0.0468, 0.0472,
+            0.0481, 0.0477, 0.0479, 0.0484, 0.0482, 0.0475, 0.0464, 0.0454, 0.0434, 0.0420
+    };
+
+    public int sampleBitcoinBlockSize() {
+        return (int) random.sampleDistributionWithBins(BITCOIN_BLOCK_SIZE_2020, BITCOIN_BLOCK_SIZE_2020_BINS);
+    } //FIXME: this is bitcoin block size not ethereum
+
+    public EthereumBlock sampleBlock(Simulator simulator, EthereumMinerNode creator, EthereumBlock parent,
+                                                    Set<EthereumBlock> uncles) {
+        return new EthereumBlock(sampleBitcoinBlockSize(), parent.getHeight() + 1,
+                simulator.getCurrentTime(), creator, parent, uncles, ETHEREUM_MIN_DIFFICULTY); // TODO: Block Size
     }
 }

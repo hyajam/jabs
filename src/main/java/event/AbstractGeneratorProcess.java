@@ -6,9 +6,11 @@ import main.java.simulator.Simulator;
 public abstract class AbstractGeneratorProcess implements Event {
     private final long averageTimeBetweenGenerations;
     protected final Simulator simulator;
+    protected final Random random;
 
-    public AbstractGeneratorProcess(Simulator simulator, long averageTimeBetweenGenerations) {
+    public AbstractGeneratorProcess(Simulator simulator, Random random, long averageTimeBetweenGenerations) {
         this.simulator = simulator;
+        this.random = random;
         this.averageTimeBetweenGenerations = averageTimeBetweenGenerations;
     }
 
@@ -22,7 +24,7 @@ public abstract class AbstractGeneratorProcess implements Event {
         simulator.putEvent(this, this.timeToNextGeneration());
     }
 
-    protected long timeToNextGeneration(Random random) {
+    protected long timeToNextGeneration() {
         return random.sampleExponentialDistribution(averageTimeBetweenGenerations);
     }
 

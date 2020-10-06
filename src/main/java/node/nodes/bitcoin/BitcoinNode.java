@@ -7,19 +7,18 @@ import main.java.data.bitcoin.BitcoinBlock;
 import main.java.data.bitcoin.BitcoinTx;
 import main.java.message.InvMessage;
 import main.java.message.Packet;
+import main.java.network.Network;
 import main.java.node.nodes.BlockchainNode;
 import main.java.node.nodes.Node;
 import main.java.p2p.BitcoinCoreP2P;
 import main.java.simulator.Simulator;
 
-import static main.java.network.TransactionFactory.sampleBitcoinTransaction;
-
 public class BitcoinNode extends BlockchainNode<BitcoinBlock, BitcoinTx> {
     public static final BitcoinBlock BITCOIN_GENESIS_BLOCK =
             new BitcoinBlock(0, 0, 0, null, null);
 
-    public BitcoinNode(Simulator simulator, int nodeID, long downloadBandwidth, long uploadBandwidth) {
-        super(simulator, nodeID, downloadBandwidth, uploadBandwidth,
+    public BitcoinNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth) {
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new BitcoinCoreP2P(),
                 new NakamotoConsensus<>(new LocalBlockTree<>(BITCOIN_GENESIS_BLOCK)));
     }
@@ -62,6 +61,6 @@ public class BitcoinNode extends BlockchainNode<BitcoinBlock, BitcoinTx> {
 
     @Override
     public void generateNewTransaction() {
-        broadcastTxInvMessage(sampleBitcoinTransaction());
+        broadcastTxInvMessage((BitcoinTx) blockchainNetwork.sampleTransaction());
     }
 }

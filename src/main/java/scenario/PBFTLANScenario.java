@@ -4,9 +4,9 @@ import main.java.data.pbft.PBFTPrePrepareVote;
 import main.java.message.VoteMessage;
 import main.java.network.BlockFactory;
 import main.java.network.PBFTLocalLANNetwork;
-import main.java.node.nodes.pbft.PBFTNode;
+import main.java.node.nodes.pbft.PBFTNode1;
 
-import static main.java.node.nodes.pbft.PBFTNode.PBFT_GENESIS_BLOCK;
+import static main.java.node.nodes.pbft.PBFTNode1.PBFT_GENESIS_BLOCK;
 
 public class PBFTLANScenario extends AbstractScenario {
     @Override
@@ -17,7 +17,7 @@ public class PBFTLANScenario extends AbstractScenario {
                 new VoteMessage(
                         new PBFTPrePrepareVote<>(network.getAllNodes().get(0),
                                 BlockFactory.samplePBFTBlock(simulator,
-                                        (PBFTNode) network.getAllNodes().get(0), PBFT_GENESIS_BLOCK)
+                                        (PBFTNode1) network.getAllNodes().get(0), PBFT_GENESIS_BLOCK)
                         )
                 )
         );

@@ -7,8 +7,9 @@ import main.java.data.Vote;
 import main.java.data.pbft.*;
 import main.java.message.VoteMessage;
 import main.java.network.BlockFactory;
+import main.java.network.BlockchainNetwork;
 import main.java.node.nodes.Node;
-import main.java.node.nodes.pbft.PBFTNode;
+import main.java.node.nodes.pbft.PBFTNode1;
 import main.java.simulator.Simulator;
 
 import java.util.HashMap;
@@ -110,8 +111,8 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
                             this.blockchainNode.broadcastMessage(
                                     new VoteMessage(
                                             new PBFTPrePrepareVote<>(this.blockchainNode,
-                                                    BlockFactory.samplePBFTBlock(blockchainNode.getSimulator(),
-                                                            (PBFTNode) this.blockchainNode, (PBFTBlock) block)
+                                                    blockchainNode.getBlockchainNetwork().sampleBlock(blockchainNode.getSimulator(),
+                                                            (PBFTNode1) this.blockchainNode, (PBFTBlock) block)
                                             )
                                     )
                             );

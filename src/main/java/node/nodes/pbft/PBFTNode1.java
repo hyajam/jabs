@@ -5,17 +5,18 @@ import main.java.consensus.PBFT;
 import main.java.data.Vote;
 import main.java.data.pbft.PBFTBlock;
 import main.java.data.pbft.PBFTTx;
+import main.java.network.Network;
 import main.java.node.nodes.BlockchainNode;
 import main.java.node.nodes.Node;
 import main.java.p2p.PBFTP2P;
 import main.java.simulator.Simulator;
 
-public class PBFTNode extends BlockchainNode<PBFTBlock, PBFTTx> {
+public class PBFTNode1 extends BlockchainNode<PBFTBlock, PBFTTx> {
                         public static final PBFTBlock PBFT_GENESIS_BLOCK =
             new PBFTBlock(0, 0, 0, null, null);
 
-    public PBFTNode(Simulator simulator, int nodeID, long downloadBandwidth, long uploadBandwidth, int numAllParticipants) {
-        super(simulator, nodeID, downloadBandwidth, uploadBandwidth,
+    public PBFTNode1(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, int numAllParticipants) {
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new PBFTP2P(),
                 new PBFT<>(simulator, numAllParticipants, new LocalBlockTree<>(PBFT_GENESIS_BLOCK)));
     }

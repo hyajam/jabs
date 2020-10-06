@@ -1,13 +1,14 @@
 package main.java.event;
 
-import main.java.network.Network;
+import main.java.network.BlockchainNetwork;
+import main.java.random.Random;
 import main.java.simulator.Simulator;
 
 public class BlockGeneratorProcessRandomNode extends AbstractBlockGeneratorProcess {
-    private final Network network;
+    private final BlockchainNetwork network;
 
-    public BlockGeneratorProcessRandomNode(Simulator simulator, Network network, long averageTimeBetweenBlocks) {
-        super(simulator, averageTimeBetweenBlocks);
+    public BlockGeneratorProcessRandomNode(Simulator simulator, Random random, BlockchainNetwork network, long averageTimeBetweenBlocks) {
+        super(simulator, random, averageTimeBetweenBlocks);
         this.network = network;
     }
 
