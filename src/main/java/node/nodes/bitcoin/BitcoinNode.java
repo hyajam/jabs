@@ -8,6 +8,7 @@ import main.java.data.bitcoin.BitcoinTx;
 import main.java.message.InvMessage;
 import main.java.message.Packet;
 import main.java.network.Network;
+import main.java.network.TransactionFactory;
 import main.java.node.nodes.BlockchainNode;
 import main.java.node.nodes.Node;
 import main.java.p2p.BitcoinCoreP2P;
@@ -61,6 +62,6 @@ public class BitcoinNode extends BlockchainNode<BitcoinBlock, BitcoinTx> {
 
     @Override
     public void generateNewTransaction() {
-        broadcastTxInvMessage((BitcoinTx) blockchainNetwork.sampleTransaction());
+        broadcastTxInvMessage(TransactionFactory.sampleBitcoinTransaction(network.getRandom()));
     }
 }

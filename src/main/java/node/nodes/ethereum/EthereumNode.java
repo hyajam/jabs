@@ -12,6 +12,7 @@ import main.java.message.InvMessage;
 import main.java.message.Packet;
 import main.java.message.VoteMessage;
 import main.java.network.Network;
+import main.java.network.TransactionFactory;
 import main.java.node.nodes.BlockchainNode;
 import main.java.node.nodes.Node;
 import main.java.p2p.EthereumGethP2P;
@@ -67,7 +68,7 @@ public class EthereumNode extends BlockchainNode<EthereumBlock, EthereumTx> {
 
     @Override
     public void generateNewTransaction() {
-        broadcastTransaction((EthereumTx) blockchainNetwork.sampleTransaction());
+        broadcastTransaction(TransactionFactory.sampleEthereumTransaction(network.getRandom()));
     }
 
     protected void broadcastNewBlockAndBlockHashes(EthereumBlock ethereumBlock){

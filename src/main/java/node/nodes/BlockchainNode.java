@@ -4,7 +4,6 @@ import main.java.blockchain.LocalBlockTree;
 import main.java.consensus.AbstractBlockchainConsensus;
 import main.java.data.*;
 import main.java.message.*;
-import main.java.network.BlockchainNetwork;
 import main.java.network.Network;
 import main.java.p2p.AbstractP2PConnections;
 import main.java.simulator.Simulator;
@@ -20,14 +19,12 @@ public abstract class BlockchainNode<B extends Block<B>, T extends Tx<T>> extend
     protected final HashMap<Hash, B> alreadySeenBlocks = new HashMap<>();
     protected final HashSet<Vote> alreadySeenVotes = new HashSet<>();
     protected final LocalBlockTree<B> localBlockTree;
-    protected final BlockchainNetwork blockchainNetwork;
 
     public BlockchainNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, AbstractP2PConnections routingTable,
                           AbstractBlockchainConsensus<B, T> consensusAlgorithm) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, routingTable);
         this.consensusAlgorithm = consensusAlgorithm;
         this.localBlockTree = consensusAlgorithm.getLocalBlockTree();
-        this.blockchainNetwork = (BlockchainNetwork) network;
         this.consensusAlgorithm.setNode(this);
     }
 
@@ -123,9 +120,6 @@ public abstract class BlockchainNode<B extends Block<B>, T extends Tx<T>> extend
 
     public AbstractBlockchainConsensus<B, T> getConsensusAlgorithm() {
         return this.consensusAlgorithm;
-    }
-    public BlockchainNetwork getBlockchainNetwork() {
-        return blockchainNetwork;
     }
 
     public int numberOfAlreadySeenBlocks() {

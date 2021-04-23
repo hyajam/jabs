@@ -11,12 +11,12 @@ import static main.java.node.nodes.pbft.PBFTNode1.PBFT_GENESIS_BLOCK;
 public class PBFTLANScenario extends AbstractScenario {
     @Override
     public void setupSimulation() {
-        network = new PBFTLocalLANNetwork();
+        network = new PBFTLocalLANNetwork(random);
 
         network.getAllNodes().get(0).broadcastMessage(
                 new VoteMessage(
                         new PBFTPrePrepareVote<>(network.getAllNodes().get(0),
-                                BlockFactory.samplePBFTBlock(simulator,
+                                BlockFactory.samplePBFTBlock(simulator, network.getRandom(),
                                         (PBFTNode1) network.getAllNodes().get(0), PBFT_GENESIS_BLOCK)
                         )
                 )

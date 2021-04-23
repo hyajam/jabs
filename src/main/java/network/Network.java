@@ -39,5 +39,8 @@ public abstract class Network {
         nodes.add(node);
     }
 
+    public Random getRandom() {
+        return this.random;
+    }
 }
 

@@ -1,11 +1,13 @@
 package main.java.scenario;
 
 import main.java.network.Network;
+import main.java.random.Random;
 import main.java.simulator.Simulator;
 
 public abstract class AbstractScenario {
     protected Network network;
-    protected Simulator simulator;
+    public Simulator simulator;
+    protected Random random;
 
     abstract protected void setupSimulation(); // create the network and put starting events
     abstract protected boolean simulationStopCondition(); // runs before each event and checks if simulation should stop

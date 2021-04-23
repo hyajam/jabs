@@ -1,5 +1,7 @@
 package main.java.p2p;
 
+import main.java.network.Network;
+
 // TODO: Recheck if it is good to design add neighbor and other functions using events
 public class BitcoinCoreP2P extends AbstractBlockchainP2PConnections {
     private static final int BITCOIN_MAX_CONNECTIONS = 125;

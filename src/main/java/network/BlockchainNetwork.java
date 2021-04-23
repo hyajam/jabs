@@ -1,7 +1,5 @@
 package main.java.network;
 
-import main.java.data.Block;
-import main.java.data.Tx;
 import main.java.node.nodes.MinerNode;
 import main.java.node.nodes.Node;
 import main.java.random.Random;
@@ -9,7 +7,7 @@ import main.java.random.Random;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BlockchainNetwork<B extends Block<B>, T extends Tx<T>> extends Network {
+public abstract class BlockchainNetwork extends Network {
     protected final List<MinerNode> miners = new ArrayList<>();
     protected long totalHashPower = 0;
     protected final List<Long> minersHashPower = new ArrayList<>();
@@ -48,7 +46,4 @@ public abstract class BlockchainNetwork<B extends Block<B>, T extends Tx<T>> ext
     }
 
     protected abstract long sampleHashPower();
-
-    public abstract Tx<T> sampleTransaction();
-    public abstract Block<B> sampleBlock();
 }

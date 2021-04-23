@@ -2,7 +2,6 @@ package main.java.p2p;
 
 import main.java.network.Network;
 import main.java.node.nodes.Node;
-import main.java.random.Random;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +21,11 @@ public abstract class AbstractBlockchainP2PConnections extends AbstractP2PConnec
         this.maxConnections = maxConnections;
     }
 
-    public void connectToNetwork(Network network, Random random){
+    public void connectToNetwork(Network network){
         this.network = network;
-        node.getNodeNetworkInterface().connectNetwork(network, random);
+        node.getNodeNetworkInterface().connectNetwork(network, network.getRandom());
         while (this.outbound.size() < this.numOutboundConnections) {
-            Node remoteNode = random.sampleFromList(network.getAllNodes());
+            Node remoteNode = network.getRandom().sampleFromList(network.getAllNodes());
             if (remoteNode != this.getNode() &&
                     !this.outbound.contains(remoteNode) &&
                     !this.inbound.contains(remoteNode)) {

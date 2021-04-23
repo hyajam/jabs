@@ -1,11 +1,9 @@
 package main.java.network;
 
-import main.java.data.Block;
-import main.java.data.Tx;
 import main.java.node.nodes.Node;
 import main.java.random.Random;
 
-public abstract class LANBlockchainNetwork<B extends Block<B>, T extends Tx<T>> extends BlockchainNetwork<B, T> {
+public abstract class LANBlockchainNetwork extends BlockchainNetwork {
     public static final double GLOBAL_LATENCY_BY_REGION = 2; // 2ms
     public static final double LATENCY_PARETO_SHAPE = 5;
 

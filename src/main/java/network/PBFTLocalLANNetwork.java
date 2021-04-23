@@ -1,14 +1,11 @@
 package main.java.network;
 
-import main.java.data.Tx;
-import main.java.data.pbft.PBFTBlock;
-import main.java.data.pbft.PBFTTx;
 import main.java.node.nodes.Node;
 import main.java.node.nodes.pbft.PBFTNode1;
 import main.java.random.Random;
 import main.java.simulator.Simulator;
 
-public class PBFTLocalLANNetwork extends LANBlockchainNetwork<PBFTBlock, PBFTTx> {
+public class PBFTLocalLANNetwork extends LANBlockchainNetwork {
     public PBFTLocalLANNetwork(Random random) {
         super(random);
     }
@@ -16,11 +13,6 @@ public class PBFTLocalLANNetwork extends LANBlockchainNetwork<PBFTBlock, PBFTTx>
     @Override
     protected long sampleHashPower() {
         return 0;
-    }
-
-    @Override
-    public Tx<PBFTTx> sampleTransaction() {
-        return null;
     }
 
     public PBFTNode1 createNewPBFTNode(Simulator simulator, int nodeID, int numAllParticipants) {
@@ -42,10 +34,6 @@ public class PBFTLocalLANNetwork extends LANBlockchainNetwork<PBFTBlock, PBFTTx>
         return (int) random.sampleDistributionWithBins(BITCOIN_BLOCK_SIZE_2020, BITCOIN_BLOCK_SIZE_2020_BINS);
     }
 
-    public PBFTBlock sampleBlock(Simulator simulator, PBFTNode1 creator, PBFTBlock parent) {
-        return new PBFTBlock(sampleBlockSize(), parent.getHeight() + 1,
-                simulator.getCurrentTime(), creator, parent); // TODO: Size of PBFT Blocks
-    }
 
     @Override
     public void populateNetwork(Simulator simulator) {

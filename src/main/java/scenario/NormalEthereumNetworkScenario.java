@@ -1,6 +1,9 @@
 package main.java.scenario;
 
+import main.java.network.BlockchainNetwork;
+import main.java.network.EthereumGlobalBlockchainNetwork;
 import main.java.node.nodes.BlockchainNode;
+import main.java.random.Random;
 
 import static main.java.event.EventFactory.createBlockGenerationEvents;
 import static main.java.event.EventFactory.createTxGenerationEvents;
@@ -14,7 +17,8 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
     private final long txGenerationRate;
     private final long blockGenerationRate;
 
-    public NormalEthereumNetworkScenario(int numOfMiners, int numOfNonMiners, long simulationStopTime, long txGenerationRate, long blockGenerationRate) {
+    public NormalEthereumNetworkScenario(long seed, int numOfMiners, int numOfNonMiners, long simulationStopTime, long txGenerationRate, long blockGenerationRate) {
+        this.random = new Random(seed);
         this.numOfMiners = numOfMiners;
         this.numOfNonMiners = numOfNonMiners;
         this.simulationStopTime = simulationStopTime;
@@ -24,8 +28,9 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
 
     @Override
     public void setupSimulation() {
-        createTxGenerationEvents(simulator, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
-        createBlockGenerationEvents(simulator, network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
+        this.network = new EthereumGlobalBlockchainNetwork(random);
+        createTxGenerationEvents(simulator, random, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
+        createBlockGenerationEvents(simulator,random, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
     }
 
     @Override
