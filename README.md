@@ -4,7 +4,7 @@
 ![Travis (.org)](https://img.shields.io/travis/hyajam/jabs)
 ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fhabibyajam)
 
-![Alt-Text](https://gitlab.com/habib.yajam/just-another-blockchain-simulator/-/raw/master/img/Jabs-logo.png)
+![Alt-Text](https://raw.githubusercontent.com/hyajam/jabs/objectifiedNetworkAndSimulator/img/Jabs-logo.png)
 
 JABS - Just Another Blockchain Simulator.
 
