@@ -10,15 +10,7 @@ public class Main {
 
         for (double v : rate) {
             System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
             System.out.println(v);
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
             System.out.println();
 
             for (int i = 0; i < 10; i++) {
