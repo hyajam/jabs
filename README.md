@@ -1,7 +1,7 @@
 # Just Another Blockchain Simulator
 
 ![GitHub](https://img.shields.io/github/license/hyajam/jabs?style=plastic)
-![Travis (.org)](https://img.shields.io/travis/hyajam/jabs?style=plastic)
+![Build Status](https://travis-ci.com/hyajam/jabs.svg?branch=objectifiedNetworkAndSimulator)
 ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fhabibyajam?style=plastic)
 
 ![Alt-Text](https://raw.githubusercontent.com/hyajam/jabs/objectifiedNetworkAndSimulator/img/Jabs-logo.png)
