@@ -13,9 +13,9 @@ JABS is designed to easily handel simulation of networks as large as normal publ
   
   
 ## Installation
-First, you should have ```openjdk-14``` and ```maven``` installed:
+First, you should have ```openjdk-14-jdk``` and ```maven``` installed:
 ```shell script
-$ sudo apt install openjdk-11-jdk maven
+$ sudo apt install openjdk-14-jdk maven
 ```
 After that, clone the git repository.
 ```shell script
@@ -26,7 +26,7 @@ Use ```maven``` to make a jar file.
 $ cd jabs
 $ mvn clean install
 ```
-Then to run the compiled project:
+Then to run the compiled jar file.
 ```shell script
 $ java -jar target/jabs-<version>.jar
 ```
