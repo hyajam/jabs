@@ -8,12 +8,11 @@
 
 JABS - Just Another Blockchain Simulator.
 
-JABS is a blockchain network simulator aimed at researching consensus algorithms for performance and security.
-JABS is designed to easily handel simulation of networks as large as normal public blockchain networks (~10000 nodes) in reasonable time.
+JABS is a blockchain network simulator aimed at researching consensus algorithms for performance and security. it is designed to easily handel simulation of networks as large as normal public blockchain networks (~10000 nodes) in reasonable time.
   
   
 ## Installation
-First, you should have ```openjdk-14-jdk``` and ```maven``` installed:
+First, you should have ```openjdk-14-jdk``` and ```maven``` installed.
 ```shell script
 $ sudo apt install openjdk-14-jdk maven
 ```
