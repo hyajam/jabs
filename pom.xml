@@ -94,7 +94,7 @@
           <show>private</show>
           <nohelp>true</nohelp>
           <noqualifier>all</noqualifier>
-          <reportOutputDirectory>${basedir}/docs/javadoc</reportOutputDirectory>
+          <reportOutputDirectory>javadoc</reportOutputDirectory>
           <destDir>javadoc</destDir>
         </configuration>
         <executions>
