@@ -40,15 +40,19 @@ public class EthereumDAGsperNetworkScenario extends AbstractScenario {
     }
 
     @Override
-    public void setupSimulation() {
+    public void createNetwork() {
         this.network = new DAGsperGlobalBlockchainNetwork(random, checkpointSpace);
         ((GlobalBlockchainNetwork) network).populateNetwork(simulator, numOfMiners, numOfNonMiners);
-        createTxGenerationEvents(simulator, random, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
-        createBlockGenerationEvents(simulator, random, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
 
         for (Node node:network.getAllNodes()) {
             ((DAGsper) ((BlockchainNode) node).getConsensusAlgorithm()).enableFinalizationTimeRecords(blockFinalizationTimes);
         }
+    }
+
+    @Override
+    protected void insertInitialEvents() {
+        createTxGenerationEvents(simulator, random, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
+        createBlockGenerationEvents(simulator, random, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
     }
 
     @Override
@@ -71,7 +75,7 @@ public class EthereumDAGsperNetworkScenario extends AbstractScenario {
     }
 
     @Override
-    public void outputResults() {
+    public void finishSimulation() {
         System.out.print("*** Ethereum DAGsper Scenario ***\n");
         System.out.print("** Settings **\n");
         System.out.printf("Total Number of Nodes: %s\n", numOfMiners+numOfNonMiners);

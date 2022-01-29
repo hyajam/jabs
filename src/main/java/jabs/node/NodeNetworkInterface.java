@@ -15,7 +15,6 @@ public class NodeNetworkInterface {
     public final Node node;
     public final Simulator simulator;
 
-
     public PacketReceivingProcess messageReceivingProcess;
     public PacketSendingProcess messageSendingProcess;
 

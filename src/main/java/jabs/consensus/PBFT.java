@@ -8,7 +8,7 @@ import jabs.data.pbft.*;
 import jabs.message.VoteMessage;
 import jabs.network.BlockFactory;
 import jabs.node.nodes.Node;
-import jabs.node.nodes.pbft.PBFTNode1;
+import jabs.node.nodes.pbft.PBFTNode;
 import jabs.simulator.Simulator;
 
 import java.util.HashMap;
@@ -112,7 +112,7 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
                                             new PBFTPrePrepareVote<>(this.blockchainNode,
                                                     BlockFactory.samplePBFTBlock(blockchainNode.getSimulator(),
                                                             blockchainNode.getNetwork().getRandom(),
-                                                            (PBFTNode1) this.blockchainNode, (PBFTBlock) block)
+                                                            (PBFTNode) this.blockchainNode, (PBFTBlock) block)
                                             )
                                     )
                             );
