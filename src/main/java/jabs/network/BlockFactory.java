@@ -5,7 +5,7 @@ import jabs.data.ethereum.EthereumBlock;
 import jabs.data.pbft.PBFTBlock;
 import jabs.node.nodes.bitcoin.BitcoinMinerNode;
 import jabs.node.nodes.ethereum.EthereumMinerNode;
-import jabs.node.nodes.pbft.PBFTNode1;
+import jabs.node.nodes.pbft.PBFTNode;
 import jabs.random.Random;
 import jabs.simulator.Simulator;
 
@@ -41,7 +41,7 @@ public final class BlockFactory {
                 simulator.getCurrentTime(), creator, parent);
     }
 
-    public static PBFTBlock samplePBFTBlock(Simulator simulator, Random random, PBFTNode1 creator, PBFTBlock parent) {
+    public static PBFTBlock samplePBFTBlock(Simulator simulator, Random random, PBFTNode creator, PBFTBlock parent) {
         return new PBFTBlock(sampleBitcoinBlockSize(random), parent.getHeight() + 1,
                 simulator.getCurrentTime(), creator, parent); // TODO: Size of PBFT Blocks
     }

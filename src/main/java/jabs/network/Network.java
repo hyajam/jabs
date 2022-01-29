@@ -35,6 +35,8 @@ public abstract class Network {
 
     public abstract void populateNetwork(Simulator simulator);
 
+    public abstract void populateNetwork(Simulator simulator, int numNodes);
+
     public void addNode(Node node) {
         nodes.add(node);
     }
