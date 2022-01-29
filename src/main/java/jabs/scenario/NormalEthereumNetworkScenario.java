@@ -27,8 +27,12 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
     }
 
     @Override
-    public void setupSimulation() {
+    public void createNetwork() {
         this.network = new EthereumGlobalBlockchainNetwork(random);
+    }
+
+    @Override
+    protected void insertInitialEvents() {
         createTxGenerationEvents(simulator, random, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
         createBlockGenerationEvents(simulator,random, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
     }
@@ -45,7 +49,7 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
     }
 
     @Override
-    public void outputResults() {
+    public void finishSimulation() {
 
     }
 }

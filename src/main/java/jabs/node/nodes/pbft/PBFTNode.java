@@ -11,11 +11,11 @@ import jabs.node.nodes.Node;
 import jabs.p2p.PBFTP2P;
 import jabs.simulator.Simulator;
 
-public class PBFTNode1 extends BlockchainNode<PBFTBlock, PBFTTx> {
+public class PBFTNode extends BlockchainNode<PBFTBlock, PBFTTx> {
                         public static final PBFTBlock PBFT_GENESIS_BLOCK =
             new PBFTBlock(0, 0, 0, null, null);
 
-    public PBFTNode1(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, int numAllParticipants) {
+    public PBFTNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, int numAllParticipants) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new PBFTP2P(),
                 new PBFT<>(simulator, numAllParticipants, new LocalBlockTree<>(PBFT_GENESIS_BLOCK)));

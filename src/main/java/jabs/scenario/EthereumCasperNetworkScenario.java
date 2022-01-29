@@ -39,15 +39,19 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
     }
 
     @Override
-    public void setupSimulation() {
+    public void createNetwork() {
         this.network = new CasperFFGGlobalBlockchainNetwork(random, checkpointSpace);
         ((GlobalBlockchainNetwork) network).populateNetwork(simulator, numOfMiners, numOfNonMiners);
-        createTxGenerationEvents(simulator, random, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
-        createBlockGenerationEvents(simulator, random, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
 
         for (Node node:network.getAllNodes()) {
             ((CasperFFG) ((BlockchainNode) node).getConsensusAlgorithm()).enableFinalizationTimeRecords(blockFinalizationTimes);
         }
+    }
+
+    @Override
+    protected void insertInitialEvents() {
+        createTxGenerationEvents(simulator, random, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
+        createBlockGenerationEvents(simulator, random, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
     }
 
     @Override
@@ -70,7 +74,7 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
     }
 
     @Override
-    public void outputResults() {
+    public void finishSimulation() {
         System.out.print("*** Ethereum CasperFFG Scenario ***\n");
         System.out.print("** Settings **\n");
         System.out.print("Seed value:\n");

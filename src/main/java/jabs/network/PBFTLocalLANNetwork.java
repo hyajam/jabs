@@ -1,7 +1,7 @@
 package jabs.network;
 
 import jabs.node.nodes.Node;
-import jabs.node.nodes.pbft.PBFTNode1;
+import jabs.node.nodes.pbft.PBFTNode;
 import jabs.random.Random;
 import jabs.simulator.Simulator;
 
@@ -15,8 +15,8 @@ public class PBFTLocalLANNetwork extends LANBlockchainNetwork {
         return 0;
     }
 
-    public PBFTNode1 createNewPBFTNode(Simulator simulator, int nodeID, int numAllParticipants) {
-        return new PBFTNode1(simulator, this, nodeID, this.sampleDownloadBandwidth(0), this.sampleUploadBandwidth(0), numAllParticipants);
+    public PBFTNode createNewPBFTNode(Simulator simulator, int nodeID, int numAllParticipants) {
+        return new PBFTNode(simulator, this, nodeID, this.sampleDownloadBandwidth(0), this.sampleUploadBandwidth(0), numAllParticipants);
     }
 
     private static final long[] BITCOIN_BLOCK_SIZE_2020_BINS = {
@@ -40,6 +40,7 @@ public class PBFTLocalLANNetwork extends LANBlockchainNetwork {
         populateNetwork(simulator, 40);
     }
 
+    @Override
     public void populateNetwork(Simulator simulator, int numNodes) {
         for (int i = 0; i < numNodes; i++) {
             this.addNode(createNewPBFTNode(simulator, i, numNodes));

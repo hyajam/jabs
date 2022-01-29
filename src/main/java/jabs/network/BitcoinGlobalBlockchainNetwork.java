@@ -1,5 +1,6 @@
 package jabs.network;
 
+import jabs.node.nodes.Node;
 import jabs.node.nodes.bitcoin.BitcoinNode;
 import jabs.random.Random;
 import jabs.simulator.Simulator;
@@ -34,7 +35,13 @@ public class BitcoinGlobalBlockchainNetwork extends GlobalBlockchainNetwork {
 
     @Override
     public void populateNetwork(Simulator simulator) {
+        this.populateNetwork(simulator, 6000);
+    }
 
+    @Override
+    public void populateNetwork(Simulator simulator, int numNodes) {
+        int numMiners = (int) Math.floor(0.01 * (float)numNodes) + 1;
+        this.populateNetwork(simulator, numMiners, numNodes-numMiners);
     }
 
     @Override
