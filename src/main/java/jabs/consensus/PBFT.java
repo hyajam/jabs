@@ -73,7 +73,7 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
             PBFTBlockVote<B> blockVote = (PBFTBlockVote<B>) vote;
             B block = blockVote.getBlock();
             switch (blockVote.getVoteType()) {
-                case PRE_PREPARE -> {
+                case PRE_PREPARE :
                     if (!this.localBlockTree.contains(block)) {
                         this.localBlockTree.add(block);
                     }
@@ -85,9 +85,13 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
                                 )
                         );
                     }
-                }
-                case PREPARE -> checkVotes(blockVote, block, prepareVotes, preparedBlocks, PBFTPhase.COMMITTING);
-                case COMMIT -> checkVotes(blockVote, block, commitVotes, committedBlocks, PBFTPhase.PRE_PREPARING);
+                    break;
+                case PREPARE:
+                    checkVotes(blockVote, block, prepareVotes, preparedBlocks, PBFTPhase.COMMITTING);
+                    break;
+                case COMMIT:
+                    checkVotes(blockVote, block, commitVotes, committedBlocks, PBFTPhase.PRE_PREPARING);
+                    break;
             }
         }
     }
@@ -102,7 +106,7 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
                 blocks.add(block);
                 this.pbftPhase = nextStep;
                 switch (nextStep) {
-                    case PRE_PREPARING -> {
+                    case PRE_PREPARING:
                         this.currentViewNumber += 1;
                         this.currentMainChainHead = block;
                         updateChain();
@@ -117,12 +121,14 @@ public class PBFT<B extends Block<B>, T extends Tx<T>> extends AbstractBlockchai
                                     )
                             );
                         }
-                    }
-                    case COMMITTING -> this.blockchainNode.broadcastMessage(
+                        break;
+                    case COMMITTING:
+                        this.blockchainNode.broadcastMessage(
                                 new VoteMessage(
                                         new PBFTCommitVote<>(this.blockchainNode, block)
                                 )
                         );
+                        break;
                 }
             }
         }
