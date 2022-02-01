@@ -25,6 +25,10 @@ Use ```maven``` to make a jar file.
 $ cd jabs
 $ mvn clean install
 ```
+You might need to set ```JAVA_HOME``` to java 8.0 home directory:
+```shell
+$ JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/; mvn clean install
+```
 Then to run the compiled jar file.
 ```shell script
 $ java -jar target/jabs-<version>.jar
