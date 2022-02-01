@@ -12,9 +12,9 @@ JABS is a blockchain network simulator aimed at researching consensus algorithms
   
   
 ## Installation
-First, you should have ```openjdk-14-jdk``` and ```maven``` installed.
+First, you should have ```git```,  ```openjdk-8-jdk``` and ```maven``` installed.
 ```shell script
-$ sudo apt install openjdk-14-jdk maven
+$ sudo apt install git openjdk-8-jdk maven
 ```
 After that, clone the git repository.
 ```shell script
