@@ -6,7 +6,6 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>
-      <element id="library" level="project" name="org.apache.commons:commons-math3:3.6.1" />
     </root>
   </artifact>
 </component>
