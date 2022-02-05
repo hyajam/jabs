@@ -6,7 +6,7 @@
 
   <groupId>ir.ac.ut</groupId>
   <artifactId>jabs</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 
   <name>jabs</name>
   <url>http://hyajam.github.io/jabs/</url>
@@ -95,6 +95,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.3.1</version>
         <configuration>
           <show>private</show>
           <nohelp>true</nohelp>
