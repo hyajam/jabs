@@ -1,9 +1,9 @@
 package jabs.scenario;
 
+import de.siegmar.fastcsv.writer.CsvWriter;
 import jabs.network.BlockchainNetwork;
 import jabs.network.EthereumGlobalBlockchainNetwork;
 import jabs.node.nodes.BlockchainNode;
-import jabs.random.Random;
 
 import static jabs.event.EventFactory.createBlockGenerationEvents;
 import static jabs.event.EventFactory.createTxGenerationEvents;
@@ -17,8 +17,8 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
     private final long txGenerationRate;
     private final long blockGenerationRate;
 
-    public NormalEthereumNetworkScenario(long seed, int numOfMiners, int numOfNonMiners, long simulationStopTime, long txGenerationRate, long blockGenerationRate) {
-        this.random = new Random(seed);
+    public NormalEthereumNetworkScenario(long seed, CsvWriter outCSV, int numOfMiners, int numOfNonMiners, long simulationStopTime, long txGenerationRate, long blockGenerationRate) {
+        super(seed, outCSV);
         this.numOfMiners = numOfMiners;
         this.numOfNonMiners = numOfNonMiners;
         this.simulationStopTime = simulationStopTime;
@@ -51,5 +51,25 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
     @Override
     public void finishSimulation() {
 
+    }
+
+    @Override
+    protected boolean csvOutputConditionBeforeEvent() {
+        return false;
+    }
+
+    @Override
+    protected boolean csvOutputConditionAfterEvent() {
+        return false;
+    }
+
+    @Override
+    protected String[] csvHeaderOutput() {
+        return new String[0];
+    }
+
+    @Override
+    protected String[] csvLineOutput() {
+        return new String[0];
     }
 }
