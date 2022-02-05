@@ -1,5 +1,6 @@
 package jabs.scenario;
 
+import de.siegmar.fastcsv.writer.CsvWriter;
 import jabs.consensus.DAGsper;
 import jabs.consensus.DeterministicFinalityConsensus;
 import jabs.event.PacketDeliveryEvent;
@@ -9,7 +10,6 @@ import jabs.network.DAGsperGlobalBlockchainNetwork;
 import jabs.network.GlobalBlockchainNetwork;
 import jabs.node.nodes.BlockchainNode;
 import jabs.node.nodes.Node;
-import jabs.random.Random;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 import static jabs.event.EventFactory.createBlockGenerationEvents;
@@ -28,9 +28,9 @@ public class EthereumDAGsperNetworkScenario extends AbstractScenario {
     private final double txGenerationRate;
     private final double blockGenerationRate;
 
-    public EthereumDAGsperNetworkScenario(long seed, int numOfMiners, int numOfNonMiners, int checkpointSpace,
+    public EthereumDAGsperNetworkScenario(long seed, CsvWriter outCSV, int numOfMiners, int numOfNonMiners, int checkpointSpace,
                                           long simulationStopTime, double txGenerationRate, double blockGenerationRate) {
-        this.random = new Random(seed);
+        super(seed, outCSV);
         this.numOfMiners = numOfMiners;
         this.numOfNonMiners = numOfNonMiners;
         this.checkpointSpace = checkpointSpace;
@@ -89,5 +89,25 @@ public class EthereumDAGsperNetworkScenario extends AbstractScenario {
         System.out.printf("Standard Deviation Finalization Time : %s ms\n", blockFinalizationTimes.getStandardDeviation());
         System.out.printf("Total Vote Traffic : %s byte\n", totalVoteMassageTraffic);
         System.out.printf("Percentage of Finalized Blocks: %s\n", ((double) ((DeterministicFinalityConsensus) ((BlockchainNode) network.getNode(0)).getConsensusAlgorithm()).getNumOfFinalizedBlocks()) / ((double) ((BlockchainNode) network.getNode(0)).numberOfAlreadySeenBlocks()));
+    }
+
+    @Override
+    protected boolean csvOutputConditionBeforeEvent() {
+        return false;
+    }
+
+    @Override
+    protected boolean csvOutputConditionAfterEvent() {
+        return false;
+    }
+
+    @Override
+    protected String[] csvHeaderOutput() {
+        return new String[0];
+    }
+
+    @Override
+    protected String[] csvLineOutput() {
+        return new String[0];
     }
 }

@@ -1,5 +1,6 @@
 package jabs.scenario;
 
+import de.siegmar.fastcsv.writer.CsvWriter;
 import jabs.consensus.CasperFFG;
 import jabs.consensus.DeterministicFinalityConsensus;
 import jabs.event.PacketDeliveryEvent;
@@ -9,7 +10,6 @@ import jabs.network.CasperFFGGlobalBlockchainNetwork;
 import jabs.network.GlobalBlockchainNetwork;
 import jabs.node.nodes.BlockchainNode;
 import jabs.node.nodes.Node;
-import jabs.random.Random;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 import static jabs.event.EventFactory.createBlockGenerationEvents;
@@ -27,9 +27,9 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
     long totalVoteMassageTraffic = 0;
     DescriptiveStatistics blockFinalizationTimes = new DescriptiveStatistics();
 
-    public EthereumCasperNetworkScenario(long seed, int numOfMiners, int numOfNonMiners, int checkpointSpace,
+    public EthereumCasperNetworkScenario(long seed, CsvWriter outCSV, int numOfMiners, int numOfNonMiners, int checkpointSpace,
                                          long simulationStopTime, double txGenerationRate, double blockGenerationRate) {
-        this.random = new Random(seed);
+        super(seed, outCSV);
         this.numOfMiners = numOfMiners;
         this.numOfNonMiners = numOfNonMiners;
         this.checkpointSpace = checkpointSpace;
@@ -61,15 +61,6 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
                 totalVoteMassageTraffic += ((PacketDeliveryEvent) simulator.peekEvent()).packet.getSize();
             }
         }
-//        if (simulator.getCurrentTime() - 10000 >= simulationTime) {
-//            simulationTime = simulator.getCurrentTime();
-//            System.out.printf("\rsimulation time: %s, number of already seen blocks for miner 0: %s, number of finalized blocks: %s\n",
-//                    simulationTime,
-//                    ((BlockchainNode) network.getAllNodes().get(0)).numberOfAlreadySeenBlocks()
-//                    , ((DeterministicFinalityConsensus)
-//                            ((BlockchainNode) network.getAllNodes().get(0)).getConsensusAlgorithm()
-//                    ).getNumOfFinalizedBlocks());
-//        }
         return (simulator.getCurrentTime() > simulationStopTime*1000);
     }
 
@@ -89,5 +80,25 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
         System.out.printf("Standard Deviation Finalization Time : %s ms\n", blockFinalizationTimes.getStandardDeviation());
         System.out.printf("Total Vote Traffic : %s byte\n", totalVoteMassageTraffic);
         System.out.printf("Percentage of Finalized Blocks: %s\n", ((double) ((DeterministicFinalityConsensus) ((BlockchainNode) network.getNode(0)).getConsensusAlgorithm()).getNumOfFinalizedBlocks()) / ((double) ((BlockchainNode) network.getNode(0)).numberOfAlreadySeenBlocks()));
+    }
+
+    @Override
+    protected boolean csvOutputConditionBeforeEvent() {
+        return false; // never output anything before execution of events
+    }
+
+    @Override
+    protected boolean csvOutputConditionAfterEvent() {
+        return true; // always output one line to CSV file after execution of an event
+    }
+
+    @Override
+    protected String[] csvHeaderOutput() {
+        return new String[0];
+    }
+
+    @Override
+    protected String[] csvLineOutput() {
+        return new String[0];
     }
 }
