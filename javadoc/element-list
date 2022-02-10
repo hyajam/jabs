@@ -9,6 +9,7 @@ jabs.data.dagsper
 jabs.data.ethereum
 jabs.data.pbft
 jabs.event
+jabs.log
 jabs.message
 jabs.network
 jabs.node
@@ -17,6 +18,6 @@ jabs.node.nodes.bitcoin
 jabs.node.nodes.ethereum
 jabs.node.nodes.pbft
 jabs.p2p
-jabs.random
+jabs.randengine
 jabs.scenario
 jabs.simulator

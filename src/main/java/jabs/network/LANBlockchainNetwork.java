@@ -1,20 +1,20 @@
 package jabs.network;
 
 import jabs.node.nodes.Node;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 
 public abstract class LANBlockchainNetwork extends BlockchainNetwork {
     public static final double GLOBAL_LATENCY_BY_REGION = 2; // 2ms
     public static final double LATENCY_PARETO_SHAPE = 5;
 
-    public LANBlockchainNetwork(Random random) {
-        super(random);
+    public LANBlockchainNetwork(RandomnessEngine randomnessEngine) {
+        super(randomnessEngine);
     }
 
     @Override
     public long getLatency(Node from, Node to) {
         double scale = ((LATENCY_PARETO_SHAPE-1)/LATENCY_PARETO_SHAPE) * GLOBAL_LATENCY_BY_REGION;
-        return random.sampleParetoDistribution(scale, LATENCY_PARETO_SHAPE);
+        return randomnessEngine.sampleParetoDistribution(scale, LATENCY_PARETO_SHAPE);
     }
 
     @Override

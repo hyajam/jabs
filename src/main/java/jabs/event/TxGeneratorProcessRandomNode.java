@@ -1,14 +1,14 @@
 package jabs.event;
 
 import jabs.network.Network;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 public class TxGeneratorProcessRandomNode extends AbstractTxGeneratorProcess {
     protected final Network network;
 
-    public TxGeneratorProcessRandomNode(Simulator simulator, Network network, Random random, long averageTimeBetweenTxs) {
-        super(simulator, random, averageTimeBetweenTxs);
+    public TxGeneratorProcessRandomNode(Simulator simulator, Network network, RandomnessEngine randomnessEngine, long averageTimeBetweenTxs) {
+        super(simulator, randomnessEngine, averageTimeBetweenTxs);
         this.network = network;
     }
 

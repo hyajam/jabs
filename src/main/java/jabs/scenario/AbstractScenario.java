@@ -1,15 +1,25 @@
 package jabs.scenario;
 
-import de.siegmar.fastcsv.writer.CsvWriter;
+import jabs.log.AbstractLogger;
 import jabs.network.Network;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
+
+import java.io.IOException;
 
 public abstract class AbstractScenario {
     protected Network network;
-    public Simulator simulator;
-    protected Random random;
-    protected CsvWriter outCSV;
+    protected Simulator simulator;
+    protected RandomnessEngine randomnessEngine;
+    protected AbstractLogger logger;
+
+    public Network getNetwork() {
+        return this.network;
+    }
+
+    public Simulator getSimulator() {
+        return this.simulator;
+    }
 
     /**
      * Create the network and set up the simulation environment.
@@ -28,45 +38,14 @@ public abstract class AbstractScenario {
     abstract protected boolean simulationStopCondition();
 
     /**
-     * It executes when simulation is ended. It could be used to output final results.
-     */
-    abstract protected void finishSimulation();
-
-    /**
-     * If return value is true, then one line will be written to the csv output.
-     * this run before event execution.
-     * @return true if one line should be written to the output CSV file.
-     */
-    abstract protected boolean csvOutputConditionBeforeEvent();
-
-    /**
-     * If return value is true, then one line will be written to the csv output.
-     * this run after event execution.
-     * @return true if one line should be written to the output CSV file.
-     */
-    abstract protected boolean csvOutputConditionAfterEvent();
-
-    /**
-     * First line of CSV file which has the header information
-     * @return list of header names to output
-     */
-    abstract protected String[] csvHeaderOutput();
-
-    /**
-     * If the CSV Output is true the returned value of this function will be written to csv output file
-     * @return list of strings to output
-     */
-    abstract protected String[] csvLineOutput();
-
-    /**
      * creates an abstract scenario
-     * @param seed this value gives the simulation a random seed
-     * @param outCSV this is output file of the scenario
+     * @param seed this value gives the simulation a randomnessEngine seed
+     * @param logger this is output log of the scenario
      */
-    public AbstractScenario(long seed, CsvWriter outCSV) {
-        this.random = new Random(seed);
+    public AbstractScenario(long seed, AbstractLogger logger) {
+        this.randomnessEngine = new RandomnessEngine(seed);
         simulator = new Simulator();
-        this.outCSV = outCSV;
+        this.logger = logger;
     }
 
     // TODO: add timed output that shows simulation is running...
@@ -74,21 +53,20 @@ public abstract class AbstractScenario {
     /**
      * When called starts the simulation and runs everything to the end of simulation
      */
-    public void run() {
+    public void run() throws IOException {
+        System.err.printf("Staring %s...\n", this.getClass().getSimpleName());
         this.createNetwork();
         this.insertInitialEvents();
 
-        outCSV.writeRow(this.csvHeaderOutput());
+        logger.setScenario(this);
+        logger.initialLog();
         while (simulator.thereIsMoreEvents() && !this.simulationStopCondition()) {
-            if (this.csvOutputConditionBeforeEvent()) {
-                outCSV.writeRow(this.csvLineOutput());
-            }
+            logger.logBeforeEvent();
             simulator.executeNextEvent();
-            if (this.csvOutputConditionAfterEvent()) {
-                outCSV.writeRow(this.csvLineOutput());
-            }
+            logger.logAfterEvent();
         }
+        logger.finalLog();
 
-        this.finishSimulation();
+        System.err.printf("Finished %s.\n", this.getClass().getSimpleName());
     }
 }

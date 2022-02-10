@@ -1,12 +1,12 @@
 package jabs.event;
 
 import jabs.node.nodes.Node;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 public class TxGeneratorProcessFixedNode extends AbstractTxGeneratorProcess {
-    public TxGeneratorProcessFixedNode(Simulator simulator, Random random, Node node, long averageTimeBetweenTxs) {
-        super(simulator, random, averageTimeBetweenTxs);
+    public TxGeneratorProcessFixedNode(Simulator simulator, RandomnessEngine randomnessEngine, Node node, long averageTimeBetweenTxs) {
+        super(simulator, randomnessEngine, averageTimeBetweenTxs);
         this.node = node;
     }
 
