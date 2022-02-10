@@ -3,7 +3,7 @@ package jabs.event;
 import jabs.message.Packet;
 import jabs.network.Network;
 import jabs.node.nodes.Node;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 import java.util.PriorityQueue;
@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
 public abstract class AbstractPacketProcessor implements Event {
     protected final Simulator simulator;
     protected final Network network;
-    protected final Random random;
+    protected final RandomnessEngine randomnessEngine;
     protected final PriorityQueue<TimedPacket> packetsQueue = new PriorityQueue<>();
 
     private static class TimedPacket implements Comparable<TimedPacket> {
@@ -30,10 +30,10 @@ public abstract class AbstractPacketProcessor implements Event {
 
     public final Node node;
 
-    public AbstractPacketProcessor(Simulator simulator, Network network, Random random, Node node) {
+    public AbstractPacketProcessor(Simulator simulator, Network network, RandomnessEngine randomnessEngine, Node node) {
         this.simulator = simulator;
         this.network = network;
-        this.random = random;
+        this.randomnessEngine = randomnessEngine;
         this.node = node;
     }
 

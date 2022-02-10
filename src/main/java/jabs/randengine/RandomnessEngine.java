@@ -1,4 +1,4 @@
-package jabs.random;
+package jabs.randengine;
 
 import org.apache.commons.math3.distribution.ExponentialDistribution;
 import org.apache.commons.math3.distribution.ParetoDistribution;
@@ -7,8 +7,8 @@ import org.apache.commons.math3.random.MersenneTwister;
 import java.util.Collections;
 import java.util.List;
 
-public class Random extends MersenneTwister {
-    public Random(long seed) {
+public class RandomnessEngine extends MersenneTwister {
+    public RandomnessEngine(long seed) {
         super(seed);
     }
 

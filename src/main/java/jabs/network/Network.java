@@ -1,7 +1,7 @@
 package jabs.network;
 
 import jabs.node.nodes.Node;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 import java.util.ArrayList;
@@ -9,14 +9,14 @@ import java.util.List;
 
 public abstract class Network {
     protected final List<Node> nodes = new ArrayList<>();
-    protected final Random random;
+    protected final RandomnessEngine randomnessEngine;
 
-    protected Network(Random random) {
-        this.random = random;
+    protected Network(RandomnessEngine randomnessEngine) {
+        this.randomnessEngine = randomnessEngine;
     }
 
     public Node getRandomNode() {
-        return nodes.get(random.sampleInt(nodes.size()));
+        return nodes.get(randomnessEngine.sampleInt(nodes.size()));
     }
 
     public List<Node> getAllNodes() {
@@ -41,8 +41,8 @@ public abstract class Network {
         nodes.add(node);
     }
 
-    public Random getRandom() {
-        return this.random;
+    public RandomnessEngine getRandom() {
+        return this.randomnessEngine;
     }
 }
 

@@ -2,12 +2,12 @@ package jabs.network;
 
 import jabs.node.nodes.Node;
 import jabs.node.nodes.pbft.PBFTNode;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 public class PBFTLocalLANNetwork extends LANBlockchainNetwork {
-    public PBFTLocalLANNetwork(Random random) {
-        super(random);
+    public PBFTLocalLANNetwork(RandomnessEngine randomnessEngine) {
+        super(randomnessEngine);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class PBFTLocalLANNetwork extends LANBlockchainNetwork {
 
 
     public int sampleBlockSize() {
-        return (int) random.sampleDistributionWithBins(BITCOIN_BLOCK_SIZE_2020, BITCOIN_BLOCK_SIZE_2020_BINS);
+        return (int) randomnessEngine.sampleDistributionWithBins(BITCOIN_BLOCK_SIZE_2020, BITCOIN_BLOCK_SIZE_2020_BINS);
     }
 
 

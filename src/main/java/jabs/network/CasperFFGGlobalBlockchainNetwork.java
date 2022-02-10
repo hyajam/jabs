@@ -3,14 +3,14 @@ package jabs.network;
 import jabs.node.nodes.Node;
 import jabs.node.nodes.ethereum.EthereumCasperMiner;
 import jabs.node.nodes.ethereum.EthereumCasperNode;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 public class CasperFFGGlobalBlockchainNetwork extends EthereumGlobalBlockchainNetwork {
     protected final int checkpointSpace;
 
-    public CasperFFGGlobalBlockchainNetwork(Random random, int checkpointSpace) {
-        super(random);
+    public CasperFFGGlobalBlockchainNetwork(RandomnessEngine randomnessEngine, int checkpointSpace) {
+        super(randomnessEngine);
         this.checkpointSpace = checkpointSpace;
     }
 

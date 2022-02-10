@@ -2,7 +2,7 @@ package jabs.network;
 
 import jabs.node.nodes.MinerNode;
 import jabs.node.nodes.Node;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,8 @@ public abstract class BlockchainNetwork extends Network {
     protected long totalHashPower = 0;
     protected final List<Long> minersHashPower = new ArrayList<>();
 
-    protected BlockchainNetwork(Random random) {
-        super(random);
+    protected BlockchainNetwork(RandomnessEngine randomnessEngine) {
+        super(randomnessEngine);
     }
 
     public List<MinerNode> getAllMiners() {
@@ -35,7 +35,7 @@ public abstract class BlockchainNetwork extends Network {
             hashPowerDistribution[i] = ((double) minersHashPower.get(i)) / ((double) totalHashPower);
         }
 
-        return miners.get(random.sampleFromDistribution(hashPowerDistribution));
+        return miners.get(randomnessEngine.sampleFromDistribution(hashPowerDistribution));
     }
 
     public void addMiner(MinerNode node) {

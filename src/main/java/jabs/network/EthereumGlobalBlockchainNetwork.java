@@ -3,7 +3,7 @@ package jabs.network;
 import jabs.node.nodes.Node;
 import jabs.node.nodes.ethereum.EthereumMinerNode;
 import jabs.node.nodes.ethereum.EthereumNode;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 import static jabs.config.NetworkStats.ETHEREUM_HASH_POWER_DISTRIBUTION;
@@ -16,8 +16,8 @@ public class EthereumGlobalBlockchainNetwork extends GlobalBlockchainNetwork {
     public static final int ETHEREUM_NUM_NODES_2020 = 6203;
     public static final int ETHEREUM_NUM_MINERS_2020 = 56;
 
-    public EthereumGlobalBlockchainNetwork(Random random) {
-        super(random);
+    public EthereumGlobalBlockchainNetwork(RandomnessEngine randomnessEngine) {
+        super(randomnessEngine);
     }
 
     @Override
@@ -58,17 +58,17 @@ public class EthereumGlobalBlockchainNetwork extends GlobalBlockchainNetwork {
 
     @Override
     public int sampleRegion() {
-        return random.sampleFromDistribution(ETHEREUM_REGION_DISTRIBUTION_2020);
+        return randomnessEngine.sampleFromDistribution(ETHEREUM_REGION_DISTRIBUTION_2020);
     }
 
     @Override
     public int sampleMinerRegion() {
-        return random.sampleFromDistribution(ETHEREUM_MINER_REGION_DISTRIBUTION_2020);
+        return randomnessEngine.sampleFromDistribution(ETHEREUM_MINER_REGION_DISTRIBUTION_2020);
     }
 
     @Override
     protected long sampleHashPower() {
-        return random.sampleDistributionWithBins(ETHEREUM_HASH_POWER_DISTRIBUTION, ETHEREUM_HASH_POWER_DISTRIBUTION_BIN);
+        return randomnessEngine.sampleDistributionWithBins(ETHEREUM_HASH_POWER_DISTRIBUTION, ETHEREUM_HASH_POWER_DISTRIBUTION_BIN);
     }
 
 }

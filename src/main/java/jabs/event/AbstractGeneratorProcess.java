@@ -1,16 +1,16 @@
 package jabs.event;
 
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 public abstract class AbstractGeneratorProcess implements Event {
     private final long averageTimeBetweenGenerations;
     protected final Simulator simulator;
-    protected final Random random;
+    protected final RandomnessEngine randomnessEngine;
 
-    public AbstractGeneratorProcess(Simulator simulator, Random random, long averageTimeBetweenGenerations) {
+    public AbstractGeneratorProcess(Simulator simulator, RandomnessEngine randomnessEngine, long averageTimeBetweenGenerations) {
         this.simulator = simulator;
-        this.random = random;
+        this.randomnessEngine = randomnessEngine;
         this.averageTimeBetweenGenerations = averageTimeBetweenGenerations;
     }
 
@@ -25,7 +25,7 @@ public abstract class AbstractGeneratorProcess implements Event {
     }
 
     protected long timeToNextGeneration() {
-        return random.sampleExponentialDistribution(averageTimeBetweenGenerations);
+        return randomnessEngine.sampleExponentialDistribution(averageTimeBetweenGenerations);
     }
 
     protected abstract void generate();
