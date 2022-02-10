@@ -2,7 +2,7 @@ package jabs.network;
 
 import jabs.node.nodes.MinerNode;
 import jabs.node.nodes.Node;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 import java.util.ArrayList;
@@ -54,12 +54,12 @@ public abstract class GlobalBlockchainNetwork extends BlockchainNetwork {
 
     public static final double LATENCY_PARETO_SHAPE = 5;
 
-    public GlobalBlockchainNetwork(Random random) {
-        super(random);
+    public GlobalBlockchainNetwork(RandomnessEngine randomnessEngine) {
+        super(randomnessEngine);
     }
 
     private long sampleBandwidthByRegion(int region, double[][] dist, long[] bins) {
-        return random.sampleDistributionWithBins(dist[region], bins);
+        return randomnessEngine.sampleDistributionWithBins(dist[region], bins);
     }
 
     // latency by pareto distribution
@@ -67,7 +67,7 @@ public abstract class GlobalBlockchainNetwork extends BlockchainNetwork {
     public long getLatency(Node from, Node to) {
         double mean = GLOBAL_LATENCY_BY_REGION[nodeRegion.get(from)][nodeRegion.get(to)];
         double scale = ((LATENCY_PARETO_SHAPE-1)/LATENCY_PARETO_SHAPE) * mean;
-        return random.sampleParetoDistribution(scale, LATENCY_PARETO_SHAPE);
+        return randomnessEngine.sampleParetoDistribution(scale, LATENCY_PARETO_SHAPE);
     }
 
     public long sampleDownloadBandwidth(int region) {

@@ -1,12 +1,12 @@
 package jabs.event;
 
 import jabs.node.nodes.MinerNode;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 public class BlockGeneratorProcessFixedNode extends AbstractBlockGeneratorProcess {
-    public BlockGeneratorProcessFixedNode(Simulator simulator, Random random, MinerNode miner, long averageTimeBetweenBlocks) {
-        super(simulator, random, averageTimeBetweenBlocks);
+    public BlockGeneratorProcessFixedNode(Simulator simulator, RandomnessEngine randomnessEngine, MinerNode miner, long averageTimeBetweenBlocks) {
+        super(simulator, randomnessEngine, averageTimeBetweenBlocks);
     }
 
     @Override

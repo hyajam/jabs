@@ -1,6 +1,6 @@
 package jabs.scenario;
 
-import de.siegmar.fastcsv.writer.CsvWriter;
+import jabs.log.AbstractLogger;
 import jabs.network.BlockchainNetwork;
 import jabs.network.EthereumGlobalBlockchainNetwork;
 import jabs.node.nodes.BlockchainNode;
@@ -17,8 +17,8 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
     private final long txGenerationRate;
     private final long blockGenerationRate;
 
-    public NormalEthereumNetworkScenario(long seed, CsvWriter outCSV, int numOfMiners, int numOfNonMiners, long simulationStopTime, long txGenerationRate, long blockGenerationRate) {
-        super(seed, outCSV);
+    public NormalEthereumNetworkScenario(long seed, AbstractLogger logger, int numOfMiners, int numOfNonMiners, long simulationStopTime, long txGenerationRate, long blockGenerationRate) {
+        super(seed, logger);
         this.numOfMiners = numOfMiners;
         this.numOfNonMiners = numOfNonMiners;
         this.simulationStopTime = simulationStopTime;
@@ -28,13 +28,13 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
 
     @Override
     public void createNetwork() {
-        this.network = new EthereumGlobalBlockchainNetwork(random);
+        this.network = new EthereumGlobalBlockchainNetwork(randomnessEngine);
     }
 
     @Override
     protected void insertInitialEvents() {
-        createTxGenerationEvents(simulator, random, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
-        createBlockGenerationEvents(simulator,random, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
+        createTxGenerationEvents(simulator, randomnessEngine, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
+        createBlockGenerationEvents(simulator, randomnessEngine, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
     }
 
     @Override
@@ -46,30 +46,5 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
                     ((BlockchainNode) network.getAllNodes().get(0)).numberOfAlreadySeenBlocks());
         }
         return (simulator.getCurrentTime() > simulationStopTime*1000);
-    }
-
-    @Override
-    public void finishSimulation() {
-
-    }
-
-    @Override
-    protected boolean csvOutputConditionBeforeEvent() {
-        return false;
-    }
-
-    @Override
-    protected boolean csvOutputConditionAfterEvent() {
-        return false;
-    }
-
-    @Override
-    protected String[] csvHeaderOutput() {
-        return new String[0];
-    }
-
-    @Override
-    protected String[] csvLineOutput() {
-        return new String[0];
     }
 }

@@ -6,7 +6,7 @@ import jabs.event.PacketSendingProcess;
 import jabs.message.Packet;
 import jabs.network.Network;
 import jabs.node.nodes.Node;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 public class NodeNetworkInterface {
@@ -85,11 +85,11 @@ public class NodeNetworkInterface {
     /**
      * Creates two processes (ongoing events) that handle receiving and sending packets and their respective latencies
      * @param network Network in which this network interface operates
-     * @param random Randomness source for simulating randomness in delays
+     * @param randomnessEngine Randomness source for simulating randomness in delays
      */
-    public void connectNetwork(Network network, Random random) {
-        this.messageReceivingProcess = new PacketReceivingProcess(simulator, network, random, node);
-        this.messageSendingProcess = new PacketSendingProcess(simulator, network, random, node);
+    public void connectNetwork(Network network, RandomnessEngine randomnessEngine) {
+        this.messageReceivingProcess = new PacketReceivingProcess(simulator, network, randomnessEngine, node);
+        this.messageSendingProcess = new PacketSendingProcess(simulator, network, randomnessEngine, node);
     }
 
     /**

@@ -3,14 +3,14 @@ package jabs.network;
 import jabs.node.nodes.Node;
 import jabs.node.nodes.ethereum.EthereumDAGsperMiner;
 import jabs.node.nodes.ethereum.EthereumDAGsperNode;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 public class DAGsperGlobalBlockchainNetwork extends EthereumGlobalBlockchainNetwork {
     private final int checkpointSpace;
 
-    public DAGsperGlobalBlockchainNetwork(Random random, int checkpointSpace) {
-        super(random);
+    public DAGsperGlobalBlockchainNetwork(RandomnessEngine randomnessEngine, int checkpointSpace) {
+        super(randomnessEngine);
         this.checkpointSpace = checkpointSpace;
     }
 

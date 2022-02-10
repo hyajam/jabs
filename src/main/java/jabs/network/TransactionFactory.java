@@ -2,7 +2,7 @@ package jabs.network;
 
 import jabs.data.bitcoin.BitcoinTx;
 import jabs.data.ethereum.EthereumTx;
-import jabs.random.Random;
+import jabs.randengine.RandomnessEngine;
 
 public final class TransactionFactory {
 
@@ -15,8 +15,8 @@ public final class TransactionFactory {
             87, 91, 96, 124, 166, 199, 263, 391, 647, 1159, 2183, 4231, 8327, 16519, 32940, 73141, 270464
     };
 
-    public static BitcoinTx sampleBitcoinTransaction(Random random) {
-        return new BitcoinTx((int) random.sampleDistributionWithBins(
+    public static BitcoinTx sampleBitcoinTransaction(RandomnessEngine randomnessEngine) {
+        return new BitcoinTx((int) randomnessEngine.sampleDistributionWithBins(
                 BITCOIN_TRANSACTION_SIZE_DISTRIBUTION, BITCOIN_TRANSACTION_SIZE_BINS));
     }
 
@@ -43,11 +43,11 @@ public final class TransactionFactory {
 
     public static final long ETHEREUM_MIN_DIFFICULTY = 17146335232L;
 
-    public static EthereumTx sampleEthereumTransaction(Random random) {
+    public static EthereumTx sampleEthereumTransaction(RandomnessEngine randomnessEngine) {
         return new EthereumTx(
-                (int) random.sampleDistributionWithBins(
+                (int) randomnessEngine.sampleDistributionWithBins(
                         ETHEREUM_TRANSACTION_SIZE_DISTRIBUTION, ETHEREUM_TRANSACTION_SIZE_BINS),
-                (int) random.sampleDistributionWithBins(
+                (int) randomnessEngine.sampleDistributionWithBins(
                         BITCOIN_TRANSACTION_GAS_DISTRIBUTION, ETHEREUM_TRANSACTION_GAS_BINS));
     }
 
