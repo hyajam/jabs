@@ -13,8 +13,8 @@ public class PBFTLANScenario extends AbstractScenario {
     protected int numNodes;
     protected long simulationStopTime;
 
-    public PBFTLANScenario(long seed, AbstractLogger logger, int numNodes, long simulationStopTime) {
-        super(seed, logger);
+    public PBFTLANScenario(String name, long seed, AbstractLogger logger, int numNodes, long simulationStopTime) {
+        super(name, seed, logger);
         this.numNodes = numNodes;
         this.simulationStopTime = simulationStopTime;
     }

@@ -18,7 +18,7 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
     private final long blockGenerationRate;
 
     public NormalEthereumNetworkScenario(long seed, AbstractLogger logger, int numOfMiners, int numOfNonMiners, long simulationStopTime, long txGenerationRate, long blockGenerationRate) {
-        super(seed, logger);
+        super("Normal Ethereum Network", seed, logger);
         this.numOfMiners = numOfMiners;
         this.numOfNonMiners = numOfNonMiners;
         this.simulationStopTime = simulationStopTime;

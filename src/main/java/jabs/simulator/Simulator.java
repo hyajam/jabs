@@ -4,7 +4,8 @@ import jabs.event.Event;
 import java.util.PriorityQueue;
 
 /**
- * An discrete time event-based simulator with event queue
+ * @author habib
+ * A discrete time event-based simulator with event queue
  */
 public class Simulator {
 

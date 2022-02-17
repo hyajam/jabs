@@ -29,7 +29,7 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
 
     public EthereumCasperNetworkScenario(long seed, AbstractLogger logger, int numOfMiners, int numOfNonMiners, int checkpointSpace,
                                          long simulationStopTime, double txGenerationRate, double blockGenerationRate) {
-        super(seed, logger);
+        super("Ethereum Casper Network", seed, logger);
         this.numOfMiners = numOfMiners;
         this.numOfNonMiners = numOfNonMiners;
         this.checkpointSpace = checkpointSpace;
