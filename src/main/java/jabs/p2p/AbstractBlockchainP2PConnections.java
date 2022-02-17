@@ -6,6 +6,9 @@ import jabs.node.nodes.Node;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author habib yajam
+ */
 public abstract class AbstractBlockchainP2PConnections extends AbstractP2PConnections {
     protected final int numOutboundConnections;
     private final int maxConnections;

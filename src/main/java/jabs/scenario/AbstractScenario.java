@@ -7,16 +7,32 @@ import jabs.simulator.Simulator;
 
 import java.io.IOException;
 
+/**
+ * An abstract class for defining a scenario.
+ *
+ */
 public abstract class AbstractScenario {
+    /**
+     * network which is being used for simulation
+     */
     protected Network network;
     protected Simulator simulator;
     protected RandomnessEngine randomnessEngine;
     protected AbstractLogger logger;
+    final String name;
 
+    /**
+     * Returns the network of the scenario. This is being used for accessing nodes inside the network.
+     * @return network of this scenario
+     */
     public Network getNetwork() {
         return this.network;
     }
 
+    /**
+     * Returns the simulator object that the scenario is using. This can be used to access the events in simulator.
+     * @return simulator object of the scenario
+     */
     public Simulator getSimulator() {
         return this.simulator;
     }
@@ -38,12 +54,13 @@ public abstract class AbstractScenario {
     abstract protected boolean simulationStopCondition();
 
     /**
-     * creates an abstract scenario
+     * creates an abstract scenario with a user defined name
      * @param seed this value gives the simulation a randomnessEngine seed
      * @param logger this is output log of the scenario
      */
-    public AbstractScenario(long seed, AbstractLogger logger) {
+    public AbstractScenario(String name, long seed, AbstractLogger logger) {
         this.randomnessEngine = new RandomnessEngine(seed);
+        this.name = name;
         simulator = new Simulator();
         this.logger = logger;
     }

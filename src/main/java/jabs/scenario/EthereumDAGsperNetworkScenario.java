@@ -29,7 +29,7 @@ public class EthereumDAGsperNetworkScenario extends AbstractScenario {
 
     public EthereumDAGsperNetworkScenario(long seed, AbstractLogger logger, int numOfMiners, int numOfNonMiners, int checkpointSpace,
                                           long simulationStopTime, double txGenerationRate, double blockGenerationRate) {
-        super(seed, logger);
+        super("Ethereum DAGsper Network", seed, logger);
         this.numOfMiners = numOfMiners;
         this.numOfNonMiners = numOfNonMiners;
         this.checkpointSpace = checkpointSpace;
