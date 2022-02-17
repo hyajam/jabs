@@ -2,6 +2,7 @@ package jabs.log;
 
 import de.siegmar.fastcsv.writer.CsvWriter;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Path;
@@ -90,6 +91,7 @@ public abstract class AbstractCSVLogger extends AbstractLogger {
      * @param path this is output path of CSV file
      */
     public AbstractCSVLogger(Path path) throws IOException {
+        path.toFile().getParentFile().mkdirs();
         this.loggerCSV = CsvWriter.builder().build(path);
     }
 }
