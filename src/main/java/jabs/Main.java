@@ -13,7 +13,7 @@ public class Main {
 
         PBFTCSVLogger logger = new PBFTCSVLogger(Paths.get("_output/simulation-log.csv"));
 
-        scenario = new PBFTLANScenario("PBFT Network with 4 nodes",1234, logger, 4, 10000);
+        scenario = new PBFTLANScenario("PBFT Network with 4 nodes",3214, logger, 4000, 1000000);
         scenario.run();
     }
 }
