@@ -4,11 +4,11 @@ import jabs.node.nodes.Node;
 
 public abstract class Block<B extends Block<B>> extends Data implements Comparable<Block<B>> {
     private final int height;
-    private final long creationTime;
+    private final double creationTime;
     private final B parent;
     private final Node creator;
 
-    protected Block(int size, int height, long creationTime, Node creator, B parent, int hashSize) {
+    protected Block(int size, int height, double creationTime, Node creator, B parent, int hashSize) {
         super(size, hashSize);
         this.height = height;
         this.creationTime = creationTime;
@@ -20,7 +20,7 @@ public abstract class Block<B extends Block<B>> extends Data implements Comparab
         return this.height;
     }
 
-    public long getCreationTime() {
+    public double getCreationTime() {
         return this.creationTime;
     }
 

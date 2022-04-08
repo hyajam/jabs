@@ -16,15 +16,15 @@ public abstract class AbstractPacketProcessor implements Event {
 
     private static class TimedPacket implements Comparable<TimedPacket> {
         private final Packet packet;
-        private final long time;
+        private final double time;
 
-        private TimedPacket(Packet packet, long time){
+        private TimedPacket(Packet packet, double time){
             this.packet = packet;
             this.time = time;
         }
 
         public int compareTo(TimedPacket o) {
-            return Long.compare(this.time, o.time);
+            return Double.compare(this.time, o.time);
         }
     }
 
