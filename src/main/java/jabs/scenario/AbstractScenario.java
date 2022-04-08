@@ -6,6 +6,7 @@ import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * An abstract class for defining a scenario.
@@ -19,6 +20,7 @@ public abstract class AbstractScenario {
     protected Simulator simulator;
     protected RandomnessEngine randomnessEngine;
     protected AbstractLogger logger;
+    long progressMessageIntervals;
     final String name;
 
     /**
@@ -63,9 +65,16 @@ public abstract class AbstractScenario {
         this.name = name;
         simulator = new Simulator();
         this.logger = logger;
+        this.progressMessageIntervals = TimeUnit.SECONDS.toNanos(2);
     }
 
-    // TODO: add timed output that shows simulation is running...
+    /**
+     * Sets the interval between two in progress messages
+     * @param progressMessageIntervals the progress message interval described in nanoseconds
+     */
+    public void setProgressMessageIntervals(long progressMessageIntervals) {
+        this.progressMessageIntervals = progressMessageIntervals;
+    }
 
     /**
      * When called starts the simulation and runs everything to the end of simulation
@@ -77,10 +86,18 @@ public abstract class AbstractScenario {
 
         logger.setScenario(this);
         logger.initialLog();
+        long simulationStartingTime = System.nanoTime();
+        long lastProgressMessageTime = simulationStartingTime;
         while (simulator.thereIsMoreEvents() && !this.simulationStopCondition()) {
             logger.logBeforeEvent();
             simulator.executeNextEvent();
             logger.logAfterEvent();
+            if (System.nanoTime() - lastProgressMessageTime > this.progressMessageIntervals) {
+                System.err.printf("Simulation in progress. Elapsed Real Time: %d, Elapsed Simulation Time: %.0f\n",
+                        TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - simulationStartingTime),
+                        this.simulator.getCurrentTime() / 1000);
+                lastProgressMessageTime = System.nanoTime();
+            }
         }
         logger.finalLog();
 

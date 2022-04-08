@@ -19,7 +19,7 @@ public class Simulator {
     /**
      * The simulation execution time of the most recent event
      */
-    private long currentTime = 0L;
+    private double currentTime = 0L;
 
     /**
      * Number of events inserted in the event queue till now (whether simulated
@@ -40,7 +40,7 @@ public class Simulator {
         /**
          * Simulation execution time of the event
          */
-        private final long time;
+        private final double time;
 
         /**
          * Event ID (insertion number in event queue)
@@ -54,7 +54,7 @@ public class Simulator {
          * @param time execution time of the event
          * @param number the ID of the event (insertion number)
          */
-        private ScheduledEvent(Event event, long time, long number){
+        private ScheduledEvent(Event event, double time, long number){
             this.event = event;
             this.time = time;
             this.number = number;
@@ -71,7 +71,7 @@ public class Simulator {
          *
          * @return the execution time of the event
          */
-        private long getTime(){ return this.time; }
+        private double getTime(){ return this.time; }
 
         /**
          * This function is used by the priority queue to sort the scheduled events
@@ -132,7 +132,7 @@ public class Simulator {
      * @param remainingTimeToExecution The time remaining to execution time of
      *                                 the event.
      */
-    public void putEvent(Event event, long remainingTimeToExecution){
+    public void putEvent(Event event, double remainingTimeToExecution){
         ScheduledEvent sEvent = new ScheduledEvent(event, currentTime + remainingTimeToExecution, insertedEvents);
         eventQueue.add(sEvent);
         insertedEvents++;
@@ -142,7 +142,7 @@ public class Simulator {
      * Returns the simulation time that the latest event has executed
      * @return Simulation time of the latest simulated event
      */
-    public long getCurrentTime() { return currentTime; }
+    public double getCurrentTime() { return currentTime; }
 
     /**
      * Clears the event queue from any more events. Restarts the current time of

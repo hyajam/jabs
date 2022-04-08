@@ -9,7 +9,7 @@ import static jabs.event.EventFactory.createBlockGenerationEvents;
 import static jabs.event.EventFactory.createTxGenerationEvents;
 
 public class NormalEthereumNetworkScenario extends AbstractScenario {
-    long simulationTime = 0;
+    double simulationTime = 0;
 
     private final int numOfMiners;
     private final int numOfNonMiners;
