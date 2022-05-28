@@ -33,6 +33,6 @@ public abstract class Block<B extends Block<B>> extends Data implements Comparab
     }
 
     public int compareTo(Block<B> b) {
-        return Long.compare(this.height, b.getHeight());
+        return Integer.compare(this.height, b.getHeight());
     }
 }

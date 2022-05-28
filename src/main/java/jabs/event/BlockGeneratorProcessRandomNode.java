@@ -7,7 +7,7 @@ import jabs.simulator.Simulator;
 public class BlockGeneratorProcessRandomNode extends AbstractBlockGeneratorProcess {
     private final BlockchainNetwork network;
 
-    public BlockGeneratorProcessRandomNode(Simulator simulator, RandomnessEngine randomnessEngine, BlockchainNetwork network, long averageTimeBetweenBlocks) {
+    public BlockGeneratorProcessRandomNode(Simulator simulator, RandomnessEngine randomnessEngine, BlockchainNetwork network, double averageTimeBetweenBlocks) {
         super(simulator, randomnessEngine, averageTimeBetweenBlocks);
         this.network = network;
     }

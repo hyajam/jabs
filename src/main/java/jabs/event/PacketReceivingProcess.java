@@ -17,8 +17,8 @@ public class PacketReceivingProcess extends AbstractPacketProcessor {
         this.node.processIncomingPacket(packet);
     }
 
-    public long processingTime(Packet packet) {
-        return ((packet.getSize()*8) / (node.getNodeNetworkInterface().downloadBandwidth/1000)) + PACKET_PROCESSING_TIME;
+    public double processingTime(Packet packet) {
+        return ((packet.getSize()*8) / (((double) node.getNodeNetworkInterface().downloadBandwidth))) + PACKET_PROCESSING_TIME;
     }
 }
 

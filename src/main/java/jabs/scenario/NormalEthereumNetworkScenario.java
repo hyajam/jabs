@@ -13,11 +13,11 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
 
     private final int numOfMiners;
     private final int numOfNonMiners;
-    private final long simulationStopTime;
-    private final long txGenerationRate;
-    private final long blockGenerationRate;
+    private final double simulationStopTime;
+    private final double txGenerationRate;
+    private final double blockGenerationRate;
 
-    public NormalEthereumNetworkScenario(long seed, AbstractLogger logger, int numOfMiners, int numOfNonMiners, long simulationStopTime, long txGenerationRate, long blockGenerationRate) {
+    public NormalEthereumNetworkScenario(long seed, AbstractLogger logger, int numOfMiners, int numOfNonMiners, double simulationStopTime, double txGenerationRate, double blockGenerationRate) {
         super("Normal Ethereum Network", seed, logger);
         this.numOfMiners = numOfMiners;
         this.numOfNonMiners = numOfNonMiners;
@@ -33,8 +33,8 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
 
     @Override
     protected void insertInitialEvents() {
-        createTxGenerationEvents(simulator, randomnessEngine, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
-        createBlockGenerationEvents(simulator, randomnessEngine, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
+        createTxGenerationEvents(simulator, randomnessEngine, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1/txGenerationRate));
+        createBlockGenerationEvents(simulator, randomnessEngine, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1/blockGenerationRate));
     }
 
     @Override

@@ -15,7 +15,7 @@ import static jabs.event.EventFactory.createBlockGenerationEvents;
 import static jabs.event.EventFactory.createTxGenerationEvents;
 
 public class EthereumDAGsperNetworkScenario extends AbstractScenario {
-    long simulationTime = 0;
+    double simulationTime = 0;
     long totalVoteMassageTraffic = 0;
 
     public DescriptiveStatistics blockFinalizationTimes = new DescriptiveStatistics();
@@ -23,12 +23,12 @@ public class EthereumDAGsperNetworkScenario extends AbstractScenario {
     public final int numOfMiners;
     public final int numOfNonMiners;
     public final int checkpointSpace;
-    public final long simulationStopTime;
+    public final double simulationStopTime;
     public final double txGenerationRate;
     public final double blockGenerationRate;
 
     public EthereumDAGsperNetworkScenario(long seed, AbstractLogger logger, int numOfMiners, int numOfNonMiners, int checkpointSpace,
-                                          long simulationStopTime, double txGenerationRate, double blockGenerationRate) {
+                                          double simulationStopTime, double txGenerationRate, double blockGenerationRate) {
         super("Ethereum DAGsper Network", seed, logger);
         this.numOfMiners = numOfMiners;
         this.numOfNonMiners = numOfNonMiners;
@@ -50,8 +50,8 @@ public class EthereumDAGsperNetworkScenario extends AbstractScenario {
 
     @Override
     protected void insertInitialEvents() {
-        createTxGenerationEvents(simulator, randomnessEngine, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
-        createBlockGenerationEvents(simulator, randomnessEngine, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
+        createTxGenerationEvents(simulator, randomnessEngine, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1/txGenerationRate));
+        createBlockGenerationEvents(simulator, randomnessEngine, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1/blockGenerationRate));
     }
 
     @Override

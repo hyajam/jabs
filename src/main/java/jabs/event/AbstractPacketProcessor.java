@@ -56,6 +56,6 @@ public abstract class AbstractPacketProcessor implements Event {
         }
     }
 
-    public abstract long processingTime(Packet packet);
+    public abstract double processingTime(Packet packet);
     protected abstract void sendPacketToNextProcess(Packet packet);
 }

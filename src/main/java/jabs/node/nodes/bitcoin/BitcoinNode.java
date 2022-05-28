@@ -1,10 +1,13 @@
 package jabs.node.nodes.bitcoin;
 
 import jabs.blockchain.LocalBlockTree;
+import jabs.consensus.AbstractBlockchainConsensus;
 import jabs.consensus.NakamotoConsensus;
 import jabs.data.Vote;
 import jabs.data.bitcoin.BitcoinBlock;
 import jabs.data.bitcoin.BitcoinTx;
+import jabs.data.ethereum.EthereumBlock;
+import jabs.data.ethereum.EthereumTx;
 import jabs.message.InvMessage;
 import jabs.message.Packet;
 import jabs.network.Network;
@@ -22,6 +25,12 @@ public class BitcoinNode extends BlockchainNode<BitcoinBlock, BitcoinTx> {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new BitcoinCoreP2P(),
                 new NakamotoConsensus<>(new LocalBlockTree<>(BITCOIN_GENESIS_BLOCK)));
+    }
+
+    public BitcoinNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
+                       AbstractBlockchainConsensus<BitcoinBlock, BitcoinTx>consensusAlgorithm) {
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
+                new BitcoinCoreP2P(), consensusAlgorithm);
     }
 
     @Override
@@ -62,6 +71,8 @@ public class BitcoinNode extends BlockchainNode<BitcoinBlock, BitcoinTx> {
 
     @Override
     public void generateNewTransaction() {
-        broadcastTxInvMessage(TransactionFactory.sampleBitcoinTransaction(network.getRandom()));
+        BitcoinTx tx = TransactionFactory.sampleBitcoinTransaction(network.getRandom());
+        this.alreadySeenTxs.put(tx.getHash(), tx);
+        broadcastTxInvMessage(tx);
     }
 }

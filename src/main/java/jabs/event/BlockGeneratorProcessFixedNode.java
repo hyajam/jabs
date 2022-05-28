@@ -5,7 +5,7 @@ import jabs.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 public class BlockGeneratorProcessFixedNode extends AbstractBlockGeneratorProcess {
-    public BlockGeneratorProcessFixedNode(Simulator simulator, RandomnessEngine randomnessEngine, MinerNode miner, long averageTimeBetweenBlocks) {
+    public BlockGeneratorProcessFixedNode(Simulator simulator, RandomnessEngine randomnessEngine, MinerNode miner, double averageTimeBetweenBlocks) {
         super(simulator, randomnessEngine, averageTimeBetweenBlocks);
     }
 

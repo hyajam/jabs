@@ -59,13 +59,13 @@ public class RandomnessEngine extends MersenneTwister {
         return this.nextDouble() * max;
     }
 
-    public long sampleExponentialDistribution(double averageTimeBetweenGenerations) {
+    public double sampleExponentialDistribution(double averageTimeBetweenGenerations) {
         ExponentialDistribution expDist = new ExponentialDistribution(this, averageTimeBetweenGenerations);
-        return (long) expDist.sample();
+        return expDist.sample();
     }
 
-    public long sampleParetoDistribution(double scale, double shape) {
+    public double sampleParetoDistribution(double scale, double shape) {
         ParetoDistribution pareto = new ParetoDistribution(this, scale, shape);
-        return (long) pareto.sample();
+        return pareto.sample();
     }
 }

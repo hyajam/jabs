@@ -15,11 +15,11 @@ public class PacketSendingProcess extends AbstractPacketProcessor {
 
     protected void sendPacketToNextProcess(Packet packet) {
         PacketDeliveryEvent transfer = new PacketDeliveryEvent(packet);
-        long latency = network.getLatency(packet.getFrom(), packet.getTo());
+        double latency = network.getLatency(packet.getFrom(), packet.getTo());
         simulator.putEvent(transfer, latency);
     }
 
-    public long processingTime(Packet packet) {
-        return ((packet.getSize()*8) / (node.getNodeNetworkInterface().uploadBandwidth/1000)) + PACKET_PROCESSING_TIME;
+    public double processingTime(Packet packet) {
+        return ((packet.getSize()*8) / ((double) node.getNodeNetworkInterface().uploadBandwidth)) + PACKET_PROCESSING_TIME;
     }
 }

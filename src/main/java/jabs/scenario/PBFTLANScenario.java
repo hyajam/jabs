@@ -11,9 +11,9 @@ import static jabs.node.nodes.pbft.PBFTNode.PBFT_GENESIS_BLOCK;
 
 public class PBFTLANScenario extends AbstractScenario {
     protected int numNodes;
-    protected long simulationStopTime;
+    protected double simulationStopTime;
 
-    public PBFTLANScenario(String name, long seed, AbstractLogger logger, int numNodes, long simulationStopTime) {
+    public PBFTLANScenario(String name, long seed, AbstractLogger logger, int numNodes, double simulationStopTime) {
         super(name, seed, logger);
         this.numNodes = numNodes;
         this.simulationStopTime = simulationStopTime;

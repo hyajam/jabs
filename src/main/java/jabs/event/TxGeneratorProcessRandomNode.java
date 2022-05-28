@@ -7,7 +7,7 @@ import jabs.simulator.Simulator;
 public class TxGeneratorProcessRandomNode extends AbstractTxGeneratorProcess {
     protected final Network network;
 
-    public TxGeneratorProcessRandomNode(Simulator simulator, Network network, RandomnessEngine randomnessEngine, long averageTimeBetweenTxs) {
+    public TxGeneratorProcessRandomNode(Simulator simulator, Network network, RandomnessEngine randomnessEngine, double averageTimeBetweenTxs) {
         super(simulator, randomnessEngine, averageTimeBetweenTxs);
         this.network = network;
     }
