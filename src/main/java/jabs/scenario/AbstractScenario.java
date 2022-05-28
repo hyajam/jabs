@@ -24,7 +24,7 @@ public abstract class AbstractScenario {
     final String name;
 
     /**
-     * Returns the network of the scenario. This is being used for accessing nodes inside the network.
+     * Returns the network of the scenario. This can be used for accessing nodes inside the network.
      * @return network of this scenario
      */
     public Network getNetwork() {
@@ -77,10 +77,11 @@ public abstract class AbstractScenario {
     }
 
     /**
-     * When called starts the simulation and runs everything to the end of simulation
+     * When called starts the simulation and runs everything to the end of simulation. This also
+     * logs events using the logger object.
      */
     public void run() throws IOException {
-        System.err.printf("Staring %s...\n", this.getClass().getSimpleName());
+        System.err.printf("Staring %s...\n", this.name);
         this.createNetwork();
         this.insertInitialEvents();
 
@@ -101,6 +102,6 @@ public abstract class AbstractScenario {
         }
         logger.finalLog();
 
-        System.err.printf("Finished %s.\n", this.getClass().getSimpleName());
+        System.err.printf("Finished %s.\n", this.name);
     }
 }

@@ -7,7 +7,7 @@ import jabs.simulator.Simulator;
 public abstract class AbstractBlockGeneratorProcess extends AbstractGeneratorProcess {
     protected MinerNode miner;
 
-    public AbstractBlockGeneratorProcess(Simulator simulator, RandomnessEngine randomnessEngine, long averageTimeBetweenBlocks) {
+    public AbstractBlockGeneratorProcess(Simulator simulator, RandomnessEngine randomnessEngine, double averageTimeBetweenBlocks) {
         super(simulator, randomnessEngine, averageTimeBetweenBlocks);
     }
 

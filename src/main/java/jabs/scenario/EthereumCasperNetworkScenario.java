@@ -18,11 +18,11 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
     public final int numOfMiners;
     public final int numOfNonMiners;
     public final int checkpointSpace;
-    public final long simulationStopTime;
+    public final double simulationStopTime;
     public final double txGenerationRate;
     public final double blockGenerationRate;
 
-    public long simulationTime = 0;
+    public double simulationTime = 0;
     public long totalVoteMassageTraffic = 0;
 
     public DescriptiveStatistics blockFinalizationTimes = new DescriptiveStatistics();
@@ -50,8 +50,8 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
 
     @Override
     protected void insertInitialEvents() {
-        createTxGenerationEvents(simulator, randomnessEngine, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1000/txGenerationRate));
-        createBlockGenerationEvents(simulator, randomnessEngine, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1000/blockGenerationRate));
+        createTxGenerationEvents(simulator, randomnessEngine, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1/txGenerationRate));
+        createBlockGenerationEvents(simulator, randomnessEngine, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1/blockGenerationRate));
     }
 
     @Override

@@ -44,12 +44,12 @@ public abstract class GlobalBlockchainNetwork extends BlockchainNetwork {
     // GLOBAL_LATENCY_BY_REGION[i][j] is average latency from REGION_LIST[i] to REGION_LIST[j]
     // Unit: millisecond
     public static final double[][] GLOBAL_LATENCY_BY_REGION = {
-            { 32, 124, 184, 198, 151, 189},
-            {124,  11, 227, 237, 252, 294},
-            {184, 227,  88, 325, 301, 322},
-            {198, 237, 325,  85,  58, 198},
-            {151, 252, 301,  58,  12, 126},
-            {189, 294, 322, 198, 126,  16}
+            {0.032, 0.124, 0.184, 0.198, 0.151, 0.189},
+            {0.124, 0.011, 0.227, 0.237, 0.252, 0.294},
+            {0.184, 0.227, 0.088, 0.325, 0.301, 0.322},
+            {0.198, 0.237, 0.325, 0.085, 0.058, 0.198},
+            {0.151, 0.252, 0.301, 0.058, 0.012, 0.126},
+            {0.189, 0.294, 0.322, 0.198, 0.126, 0.016}
     };
 
     public static final double LATENCY_PARETO_SHAPE = 5;
@@ -64,7 +64,7 @@ public abstract class GlobalBlockchainNetwork extends BlockchainNetwork {
 
     // latency by pareto distribution
     @Override
-    public long getLatency(Node from, Node to) {
+    public double getLatency(Node from, Node to) {
         double mean = GLOBAL_LATENCY_BY_REGION[nodeRegion.get(from)][nodeRegion.get(to)];
         double scale = ((LATENCY_PARETO_SHAPE-1)/LATENCY_PARETO_SHAPE) * mean;
         return randomnessEngine.sampleParetoDistribution(scale, LATENCY_PARETO_SHAPE);

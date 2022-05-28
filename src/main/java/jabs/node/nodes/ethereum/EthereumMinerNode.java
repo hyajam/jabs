@@ -59,8 +59,6 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
                         this, this, new DataMessage(ethereumBlockWithTx)
                 )
         );
-
-        this.processNewBlock(ethereumBlockWithTx);
     }
 
     public long getHashPower() {

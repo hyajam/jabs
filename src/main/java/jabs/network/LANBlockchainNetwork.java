@@ -12,7 +12,7 @@ public abstract class LANBlockchainNetwork extends BlockchainNetwork {
     }
 
     @Override
-    public long getLatency(Node from, Node to) {
+    public double getLatency(Node from, Node to) {
         double scale = ((LATENCY_PARETO_SHAPE-1)/LATENCY_PARETO_SHAPE) * GLOBAL_LATENCY_BY_REGION;
         return randomnessEngine.sampleParetoDistribution(scale, LATENCY_PARETO_SHAPE);
     }

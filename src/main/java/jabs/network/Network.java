@@ -27,7 +27,7 @@ public abstract class Network {
         return nodes.get(i);
     }
 
-    public abstract long getLatency(Node from, Node to);
+    public abstract double getLatency(Node from, Node to);
 
     public abstract long sampleDownloadBandwidth(int region);
 

@@ -7,7 +7,7 @@ import jabs.simulator.Simulator;
 public abstract class AbstractTxGeneratorProcess extends AbstractGeneratorProcess {
     protected Node node;
 
-    public AbstractTxGeneratorProcess(Simulator simulator, RandomnessEngine randomnessEngine, long averageTimeBetweenTxs) {
+    public AbstractTxGeneratorProcess(Simulator simulator, RandomnessEngine randomnessEngine, double averageTimeBetweenTxs) {
         super(simulator, randomnessEngine, averageTimeBetweenTxs);
     }
 
