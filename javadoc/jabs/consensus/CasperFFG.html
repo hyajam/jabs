@@ -49,8 +49,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../jabs/consensus/ConsensusAlgorithm.html" title="interface in jabs.consensus"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus.algorithm"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../jabs/consensus/ConsensusAlgorithm.html" title="interface in jabs.consensus.algorithm"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/consensus/CasperFFG.html" target="_top">Frames</a></li>
@@ -92,21 +92,21 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">jabs.consensus</div>
-<h2 title="Class CasperFFG" class="title">Class CasperFFG&lt;B extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;B&gt;,T extends <a href="../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;T&gt;&gt;</h2>
+<div class="subTitle">jabs.consensus.algorithm</div>
+<h2 title="Class CasperFFG" class="title">Class CasperFFG&lt;B extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;B&gt;,T extends <a href="../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;T&gt;&gt;</h2>
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus">AbstractConsensusAlgorithm</a>&lt;B,T&gt;</li>
+<li><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus.algorithm">AbstractConsensusAlgorithm</a>&lt;B,T&gt;</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus">AbstractBlockchainConsensus</a>&lt;B,T&gt;</li>
+<li><a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus.algorithm">AbstractBlockchainConsensus</a>&lt;B,T&gt;</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../jabs/consensus/GhostProtocol.html" title="class in jabs.consensus">GhostProtocol</a>&lt;B,T&gt;</li>
+<li><a href="../../jabs/consensus/GhostProtocol.html" title="class in jabs.consensus.algorithm">GhostProtocol</a>&lt;B,T&gt;</li>
 <li>
 <ul class="inheritance">
 <li>CasperFFG&lt;B,T&gt;</li>
@@ -124,13 +124,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../jabs/consensus/ConsensusAlgorithm.html" title="interface in jabs.consensus">ConsensusAlgorithm</a>&lt;B,T&gt;, <a href="../../jabs/consensus/DeterministicFinalityConsensus.html" title="interface in jabs.consensus">DeterministicFinalityConsensus</a>&lt;B,T&gt;, <a href="../../jabs/consensus/VotingBasedConsensus.html" title="interface in jabs.consensus">VotingBasedConsensus</a>&lt;B,T&gt;</dd>
+<dd><a href="../../jabs/consensus/ConsensusAlgorithm.html" title="interface in jabs.consensus.algorithm">ConsensusAlgorithm</a>&lt;B,T&gt;, <a href="../../jabs/consensus/DeterministicFinalityConsensus.html" title="interface in jabs.consensus.algorithm">DeterministicFinalityConsensus</a>&lt;B,T&gt;, <a href="../../jabs/consensus/VotingBasedConsensus.html" title="interface in jabs.consensus.algorithm">VotingBasedConsensus</a>&lt;B,T&gt;</dd>
 </dl>
 <hr>
 <br>
-<pre>public class <span class="typeNameLabel">CasperFFG&lt;B extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;B&gt;,T extends <a href="../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;T&gt;&gt;</span>
-extends <a href="../../jabs/consensus/GhostProtocol.html" title="class in jabs.consensus">GhostProtocol</a>&lt;B,T&gt;
-implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="interface in jabs.consensus">VotingBasedConsensus</a>&lt;B,T&gt;, <a href="../../jabs/consensus/DeterministicFinalityConsensus.html" title="interface in jabs.consensus">DeterministicFinalityConsensus</a>&lt;B,T&gt;</pre>
+<pre>public class <span class="typeNameLabel">CasperFFG&lt;B extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;B&gt;,T extends <a href="../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;T&gt;&gt;</span>
+extends <a href="../../jabs/consensus/GhostProtocol.html" title="class in jabs.consensus.algorithm">GhostProtocol</a>&lt;B,T&gt;
+implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="interface in jabs.consensus.algorithm">VotingBasedConsensus</a>&lt;B,T&gt;, <a href="../../jabs/consensus/DeterministicFinalityConsensus.html" title="interface in jabs.consensus.algorithm">DeterministicFinalityConsensus</a>&lt;B,T&gt;</pre>
 </li>
 </ul>
 </div>
@@ -182,7 +182,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/consensus/CasperFFG.html#numOfStakeholders">numOfStakeholders</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../jabs/data/casper/CasperFFGLink.html" title="class in jabs.data.casper">CasperFFGLink</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>,<a href="../../jabs/data/casper/CasperFFGVote.html" title="class in jabs.data.casper">CasperFFGVote</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&gt;&gt;</code></td>
+<td class="colFirst"><code>private <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../jabs/data/casper/CasperFFGLink.html" title="class in jabs.ledgerdata.casper">CasperFFGLink</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>,<a href="../../jabs/data/casper/CasperFFGVote.html" title="class in jabs.ledgerdata.casper">CasperFFGVote</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/consensus/CasperFFG.html#votes">votes</a></span></code>&nbsp;</td>
 </tr>
 </table>
@@ -190,21 +190,21 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <li class="blockList"><a name="fields.inherited.from.class.GhostProtocol">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;<a href="../../jabs/consensus/GhostProtocol.html" title="class in jabs.consensus">GhostProtocol</a></h3>
+<h3>Fields inherited from class&nbsp;<a href="../../jabs/consensus/GhostProtocol.html" title="class in jabs.consensus.algorithm">GhostProtocol</a></h3>
 <code><a href="../../jabs/consensus/GhostProtocol.html#DEFAULT_GHOST_WEIGHT">DEFAULT_GHOST_WEIGHT</a>, <a href="../../jabs/consensus/GhostProtocol.html#originOfGhost">originOfGhost</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.AbstractBlockchainConsensus">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus">AbstractBlockchainConsensus</a></h3>
-<code><a href="../../jabs/consensus/AbstractBlockchainConsensus.html#blockchainNode">blockchainNode</a>, <a href="../../jabs/consensus/AbstractBlockchainConsensus.html#currentMainChainHead">currentMainChainHead</a>, <a href="../../jabs/consensus/AbstractBlockchainConsensus.html#localBlockTree">localBlockTree</a></code></li>
+<h3>Fields inherited from class&nbsp;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus.algorithm">AbstractBlockchainConsensus</a></h3>
+<code><a href="../../jabs/consensus/AbstractBlockchainConsensus.html#peerDLTNode">peerDLTNode</a>, <a href="../../jabs/consensus/AbstractBlockchainConsensus.html#currentMainChainHead">currentMainChainHead</a>, <a href="../../jabs/consensus/AbstractBlockchainConsensus.html#localBlockTree">localBlockTree</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.AbstractConsensusAlgorithm">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;<a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus">AbstractConsensusAlgorithm</a></h3>
+<h3>Fields inherited from class&nbsp;<a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus.algorithm">AbstractConsensusAlgorithm</a></h3>
 <code><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#acceptedBlocks">acceptedBlocks</a>, <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#acceptedTxs">acceptedTxs</a></code></li>
 </ul>
 </li>
@@ -221,7 +221,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../jabs/consensus/CasperFFG.html#CasperFFG-jabs.blockchain.LocalBlockTree-int-int-">CasperFFG</a></span>(<a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&nbsp;localBlockTree,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../jabs/consensus/CasperFFG.html#CasperFFG-jabs.consensus.blockchain.LocalBlockTree-int-int-">CasperFFG</a></span>(<a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.consensus.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&nbsp;localBlockTree,
          int&nbsp;checkpointSpace,
          int&nbsp;numOfStakeholders)</code>&nbsp;</td>
 </tr>
@@ -266,7 +266,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/consensus/CasperFFG.html#newIncomingVote-jabs.data.Vote-">newIncomingVote</a></span>(<a href="../../jabs/data/Vote.html" title="class in jabs.data">Vote</a>&nbsp;vote)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/consensus/CasperFFG.html#newIncomingVote-jabs.ledgerdata.Vote-">newIncomingVote</a></span>(<a href="../../jabs/data/Vote.html" title="class in jabs.datalayer.data">Vote</a>&nbsp;vote)</code>&nbsp;</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
@@ -281,21 +281,21 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <li class="blockList"><a name="methods.inherited.from.class.GhostProtocol">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;<a href="../../jabs/consensus/GhostProtocol.html" title="class in jabs.consensus">GhostProtocol</a></h3>
+<h3>Methods inherited from class&nbsp;<a href="../../jabs/consensus/GhostProtocol.html" title="class in jabs.consensus.algorithm">GhostProtocol</a></h3>
 <code><a href="../../jabs/consensus/GhostProtocol.html#ghost--">ghost</a>, <a href="../../jabs/consensus/GhostProtocol.html#newIncomingBlock-B-">newIncomingBlock</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.AbstractBlockchainConsensus">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus">AbstractBlockchainConsensus</a></h3>
-<code><a href="../../jabs/consensus/AbstractBlockchainConsensus.html#getCanonicalChainHead--">getCanonicalChainHead</a>, <a href="../../jabs/consensus/AbstractBlockchainConsensus.html#getLocalBlockTree--">getLocalBlockTree</a>, <a href="../../jabs/consensus/AbstractBlockchainConsensus.html#setNode-jabs.node.nodes.BlockchainNode-">setNode</a></code></li>
+<h3>Methods inherited from class&nbsp;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus.algorithm">AbstractBlockchainConsensus</a></h3>
+<code><a href="../../jabs/consensus/AbstractBlockchainConsensus.html#getCanonicalChainHead--">getCanonicalChainHead</a>, <a href="../../jabs/consensus/AbstractBlockchainConsensus.html#getLocalBlockTree--">getLocalBlockTree</a>, <a href="../../jabs/consensus/AbstractBlockchainConsensus.html#setNode-jabs.network.node.nodes.PeerDLTNode-">setNode</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.AbstractConsensusAlgorithm">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;<a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus">AbstractConsensusAlgorithm</a></h3>
+<h3>Methods inherited from class&nbsp;<a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus.algorithm">AbstractConsensusAlgorithm</a></h3>
 <code><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#getNumOfAcceptedBlocks--">getNumOfAcceptedBlocks</a>, <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#getNumOfAcceptedTxs--">getNumOfAcceptedTxs</a>, <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#isBlockAccepted-B-">isBlockAccepted</a>, <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#isBlockValid-B-">isBlockValid</a>, <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#isTxAccepted-T-">isTxAccepted</a></code></li>
 </ul>
 <ul class="blockList">
@@ -309,7 +309,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <li class="blockList"><a name="methods.inherited.from.class.ConsensusAlgorithm">
 <!--   -->
 </a>
-<h3>Methods inherited from interface&nbsp;<a href="../../jabs/consensus/ConsensusAlgorithm.html" title="interface in jabs.consensus">ConsensusAlgorithm</a></h3>
+<h3>Methods inherited from interface&nbsp;<a href="../../jabs/consensus/ConsensusAlgorithm.html" title="interface in jabs.consensus.algorithm">ConsensusAlgorithm</a></h3>
 <code><a href="../../jabs/consensus/ConsensusAlgorithm.html#getNumOfAcceptedBlocks--">getNumOfAcceptedBlocks</a>, <a href="../../jabs/consensus/ConsensusAlgorithm.html#getNumOfAcceptedTxs--">getNumOfAcceptedTxs</a>, <a href="../../jabs/consensus/ConsensusAlgorithm.html#isBlockAccepted-B-">isBlockAccepted</a>, <a href="../../jabs/consensus/ConsensusAlgorithm.html#isBlockValid-B-">isBlockValid</a>, <a href="../../jabs/consensus/ConsensusAlgorithm.html#isTxAccepted-T-">isTxAccepted</a>, <a href="../../jabs/consensus/ConsensusAlgorithm.html#newIncomingBlock-B-">newIncomingBlock</a></code></li>
 </ul>
 </li>
@@ -332,7 +332,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <ul class="blockList">
 <li class="blockList">
 <h4>votes</h4>
-<pre>private final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../jabs/data/casper/CasperFFGLink.html" title="class in jabs.data.casper">CasperFFGLink</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&gt;,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>,<a href="../../jabs/data/casper/CasperFFGVote.html" title="class in jabs.data.casper">CasperFFGVote</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&gt;&gt;&gt; votes</pre>
+<pre>private final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../jabs/data/casper/CasperFFGLink.html" title="class in jabs.ledgerdata.casper">CasperFFGLink</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&gt;,<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>,<a href="../../jabs/data/casper/CasperFFGVote.html" title="class in jabs.ledgerdata.casper">CasperFFGVote</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&gt;&gt;&gt; votes</pre>
 </li>
 </ul>
 <a name="justifiedBlocks">
@@ -341,7 +341,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <ul class="blockList">
 <li class="blockList">
 <h4>justifiedBlocks</h4>
-<pre>private final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/SortedSet.html?is-external=true" title="class or interface in java.util">SortedSet</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&gt; justifiedBlocks</pre>
+<pre>private final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/SortedSet.html?is-external=true" title="class or interface in java.util">SortedSet</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&gt; justifiedBlocks</pre>
 </li>
 </ul>
 <a name="finalizedBlocks">
@@ -350,7 +350,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <ul class="blockList">
 <li class="blockList">
 <h4>finalizedBlocks</h4>
-<pre>private final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/SortedSet.html?is-external=true" title="class or interface in java.util">SortedSet</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&gt; finalizedBlocks</pre>
+<pre>private final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/SortedSet.html?is-external=true" title="class or interface in java.util">SortedSet</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&gt; finalizedBlocks</pre>
 </li>
 </ul>
 <a name="indirectlyFinalizedBlocks">
@@ -359,7 +359,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <ul class="blockList">
 <li class="blockList">
 <h4>indirectlyFinalizedBlocks</h4>
-<pre>private final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&gt; indirectlyFinalizedBlocks</pre>
+<pre>private final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&gt; indirectlyFinalizedBlocks</pre>
 </li>
 </ul>
 <a name="finalizedTxs">
@@ -368,7 +368,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <ul class="blockList">
 <li class="blockList">
 <h4>finalizedTxs</h4>
-<pre>private final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt; finalizedTxs</pre>
+<pre>private final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt; finalizedTxs</pre>
 </li>
 </ul>
 <a name="checkpointSpace">
@@ -415,13 +415,13 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="CasperFFG-jabs.blockchain.LocalBlockTree-int-int-">
+<a name="CasperFFG-jabs.consensus.blockchain.LocalBlockTree-int-int-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>CasperFFG</h4>
-<pre>public&nbsp;CasperFFG(<a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&nbsp;localBlockTree,
+<pre>public&nbsp;CasperFFG(<a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.consensus.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;&nbsp;localBlockTree,
                  int&nbsp;checkpointSpace,
                  int&nbsp;numOfStakeholders)</pre>
 </li>
@@ -443,20 +443,20 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <pre>public&nbsp;void&nbsp;enableFinalizationTimeRecords(DescriptiveStatistics&nbsp;blockFinalizationTimes)</pre>
 </li>
 </ul>
-<a name="newIncomingVote-jabs.data.Vote-">
+<a name="newIncomingVote-jabs.datalayer.data.Vote-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>newIncomingVote</h4>
-<pre>public&nbsp;void&nbsp;newIncomingVote(<a href="../../jabs/data/Vote.html" title="class in jabs.data">Vote</a>&nbsp;vote)</pre>
+<pre>public&nbsp;void&nbsp;newIncomingVote(<a href="../../jabs/data/Vote.html" title="class in jabs.datalayer.data">Vote</a>&nbsp;vote)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../jabs/consensus/VotingBasedConsensus.html#newIncomingVote-jabs.data.Vote-">newIncomingVote</a></code>&nbsp;in interface&nbsp;<code><a href="../../jabs/consensus/VotingBasedConsensus.html" title="interface in jabs.consensus">VotingBasedConsensus</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt;</code></dd>
+<dd><code><a href="../../jabs/consensus/VotingBasedConsensus.html#newIncomingVote-jabs.ledgerdata.Vote-">newIncomingVote</a></code>&nbsp;in interface&nbsp;<code><a href="../../jabs/consensus/VotingBasedConsensus.html" title="interface in jabs.consensus.algorithm">VotingBasedConsensus</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt;</code></dd>
 </dl>
 </li>
 </ul>
-<a name="updateFinalizedBlocks-jabs.data.Block-">
+<a name="updateFinalizedBlocks-jabs.datalayer.data.Block-">
 <!--   -->
 </a><a name="updateFinalizedBlocks-B-">
 <!--   -->
@@ -476,7 +476,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <pre>protected&nbsp;void&nbsp;updateChain()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../jabs/consensus/GhostProtocol.html#updateChain--">updateChain</a></code>&nbsp;in class&nbsp;<code><a href="../../jabs/consensus/GhostProtocol.html" title="class in jabs.consensus">GhostProtocol</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt;</code></dd>
+<dd><code><a href="../../jabs/consensus/GhostProtocol.html#updateChain--">updateChain</a></code>&nbsp;in class&nbsp;<code><a href="../../jabs/consensus/GhostProtocol.html" title="class in jabs.consensus.algorithm">GhostProtocol</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -489,7 +489,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <pre>public&nbsp;int&nbsp;getNumOfJustifiedBlocks()</pre>
 </li>
 </ul>
-<a name="isBlockFinalized-jabs.data.Block-">
+<a name="isBlockFinalized-jabs.datalayer.data.Block-">
 <!--   -->
 </a><a name="isBlockFinalized-B-">
 <!--   -->
@@ -500,11 +500,11 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <pre>public&nbsp;boolean&nbsp;isBlockFinalized(<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&nbsp;block)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html#isBlockFinalized-B-">isBlockFinalized</a></code>&nbsp;in interface&nbsp;<code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html" title="interface in jabs.consensus">DeterministicFinalityConsensus</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt;</code></dd>
+<dd><code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html#isBlockFinalized-B-">isBlockFinalized</a></code>&nbsp;in interface&nbsp;<code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html" title="interface in jabs.consensus.algorithm">DeterministicFinalityConsensus</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt;</code></dd>
 </dl>
 </li>
 </ul>
-<a name="isTxFinalized-jabs.data.Tx-">
+<a name="isTxFinalized-jabs.datalayer.data.Tx-">
 <!--   -->
 </a><a name="isTxFinalized-T-">
 <!--   -->
@@ -515,7 +515,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <pre>public&nbsp;boolean&nbsp;isTxFinalized(<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&nbsp;tx)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html#isTxFinalized-T-">isTxFinalized</a></code>&nbsp;in interface&nbsp;<code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html" title="interface in jabs.consensus">DeterministicFinalityConsensus</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt;</code></dd>
+<dd><code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html#isTxFinalized-T-">isTxFinalized</a></code>&nbsp;in interface&nbsp;<code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html" title="interface in jabs.consensus.algorithm">DeterministicFinalityConsensus</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -528,7 +528,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <pre>public&nbsp;int&nbsp;getNumOfFinalizedBlocks()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html#getNumOfFinalizedBlocks--">getNumOfFinalizedBlocks</a></code>&nbsp;in interface&nbsp;<code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html" title="interface in jabs.consensus">DeterministicFinalityConsensus</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt;</code></dd>
+<dd><code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html#getNumOfFinalizedBlocks--">getNumOfFinalizedBlocks</a></code>&nbsp;in interface&nbsp;<code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html" title="interface in jabs.consensus.algorithm">DeterministicFinalityConsensus</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -541,7 +541,7 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 <pre>public&nbsp;int&nbsp;getNumOfFinalizedTxs()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html#getNumOfFinalizedTxs--">getNumOfFinalizedTxs</a></code>&nbsp;in interface&nbsp;<code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html" title="interface in jabs.consensus">DeterministicFinalityConsensus</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt;</code></dd>
+<dd><code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html#getNumOfFinalizedTxs--">getNumOfFinalizedTxs</a></code>&nbsp;in interface&nbsp;<code><a href="../../jabs/consensus/DeterministicFinalityConsensus.html" title="interface in jabs.consensus.algorithm">DeterministicFinalityConsensus</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">B</a>&gt;,<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;<a href="../../jabs/consensus/CasperFFG.html" title="type parameter in CasperFFG">T</a>&gt;&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -572,8 +572,8 @@ implements <a href="../../jabs/consensus/VotingBasedConsensus.html" title="inter
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../jabs/consensus/ConsensusAlgorithm.html" title="interface in jabs.consensus"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus.algorithm"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../jabs/consensus/ConsensusAlgorithm.html" title="interface in jabs.consensus.algorithm"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/consensus/CasperFFG.html" target="_top">Frames</a></li>

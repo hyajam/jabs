@@ -1,18 +1,20 @@
 package jabs.scenario;
 
-import jabs.consensus.DAGsper;
-import jabs.event.PacketDeliveryEvent;
+import jabs.consensus.algorithm.DAGsper;
+import jabs.network.networks.GlobalProofOfWorkNetwork;
+import jabs.network.networks.stats.sixglobalregions.SixRegions;
+import jabs.network.networks.stats.sixglobalregions.ethereum.EthereumProofOfWorkGlobalNetworkStats6Regions;
+import jabs.network.node.nodes.PeerBlockchainNode;
+import jabs.simulator.event.PacketDeliveryEvent;
 import jabs.log.AbstractLogger;
-import jabs.message.VoteMessage;
-import jabs.network.BlockchainNetwork;
-import jabs.network.DAGsperGlobalBlockchainNetwork;
-import jabs.network.GlobalBlockchainNetwork;
-import jabs.node.nodes.BlockchainNode;
-import jabs.node.nodes.Node;
+import jabs.network.message.VoteMessage;
+import jabs.network.networks.DAGsperGlobalBlockchainNetwork;
+import jabs.network.networks.GlobalNetwork;
+import jabs.network.node.nodes.Node;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
-import static jabs.event.EventFactory.createBlockGenerationEvents;
-import static jabs.event.EventFactory.createTxGenerationEvents;
+import static jabs.simulator.event.EventFactory.createBlockGenerationEvents;
+import static jabs.simulator.event.EventFactory.createTxGenerationEvents;
 
 public class EthereumDAGsperNetworkScenario extends AbstractScenario {
     double simulationTime = 0;
@@ -40,18 +42,15 @@ public class EthereumDAGsperNetworkScenario extends AbstractScenario {
 
     @Override
     public void createNetwork() {
-        this.network = new DAGsperGlobalBlockchainNetwork(randomnessEngine, checkpointSpace);
-        ((GlobalBlockchainNetwork) network).populateNetwork(simulator, numOfMiners, numOfNonMiners);
-
-        for (Node node:network.getAllNodes()) {
-            ((DAGsper) ((BlockchainNode) node).getConsensusAlgorithm()).enableFinalizationTimeRecords(blockFinalizationTimes);
-        }
+        this.network = new DAGsperGlobalBlockchainNetwork<>(randomnessEngine, checkpointSpace,
+                new EthereumProofOfWorkGlobalNetworkStats6Regions(randomnessEngine));
+        ((GlobalProofOfWorkNetwork<SixRegions>) network).populateNetwork(simulator, numOfMiners, numOfNonMiners);
     }
 
     @Override
     protected void insertInitialEvents() {
         createTxGenerationEvents(simulator, randomnessEngine, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1/txGenerationRate));
-        createBlockGenerationEvents(simulator, randomnessEngine, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1/blockGenerationRate));
+        createBlockGenerationEvents(simulator, randomnessEngine, (GlobalProofOfWorkNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1/blockGenerationRate));
     }
 
     @Override
@@ -65,9 +64,9 @@ public class EthereumDAGsperNetworkScenario extends AbstractScenario {
 //            simulationTime = simulator.getCurrentTime();
 //            System.out.printf("\rsimulation time: %s, number of already seen blocks for miner 0: %s, number of finalized blocks: %s\n",
 //                    simulationTime,
-//                    ((BlockchainNode) network.getAllNodes().get(0)).numberOfAlreadySeenBlocks()
+//                    ((peerBlockchainNode) network.getAllNodes().get(0)).numberOfAlreadySeenBlocks()
 //                    , ((DeterministicFinalityConsensus)
-//                            ((BlockchainNode) network.getAllNodes().get(0)).getConsensusAlgorithm()
+//                            ((peerBlockchainNode) network.getAllNodes().get(0)).getConsensusAlgorithm()
 //                    ).getNumOfFinalizedBlocks());
 //        }
         return (simulator.getCurrentTime() > simulationStopTime*1000);

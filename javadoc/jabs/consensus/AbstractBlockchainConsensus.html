@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus.algorithm"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/consensus/AbstractBlockchainConsensus.html" target="_top">Frames</a></li>
@@ -92,15 +92,15 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">jabs.consensus</div>
-<h2 title="Class AbstractBlockchainConsensus" class="title">Class AbstractBlockchainConsensus&lt;B extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;B&gt;,T extends <a href="../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;T&gt;&gt;</h2>
+<div class="subTitle">jabs.consensus.algorithm</div>
+<h2 title="Class AbstractBlockchainConsensus" class="title">Class AbstractBlockchainConsensus&lt;B extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;B&gt;,T extends <a href="../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;T&gt;&gt;</h2>
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus">AbstractConsensusAlgorithm</a>&lt;B,T&gt;</li>
+<li><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus.algorithm">AbstractConsensusAlgorithm</a>&lt;B,T&gt;</li>
 <li>
 <ul class="inheritance">
 <li>AbstractBlockchainConsensus&lt;B,T&gt;</li>
@@ -114,16 +114,16 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../jabs/consensus/ConsensusAlgorithm.html" title="interface in jabs.consensus">ConsensusAlgorithm</a>&lt;B,T&gt;</dd>
+<dd><a href="../../jabs/consensus/ConsensusAlgorithm.html" title="interface in jabs.consensus.algorithm">ConsensusAlgorithm</a>&lt;B,T&gt;</dd>
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><a href="../../jabs/consensus/GhostProtocol.html" title="class in jabs.consensus">GhostProtocol</a>, <a href="../../jabs/consensus/NakamotoConsensus.html" title="class in jabs.consensus">NakamotoConsensus</a>, <a href="../../jabs/consensus/PBFT.html" title="class in jabs.consensus">PBFT</a>, <a href="../../jabs/consensus/Xolph.html" title="class in jabs.consensus">Xolph</a></dd>
+<dd><a href="../../jabs/consensus/GhostProtocol.html" title="class in jabs.consensus.algorithm">GhostProtocol</a>, <a href="../../jabs/consensus/NakamotoConsensus.html" title="class in jabs.consensus.algorithm">NakamotoConsensus</a>, <a href="../../jabs/consensus/PBFT.html" title="class in jabs.consensus.algorithm">PBFT</a>, <a href="../../jabs/consensus/Xolph.html" title="class in jabs.consensus.algorithm">Xolph</a></dd>
 </dl>
 <hr>
 <br>
-<pre>public abstract class <span class="typeNameLabel">AbstractBlockchainConsensus&lt;B extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;B&gt;,T extends <a href="../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;T&gt;&gt;</span>
-extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus">AbstractConsensusAlgorithm</a>&lt;B,T&gt;</pre>
+<pre>public abstract class <span class="typeNameLabel">AbstractBlockchainConsensus&lt;B extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;B&gt;,T extends <a href="../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;T&gt;&gt;</span>
+extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus.algorithm">AbstractConsensusAlgorithm</a>&lt;B,T&gt;</pre>
 </li>
 </ul>
 </div>
@@ -143,8 +143,8 @@ extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="cl
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.node.nodes">BlockchainNode</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>,<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/consensus/AbstractBlockchainConsensus.html#blockchainNode">blockchainNode</a></span></code>
+<td class="colFirst"><code>protected <a href="../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.network.node.nodes">BlockchainNode</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>,<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">T</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/consensus/AbstractBlockchainConsensus.html#peerDLTNode">peerDLTNode</a></span></code>
 <div class="block">The node that runs the consensus algorithm</div>
 </td>
 </tr>
@@ -155,7 +155,7 @@ extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="cl
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;</code></td>
+<td class="colFirst"><code>protected <a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.consensus.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/consensus/AbstractBlockchainConsensus.html#localBlockTree">localBlockTree</a></span></code>
 <div class="block">Local Block Tree in Nodes Memory</div>
 </td>
@@ -165,7 +165,7 @@ extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="cl
 <li class="blockList"><a name="fields.inherited.from.class.AbstractConsensusAlgorithm">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;<a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus">AbstractConsensusAlgorithm</a></h3>
+<h3>Fields inherited from class&nbsp;<a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus.algorithm">AbstractConsensusAlgorithm</a></h3>
 <code><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#acceptedBlocks">acceptedBlocks</a>, <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#acceptedTxs">acceptedTxs</a></code></li>
 </ul>
 </li>
@@ -182,7 +182,7 @@ extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="cl
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../jabs/consensus/AbstractBlockchainConsensus.html#AbstractBlockchainConsensus-jabs.blockchain.LocalBlockTree-">AbstractBlockchainConsensus</a></span>(<a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;&nbsp;localBlockTree)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../jabs/consensus/AbstractBlockchainConsensus.html#AbstractBlockchainConsensus-jabs.consensus.blockchain.LocalBlockTree-">AbstractBlockchainConsensus</a></span>(<a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.consensus.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;&nbsp;localBlockTree)</code>
 <div class="block">Creates a Abstract Blockchain Consensus Algorithm</div>
 </td>
 </tr>
@@ -208,14 +208,14 @@ extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="cl
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;</code></td>
+<td class="colFirst"><code><a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.consensus.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/consensus/AbstractBlockchainConsensus.html#getLocalBlockTree--">getLocalBlockTree</a></span>()</code>
 <div class="block">Returns the local Block Tree that consensus algorithm uses</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/consensus/AbstractBlockchainConsensus.html#setNode-jabs.node.nodes.BlockchainNode-">setNode</a></span>(<a href="../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.node.nodes">BlockchainNode</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>,<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">T</a>&gt;&nbsp;blockchainNode)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/consensus/AbstractBlockchainConsensus.html#setNode-jabs.network.node.nodes.PeerDLTNode-">setNode</a></span>(<a href="../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.network.node.nodes">BlockchainNode</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>,<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">T</a>&gt;&nbsp;peerDLTNode)</code>
 <div class="block">Sets the node using consensus algorithm (this cannot be set in Constructor function
  since the algorithm is created during creation of the node, There might be better
  ways to do it.)</div>
@@ -230,7 +230,7 @@ extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="cl
 <li class="blockList"><a name="methods.inherited.from.class.AbstractConsensusAlgorithm">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;<a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus">AbstractConsensusAlgorithm</a></h3>
+<h3>Methods inherited from class&nbsp;<a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus.algorithm">AbstractConsensusAlgorithm</a></h3>
 <code><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#getNumOfAcceptedBlocks--">getNumOfAcceptedBlocks</a>, <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#getNumOfAcceptedTxs--">getNumOfAcceptedTxs</a>, <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#isBlockAccepted-B-">isBlockAccepted</a>, <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#isBlockValid-B-">isBlockValid</a>, <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#isTxAccepted-T-">isTxAccepted</a>, <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html#newIncomingBlock-B-">newIncomingBlock</a></code></li>
 </ul>
 <ul class="blockList">
@@ -260,17 +260,17 @@ extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="cl
 <ul class="blockList">
 <li class="blockList">
 <h4>localBlockTree</h4>
-<pre>protected final&nbsp;<a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;&gt; localBlockTree</pre>
+<pre>protected final&nbsp;<a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.consensus.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;&gt; localBlockTree</pre>
 <div class="block">Local Block Tree in Nodes Memory</div>
 </li>
 </ul>
-<a name="blockchainNode">
+<a name="peerDLTNode">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>blockchainNode</h4>
-<pre>protected&nbsp;<a href="../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.node.nodes">BlockchainNode</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;,<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">T</a>&gt;&gt; blockchainNode</pre>
+<h4>peerDLTNode</h4>
+<pre>protected&nbsp;<a href="../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.network.node.nodes">BlockchainNode</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;,<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">T</a> extends <a href="../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">T</a>&gt;&gt; peerDLTNode</pre>
 <div class="block">The node that runs the consensus algorithm</div>
 </li>
 </ul>
@@ -280,7 +280,7 @@ extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="cl
 <ul class="blockListLast">
 <li class="blockList">
 <h4>currentMainChainHead</h4>
-<pre>protected&nbsp;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt; currentMainChainHead</pre>
+<pre>protected&nbsp;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a> extends <a href="../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt; currentMainChainHead</pre>
 <div class="block">The latest block agreed by consensus algorithm (Current agreed state by the Node)</div>
 </li>
 </ul>
@@ -292,13 +292,13 @@ extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="cl
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="AbstractBlockchainConsensus-jabs.blockchain.LocalBlockTree-">
+<a name="AbstractBlockchainConsensus-jabs.consensus.blockchain.LocalBlockTree-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>AbstractBlockchainConsensus</h4>
-<pre>public&nbsp;AbstractBlockchainConsensus(<a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;&nbsp;localBlockTree)</pre>
+<pre>public&nbsp;AbstractBlockchainConsensus(<a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.consensus.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;&nbsp;localBlockTree)</pre>
 <div class="block">Creates a Abstract Blockchain Consensus Algorithm</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -320,7 +320,7 @@ extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="cl
 <ul class="blockList">
 <li class="blockList">
 <h4>getLocalBlockTree</h4>
-<pre>public&nbsp;<a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;&nbsp;getLocalBlockTree()</pre>
+<pre>public&nbsp;<a href="../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.consensus.blockchain">LocalBlockTree</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>&gt;&nbsp;getLocalBlockTree()</pre>
 <div class="block">Returns the local Block Tree that consensus algorithm uses</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -342,19 +342,19 @@ extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="cl
 </dl>
 </li>
 </ul>
-<a name="setNode-jabs.node.nodes.BlockchainNode-">
+<a name="setNode-jabs.network.node.nodes.BlockchainNode-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setNode</h4>
-<pre>public&nbsp;void&nbsp;setNode(<a href="../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.node.nodes">BlockchainNode</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>,<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">T</a>&gt;&nbsp;blockchainNode)</pre>
+<pre>public&nbsp;void&nbsp;setNode(<a href="../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.network.node.nodes">BlockchainNode</a>&lt;<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">B</a>,<a href="../../jabs/consensus/AbstractBlockchainConsensus.html" title="type parameter in AbstractBlockchainConsensus">T</a>&gt;&nbsp;peerDLTNode)</pre>
 <div class="block">Sets the node using consensus algorithm (this cannot be set in Constructor function
  since the algorithm is created during creation of the node, There might be better
  ways to do it.)</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>blockchainNode</code> - Sets the node using algorithm to input</dd>
+<dd><code>peerDLTNode</code> - Sets the node using algorithm to input</dd>
 </dl>
 </li>
 </ul>
@@ -395,7 +395,7 @@ extends <a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="cl
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/consensus/AbstractConsensusAlgorithm.html" title="class in jabs.consensus.algorithm"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/consensus/AbstractBlockchainConsensus.html" target="_top">Frames</a></li>

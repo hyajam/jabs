@@ -43,8 +43,8 @@
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.p2p"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../jabs/p2p/EthereumGethP2P.html" title="class in jabs.p2p"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.network.p2p"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../jabs/p2p/EthereumGethP2P.html" title="class in jabs.network.p2p"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/p2p/BitcoinCoreP2P.html" target="_top">Frames</a></li>
@@ -86,7 +86,7 @@
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">jabs.p2p</div>
+<div class="subTitle">jabs.network.p2p</div>
 <h2 title="Class BitcoinCoreP2P" class="title">Class BitcoinCoreP2P</h2>
 </div>
 <div class="contentContainer">
@@ -94,10 +94,10 @@
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.p2p">AbstractP2PConnections</a></li>
+<li><a href="../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.network.p2p">AbstractP2PConnections</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="class in jabs.p2p">AbstractBlockchainP2PConnections</a></li>
+<li><a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="class in jabs.network.p2p">AbstractBlockchainP2PConnections</a></li>
 <li>
 <ul class="inheritance">
 <li>BitcoinCoreP2P</li>
@@ -114,7 +114,7 @@
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">BitcoinCoreP2P</span>
-extends <a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="class in jabs.p2p">AbstractBlockchainP2PConnections</a></pre>
+extends <a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="class in jabs.network.p2p">AbstractBlockchainP2PConnections</a></pre>
 </li>
 </ul>
 </div>
@@ -146,14 +146,14 @@ extends <a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="cl
 <li class="blockList"><a name="fields.inherited.from.class.AbstractBlockchainP2PConnections">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;<a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="class in jabs.p2p">AbstractBlockchainP2PConnections</a></h3>
+<h3>Fields inherited from class&nbsp;<a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="class in jabs.network.p2p">AbstractBlockchainP2PConnections</a></h3>
 <code><a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html#network">network</a>, <a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html#numOutboundConnections">numOutboundConnections</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.AbstractP2PConnections">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;<a href="../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.p2p">AbstractP2PConnections</a></h3>
+<h3>Fields inherited from class&nbsp;<a href="../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.network.p2p">AbstractP2PConnections</a></h3>
 <code><a href="../../jabs/p2p/AbstractP2PConnections.html#neighbors">neighbors</a>, <a href="../../jabs/p2p/AbstractP2PConnections.html#node">node</a></code></li>
 </ul>
 </li>
@@ -189,15 +189,15 @@ extends <a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="cl
 <li class="blockList"><a name="methods.inherited.from.class.AbstractBlockchainP2PConnections">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;<a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="class in jabs.p2p">AbstractBlockchainP2PConnections</a></h3>
-<code><a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html#addOutbound-jabs.node.nodes.Node-">addOutbound</a>, <a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html#connectToNetwork-jabs.network.Network-">connectToNetwork</a>, <a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html#requestConnection-jabs.node.nodes.Node-">requestConnection</a></code></li>
+<h3>Methods inherited from class&nbsp;<a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="class in jabs.network.p2p">AbstractBlockchainP2PConnections</a></h3>
+<code><a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html#addOutbound-jabs.network.node.nodes.Node-">addOutbound</a>, <a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html#connectToNetwork-jabs.network.networks.Network-">connectToNetwork</a>, <a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html#requestConnection-jabs.network.node.nodes.Node-">requestConnection</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.AbstractP2PConnections">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;<a href="../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.p2p">AbstractP2PConnections</a></h3>
-<code><a href="../../jabs/p2p/AbstractP2PConnections.html#getNeighbors--">getNeighbors</a>, <a href="../../jabs/p2p/AbstractP2PConnections.html#getNode--">getNode</a>, <a href="../../jabs/p2p/AbstractP2PConnections.html#setNode-jabs.node.nodes.Node-">setNode</a></code></li>
+<h3>Methods inherited from class&nbsp;<a href="../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.network.p2p">AbstractP2PConnections</a></h3>
+<code><a href="../../jabs/p2p/AbstractP2PConnections.html#getNeighbors--">getNeighbors</a>, <a href="../../jabs/p2p/AbstractP2PConnections.html#getNode--">getNode</a>, <a href="../../jabs/p2p/AbstractP2PConnections.html#setNode-jabs.network.node.nodes.Node-">setNode</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.Object">
@@ -229,7 +229,7 @@ extends <a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="cl
 <pre>private static final&nbsp;int BITCOIN_MAX_CONNECTIONS</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../constant-values.html#jabs.p2p.BitcoinCoreP2P.BITCOIN_MAX_CONNECTIONS">Constant Field Values</a></dd>
+<dd><a href="../../constant-values.html#jabs.network.p2p.BitcoinCoreP2P.BITCOIN_MAX_CONNECTIONS">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -242,7 +242,7 @@ extends <a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="cl
 <pre>private static final&nbsp;int BITCOIN_NUM_OUTBOUND_CONNECTIONS</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../constant-values.html#jabs.p2p.BitcoinCoreP2P.BITCOIN_NUM_OUTBOUND_CONNECTIONS">Constant Field Values</a></dd>
+<dd><a href="../../constant-values.html#jabs.network.p2p.BitcoinCoreP2P.BITCOIN_NUM_OUTBOUND_CONNECTIONS">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -300,8 +300,8 @@ extends <a href="../../jabs/p2p/AbstractBlockchainP2PConnections.html" title="cl
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.p2p"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../jabs/p2p/EthereumGethP2P.html" title="class in jabs.p2p"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.network.p2p"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../jabs/p2p/EthereumGethP2P.html" title="class in jabs.network.p2p"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/p2p/BitcoinCoreP2P.html" target="_top">Frames</a></li>

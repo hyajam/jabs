@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.node.nodes.bitcoin"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.network.node.nodes.bitcoin"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?jabs/node/nodes/bitcoin/BitcoinMinerNode.html" target="_top">Frames</a></li>
@@ -92,7 +92,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">jabs.node.nodes.bitcoin</div>
+<div class="subTitle">jabs.network.node.nodes.bitcoin</div>
 <h2 title="Class BitcoinMinerNode" class="title">Class BitcoinMinerNode</h2>
 </div>
 <div class="contentContainer">
@@ -100,13 +100,13 @@ var activeTableTab = "activeTableTab";
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a></li>
+<li><a href="../../../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.node.nodes">BlockchainNode</a>&lt;<a href="../../../../jabs/data/bitcoin/BitcoinBlock.html" title="class in jabs.data.bitcoin">BitcoinBlock</a>,<a href="../../../../jabs/data/bitcoin/BitcoinTx.html" title="class in jabs.data.bitcoin">BitcoinTx</a>&gt;</li>
+<li><a href="../../../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.network.node.nodes">BlockchainNode</a>&lt;<a href="../../../../jabs/data/bitcoin/BitcoinBlock.html" title="class in jabs.ledgerdata.bitcoin">BitcoinBlock</a>,<a href="../../../../jabs/data/bitcoin/BitcoinTx.html" title="class in jabs.ledgerdata.bitcoin">BitcoinTx</a>&gt;</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.node.nodes.bitcoin">BitcoinNode</a></li>
+<li><a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.network.node.nodes.bitcoin">BitcoinNode</a></li>
 <li>
 <ul class="inheritance">
 <li>BitcoinMinerNode</li>
@@ -124,13 +124,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a></dd>
+<dd><a href="../../../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">BitcoinMinerNode</span>
-extends <a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.node.nodes.bitcoin">BitcoinNode</a>
-implements <a href="../../../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a></pre>
+extends <a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.network.node.nodes.bitcoin">BitcoinNode</a>
+implements <a href="../../../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a></pre>
 </li>
 </ul>
 </div>
@@ -147,21 +147,21 @@ implements <a href="../../../../jabs/node/nodes/MinerNode.html" title="interface
 <li class="blockList"><a name="fields.inherited.from.class.BitcoinNode">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;<a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.node.nodes.bitcoin">BitcoinNode</a></h3>
+<h3>Fields inherited from class&nbsp;<a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.network.node.nodes.bitcoin">BitcoinNode</a></h3>
 <code><a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#BITCOIN_GENESIS_BLOCK">BITCOIN_GENESIS_BLOCK</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.BlockchainNode">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;<a href="../../../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.node.nodes">BlockchainNode</a></h3>
+<h3>Fields inherited from class&nbsp;<a href="../../../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.network.node.nodes">BlockchainNode</a></h3>
 <code><a href="../../../../jabs/node/nodes/BlockchainNode.html#alreadySeenBlocks">alreadySeenBlocks</a>, <a href="../../../../jabs/node/nodes/BlockchainNode.html#alreadySeenTxs">alreadySeenTxs</a>, <a href="../../../../jabs/node/nodes/BlockchainNode.html#alreadySeenVotes">alreadySeenVotes</a>, <a href="../../../../jabs/node/nodes/BlockchainNode.html#consensusAlgorithm">consensusAlgorithm</a>, <a href="../../../../jabs/node/nodes/BlockchainNode.html#localBlockTree">localBlockTree</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.Node">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;<a href="../../../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a></h3>
+<h3>Fields inherited from class&nbsp;<a href="../../../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a></h3>
 <code><a href="../../../../jabs/node/nodes/Node.html#network">network</a>, <a href="../../../../jabs/node/nodes/Node.html#nodeID">nodeID</a>, <a href="../../../../jabs/node/nodes/Node.html#nodeNetworkInterface">nodeNetworkInterface</a>, <a href="../../../../jabs/node/nodes/Node.html#p2pConnections">p2pConnections</a>, <a href="../../../../jabs/node/nodes/Node.html#simulator">simulator</a></code></li>
 </ul>
 </li>
@@ -178,8 +178,8 @@ implements <a href="../../../../jabs/node/nodes/MinerNode.html" title="interface
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../jabs/node/nodes/bitcoin/BitcoinMinerNode.html#BitcoinMinerNode-jabs.simulator.Simulator-jabs.network.Network-int-long-long-">BitcoinMinerNode</a></span>(<a href="../../../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-                <a href="../../../../jabs/network/Network.html" title="class in jabs.network">Network</a>&nbsp;network,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../jabs/node/nodes/bitcoin/BitcoinMinerNode.html#BitcoinMinerNode-jabs.simulator.Simulator-jabs.network.networks.Network-int-long-long-">BitcoinMinerNode</a></span>(<a href="../../../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
+                <a href="../../../../jabs/network/Network.html" title="class in jabs.network.networks">Network</a>&nbsp;network,
                 int&nbsp;nodeID,
                 long&nbsp;downloadBandwidth,
                 long&nbsp;uploadBandwidth)</code>&nbsp;</td>
@@ -212,22 +212,22 @@ implements <a href="../../../../jabs/node/nodes/MinerNode.html" title="interface
 <li class="blockList"><a name="methods.inherited.from.class.BitcoinNode">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;<a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.node.nodes.bitcoin">BitcoinNode</a></h3>
-<code><a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#broadcastBlockInvMessage-jabs.data.bitcoin.BitcoinBlock-">broadcastBlockInvMessage</a>, <a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#broadcastTxInvMessage-jabs.data.bitcoin.BitcoinTx-">broadcastTxInvMessage</a>, <a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#generateNewTransaction--">generateNewTransaction</a>, <a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#processNewBlock-jabs.data.bitcoin.BitcoinBlock-">processNewBlock</a>, <a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#processNewTx-jabs.data.bitcoin.BitcoinTx-jabs.node.nodes.Node-">processNewTx</a>, <a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#processNewVote-jabs.data.Vote-">processNewVote</a></code></li>
+<h3>Methods inherited from class&nbsp;<a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.network.node.nodes.bitcoin">BitcoinNode</a></h3>
+<code><a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#broadcastBlockInvMessage-jabs.ledgerdata.bitcoin.BitcoinBlock-">broadcastBlockInvMessage</a>, <a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#broadcastTxInvMessage-jabs.ledgerdata.bitcoin.BitcoinTx-">broadcastTxInvMessage</a>, <a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#generateNewTransaction--">generateNewTransaction</a>, <a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#processNewBlock-jabs.ledgerdata.bitcoin.BitcoinBlock-">processNewBlock</a>, <a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#processNewTx-jabs.ledgerdata.bitcoin.BitcoinTx-jabs.network.node.nodes.Node-">processNewTx</a>, <a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html#processNewVote-jabs.ledgerdata.Vote-">processNewVote</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.BlockchainNode">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;<a href="../../../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.node.nodes">BlockchainNode</a></h3>
-<code><a href="../../../../jabs/node/nodes/BlockchainNode.html#getConsensusAlgorithm--">getConsensusAlgorithm</a>, <a href="../../../../jabs/node/nodes/BlockchainNode.html#numberOfAlreadySeenBlocks--">numberOfAlreadySeenBlocks</a>, <a href="../../../../jabs/node/nodes/BlockchainNode.html#processIncomingPacket-jabs.message.Packet-">processIncomingPacket</a></code></li>
+<h3>Methods inherited from class&nbsp;<a href="../../../../jabs/node/nodes/BlockchainNode.html" title="class in jabs.network.node.nodes">BlockchainNode</a></h3>
+<code><a href="../../../../jabs/node/nodes/BlockchainNode.html#getConsensusAlgorithm--">getConsensusAlgorithm</a>, <a href="../../../../jabs/node/nodes/BlockchainNode.html#numberOfAlreadySeenBlocks--">numberOfAlreadySeenBlocks</a>, <a href="../../../../jabs/node/nodes/BlockchainNode.html#processIncomingPacket-jabs.network.message.Packet-">processIncomingPacket</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.Node">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;<a href="../../../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a></h3>
-<code><a href="../../../../jabs/node/nodes/Node.html#broadcastMessage-jabs.message.Message-">broadcastMessage</a>, <a href="../../../../jabs/node/nodes/Node.html#crash--">crash</a>, <a href="../../../../jabs/node/nodes/Node.html#getNetwork--">getNetwork</a>, <a href="../../../../jabs/node/nodes/Node.html#getNodeNetworkInterface--">getNodeNetworkInterface</a>, <a href="../../../../jabs/node/nodes/Node.html#getP2pConnections--">getP2pConnections</a>, <a href="../../../../jabs/node/nodes/Node.html#getSimulator--">getSimulator</a>, <a href="../../../../jabs/node/nodes/Node.html#restore--">restore</a></code></li>
+<h3>Methods inherited from class&nbsp;<a href="../../../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a></h3>
+<code><a href="../../../../jabs/node/nodes/Node.html#broadcastMessage-jabs.network.message.Message-">broadcastMessage</a>, <a href="../../../../jabs/node/nodes/Node.html#crash--">crash</a>, <a href="../../../../jabs/node/nodes/Node.html#getNetwork--">getNetwork</a>, <a href="../../../../jabs/node/nodes/Node.html#getNodeNetworkInterface--">getNodeNetworkInterface</a>, <a href="../../../../jabs/node/nodes/Node.html#getP2pConnections--">getP2pConnections</a>, <a href="../../../../jabs/node/nodes/Node.html#getSimulator--">getSimulator</a>, <a href="../../../../jabs/node/nodes/Node.html#restore--">restore</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.Object">
@@ -250,14 +250,14 @@ implements <a href="../../../../jabs/node/nodes/MinerNode.html" title="interface
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="BitcoinMinerNode-jabs.simulator.Simulator-jabs.network.Network-int-long-long-">
+<a name="BitcoinMinerNode-jabs.simulator.Simulator-jabs.network.networks.Network-int-long-long-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>BitcoinMinerNode</h4>
 <pre>public&nbsp;BitcoinMinerNode(<a href="../../../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-                        <a href="../../../../jabs/network/Network.html" title="class in jabs.network">Network</a>&nbsp;network,
+                        <a href="../../../../jabs/network/Network.html" title="class in jabs.network.networks">Network</a>&nbsp;network,
                         int&nbsp;nodeID,
                         long&nbsp;downloadBandwidth,
                         long&nbsp;uploadBandwidth)</pre>
@@ -280,7 +280,7 @@ implements <a href="../../../../jabs/node/nodes/MinerNode.html" title="interface
 <pre>public&nbsp;void&nbsp;generateNewBlock()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../jabs/node/nodes/MinerNode.html#generateNewBlock--">generateNewBlock</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a></code></dd>
+<dd><code><a href="../../../../jabs/node/nodes/MinerNode.html#generateNewBlock--">generateNewBlock</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -293,7 +293,7 @@ implements <a href="../../../../jabs/node/nodes/MinerNode.html" title="interface
 <pre>public&nbsp;long&nbsp;getHashPower()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../jabs/node/nodes/MinerNode.html#getHashPower--">getHashPower</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a></code></dd>
+<dd><code><a href="../../../../jabs/node/nodes/MinerNode.html#getHashPower--">getHashPower</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -325,7 +325,7 @@ implements <a href="../../../../jabs/node/nodes/MinerNode.html" title="interface
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.node.nodes.bitcoin"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.network.node.nodes.bitcoin"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?jabs/node/nodes/bitcoin/BitcoinMinerNode.html" target="_top">Frames</a></li>

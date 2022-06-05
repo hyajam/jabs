@@ -49,8 +49,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../jabs/event/PacketDeliveryEvent.html" title="class in jabs.event"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../jabs/event/PacketSendingProcess.html" title="class in jabs.event"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/event/PacketDeliveryEvent.html" title="class in jabs.simulator.event"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../jabs/event/PacketSendingProcess.html" title="class in jabs.simulator.event"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/event/PacketReceivingProcess.html" target="_top">Frames</a></li>
@@ -92,7 +92,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">jabs.event</div>
+<div class="subTitle">jabs.simulator.event</div>
 <h2 title="Class PacketReceivingProcess" class="title">Class PacketReceivingProcess</h2>
 </div>
 <div class="contentContainer">
@@ -100,7 +100,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.event">AbstractPacketProcessor</a></li>
+<li><a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.simulator.event">AbstractPacketProcessor</a></li>
 <li>
 <ul class="inheritance">
 <li>PacketReceivingProcess</li>
@@ -114,12 +114,12 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../jabs/event/Event.html" title="interface in jabs.event">Event</a></dd>
+<dd><a href="../../jabs/event/Event.html" title="interface in jabs.simulator.event">Event</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">PacketReceivingProcess</span>
-extends <a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.event">AbstractPacketProcessor</a></pre>
+extends <a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.simulator.event">AbstractPacketProcessor</a></pre>
 </li>
 </ul>
 </div>
@@ -136,7 +136,7 @@ extends <a href="../../jabs/event/AbstractPacketProcessor.html" title="class in 
 <li class="blockList"><a name="fields.inherited.from.class.AbstractPacketProcessor">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;<a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.event">AbstractPacketProcessor</a></h3>
+<h3>Fields inherited from class&nbsp;<a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.simulator.event">AbstractPacketProcessor</a></h3>
 <code><a href="../../jabs/event/AbstractPacketProcessor.html#network">network</a>, <a href="../../jabs/event/AbstractPacketProcessor.html#node">node</a>, <a href="../../jabs/event/AbstractPacketProcessor.html#packetsQueue">packetsQueue</a>, <a href="../../jabs/event/AbstractPacketProcessor.html#randomnessEngine">randomnessEngine</a>, <a href="../../jabs/event/AbstractPacketProcessor.html#simulator">simulator</a></code></li>
 </ul>
 </li>
@@ -153,10 +153,10 @@ extends <a href="../../jabs/event/AbstractPacketProcessor.html" title="class in 
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../jabs/event/PacketReceivingProcess.html#PacketReceivingProcess-jabs.simulator.Simulator-jabs.network.Network-jabs.randengine.RandomnessEngine-jabs.node.nodes.Node-">PacketReceivingProcess</a></span>(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-                      <a href="../../jabs/network/Network.html" title="class in jabs.network">Network</a>&nbsp;network,
-                      <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
-                      <a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;node)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../jabs/event/PacketReceivingProcess.html#PacketReceivingProcess-jabs.simulator.Simulator-jabs.network.networks.Network-jabs.simulator.randengine.RandomnessEngine-jabs.network.node.nodes.Node-">PacketReceivingProcess</a></span>(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
+                      <a href="../../jabs/network/Network.html" title="class in jabs.network.networks">Network</a>&nbsp;network,
+                      <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
+                      <a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;node)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -175,19 +175,19 @@ extends <a href="../../jabs/event/AbstractPacketProcessor.html" title="class in 
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/event/PacketReceivingProcess.html#processingTime-jabs.message.Packet-">processingTime</a></span>(<a href="../../jabs/message/Packet.html" title="class in jabs.message">Packet</a>&nbsp;packet)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/event/PacketReceivingProcess.html#processingTime-jabs.network.message.Packet-">processingTime</a></span>(<a href="../../jabs/message/Packet.html" title="class in jabs.network.message">Packet</a>&nbsp;packet)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/event/PacketReceivingProcess.html#sendPacketToNextProcess-jabs.message.Packet-">sendPacketToNextProcess</a></span>(<a href="../../jabs/message/Packet.html" title="class in jabs.message">Packet</a>&nbsp;packet)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/event/PacketReceivingProcess.html#sendPacketToNextProcess-jabs.network.message.Packet-">sendPacketToNextProcess</a></span>(<a href="../../jabs/message/Packet.html" title="class in jabs.network.message">Packet</a>&nbsp;packet)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.AbstractPacketProcessor">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;<a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.event">AbstractPacketProcessor</a></h3>
-<code><a href="../../jabs/event/AbstractPacketProcessor.html#addToQueue-jabs.message.Packet-">addToQueue</a>, <a href="../../jabs/event/AbstractPacketProcessor.html#execute--">execute</a>, <a href="../../jabs/event/AbstractPacketProcessor.html#isQueueEmpty--">isQueueEmpty</a></code></li>
+<h3>Methods inherited from class&nbsp;<a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.simulator.event">AbstractPacketProcessor</a></h3>
+<code><a href="../../jabs/event/AbstractPacketProcessor.html#addToQueue-jabs.network.message.Packet-">addToQueue</a>, <a href="../../jabs/event/AbstractPacketProcessor.html#execute--">execute</a>, <a href="../../jabs/event/AbstractPacketProcessor.html#isQueueEmpty--">isQueueEmpty</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.Object">
@@ -210,16 +210,16 @@ extends <a href="../../jabs/event/AbstractPacketProcessor.html" title="class in 
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="PacketReceivingProcess-jabs.simulator.Simulator-jabs.network.Network-jabs.randengine.RandomnessEngine-jabs.node.nodes.Node-">
+<a name="PacketReceivingProcess-jabs.simulator.Simulator-jabs.network.networks.Network-jabs.simulator.randengine.RandomnessEngine-jabs.network.node.nodes.Node-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>PacketReceivingProcess</h4>
 <pre>public&nbsp;PacketReceivingProcess(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-                              <a href="../../jabs/network/Network.html" title="class in jabs.network">Network</a>&nbsp;network,
-                              <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
-                              <a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;node)</pre>
+                              <a href="../../jabs/network/Network.html" title="class in jabs.network.networks">Network</a>&nbsp;network,
+                              <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
+                              <a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;node)</pre>
 </li>
 </ul>
 </li>
@@ -230,29 +230,29 @@ extends <a href="../../jabs/event/AbstractPacketProcessor.html" title="class in 
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="sendPacketToNextProcess-jabs.message.Packet-">
+<a name="sendPacketToNextProcess-jabs.network.message.Packet-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>sendPacketToNextProcess</h4>
-<pre>protected&nbsp;void&nbsp;sendPacketToNextProcess(<a href="../../jabs/message/Packet.html" title="class in jabs.message">Packet</a>&nbsp;packet)</pre>
+<pre>protected&nbsp;void&nbsp;sendPacketToNextProcess(<a href="../../jabs/message/Packet.html" title="class in jabs.network.message">Packet</a>&nbsp;packet)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../jabs/event/AbstractPacketProcessor.html#sendPacketToNextProcess-jabs.message.Packet-">sendPacketToNextProcess</a></code>&nbsp;in class&nbsp;<code><a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.event">AbstractPacketProcessor</a></code></dd>
+<dd><code><a href="../../jabs/event/AbstractPacketProcessor.html#sendPacketToNextProcess-jabs.network.message.Packet-">sendPacketToNextProcess</a></code>&nbsp;in class&nbsp;<code><a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.simulator.event">AbstractPacketProcessor</a></code></dd>
 </dl>
 </li>
 </ul>
-<a name="processingTime-jabs.message.Packet-">
+<a name="processingTime-jabs.network.message.Packet-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>processingTime</h4>
-<pre>public&nbsp;double&nbsp;processingTime(<a href="../../jabs/message/Packet.html" title="class in jabs.message">Packet</a>&nbsp;packet)</pre>
+<pre>public&nbsp;double&nbsp;processingTime(<a href="../../jabs/message/Packet.html" title="class in jabs.network.message">Packet</a>&nbsp;packet)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../jabs/event/AbstractPacketProcessor.html#processingTime-jabs.message.Packet-">processingTime</a></code>&nbsp;in class&nbsp;<code><a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.event">AbstractPacketProcessor</a></code></dd>
+<dd><code><a href="../../jabs/event/AbstractPacketProcessor.html#processingTime-jabs.network.message.Packet-">processingTime</a></code>&nbsp;in class&nbsp;<code><a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.simulator.event">AbstractPacketProcessor</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -283,8 +283,8 @@ extends <a href="../../jabs/event/AbstractPacketProcessor.html" title="class in 
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../jabs/event/PacketDeliveryEvent.html" title="class in jabs.event"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../jabs/event/PacketSendingProcess.html" title="class in jabs.event"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/event/PacketDeliveryEvent.html" title="class in jabs.simulator.event"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../jabs/event/PacketSendingProcess.html" title="class in jabs.simulator.event"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/event/PacketReceivingProcess.html" target="_top">Frames</a></li>

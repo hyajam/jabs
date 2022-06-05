@@ -49,8 +49,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../jabs/network/BitcoinGlobalBlockchainNetwork.html" title="class in jabs.network"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../jabs/network/BlockFactory.html" title="class in jabs.network"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/network/BitcoinGlobalBlockchainNetwork.html" title="class in jabs.network.networks"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../jabs/network/BlockFactory.html" title="class in jabs.network.networks"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/network/BlockchainNetwork.html" target="_top">Frames</a></li>
@@ -92,7 +92,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">jabs.network</div>
+<div class="subTitle">jabs.network.networks</div>
 <h2 title="Class BlockchainNetwork" class="title">Class BlockchainNetwork</h2>
 </div>
 <div class="contentContainer">
@@ -100,7 +100,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../jabs/network/Network.html" title="class in jabs.network">Network</a></li>
+<li><a href="../../jabs/network/Network.html" title="class in jabs.network.networks">Network</a></li>
 <li>
 <ul class="inheritance">
 <li>BlockchainNetwork</li>
@@ -114,12 +114,12 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><a href="../../jabs/network/GlobalBlockchainNetwork.html" title="class in jabs.network">GlobalBlockchainNetwork</a>, <a href="../../jabs/network/LANBlockchainNetwork.html" title="class in jabs.network">LANBlockchainNetwork</a></dd>
+<dd><a href="../../jabs/network/GlobalBlockchainNetwork.html" title="class in jabs.network.networks">GlobalBlockchainNetwork</a>, <a href="../../jabs/network/LANBlockchainNetwork.html" title="class in jabs.network.networks">LANBlockchainNetwork</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public abstract class <span class="typeNameLabel">BlockchainNetwork</span>
-extends <a href="../../jabs/network/Network.html" title="class in jabs.network">Network</a></pre>
+extends <a href="../../jabs/network/Network.html" title="class in jabs.network.networks">Network</a></pre>
 </li>
 </ul>
 </div>
@@ -139,7 +139,7 @@ extends <a href="../../jabs/network/Network.html" title="class in jabs.network">
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a>&gt;</code></td>
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockchainNetwork.html#miners">miners</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
@@ -155,7 +155,7 @@ extends <a href="../../jabs/network/Network.html" title="class in jabs.network">
 <li class="blockList"><a name="fields.inherited.from.class.Network">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;<a href="../../jabs/network/Network.html" title="class in jabs.network">Network</a></h3>
+<h3>Fields inherited from class&nbsp;<a href="../../jabs/network/Network.html" title="class in jabs.network.networks">Network</a></h3>
 <code><a href="../../jabs/network/Network.html#nodes">nodes</a>, <a href="../../jabs/network/Network.html#randomnessEngine">randomnessEngine</a></code></li>
 </ul>
 </li>
@@ -174,7 +174,7 @@ extends <a href="../../jabs/network/Network.html" title="class in jabs.network">
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected </code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockchainNetwork.html#BlockchainNetwork-jabs.randengine.RandomnessEngine-">BlockchainNetwork</a></span>(<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockchainNetwork.html#BlockchainNetwork-jabs.simulator.randengine.RandomnessEngine-">BlockchainNetwork</a></span>(<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -193,18 +193,18 @@ extends <a href="../../jabs/network/Network.html" title="class in jabs.network">
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockchainNetwork.html#addMiner-jabs.node.nodes.MinerNode-">addMiner</a></span>(<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a>&nbsp;node)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockchainNetwork.html#addMiner-jabs.network.node.nodes.MinerNode-">addMiner</a></span>(<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a>&nbsp;node)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a>&gt;</code></td>
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockchainNetwork.html#getAllMiners--">getAllMiners</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a></code></td>
+<td class="colFirst"><code><a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockchainNetwork.html#getMiner-int-">getMiner</a></span>(int&nbsp;i)</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a></code></td>
+<td class="colFirst"><code><a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockchainNetwork.html#getRandomMinerByHashPower--">getRandomMinerByHashPower</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
@@ -220,8 +220,8 @@ extends <a href="../../jabs/network/Network.html" title="class in jabs.network">
 <li class="blockList"><a name="methods.inherited.from.class.Network">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;<a href="../../jabs/network/Network.html" title="class in jabs.network">Network</a></h3>
-<code><a href="../../jabs/network/Network.html#addNode-jabs.node.nodes.Node-">addNode</a>, <a href="../../jabs/network/Network.html#getAllNodes--">getAllNodes</a>, <a href="../../jabs/network/Network.html#getLatency-jabs.node.nodes.Node-jabs.node.nodes.Node-">getLatency</a>, <a href="../../jabs/network/Network.html#getNode-int-">getNode</a>, <a href="../../jabs/network/Network.html#getRandom--">getRandom</a>, <a href="../../jabs/network/Network.html#getRandomNode--">getRandomNode</a>, <a href="../../jabs/network/Network.html#populateNetwork-jabs.simulator.Simulator-">populateNetwork</a>, <a href="../../jabs/network/Network.html#populateNetwork-jabs.simulator.Simulator-int-">populateNetwork</a>, <a href="../../jabs/network/Network.html#sampleDownloadBandwidth-int-">sampleDownloadBandwidth</a>, <a href="../../jabs/network/Network.html#sampleUploadBandwidth-int-">sampleUploadBandwidth</a></code></li>
+<h3>Methods inherited from class&nbsp;<a href="../../jabs/network/Network.html" title="class in jabs.network.networks">Network</a></h3>
+<code><a href="../../jabs/network/Network.html#addNode-jabs.network.node.nodes.Node-">addNode</a>, <a href="../../jabs/network/Network.html#getAllNodes--">getAllNodes</a>, <a href="../../jabs/network/Network.html#getLatency-jabs.network.node.nodes.Node-jabs.network.node.nodes.Node-">getLatency</a>, <a href="../../jabs/network/Network.html#getNode-int-">getNode</a>, <a href="../../jabs/network/Network.html#getRandom--">getRandom</a>, <a href="../../jabs/network/Network.html#getRandomNode--">getRandomNode</a>, <a href="../../jabs/network/Network.html#populateNetwork-jabs.simulator.Simulator-">populateNetwork</a>, <a href="../../jabs/network/Network.html#populateNetwork-jabs.simulator.Simulator-int-">populateNetwork</a>, <a href="../../jabs/network/Network.html#sampleDownloadBandwidth-int-">sampleDownloadBandwidth</a>, <a href="../../jabs/network/Network.html#sampleUploadBandwidth-int-">sampleUploadBandwidth</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.Object">
@@ -250,7 +250,7 @@ extends <a href="../../jabs/network/Network.html" title="class in jabs.network">
 <ul class="blockList">
 <li class="blockList">
 <h4>miners</h4>
-<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a>&gt; miners</pre>
+<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a>&gt; miners</pre>
 </li>
 </ul>
 <a name="totalHashPower">
@@ -279,13 +279,13 @@ extends <a href="../../jabs/network/Network.html" title="class in jabs.network">
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="BlockchainNetwork-jabs.randengine.RandomnessEngine-">
+<a name="BlockchainNetwork-jabs.simulator.randengine.RandomnessEngine-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>BlockchainNetwork</h4>
-<pre>protected&nbsp;BlockchainNetwork(<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</pre>
+<pre>protected&nbsp;BlockchainNetwork(<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</pre>
 </li>
 </ul>
 </li>
@@ -302,7 +302,7 @@ extends <a href="../../jabs/network/Network.html" title="class in jabs.network">
 <ul class="blockList">
 <li class="blockList">
 <h4>getAllMiners</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a>&gt;&nbsp;getAllMiners()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a>&gt;&nbsp;getAllMiners()</pre>
 </li>
 </ul>
 <a name="getMiner-int-">
@@ -311,7 +311,7 @@ extends <a href="../../jabs/network/Network.html" title="class in jabs.network">
 <ul class="blockList">
 <li class="blockList">
 <h4>getMiner</h4>
-<pre>public&nbsp;<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a>&nbsp;getMiner(int&nbsp;i)</pre>
+<pre>public&nbsp;<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a>&nbsp;getMiner(int&nbsp;i)</pre>
 </li>
 </ul>
 <a name="getTotalHashPower--">
@@ -329,16 +329,16 @@ extends <a href="../../jabs/network/Network.html" title="class in jabs.network">
 <ul class="blockList">
 <li class="blockList">
 <h4>getRandomMinerByHashPower</h4>
-<pre>public&nbsp;<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a>&nbsp;getRandomMinerByHashPower()</pre>
+<pre>public&nbsp;<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a>&nbsp;getRandomMinerByHashPower()</pre>
 </li>
 </ul>
-<a name="addMiner-jabs.node.nodes.MinerNode-">
+<a name="addMiner-jabs.network.node.nodes.MinerNode-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addMiner</h4>
-<pre>public&nbsp;void&nbsp;addMiner(<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes">MinerNode</a>&nbsp;node)</pre>
+<pre>public&nbsp;void&nbsp;addMiner(<a href="../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes">MinerNode</a>&nbsp;node)</pre>
 </li>
 </ul>
 <a name="sampleHashPower--">
@@ -377,8 +377,8 @@ extends <a href="../../jabs/network/Network.html" title="class in jabs.network">
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../jabs/network/BitcoinGlobalBlockchainNetwork.html" title="class in jabs.network"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../jabs/network/BlockFactory.html" title="class in jabs.network"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/network/BitcoinGlobalBlockchainNetwork.html" title="class in jabs.network.networks"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../jabs/network/BlockFactory.html" title="class in jabs.network.networks"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/network/BlockchainNetwork.html" target="_top">Frames</a></li>

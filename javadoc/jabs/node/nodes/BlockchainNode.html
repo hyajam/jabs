@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../index.html?jabs/node/nodes/BlockchainNode.html" target="_top">Frames</a></li>
@@ -92,15 +92,15 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">jabs.node.nodes</div>
-<h2 title="Class BlockchainNode" class="title">Class BlockchainNode&lt;B extends <a href="../../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;B&gt;,T extends <a href="../../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;T&gt;&gt;</h2>
+<div class="subTitle">jabs.network.node.nodes</div>
+<h2 title="Class BlockchainNode" class="title">Class BlockchainNode&lt;B extends <a href="../../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;B&gt;,T extends <a href="../../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;T&gt;&gt;</h2>
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a></li>
+<li><a href="../../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a></li>
 <li>
 <ul class="inheritance">
 <li>BlockchainNode&lt;B,T&gt;</li>
@@ -114,12 +114,12 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><a href="../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.node.nodes.bitcoin">BitcoinNode</a>, <a href="../../../jabs/node/nodes/ethereum/EthereumNode.html" title="class in jabs.node.nodes.ethereum">EthereumNode</a>, <a href="../../../jabs/node/nodes/pbft/PBFTNode.html" title="class in jabs.node.nodes.pbft">PBFTNode</a></dd>
+<dd><a href="../../../jabs/node/nodes/bitcoin/BitcoinNode.html" title="class in jabs.network.node.nodes.bitcoin">BitcoinNode</a>, <a href="../../../jabs/node/nodes/ethereum/EthereumNode.html" title="class in jabs.network.node.nodes.ethereum">EthereumNode</a>, <a href="../../../jabs/node/nodes/pbft/PBFTNode.html" title="class in jabs.network.node.nodes.pbft">PBFTNode</a></dd>
 </dl>
 <hr>
 <br>
-<pre>public abstract class <span class="typeNameLabel">BlockchainNode&lt;B extends <a href="../../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;B&gt;,T extends <a href="../../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;T&gt;&gt;</span>
-extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a></pre>
+<pre>public abstract class <span class="typeNameLabel">BlockchainNode&lt;B extends <a href="../../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;B&gt;,T extends <a href="../../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;T&gt;&gt;</span>
+extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a></pre>
 </li>
 </ul>
 </div>
@@ -139,23 +139,23 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../../jabs/data/Hash.html" title="class in jabs.data">Hash</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>&gt;</code></td>
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../../jabs/data/Hash.html" title="class in jabs.datalayer.data">Hash</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#alreadySeenBlocks">alreadySeenBlocks</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../../jabs/data/Hash.html" title="class in jabs.data">Hash</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;</code></td>
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../../jabs/data/Hash.html" title="class in jabs.datalayer.data">Hash</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#alreadySeenTxs">alreadySeenTxs</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html?is-external=true" title="class or interface in java.util">HashSet</a>&lt;<a href="../../../jabs/data/Vote.html" title="class in jabs.data">Vote</a>&gt;</code></td>
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html?is-external=true" title="class or interface in java.util">HashSet</a>&lt;<a href="../../../jabs/data/Vote.html" title="class in jabs.datalayer.data">Vote</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#alreadySeenVotes">alreadySeenVotes</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="../../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus">AbstractBlockchainConsensus</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;</code></td>
+<td class="colFirst"><code>protected <a href="../../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus.algorithm">AbstractBlockchainConsensus</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#consensusAlgorithm">consensusAlgorithm</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="../../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.blockchain">LocalBlockTree</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>&gt;</code></td>
+<td class="colFirst"><code>protected <a href="../../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.consensus.blockchain">LocalBlockTree</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#localBlockTree">localBlockTree</a></span></code>&nbsp;</td>
 </tr>
 </table>
@@ -163,7 +163,7 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <li class="blockList"><a name="fields.inherited.from.class.Node">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;<a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a></h3>
+<h3>Fields inherited from class&nbsp;<a href="../../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a></h3>
 <code><a href="../../../jabs/node/nodes/Node.html#network">network</a>, <a href="../../../jabs/node/nodes/Node.html#nodeID">nodeID</a>, <a href="../../../jabs/node/nodes/Node.html#nodeNetworkInterface">nodeNetworkInterface</a>, <a href="../../../jabs/node/nodes/Node.html#p2pConnections">p2pConnections</a>, <a href="../../../jabs/node/nodes/Node.html#simulator">simulator</a></code></li>
 </ul>
 </li>
@@ -180,13 +180,13 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#BlockchainNode-jabs.simulator.Simulator-jabs.network.Network-int-long-long-jabs.p2p.AbstractP2PConnections-jabs.consensus.AbstractBlockchainConsensus-">BlockchainNode</a></span>(<a href="../../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-              <a href="../../../jabs/network/Network.html" title="class in jabs.network">Network</a>&nbsp;network,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#BlockchainNode-jabs.simulator.Simulator-jabs.network.networks.Network-int-long-long-jabs.network.p2p.AbstractP2PConnections-jabs.consensus.algorithm.AbstractChainBasedConsensus-">BlockchainNode</a></span>(<a href="../../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
+              <a href="../../../jabs/network/Network.html" title="class in jabs.network.networks">Network</a>&nbsp;network,
               int&nbsp;nodeID,
               long&nbsp;downloadBandwidth,
               long&nbsp;uploadBandwidth,
-              <a href="../../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.p2p">AbstractP2PConnections</a>&nbsp;routingTable,
-              <a href="../../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus">AbstractBlockchainConsensus</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;&nbsp;consensusAlgorithm)</code>&nbsp;</td>
+              <a href="../../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.network.p2p">AbstractP2PConnections</a>&nbsp;routingTable,
+              <a href="../../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus.algorithm">AbstractBlockchainConsensus</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;&nbsp;consensusAlgorithm)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -204,7 +204,7 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus">AbstractBlockchainConsensus</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;</code></td>
+<td class="colFirst"><code><a href="../../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus.algorithm">AbstractBlockchainConsensus</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#getConsensusAlgorithm--">getConsensusAlgorithm</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -213,7 +213,7 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#processIncomingPacket-jabs.message.Packet-">processIncomingPacket</a></span>(<a href="../../../jabs/message/Packet.html" title="class in jabs.message">Packet</a>&nbsp;packet)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#processIncomingPacket-jabs.network.message.Packet-">processIncomingPacket</a></span>(<a href="../../../jabs/message/Packet.html" title="class in jabs.network.message">Packet</a>&nbsp;packet)</code>
 <div class="block">This method is called when a new packet is received by the network interface.</div>
 </td>
 </tr>
@@ -223,20 +223,20 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>protected abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#processNewTx-T-jabs.node.nodes.Node-">processNewTx</a></span>(<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&nbsp;tx,
-            <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;from)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#processNewTx-T-jabs.network.node.nodes.Node-">processNewTx</a></span>(<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&nbsp;tx,
+            <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;from)</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>protected abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#processNewVote-jabs.data.Vote-">processNewVote</a></span>(<a href="../../../jabs/data/Vote.html" title="class in jabs.data">Vote</a>&nbsp;vote)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../jabs/node/nodes/BlockchainNode.html#processNewVote-jabs.ledgerdata.Vote-">processNewVote</a></span>(<a href="../../../jabs/data/Vote.html" title="class in jabs.datalayer.data">Vote</a>&nbsp;vote)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.Node">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;<a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a></h3>
-<code><a href="../../../jabs/node/nodes/Node.html#broadcastMessage-jabs.message.Message-">broadcastMessage</a>, <a href="../../../jabs/node/nodes/Node.html#crash--">crash</a>, <a href="../../../jabs/node/nodes/Node.html#generateNewTransaction--">generateNewTransaction</a>, <a href="../../../jabs/node/nodes/Node.html#getNetwork--">getNetwork</a>, <a href="../../../jabs/node/nodes/Node.html#getNodeNetworkInterface--">getNodeNetworkInterface</a>, <a href="../../../jabs/node/nodes/Node.html#getP2pConnections--">getP2pConnections</a>, <a href="../../../jabs/node/nodes/Node.html#getSimulator--">getSimulator</a>, <a href="../../../jabs/node/nodes/Node.html#restore--">restore</a></code></li>
+<h3>Methods inherited from class&nbsp;<a href="../../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a></h3>
+<code><a href="../../../jabs/node/nodes/Node.html#broadcastMessage-jabs.network.message.Message-">broadcastMessage</a>, <a href="../../../jabs/node/nodes/Node.html#crash--">crash</a>, <a href="../../../jabs/node/nodes/Node.html#generateNewTransaction--">generateNewTransaction</a>, <a href="../../../jabs/node/nodes/Node.html#getNetwork--">getNetwork</a>, <a href="../../../jabs/node/nodes/Node.html#getNodeNetworkInterface--">getNodeNetworkInterface</a>, <a href="../../../jabs/node/nodes/Node.html#getP2pConnections--">getP2pConnections</a>, <a href="../../../jabs/node/nodes/Node.html#getSimulator--">getSimulator</a>, <a href="../../../jabs/node/nodes/Node.html#restore--">restore</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.Object">
@@ -265,7 +265,7 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <ul class="blockList">
 <li class="blockList">
 <h4>consensusAlgorithm</h4>
-<pre>protected final&nbsp;<a href="../../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus">AbstractBlockchainConsensus</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a> extends <a href="../../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>&gt;,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a> extends <a href="../../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;&gt; consensusAlgorithm</pre>
+<pre>protected final&nbsp;<a href="../../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus.algorithm">AbstractBlockchainConsensus</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a> extends <a href="../../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>&gt;,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a> extends <a href="../../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;&gt; consensusAlgorithm</pre>
 </li>
 </ul>
 <a name="alreadySeenTxs">
@@ -274,7 +274,7 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <ul class="blockList">
 <li class="blockList">
 <h4>alreadySeenTxs</h4>
-<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../../jabs/data/Hash.html" title="class in jabs.data">Hash</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a> extends <a href="../../../jabs/data/Tx.html" title="class in jabs.data">Tx</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;&gt; alreadySeenTxs</pre>
+<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../../jabs/data/Hash.html" title="class in jabs.datalayer.data">Hash</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a> extends <a href="../../../jabs/data/Tx.html" title="class in jabs.datalayer.data">Tx</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;&gt; alreadySeenTxs</pre>
 </li>
 </ul>
 <a name="alreadySeenBlocks">
@@ -283,7 +283,7 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <ul class="blockList">
 <li class="blockList">
 <h4>alreadySeenBlocks</h4>
-<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../../jabs/data/Hash.html" title="class in jabs.data">Hash</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a> extends <a href="../../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>&gt;&gt; alreadySeenBlocks</pre>
+<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="../../../jabs/data/Hash.html" title="class in jabs.datalayer.data">Hash</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a> extends <a href="../../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>&gt;&gt; alreadySeenBlocks</pre>
 </li>
 </ul>
 <a name="alreadySeenVotes">
@@ -292,7 +292,7 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <ul class="blockList">
 <li class="blockList">
 <h4>alreadySeenVotes</h4>
-<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html?is-external=true" title="class or interface in java.util">HashSet</a>&lt;<a href="../../../jabs/data/Vote.html" title="class in jabs.data">Vote</a>&gt; alreadySeenVotes</pre>
+<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html?is-external=true" title="class or interface in java.util">HashSet</a>&lt;<a href="../../../jabs/data/Vote.html" title="class in jabs.datalayer.data">Vote</a>&gt; alreadySeenVotes</pre>
 </li>
 </ul>
 <a name="localBlockTree">
@@ -301,7 +301,7 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <ul class="blockListLast">
 <li class="blockList">
 <h4>localBlockTree</h4>
-<pre>protected final&nbsp;<a href="../../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.blockchain">LocalBlockTree</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a> extends <a href="../../../jabs/data/Block.html" title="class in jabs.data">Block</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>&gt;&gt; localBlockTree</pre>
+<pre>protected final&nbsp;<a href="../../../jabs/blockchain/LocalBlockTree.html" title="class in jabs.consensus.blockchain">LocalBlockTree</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a> extends <a href="../../../jabs/data/Block.html" title="class in jabs.datalayer.data">Block</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>&gt;&gt; localBlockTree</pre>
 </li>
 </ul>
 </li>
@@ -312,19 +312,19 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="BlockchainNode-jabs.simulator.Simulator-jabs.network.Network-int-long-long-jabs.p2p.AbstractP2PConnections-jabs.consensus.AbstractBlockchainConsensus-">
+<a name="BlockchainNode-jabs.simulator.Simulator-jabs.network.networks.Network-int-long-long-jabs.network.p2p.AbstractP2PConnections-jabs.consensus.algorithm.AbstractBlockchainConsensus-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>BlockchainNode</h4>
 <pre>public&nbsp;BlockchainNode(<a href="../../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-                      <a href="../../../jabs/network/Network.html" title="class in jabs.network">Network</a>&nbsp;network,
+                      <a href="../../../jabs/network/Network.html" title="class in jabs.network.networks">Network</a>&nbsp;network,
                       int&nbsp;nodeID,
                       long&nbsp;downloadBandwidth,
                       long&nbsp;uploadBandwidth,
-                      <a href="../../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.p2p">AbstractP2PConnections</a>&nbsp;routingTable,
-                      <a href="../../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus">AbstractBlockchainConsensus</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;&nbsp;consensusAlgorithm)</pre>
+                      <a href="../../../jabs/p2p/AbstractP2PConnections.html" title="class in jabs.network.p2p">AbstractP2PConnections</a>&nbsp;routingTable,
+                      <a href="../../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus.algorithm">AbstractBlockchainConsensus</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;&nbsp;consensusAlgorithm)</pre>
 </li>
 </ul>
 </li>
@@ -335,38 +335,38 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="processIncomingPacket-jabs.message.Packet-">
+<a name="processIncomingPacket-jabs.network.message.Packet-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>processIncomingPacket</h4>
-<pre>public&nbsp;void&nbsp;processIncomingPacket(<a href="../../../jabs/message/Packet.html" title="class in jabs.message">Packet</a>&nbsp;packet)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../jabs/node/nodes/Node.html#processIncomingPacket-jabs.message.Packet-">Node</a></code></span></div>
+<pre>public&nbsp;void&nbsp;processIncomingPacket(<a href="../../../jabs/message/Packet.html" title="class in jabs.network.message">Packet</a>&nbsp;packet)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../jabs/node/nodes/Node.html#processIncomingPacket-jabs.network.message.Packet-">Node</a></code></span></div>
 <div class="block">This method is called when a new packet is received by the network interface.
  This should run the protocol and execute the required reaction according to the protocol for the incoming data
  For example this might process a new incoming transaction or block.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../jabs/node/nodes/Node.html#processIncomingPacket-jabs.message.Packet-">processIncomingPacket</a></code>&nbsp;in class&nbsp;<code><a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a></code></dd>
+<dd><code><a href="../../../jabs/node/nodes/Node.html#processIncomingPacket-jabs.network.message.Packet-">processIncomingPacket</a></code>&nbsp;in class&nbsp;<code><a href="../../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>packet</code> - incoming packet</dd>
 </dl>
 </li>
 </ul>
-<a name="processNewTx-jabs.data.Tx-jabs.node.nodes.Node-">
+<a name="processNewTx-jabs.datalayer.data.Tx-jabs.network.node.nodes.Node-">
 <!--   -->
-</a><a name="processNewTx-T-jabs.node.nodes.Node-">
+</a><a name="processNewTx-T-jabs.network.node.nodes.Node-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>processNewTx</h4>
 <pre>protected abstract&nbsp;void&nbsp;processNewTx(<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&nbsp;tx,
-                                     <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;from)</pre>
+                                     <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;from)</pre>
 </li>
 </ul>
-<a name="processNewBlock-jabs.data.Block-">
+<a name="processNewBlock-jabs.datalayer.data.Block-">
 <!--   -->
 </a><a name="processNewBlock-B-">
 <!--   -->
@@ -377,13 +377,13 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <pre>protected abstract&nbsp;void&nbsp;processNewBlock(<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>&nbsp;block)</pre>
 </li>
 </ul>
-<a name="processNewVote-jabs.data.Vote-">
+<a name="processNewVote-jabs.datalayer.data.Vote-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>processNewVote</h4>
-<pre>protected abstract&nbsp;void&nbsp;processNewVote(<a href="../../../jabs/data/Vote.html" title="class in jabs.data">Vote</a>&nbsp;vote)</pre>
+<pre>protected abstract&nbsp;void&nbsp;processNewVote(<a href="../../../jabs/data/Vote.html" title="class in jabs.datalayer.data">Vote</a>&nbsp;vote)</pre>
 </li>
 </ul>
 <a name="getConsensusAlgorithm--">
@@ -392,7 +392,7 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <ul class="blockList">
 <li class="blockList">
 <h4>getConsensusAlgorithm</h4>
-<pre>public&nbsp;<a href="../../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus">AbstractBlockchainConsensus</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;&nbsp;getConsensusAlgorithm()</pre>
+<pre>public&nbsp;<a href="../../../jabs/consensus/AbstractBlockchainConsensus.html" title="class in jabs.consensus.algorithm">AbstractBlockchainConsensus</a>&lt;<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">B</a>,<a href="../../../jabs/node/nodes/BlockchainNode.html" title="type parameter in BlockchainNode">T</a>&gt;&nbsp;getConsensusAlgorithm()</pre>
 </li>
 </ul>
 <a name="numberOfAlreadySeenBlocks--">
@@ -432,7 +432,7 @@ extends <a href="../../../jabs/node/nodes/Node.html" title="class in jabs.node.n
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../jabs/node/nodes/MinerNode.html" title="interface in jabs.node.nodes"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../jabs/node/nodes/MinerNode.html" title="interface in jabs.network.node.nodes"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../index.html?jabs/node/nodes/BlockchainNode.html" target="_top">Frames</a></li>

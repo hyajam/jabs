@@ -1,8 +1,8 @@
 package jabs.scenario;
 
 import jabs.log.AbstractLogger;
-import jabs.network.Network;
-import jabs.randengine.RandomnessEngine;
+import jabs.network.networks.Network;
+import jabs.simulator.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 import java.io.IOException;

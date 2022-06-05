@@ -21,6 +21,8 @@ public class Main {
     }
 }
 
+// TODO: New model for PoW mining
+
 // TODO: Adding Throughput Logger
 // TODO: Add Multiple Loggers and Scenarios Default
 // TODO: Add New Network Latency Stats

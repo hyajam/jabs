@@ -92,7 +92,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">jabs.node</div>
+<div class="subTitle">jabs.network.node</div>
 <h2 title="Class NodeNetworkInterface" class="title">Class NodeNetworkInterface</h2>
 </div>
 <div class="contentContainer">
@@ -136,13 +136,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="../../jabs/event/PacketReceivingProcess.html" title="class in jabs.event">PacketReceivingProcess</a></code></td>
+<td class="colFirst"><code><a href="../../jabs/event/PacketReceivingProcess.html" title="class in jabs.simulator.event">PacketReceivingProcess</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#messageReceivingProcess">messageReceivingProcess</a></span></code>
 <div class="block">The process (which is a type of ongoing event) that handles receiving packets and their delays due to bandwidth</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="../../jabs/event/PacketSendingProcess.html" title="class in jabs.event">PacketSendingProcess</a></code></td>
+<td class="colFirst"><code><a href="../../jabs/event/PacketSendingProcess.html" title="class in jabs.simulator.event">PacketSendingProcess</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#messageSendingProcess">messageSendingProcess</a></span></code>
 <div class="block">The process (which is a type of ongoing event) that handles sending packets and their delays due to bandwidth</div>
 </td>
@@ -154,7 +154,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a></code></td>
+<td class="colFirst"><code><a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#node">node</a></span></code>
 <div class="block">The node that have this network interface</div>
 </td>
@@ -186,8 +186,8 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#NodeNetworkInterface-jabs.simulator.Simulator-jabs.node.nodes.Node-long-long-">NodeNetworkInterface</a></span>(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-                    <a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;node,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#NodeNetworkInterface-jabs.simulator.Simulator-jabs.network.node.nodes.Node-long-long-">NodeNetworkInterface</a></span>(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
+                    <a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;node,
                     long&nbsp;downloadBandwidth,
                     long&nbsp;uploadBandwidth)</code>
 <div class="block">Creates a new network interface</div>
@@ -210,20 +210,20 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#addToDownLinkQueue-jabs.message.Packet-">addToDownLinkQueue</a></span>(<a href="../../jabs/message/Packet.html" title="class in jabs.message">Packet</a>&nbsp;packet)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#addToDownLinkQueue-jabs.network.message.Packet-">addToDownLinkQueue</a></span>(<a href="../../jabs/message/Packet.html" title="class in jabs.network.message">Packet</a>&nbsp;packet)</code>
 <div class="block">Adds the packet to node's receiving process if the network interface is not down</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#addToLinkQueue-jabs.message.Packet-jabs.event.AbstractPacketProcessor-">addToLinkQueue</a></span>(<a href="../../jabs/message/Packet.html" title="class in jabs.message">Packet</a>&nbsp;packet,
-              <a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.event">AbstractPacketProcessor</a>&nbsp;processor)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#addToLinkQueue-jabs.network.message.Packet-jabs.simulator.event.AbstractPacketProcessor-">addToLinkQueue</a></span>(<a href="../../jabs/message/Packet.html" title="class in jabs.network.message">Packet</a>&nbsp;packet,
+              <a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.simulator.event">AbstractPacketProcessor</a>&nbsp;processor)</code>
 <div class="block">Adds the packet to the queue of that link (up-link / down-link)</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#addToUpLinkQueue-jabs.message.Packet-">addToUpLinkQueue</a></span>(<a href="../../jabs/message/Packet.html" title="class in jabs.message">Packet</a>&nbsp;packet)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#addToUpLinkQueue-jabs.network.message.Packet-">addToUpLinkQueue</a></span>(<a href="../../jabs/message/Packet.html" title="class in jabs.network.message">Packet</a>&nbsp;packet)</code>
 <div class="block">Adds the packet to node's sending process if the network interface is not down</div>
 </td>
 </tr>
@@ -235,8 +235,8 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#connectNetwork-jabs.network.Network-jabs.randengine.RandomnessEngine-">connectNetwork</a></span>(<a href="../../jabs/network/Network.html" title="class in jabs.network">Network</a>&nbsp;network,
-              <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/node/NodeNetworkInterface.html#connectNetwork-jabs.network.networks.Network-jabs.simulator.randengine.RandomnessEngine-">connectNetwork</a></span>(<a href="../../jabs/network/Network.html" title="class in jabs.network.networks">Network</a>&nbsp;network,
+              <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</code>
 <div class="block">Creates two processes (ongoing events) that handle receiving and sending packets and their respective latencies</div>
 </td>
 </tr>
@@ -300,7 +300,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>node</h4>
-<pre>public final&nbsp;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a> node</pre>
+<pre>public final&nbsp;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a> node</pre>
 <div class="block">The node that have this network interface</div>
 </li>
 </ul>
@@ -320,7 +320,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>messageReceivingProcess</h4>
-<pre>public&nbsp;<a href="../../jabs/event/PacketReceivingProcess.html" title="class in jabs.event">PacketReceivingProcess</a> messageReceivingProcess</pre>
+<pre>public&nbsp;<a href="../../jabs/event/PacketReceivingProcess.html" title="class in jabs.simulator.event">PacketReceivingProcess</a> messageReceivingProcess</pre>
 <div class="block">The process (which is a type of ongoing event) that handles receiving packets and their delays due to bandwidth</div>
 </li>
 </ul>
@@ -330,7 +330,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>messageSendingProcess</h4>
-<pre>public&nbsp;<a href="../../jabs/event/PacketSendingProcess.html" title="class in jabs.event">PacketSendingProcess</a> messageSendingProcess</pre>
+<pre>public&nbsp;<a href="../../jabs/event/PacketSendingProcess.html" title="class in jabs.simulator.event">PacketSendingProcess</a> messageSendingProcess</pre>
 <div class="block">The process (which is a type of ongoing event) that handles sending packets and their delays due to bandwidth</div>
 </li>
 </ul>
@@ -352,14 +352,14 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="NodeNetworkInterface-jabs.simulator.Simulator-jabs.node.nodes.Node-long-long-">
+<a name="NodeNetworkInterface-jabs.simulator.Simulator-jabs.network.node.nodes.Node-long-long-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>NodeNetworkInterface</h4>
 <pre>public&nbsp;NodeNetworkInterface(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-                            <a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;node,
+                            <a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;node,
                             long&nbsp;downloadBandwidth,
                             long&nbsp;uploadBandwidth)</pre>
 <div class="block">Creates a new network interface</div>
@@ -414,14 +414,14 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </dl>
 </li>
 </ul>
-<a name="connectNetwork-jabs.network.Network-jabs.randengine.RandomnessEngine-">
+<a name="connectNetwork-jabs.network.networks.Network-jabs.simulator.randengine.RandomnessEngine-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>connectNetwork</h4>
-<pre>public&nbsp;void&nbsp;connectNetwork(<a href="../../jabs/network/Network.html" title="class in jabs.network">Network</a>&nbsp;network,
-                           <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</pre>
+<pre>public&nbsp;void&nbsp;connectNetwork(<a href="../../jabs/network/Network.html" title="class in jabs.network.networks">Network</a>&nbsp;network,
+                           <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</pre>
 <div class="block">Creates two processes (ongoing events) that handle receiving and sending packets and their respective latencies</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -430,13 +430,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </dl>
 </li>
 </ul>
-<a name="addToDownLinkQueue-jabs.message.Packet-">
+<a name="addToDownLinkQueue-jabs.network.message.Packet-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addToDownLinkQueue</h4>
-<pre>public&nbsp;void&nbsp;addToDownLinkQueue(<a href="../../jabs/message/Packet.html" title="class in jabs.message">Packet</a>&nbsp;packet)</pre>
+<pre>public&nbsp;void&nbsp;addToDownLinkQueue(<a href="../../jabs/message/Packet.html" title="class in jabs.network.message">Packet</a>&nbsp;packet)</pre>
 <div class="block">Adds the packet to node's receiving process if the network interface is not down</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -444,13 +444,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </dl>
 </li>
 </ul>
-<a name="addToUpLinkQueue-jabs.message.Packet-">
+<a name="addToUpLinkQueue-jabs.network.message.Packet-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addToUpLinkQueue</h4>
-<pre>public&nbsp;void&nbsp;addToUpLinkQueue(<a href="../../jabs/message/Packet.html" title="class in jabs.message">Packet</a>&nbsp;packet)</pre>
+<pre>public&nbsp;void&nbsp;addToUpLinkQueue(<a href="../../jabs/message/Packet.html" title="class in jabs.network.message">Packet</a>&nbsp;packet)</pre>
 <div class="block">Adds the packet to node's sending process if the network interface is not down</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -458,14 +458,14 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </dl>
 </li>
 </ul>
-<a name="addToLinkQueue-jabs.message.Packet-jabs.event.AbstractPacketProcessor-">
+<a name="addToLinkQueue-jabs.network.message.Packet-jabs.simulator.event.AbstractPacketProcessor-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>addToLinkQueue</h4>
-<pre>private&nbsp;void&nbsp;addToLinkQueue(<a href="../../jabs/message/Packet.html" title="class in jabs.message">Packet</a>&nbsp;packet,
-                            <a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.event">AbstractPacketProcessor</a>&nbsp;processor)</pre>
+<pre>private&nbsp;void&nbsp;addToLinkQueue(<a href="../../jabs/message/Packet.html" title="class in jabs.network.message">Packet</a>&nbsp;packet,
+                            <a href="../../jabs/event/AbstractPacketProcessor.html" title="class in jabs.simulator.event">AbstractPacketProcessor</a>&nbsp;processor)</pre>
 <div class="block">Adds the packet to the queue of that link (up-link / down-link)</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>

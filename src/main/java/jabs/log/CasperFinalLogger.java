@@ -1,7 +1,7 @@
 package jabs.log;
 
-import jabs.consensus.DeterministicFinalityConsensus;
-import jabs.node.nodes.BlockchainNode;
+import jabs.consensus.algorithm.DeterministicFinalityConsensus;
+import jabs.network.node.nodes.PeerBlockchainNode;
 import jabs.scenario.AbstractScenario;
 import jabs.scenario.EthereumCasperNetworkScenario;
 
@@ -44,7 +44,7 @@ public class CasperFinalLogger extends AbstractLogger {
             System.out.printf("Average Finalization Time : %s ms\n", CasperScenario.blockFinalizationTimes.getMean());
             System.out.printf("Standard Deviation Finalization Time : %s ms\n", CasperScenario.blockFinalizationTimes.getStandardDeviation());
             System.out.printf("Total Vote Traffic : %s byte\n", CasperScenario.totalVoteMassageTraffic);
-            System.out.printf("Percentage of Finalized Blocks: %s\n", ((double) ((DeterministicFinalityConsensus) ((BlockchainNode) this.scenario.getNetwork().getNode(0)).getConsensusAlgorithm()).getNumOfFinalizedBlocks()) / ((double) ((BlockchainNode) this.scenario.getNetwork().getNode(0)).numberOfAlreadySeenBlocks()));
+            System.out.printf("Percentage of Finalized Blocks: %s\n", ((double) ((DeterministicFinalityConsensus) ((PeerBlockchainNode) this.scenario.getNetwork().getNode(0)).getConsensusAlgorithm()).getNumOfFinalizedBlocks()) / ((double) ((PeerBlockchainNode) this.scenario.getNetwork().getNode(0)).numberOfAlreadySeenBlocks()));
         }
     }
 }
