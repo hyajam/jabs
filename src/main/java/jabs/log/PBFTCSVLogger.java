@@ -1,13 +1,12 @@
 package jabs.log;
 
-import jabs.data.Vote;
-import jabs.data.pbft.PBFTCommitVote;
-import jabs.data.pbft.PBFTPrePrepareVote;
-import jabs.data.pbft.PBFTPrepareVote;
-import jabs.event.PacketDeliveryEvent;
-import jabs.message.Packet;
-import jabs.message.VoteMessage;
-import jabs.scenario.AbstractScenario;
+import jabs.ledgerdata.Vote;
+import jabs.ledgerdata.pbft.PBFTCommitVote;
+import jabs.ledgerdata.pbft.PBFTPrePrepareVote;
+import jabs.ledgerdata.pbft.PBFTPrepareVote;
+import jabs.simulator.event.PacketDeliveryEvent;
+import jabs.network.message.Packet;
+import jabs.network.message.VoteMessage;
 
 import java.io.IOException;
 import java.io.Writer;

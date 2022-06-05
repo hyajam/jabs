@@ -1,10 +1,11 @@
 package jabs.scenario;
 
 import jabs.log.AbstractLogger;
-import jabs.network.BitcoinGlobalBlockchainNetworkWithoutTx;
-import jabs.network.BlockchainNetwork;
+import jabs.network.networks.BitcoinGlobalProofOfWorkNetworkWithoutTx;
+import jabs.network.networks.GlobalProofOfWorkNetwork;
+import jabs.network.networks.stats.sixglobalregions.bitcoin.BitcoinProofOfWorkGlobalNetworkStats6Regions;
 
-import static jabs.event.EventFactory.createBlockGenerationEvents;
+import static jabs.simulator.event.EventFactory.createBlockGenerationEvents;
 
 public class BitcoinGlobalNetworkScenario extends AbstractScenario {
     public final double simulationStopTime;
@@ -28,13 +29,14 @@ public class BitcoinGlobalNetworkScenario extends AbstractScenario {
 
     @Override
     protected void createNetwork() {
-        this.network = new BitcoinGlobalBlockchainNetworkWithoutTx(randomnessEngine);
+        this.network = new BitcoinGlobalProofOfWorkNetworkWithoutTx<>(randomnessEngine,
+                new BitcoinProofOfWorkGlobalNetworkStats6Regions(randomnessEngine));
         network.populateNetwork(simulator, 15525);
     }
 
     @Override
     protected void insertInitialEvents() {
-        createBlockGenerationEvents(simulator, randomnessEngine, (BlockchainNetwork) network,
+        createBlockGenerationEvents(simulator, randomnessEngine, (GlobalProofOfWorkNetwork) network,
                 ((int) (simulationStopTime*blockGenerationRate)), 1/blockGenerationRate);
     }
 

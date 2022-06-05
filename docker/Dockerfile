@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
 RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends git openjdk-8-jdk \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends git openjdk-17-jdk \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends maven \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*

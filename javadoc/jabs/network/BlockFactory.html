@@ -49,8 +49,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../jabs/network/BlockchainNetwork.html" title="class in jabs.network"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../jabs/network/CasperFFGGlobalBlockchainNetwork.html" title="class in jabs.network"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/network/BlockchainNetwork.html" title="class in jabs.network.networks"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../jabs/network/CasperFFGGlobalBlockchainNetwork.html" title="class in jabs.network.networks"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/network/BlockFactory.html" target="_top">Frames</a></li>
@@ -92,7 +92,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">jabs.network</div>
+<div class="subTitle">jabs.network.networks</div>
 <h2 title="Class BlockFactory" class="title">Class BlockFactory</h2>
 </div>
 <div class="contentContainer">
@@ -202,30 +202,30 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>static <a href="../../jabs/data/bitcoin/BitcoinBlock.html" title="class in jabs.data.bitcoin">BitcoinBlock</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockFactory.html#sampleBitcoinBlock-jabs.simulator.Simulator-jabs.randengine.RandomnessEngine-jabs.node.nodes.bitcoin.BitcoinMinerNode-jabs.data.bitcoin.BitcoinBlock-">sampleBitcoinBlock</a></span>(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-                  <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
-                  <a href="../../jabs/node/nodes/bitcoin/BitcoinMinerNode.html" title="class in jabs.node.nodes.bitcoin">BitcoinMinerNode</a>&nbsp;creator,
-                  <a href="../../jabs/data/bitcoin/BitcoinBlock.html" title="class in jabs.data.bitcoin">BitcoinBlock</a>&nbsp;parent)</code>&nbsp;</td>
+<td class="colFirst"><code>static <a href="../../jabs/data/bitcoin/BitcoinBlock.html" title="class in jabs.ledgerdata.bitcoin">BitcoinBlock</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockFactory.html#sampleBitcoinBlock-jabs.simulator.Simulator-jabs.simulator.randengine.RandomnessEngine-jabs.network.node.nodes.bitcoin.BitcoinMinerNode-jabs.ledgerdata.bitcoin.BitcoinBlock-">sampleBitcoinBlock</a></span>(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
+                  <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
+                  <a href="../../jabs/node/nodes/bitcoin/BitcoinMinerNode.html" title="class in jabs.network.node.nodes.bitcoin">BitcoinMinerNode</a>&nbsp;creator,
+                  <a href="../../jabs/data/bitcoin/BitcoinBlock.html" title="class in jabs.ledgerdata.bitcoin">BitcoinBlock</a>&nbsp;parent)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockFactory.html#sampleBitcoinBlockSize-jabs.randengine.RandomnessEngine-">sampleBitcoinBlockSize</a></span>(<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockFactory.html#sampleBitcoinBlockSize-jabs.simulator.randengine.RandomnessEngine-">sampleBitcoinBlockSize</a></span>(<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>static <a href="../../jabs/data/ethereum/EthereumBlock.html" title="class in jabs.data.ethereum">EthereumBlock</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockFactory.html#sampleEthereumBlock-jabs.simulator.Simulator-jabs.randengine.RandomnessEngine-jabs.node.nodes.ethereum.EthereumMinerNode-jabs.data.ethereum.EthereumBlock-java.util.Set-">sampleEthereumBlock</a></span>(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-                   <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
-                   <a href="../../jabs/node/nodes/ethereum/EthereumMinerNode.html" title="class in jabs.node.nodes.ethereum">EthereumMinerNode</a>&nbsp;creator,
-                   <a href="../../jabs/data/ethereum/EthereumBlock.html" title="class in jabs.data.ethereum">EthereumBlock</a>&nbsp;parent,
-                   <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../jabs/data/ethereum/EthereumBlock.html" title="class in jabs.data.ethereum">EthereumBlock</a>&gt;&nbsp;uncles)</code>&nbsp;</td>
+<td class="colFirst"><code>static <a href="../../jabs/data/ethereum/EthereumBlock.html" title="class in jabs.ledgerdata.ethereum">EthereumBlock</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockFactory.html#sampleEthereumBlock-jabs.simulator.Simulator-jabs.simulator.randengine.RandomnessEngine-jabs.network.node.nodes.ethereum.EthereumMinerNode-jabs.ledgerdata.ethereum.EthereumBlock-java.util.Set-">sampleEthereumBlock</a></span>(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
+                   <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
+                   <a href="../../jabs/node/nodes/ethereum/EthereumMinerNode.html" title="class in jabs.network.node.nodes.ethereum">EthereumMinerNode</a>&nbsp;creator,
+                   <a href="../../jabs/data/ethereum/EthereumBlock.html" title="class in jabs.ledgerdata.ethereum">EthereumBlock</a>&nbsp;parent,
+                   <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../jabs/data/ethereum/EthereumBlock.html" title="class in jabs.ledgerdata.ethereum">EthereumBlock</a>&gt;&nbsp;uncles)</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>static <a href="../../jabs/data/pbft/PBFTBlock.html" title="class in jabs.data.pbft">PBFTBlock</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockFactory.html#samplePBFTBlock-jabs.simulator.Simulator-jabs.randengine.RandomnessEngine-jabs.node.nodes.pbft.PBFTNode-jabs.data.pbft.PBFTBlock-">samplePBFTBlock</a></span>(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-               <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
-               <a href="../../jabs/node/nodes/pbft/PBFTNode.html" title="class in jabs.node.nodes.pbft">PBFTNode</a>&nbsp;creator,
-               <a href="../../jabs/data/pbft/PBFTBlock.html" title="class in jabs.data.pbft">PBFTBlock</a>&nbsp;parent)</code>&nbsp;</td>
+<td class="colFirst"><code>static <a href="../../jabs/data/pbft/PBFTBlock.html" title="class in jabs.ledgerdata.pbft">PBFTBlock</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/BlockFactory.html#samplePBFTBlock-jabs.simulator.Simulator-jabs.simulator.randengine.RandomnessEngine-jabs.network.node.nodes.pbft.PBFTNode-jabs.ledgerdata.pbft.PBFTBlock-">samplePBFTBlock</a></span>(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
+               <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
+               <a href="../../jabs/node/nodes/pbft/PBFTNode.html" title="class in jabs.network.node.nodes.pbft">PBFTNode</a>&nbsp;creator,
+               <a href="../../jabs/data/pbft/PBFTBlock.html" title="class in jabs.ledgerdata.pbft">PBFTBlock</a>&nbsp;parent)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -258,7 +258,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <pre>public static final&nbsp;int ETHEREUM_BLOCK_HEADER_SIZE</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../constant-values.html#jabs.network.BlockFactory.ETHEREUM_BLOCK_HEADER_SIZE">Constant Field Values</a></dd>
+<dd><a href="../../constant-values.html#jabs.network.networks.BlockFactory.ETHEREUM_BLOCK_HEADER_SIZE">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -271,7 +271,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <pre>public static final&nbsp;int ETHEREUM_BLOCK_HASH_SIZE</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../constant-values.html#jabs.network.BlockFactory.ETHEREUM_BLOCK_HASH_SIZE">Constant Field Values</a></dd>
+<dd><a href="../../constant-values.html#jabs.network.networks.BlockFactory.ETHEREUM_BLOCK_HASH_SIZE">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -284,7 +284,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <pre>public static final&nbsp;long ETHEREUM_MIN_DIFFICULTY</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../constant-values.html#jabs.network.BlockFactory.ETHEREUM_MIN_DIFFICULTY">Constant Field Values</a></dd>
+<dd><a href="../../constant-values.html#jabs.network.networks.BlockFactory.ETHEREUM_MIN_DIFFICULTY">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -297,7 +297,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <pre>public static final&nbsp;int BITCOIN_BLOCK_HEADER_SIZE</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../constant-values.html#jabs.network.BlockFactory.BITCOIN_BLOCK_HEADER_SIZE">Constant Field Values</a></dd>
+<dd><a href="../../constant-values.html#jabs.network.networks.BlockFactory.BITCOIN_BLOCK_HEADER_SIZE">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -310,7 +310,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <pre>public static final&nbsp;int BITCOIN_INV_SIZE</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../constant-values.html#jabs.network.BlockFactory.BITCOIN_INV_SIZE">Constant Field Values</a></dd>
+<dd><a href="../../constant-values.html#jabs.network.networks.BlockFactory.BITCOIN_INV_SIZE">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -323,7 +323,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <pre>public static final&nbsp;int GET_DATA_OVERHEAD</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../constant-values.html#jabs.network.BlockFactory.GET_DATA_OVERHEAD">Constant Field Values</a></dd>
+<dd><a href="../../constant-values.html#jabs.network.networks.BlockFactory.GET_DATA_OVERHEAD">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -336,7 +336,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <pre>public static final&nbsp;int INV_MESSAGE_OVERHEAD</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../constant-values.html#jabs.network.BlockFactory.INV_MESSAGE_OVERHEAD">Constant Field Values</a></dd>
+<dd><a href="../../constant-values.html#jabs.network.networks.BlockFactory.INV_MESSAGE_OVERHEAD">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -349,7 +349,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <pre>public static final&nbsp;int ETHEREUM_HELLO_MESSAGE_SIZE</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../constant-values.html#jabs.network.BlockFactory.ETHEREUM_HELLO_MESSAGE_SIZE">Constant Field Values</a></dd>
+<dd><a href="../../constant-values.html#jabs.network.networks.BlockFactory.ETHEREUM_HELLO_MESSAGE_SIZE">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -396,50 +396,50 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="sampleBitcoinBlockSize-jabs.randengine.RandomnessEngine-">
+<a name="sampleBitcoinBlockSize-jabs.simulator.randengine.RandomnessEngine-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>sampleBitcoinBlockSize</h4>
-<pre>public static&nbsp;int&nbsp;sampleBitcoinBlockSize(<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</pre>
+<pre>public static&nbsp;int&nbsp;sampleBitcoinBlockSize(<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</pre>
 </li>
 </ul>
-<a name="sampleBitcoinBlock-jabs.simulator.Simulator-jabs.randengine.RandomnessEngine-jabs.node.nodes.bitcoin.BitcoinMinerNode-jabs.data.bitcoin.BitcoinBlock-">
+<a name="sampleBitcoinBlock-jabs.simulator.Simulator-jabs.simulator.randengine.RandomnessEngine-jabs.network.node.nodes.bitcoin.BitcoinMinerNode-jabs.ledgerdata.bitcoin.BitcoinBlock-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>sampleBitcoinBlock</h4>
-<pre>public static&nbsp;<a href="../../jabs/data/bitcoin/BitcoinBlock.html" title="class in jabs.data.bitcoin">BitcoinBlock</a>&nbsp;sampleBitcoinBlock(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-                                              <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
-                                              <a href="../../jabs/node/nodes/bitcoin/BitcoinMinerNode.html" title="class in jabs.node.nodes.bitcoin">BitcoinMinerNode</a>&nbsp;creator,
-                                              <a href="../../jabs/data/bitcoin/BitcoinBlock.html" title="class in jabs.data.bitcoin">BitcoinBlock</a>&nbsp;parent)</pre>
+<pre>public static&nbsp;<a href="../../jabs/data/bitcoin/BitcoinBlock.html" title="class in jabs.ledgerdata.bitcoin">BitcoinBlock</a>&nbsp;sampleBitcoinBlock(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
+                                              <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
+                                              <a href="../../jabs/node/nodes/bitcoin/BitcoinMinerNode.html" title="class in jabs.network.node.nodes.bitcoin">BitcoinMinerNode</a>&nbsp;creator,
+                                              <a href="../../jabs/data/bitcoin/BitcoinBlock.html" title="class in jabs.ledgerdata.bitcoin">BitcoinBlock</a>&nbsp;parent)</pre>
 </li>
 </ul>
-<a name="samplePBFTBlock-jabs.simulator.Simulator-jabs.randengine.RandomnessEngine-jabs.node.nodes.pbft.PBFTNode-jabs.data.pbft.PBFTBlock-">
+<a name="samplePBFTBlock-jabs.simulator.Simulator-jabs.simulator.randengine.RandomnessEngine-jabs.network.node.nodes.pbft.PBFTNode-jabs.ledgerdata.pbft.PBFTBlock-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>samplePBFTBlock</h4>
-<pre>public static&nbsp;<a href="../../jabs/data/pbft/PBFTBlock.html" title="class in jabs.data.pbft">PBFTBlock</a>&nbsp;samplePBFTBlock(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-                                        <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
-                                        <a href="../../jabs/node/nodes/pbft/PBFTNode.html" title="class in jabs.node.nodes.pbft">PBFTNode</a>&nbsp;creator,
-                                        <a href="../../jabs/data/pbft/PBFTBlock.html" title="class in jabs.data.pbft">PBFTBlock</a>&nbsp;parent)</pre>
+<pre>public static&nbsp;<a href="../../jabs/data/pbft/PBFTBlock.html" title="class in jabs.ledgerdata.pbft">PBFTBlock</a>&nbsp;samplePBFTBlock(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
+                                        <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
+                                        <a href="../../jabs/node/nodes/pbft/PBFTNode.html" title="class in jabs.network.node.nodes.pbft">PBFTNode</a>&nbsp;creator,
+                                        <a href="../../jabs/data/pbft/PBFTBlock.html" title="class in jabs.ledgerdata.pbft">PBFTBlock</a>&nbsp;parent)</pre>
 </li>
 </ul>
-<a name="sampleEthereumBlock-jabs.simulator.Simulator-jabs.randengine.RandomnessEngine-jabs.node.nodes.ethereum.EthereumMinerNode-jabs.data.ethereum.EthereumBlock-java.util.Set-">
+<a name="sampleEthereumBlock-jabs.simulator.Simulator-jabs.simulator.randengine.RandomnessEngine-jabs.network.node.nodes.ethereum.EthereumMinerNode-jabs.ledgerdata.ethereum.EthereumBlock-java.util.Set-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>sampleEthereumBlock</h4>
-<pre>public static&nbsp;<a href="../../jabs/data/ethereum/EthereumBlock.html" title="class in jabs.data.ethereum">EthereumBlock</a>&nbsp;sampleEthereumBlock(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
-                                                <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
-                                                <a href="../../jabs/node/nodes/ethereum/EthereumMinerNode.html" title="class in jabs.node.nodes.ethereum">EthereumMinerNode</a>&nbsp;creator,
-                                                <a href="../../jabs/data/ethereum/EthereumBlock.html" title="class in jabs.data.ethereum">EthereumBlock</a>&nbsp;parent,
-                                                <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../jabs/data/ethereum/EthereumBlock.html" title="class in jabs.data.ethereum">EthereumBlock</a>&gt;&nbsp;uncles)</pre>
+<pre>public static&nbsp;<a href="../../jabs/data/ethereum/EthereumBlock.html" title="class in jabs.ledgerdata.ethereum">EthereumBlock</a>&nbsp;sampleEthereumBlock(<a href="../../jabs/simulator/Simulator.html" title="class in jabs.simulator">Simulator</a>&nbsp;simulator,
+                                                <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine,
+                                                <a href="../../jabs/node/nodes/ethereum/EthereumMinerNode.html" title="class in jabs.network.node.nodes.ethereum">EthereumMinerNode</a>&nbsp;creator,
+                                                <a href="../../jabs/data/ethereum/EthereumBlock.html" title="class in jabs.ledgerdata.ethereum">EthereumBlock</a>&nbsp;parent,
+                                                <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../jabs/data/ethereum/EthereumBlock.html" title="class in jabs.ledgerdata.ethereum">EthereumBlock</a>&gt;&nbsp;uncles)</pre>
 </li>
 </ul>
 </li>
@@ -469,8 +469,8 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../jabs/network/BlockchainNetwork.html" title="class in jabs.network"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../jabs/network/CasperFFGGlobalBlockchainNetwork.html" title="class in jabs.network"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/network/BlockchainNetwork.html" title="class in jabs.network.networks"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../jabs/network/CasperFFGGlobalBlockchainNetwork.html" title="class in jabs.network.networks"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/network/BlockFactory.html" target="_top">Frames</a></li>

@@ -1,13 +1,14 @@
 package jabs.scenario;
 
-import jabs.data.pbft.PBFTPrePrepareVote;
+import jabs.ledgerdata.pbft.PBFTPrePrepareVote;
 import jabs.log.AbstractLogger;
-import jabs.message.VoteMessage;
-import jabs.network.BlockFactory;
-import jabs.network.PBFTLocalLANNetwork;
-import jabs.node.nodes.pbft.PBFTNode;
+import jabs.network.message.VoteMessage;
+import jabs.network.networks.BlockFactory;
+import jabs.network.networks.PBFTLocalLANNetwork;
+import jabs.network.node.nodes.Node;
+import jabs.network.node.nodes.pbft.PBFTNode;
 
-import static jabs.node.nodes.pbft.PBFTNode.PBFT_GENESIS_BLOCK;
+import static jabs.network.node.nodes.pbft.PBFTNode.PBFT_GENESIS_BLOCK;
 
 public class PBFTLANScenario extends AbstractScenario {
     protected int numNodes;
@@ -27,9 +28,10 @@ public class PBFTLANScenario extends AbstractScenario {
 
     @Override
     protected void insertInitialEvents() {
-        network.getAllNodes().get(0).broadcastMessage(
+        Node node = (Node) network.getAllNodes().get(0);
+        node.broadcastMessage(
                 new VoteMessage(
-                        new PBFTPrePrepareVote<>(network.getAllNodes().get(0),
+                        new PBFTPrePrepareVote<>(node,
                                 BlockFactory.samplePBFTBlock(simulator, network.getRandom(),
                                         (PBFTNode) network.getAllNodes().get(0), PBFT_GENESIS_BLOCK)
                         )

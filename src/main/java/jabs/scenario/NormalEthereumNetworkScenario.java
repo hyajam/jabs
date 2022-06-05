@@ -1,12 +1,14 @@
 package jabs.scenario;
 
 import jabs.log.AbstractLogger;
-import jabs.network.BlockchainNetwork;
-import jabs.network.EthereumGlobalBlockchainNetwork;
-import jabs.node.nodes.BlockchainNode;
+import jabs.network.networks.EthereumGlobalProofOfWorkNetwork;
+import jabs.network.networks.GlobalProofOfWorkNetwork;
+import jabs.network.networks.stats.sixglobalregions.SixRegions;
+import jabs.network.networks.stats.sixglobalregions.ethereum.EthereumProofOfWorkGlobalNetworkStats6Regions;
+import jabs.network.node.nodes.PeerBlockchainNode;
 
-import static jabs.event.EventFactory.createBlockGenerationEvents;
-import static jabs.event.EventFactory.createTxGenerationEvents;
+import static jabs.simulator.event.EventFactory.createBlockGenerationEvents;
+import static jabs.simulator.event.EventFactory.createTxGenerationEvents;
 
 public class NormalEthereumNetworkScenario extends AbstractScenario {
     double simulationTime = 0;
@@ -28,13 +30,14 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
 
     @Override
     public void createNetwork() {
-        this.network = new EthereumGlobalBlockchainNetwork(randomnessEngine);
+        this.network = new EthereumGlobalProofOfWorkNetwork<>(randomnessEngine,
+                new EthereumProofOfWorkGlobalNetworkStats6Regions(randomnessEngine));
     }
 
     @Override
     protected void insertInitialEvents() {
         createTxGenerationEvents(simulator, randomnessEngine, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1/txGenerationRate));
-        createBlockGenerationEvents(simulator, randomnessEngine, (BlockchainNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1/blockGenerationRate));
+        createBlockGenerationEvents(simulator, randomnessEngine, (GlobalProofOfWorkNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1/blockGenerationRate));
     }
 
     @Override
@@ -43,7 +46,7 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
             simulationTime = simulator.getCurrentTime();
             System.out.printf("\rsimulation time: %s, number of already seen blocks for miner 0: %s\n",
                     simulationTime,
-                    ((BlockchainNode) network.getAllNodes().get(0)).numberOfAlreadySeenBlocks());
+                    ((PeerBlockchainNode) network.getAllNodes().get(0)).numberOfAlreadySeenBlocks());
         }
         return (simulator.getCurrentTime() > simulationStopTime*1000);
     }

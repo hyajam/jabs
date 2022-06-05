@@ -1,18 +1,11 @@
 package jabs.log;
 
-import jabs.data.Data;
-import jabs.data.Vote;
-import jabs.data.bitcoin.BitcoinBlock;
-import jabs.data.pbft.PBFTCommitVote;
-import jabs.data.pbft.PBFTPrePrepareVote;
-import jabs.data.pbft.PBFTPrepareVote;
-import jabs.event.BlockGenerationEvent;
-import jabs.event.Event;
-import jabs.event.PacketDeliveryEvent;
-import jabs.message.DataMessage;
-import jabs.message.Message;
-import jabs.message.Packet;
-import jabs.message.VoteMessage;
+import jabs.ledgerdata.bitcoin.BitcoinBlock;
+import jabs.simulator.event.Event;
+import jabs.simulator.event.PacketDeliveryEvent;
+import jabs.network.message.DataMessage;
+import jabs.network.message.Message;
+import jabs.network.message.Packet;
 
 import java.io.IOException;
 import java.io.Writer;

@@ -49,8 +49,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../jabs/network/LANBlockchainNetwork.html" title="class in jabs.network"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../jabs/network/NetworkBuilder.html" title="class in jabs.network"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/network/LANBlockchainNetwork.html" title="class in jabs.network.networks"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../jabs/network/NetworkBuilder.html" title="class in jabs.network.networks"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/network/Network.html" target="_top">Frames</a></li>
@@ -92,7 +92,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">jabs.network</div>
+<div class="subTitle">jabs.network.networks</div>
 <h2 title="Class Network" class="title">Class Network</h2>
 </div>
 <div class="contentContainer">
@@ -109,7 +109,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><a href="../../jabs/network/BlockchainNetwork.html" title="class in jabs.network">BlockchainNetwork</a></dd>
+<dd><a href="../../jabs/network/BlockchainNetwork.html" title="class in jabs.network.networks">BlockchainNetwork</a></dd>
 </dl>
 <hr>
 <br>
@@ -134,11 +134,11 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&gt;</code></td>
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/Network.html#nodes">nodes</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a></code></td>
+<td class="colFirst"><code>protected <a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/Network.html#randomnessEngine">randomnessEngine</a></span></code>&nbsp;</td>
 </tr>
 </table>
@@ -158,7 +158,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected </code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/Network.html#Network-jabs.randengine.RandomnessEngine-">Network</a></span>(<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/Network.html#Network-jabs.simulator.randengine.RandomnessEngine-">Network</a></span>(<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -177,27 +177,27 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/Network.html#addNode-jabs.node.nodes.Node-">addNode</a></span>(<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;node)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/Network.html#addNode-jabs.network.node.nodes.Node-">addNode</a></span>(<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;node)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&gt;</code></td>
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/Network.html#getAllNodes--">getAllNodes</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>abstract double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/Network.html#getLatency-jabs.node.nodes.Node-jabs.node.nodes.Node-">getLatency</a></span>(<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;from,
-          <a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;to)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/Network.html#getLatency-jabs.network.node.nodes.Node-jabs.network.node.nodes.Node-">getLatency</a></span>(<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;from,
+          <a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;to)</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a></code></td>
+<td class="colFirst"><code><a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/Network.html#getNode-int-">getNode</a></span>(int&nbsp;i)</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code><a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a></code></td>
+<td class="colFirst"><code><a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/Network.html#getRandom--">getRandom</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code><a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a></code></td>
+<td class="colFirst"><code><a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../jabs/network/Network.html#getRandomNode--">getRandomNode</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
@@ -245,7 +245,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>nodes</h4>
-<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&gt; nodes</pre>
+<pre>protected final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&gt; nodes</pre>
 </li>
 </ul>
 <a name="randomnessEngine">
@@ -254,7 +254,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockListLast">
 <li class="blockList">
 <h4>randomnessEngine</h4>
-<pre>protected final&nbsp;<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a> randomnessEngine</pre>
+<pre>protected final&nbsp;<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a> randomnessEngine</pre>
 </li>
 </ul>
 </li>
@@ -265,13 +265,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Network-jabs.randengine.RandomnessEngine-">
+<a name="Network-jabs.simulator.randengine.RandomnessEngine-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Network</h4>
-<pre>protected&nbsp;Network(<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</pre>
+<pre>protected&nbsp;Network(<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;randomnessEngine)</pre>
 </li>
 </ul>
 </li>
@@ -288,7 +288,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>getRandomNode</h4>
-<pre>public&nbsp;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;getRandomNode()</pre>
+<pre>public&nbsp;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;getRandomNode()</pre>
 </li>
 </ul>
 <a name="getAllNodes--">
@@ -297,7 +297,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>getAllNodes</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&gt;&nbsp;getAllNodes()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&gt;&nbsp;getAllNodes()</pre>
 </li>
 </ul>
 <a name="getNode-int-">
@@ -306,17 +306,17 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>getNode</h4>
-<pre>public&nbsp;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;getNode(int&nbsp;i)</pre>
+<pre>public&nbsp;<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;getNode(int&nbsp;i)</pre>
 </li>
 </ul>
-<a name="getLatency-jabs.node.nodes.Node-jabs.node.nodes.Node-">
+<a name="getLatency-jabs.network.node.nodes.Node-jabs.network.node.nodes.Node-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getLatency</h4>
-<pre>public abstract&nbsp;double&nbsp;getLatency(<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;from,
-                                  <a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;to)</pre>
+<pre>public abstract&nbsp;double&nbsp;getLatency(<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;from,
+                                  <a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;to)</pre>
 </li>
 </ul>
 <a name="sampleDownloadBandwidth-int-">
@@ -356,13 +356,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
                                      int&nbsp;numNodes)</pre>
 </li>
 </ul>
-<a name="addNode-jabs.node.nodes.Node-">
+<a name="addNode-jabs.network.node.nodes.Node-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addNode</h4>
-<pre>public&nbsp;void&nbsp;addNode(<a href="../../jabs/node/nodes/Node.html" title="class in jabs.node.nodes">Node</a>&nbsp;node)</pre>
+<pre>public&nbsp;void&nbsp;addNode(<a href="../../jabs/node/nodes/Node.html" title="class in jabs.network.node.nodes">Node</a>&nbsp;node)</pre>
 </li>
 </ul>
 <a name="getRandom--">
@@ -371,7 +371,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getRandom</h4>
-<pre>public&nbsp;<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.randengine">RandomnessEngine</a>&nbsp;getRandom()</pre>
+<pre>public&nbsp;<a href="../../jabs/randengine/RandomnessEngine.html" title="class in jabs.simulator.randengine">RandomnessEngine</a>&nbsp;getRandom()</pre>
 </li>
 </ul>
 </li>
@@ -401,8 +401,8 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../jabs/network/LANBlockchainNetwork.html" title="class in jabs.network"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../jabs/network/NetworkBuilder.html" title="class in jabs.network"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../jabs/network/LANBlockchainNetwork.html" title="class in jabs.network.networks"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../jabs/network/NetworkBuilder.html" title="class in jabs.network.networks"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?jabs/network/Network.html" target="_top">Frames</a></li>

@@ -12,9 +12,9 @@ JABS is a blockchain network simulator aimed at researching consensus algorithms
   
   
 ## Installation
-First, you should have ```git```,  ```openjdk-8-jdk``` and ```maven``` installed.
+First, you should have ```git```,  ```openjdk-17-jdk``` and ```maven``` installed.
 ```shell script
-$ sudo apt install git openjdk-8-jdk maven
+$ sudo apt install git openjdk-17-jdk maven
 ```
 After that, clone the git repository.
 ```shell script
@@ -27,9 +27,10 @@ $ mvn clean install
 ```
 You might need to set ```JAVA_HOME``` to java 8.0 home directory:
 ```shell
-$ JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/; mvn clean install
+$ JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/; mvn clean install
 ```
-Then to run the compiled jar file.
+Then to run the compiled jar file.-
+
 ```shell script
 $ java -jar target/jabs-<version>.jar
 ```

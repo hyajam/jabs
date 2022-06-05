@@ -1,0 +1,76 @@
+package jabs.network.node.nodes.bitcoin;
+
+import jabs.consensus.blockchain.LocalBlockTree;
+import jabs.consensus.algorithm.AbstractChainBasedConsensus;
+import jabs.consensus.algorithm.NakamotoConsensus;
+import jabs.ledgerdata.Vote;
+import jabs.ledgerdata.bitcoin.BitcoinBlock;
+import jabs.ledgerdata.bitcoin.BitcoinTx;
+import jabs.network.message.InvMessage;
+import jabs.network.message.Packet;
+import jabs.network.networks.Network;
+import jabs.network.networks.TransactionFactory;
+import jabs.network.node.nodes.PeerBlockchainNode;
+import jabs.network.node.nodes.Node;
+import jabs.network.p2p.BitcoinCoreP2P;
+import jabs.simulator.Simulator;
+
+public class BitcoinNode extends PeerBlockchainNode<BitcoinBlock, BitcoinTx> {
+    public static final BitcoinBlock BITCOIN_GENESIS_BLOCK =
+            new BitcoinBlock(0, 0, 0, null, null);
+
+    public BitcoinNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth) {
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
+                new BitcoinCoreP2P(),
+                new NakamotoConsensus<>(new LocalBlockTree<>(BITCOIN_GENESIS_BLOCK)));
+    }
+
+    public BitcoinNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
+                       AbstractChainBasedConsensus<BitcoinBlock, BitcoinTx> consensusAlgorithm) {
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
+                new BitcoinCoreP2P(), consensusAlgorithm);
+    }
+
+    @Override
+    protected void processNewTx(BitcoinTx bitcoinTx, Node from) {
+        this.broadcastTxInvMessage(bitcoinTx);
+    }
+
+    @Override
+    protected void processNewBlock(BitcoinBlock bitcoinBlock) {
+        this.consensusAlgorithm.newIncomingBlock(bitcoinBlock);
+        this.broadcastBlockInvMessage(bitcoinBlock);
+    }
+
+    @Override
+    protected void processNewVote(Vote vote) {
+
+    }
+
+    protected void broadcastTxInvMessage(BitcoinTx tx) {
+        for (Node neighbor:this.p2pConnections.getNeighbors()) {
+            this.nodeNetworkInterface.addToUpLinkQueue(
+                    new Packet(this, neighbor,
+                            new InvMessage(tx.getHash().getSize(), tx.getHash())
+                    )
+            );
+        }
+    }
+
+    protected void broadcastBlockInvMessage(BitcoinBlock block) {
+        for (Node neighbor:this.p2pConnections.getNeighbors()) {
+            this.nodeNetworkInterface.addToUpLinkQueue(
+                    new Packet(this, neighbor,
+                            new InvMessage(block.getHash().getSize(), block.getHash())
+                    )
+            );
+        }
+    }
+
+    @Override
+    public void generateNewTransaction() {
+        BitcoinTx tx = TransactionFactory.sampleBitcoinTransaction(network.getRandom());
+        this.alreadySeenTxs.put(tx.getHash(), tx);
+        broadcastTxInvMessage(tx);
+    }
+}
