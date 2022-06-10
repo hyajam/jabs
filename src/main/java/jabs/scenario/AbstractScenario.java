@@ -40,6 +40,13 @@ public abstract class AbstractScenario {
     }
 
     /**
+     * @return simulator the name of this simulation.
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
      * Create the network and set up the simulation environment.
      */
     abstract protected void createNetwork();
@@ -96,7 +103,7 @@ public abstract class AbstractScenario {
             if (System.nanoTime() - lastProgressMessageTime > this.progressMessageIntervals) {
                 System.err.printf("Simulation in progress. Elapsed Real Time: %d, Elapsed Simulation Time: %.0f\n",
                         TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - simulationStartingTime),
-                        this.simulator.getCurrentTime() / 1000);
+                        this.simulator.getCurrentTime());
                 lastProgressMessageTime = System.nanoTime();
             }
         }

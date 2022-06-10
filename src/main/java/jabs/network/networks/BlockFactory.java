@@ -36,9 +36,10 @@ public final class BlockFactory {
         return (int) randomnessEngine.sampleDistributionWithBins(BITCOIN_BLOCK_SIZE_2020, BITCOIN_BLOCK_SIZE_2020_BINS);
     }
 
-    public static BitcoinBlock sampleBitcoinBlock(Simulator simulator, RandomnessEngine randomnessEngine, BitcoinMinerNode creator, BitcoinBlock parent) {
+    public static BitcoinBlock sampleBitcoinBlock(Simulator simulator, RandomnessEngine randomnessEngine,
+                                                  BitcoinMinerNode creator, BitcoinBlock parent, double difficulty) {
         return new BitcoinBlock(sampleBitcoinBlockSize(randomnessEngine), parent.getHeight() + 1,
-                simulator.getCurrentTime(), creator, parent);
+                simulator.getCurrentTime(), creator, parent, difficulty);
     }
 
     public static PBFTBlock samplePBFTBlock(Simulator simulator, RandomnessEngine randomnessEngine, PBFTNode creator, PBFTBlock parent) {

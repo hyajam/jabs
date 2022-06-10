@@ -12,12 +12,16 @@ import jabs.simulator.Simulator;
 
 
 public class BitcoinMinerNodeWithoutTx extends BitcoinMinerNode implements MinerNode {
-    public BitcoinMinerNodeWithoutTx(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, long hashPower, AbstractChainBasedConsensus<BitcoinBlock, BitcoinTx> consensusAlgorithm) {
-        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, hashPower, consensusAlgorithm);
+    public BitcoinMinerNodeWithoutTx(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
+                                     long uploadBandwidth, long hashPower, BitcoinBlock genesisBlock,
+                                     AbstractChainBasedConsensus<BitcoinBlock, BitcoinTx> consensusAlgorithm) {
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, genesisBlock, hashPower,
+                consensusAlgorithm);
     }
 
-    public BitcoinMinerNodeWithoutTx(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, long hashPower) {
-        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, hashPower);
+    public BitcoinMinerNodeWithoutTx(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
+                                     long uploadBandwidth, BitcoinBlock genesisBlock, long hashPower) {
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, genesisBlock, hashPower);
     }
 
     @Override
@@ -25,7 +29,8 @@ public class BitcoinMinerNodeWithoutTx extends BitcoinMinerNode implements Miner
         BitcoinBlock canonicalChainHead = this.consensusAlgorithm.getCanonicalChainHead();
 
         BitcoinBlock bitcoinBlock = BlockFactory.sampleBitcoinBlock(this.simulator,
-                this.getNetwork().getRandom(), this, canonicalChainHead); // TODO: Difficulty?
+                this.getNetwork().getRandom(), this, canonicalChainHead,
+                canonicalChainHead.getDifficulty()); // TODO: Difficulty adjustment?
 
         this.processIncomingPacket(
                 new Packet(

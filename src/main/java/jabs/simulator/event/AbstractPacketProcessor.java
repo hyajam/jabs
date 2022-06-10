@@ -14,18 +14,10 @@ public abstract class AbstractPacketProcessor implements Event {
     protected final RandomnessEngine randomnessEngine;
     protected final PriorityQueue<TimedPacket> packetsQueue = new PriorityQueue<>();
 
-    private static class TimedPacket implements Comparable<TimedPacket> {
-        private final Packet packet;
-        private final double time;
-
-        private TimedPacket(Packet packet, double time){
-            this.packet = packet;
-            this.time = time;
-        }
-
+    private record TimedPacket(Packet packet, double time) implements Comparable<TimedPacket> {
         public int compareTo(TimedPacket o) {
-            return Double.compare(this.time, o.time);
-        }
+                return Double.compare(this.time, o.time);
+            }
     }
 
     public final Node node;

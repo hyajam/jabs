@@ -4,10 +4,10 @@ import jabs.network.networks.Network;
 import jabs.simulator.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
-public class TxGeneratorProcessRandomNode extends AbstractTxGeneratorProcess {
+public class TxGenerationProcessRandomNetworkNode extends AbstractTxPoissonProcess {
     protected final Network network;
 
-    public TxGeneratorProcessRandomNode(Simulator simulator, Network network, RandomnessEngine randomnessEngine, double averageTimeBetweenTxs) {
+    public TxGenerationProcessRandomNetworkNode(Simulator simulator, Network network, RandomnessEngine randomnessEngine, double averageTimeBetweenTxs) {
         super(simulator, randomnessEngine, averageTimeBetweenTxs);
         this.network = network;
     }
@@ -15,6 +15,6 @@ public class TxGeneratorProcessRandomNode extends AbstractTxGeneratorProcess {
     @Override
     public void generate() {
         this.node = network.getRandomNode();
-        simulator.putEvent(new TxGenerationEvent(node), 0);
+        node.generateNewTransaction();
     }
 }

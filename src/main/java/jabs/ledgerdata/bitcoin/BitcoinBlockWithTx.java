@@ -10,8 +10,9 @@ import static jabs.network.networks.BlockFactory.BITCOIN_BLOCK_HEADER_SIZE;
 public class BitcoinBlockWithTx extends BitcoinBlock {
     private final Set<BitcoinTx> Txs;
 
-    public BitcoinBlockWithTx(int height, double creationTime, BitcoinBlock parent, BitcoinMinerNode creator, Set<BitcoinTx> txs) {
-        super(0, height, creationTime, creator, parent);
+    public BitcoinBlockWithTx(int height, double creationTime, BitcoinBlock parent, BitcoinMinerNode creator,
+                              Set<BitcoinTx> txs, double difficulty) {
+        super(0, height, creationTime, creator, parent, difficulty);
         Txs = txs;
 
         int totalSize = BITCOIN_BLOCK_HEADER_SIZE;

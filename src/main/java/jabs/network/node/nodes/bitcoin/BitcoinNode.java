@@ -16,16 +16,15 @@ import jabs.network.p2p.BitcoinCoreP2P;
 import jabs.simulator.Simulator;
 
 public class BitcoinNode extends PeerBlockchainNode<BitcoinBlock, BitcoinTx> {
-    public static final BitcoinBlock BITCOIN_GENESIS_BLOCK =
-            new BitcoinBlock(0, 0, 0, null, null);
-
-    public BitcoinNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth) {
+    public BitcoinNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
+                       BitcoinBlock genesisBlock) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new BitcoinCoreP2P(),
-                new NakamotoConsensus<>(new LocalBlockTree<>(BITCOIN_GENESIS_BLOCK)));
+                new NakamotoConsensus<>(new LocalBlockTree<>(genesisBlock)));
     }
 
     public BitcoinNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
+                       BitcoinBlock genesisBlock,
                        AbstractChainBasedConsensus<BitcoinBlock, BitcoinTx> consensusAlgorithm) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new BitcoinCoreP2P(), consensusAlgorithm);

@@ -14,10 +14,13 @@ import jabs.network.node.nodes.Node;
 import jabs.network.node.nodes.PeerDLTNode;
 import jabs.network.p2p.AbstractP2PConnections;
 import jabs.simulator.Simulator;
+import jabs.simulator.event.BlockMiningProcess;
 
 public class IOTANode extends PeerDLTNode<TangleBlock, TangleTx> implements MinerNode {
     public static final TangleBlock TANGLE_GENESIS_BLOCK =
             new TangleBlock(0, 0, 0, null, null, 32, new TangleTx(1650, 32),1);
+
+    protected Simulator.ScheduledEvent blockGenerationProcess;
 
     public IOTANode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
                     AbstractP2PConnections routingTable) {
@@ -59,6 +62,22 @@ public class IOTANode extends PeerDLTNode<TangleBlock, TangleTx> implements Mine
                     )
             );
         }
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void startMining() {
+
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void stopMining() {
+        simulator.removeEvent(this.blockGenerationProcess);
     }
 
     /**
