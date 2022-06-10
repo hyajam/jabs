@@ -1,7 +1,7 @@
 package jabs;
 
 import jabs.log.AbstractLogger;
-import jabs.log.BitcoinBlockLogger;
+import jabs.log.BlockGenerationLogger;
 import jabs.scenario.AbstractScenario;
 import jabs.scenario.BitcoinGlobalNetworkScenario;
 
@@ -13,15 +13,13 @@ public class Main {
         AbstractScenario scenario;
         AbstractLogger logger;
 
-        logger = new BitcoinBlockLogger(Paths.get("_output/simulation-log.csv"));
+        logger = new BlockGenerationLogger(Paths.get("_output/simulation-log.csv"));
         scenario = new BitcoinGlobalNetworkScenario("Normal Bitcoin Network", 1, logger,
-                60*10*100, 7, 0.001666667);
+                60000, 600);
 
         scenario.run();
     }
 }
-
-// TODO: New model for PoW mining
 
 // TODO: Adding Throughput Logger
 // TODO: Add Multiple Loggers and Scenarios Default
@@ -29,7 +27,7 @@ public class Main {
 // TODO: Finalize Network Churn with Events
 // TODO: Explore the multithreading option
 
-// TODO: Future Consensus Algorithms
+// TODO: Future Consensus Algorithms:
 // TODO: Honey Badger BFT
 // TODO: IOTA
 // TODO: DPoS

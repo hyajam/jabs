@@ -30,61 +30,41 @@ public class Simulator {
     private long insertedEvents = 0;
 
     /**
-     *
+     * @param event  The event
+     * @param time   Simulation execution time of the event
+     * @param number Event ID (insertion number in event queue)
      */
-    private static class ScheduledEvent implements Comparable<ScheduledEvent> {
-
-        /**
-         * The event
-         */
-        private final Event event;
-
-        /**
-         * Simulation execution time of the event
-         */
-        private final double time;
-
-        /**
-         * Event ID (insertion number in event queue)
-         */
-        private final long number;
-
-        /**
-         * Creates a Scheduled Event for event priority queue
-         *
-         * @param event The event to schedule a time for its execution
-         * @param time execution time of the event
-         * @param number the ID of the event (insertion number)
-         */
-        private ScheduledEvent(Event event, double time, long number){
-            this.event = event;
-            this.time = time;
-            this.number = number;
-        }
-
+    public record ScheduledEvent(Event event, double time, long number) implements Comparable<ScheduledEvent> {
         /**
          * Returns the corresponding event
+         *
          * @return the corresponding event
          */
-        private Event getEvent(){ return this.event; }
+        @Override
+        public Event event() {
+            return this.event;
+        }
 
         /**
          * Returns the execution time of the event.
          *
          * @return the execution time of the event
          */
-        private double getTime(){ return this.time; }
+        @Override
+        public double time() {
+            return this.time;
+        }
 
         /**
          * This function is used by the priority queue to sort the scheduled events
          *
          * @param o The scheduled event
          * @return -1 if the execution time of the object is earlier than the provided
-         *         input.
-         *         0 if the execution time of the object is exactly equal to the
-         *         execution time of the provided input event.
-         *         1 if the execution time of the object is after the execution of
-         *         the provided input.
+         * input.
+         * 0 if the execution time of the object is exactly equal to the
+         * execution time of the provided input event.
+         * 1 if the execution time of the object is after the execution of
+         * the provided input.
          */
         public int compareTo(ScheduledEvent o) {
             return (this.time < o.time) ? -1 : ((this.time > o.time) ? 1 : (Long.compare(this.number, o.number)));
@@ -94,11 +74,11 @@ public class Simulator {
     /**
      * Executes the next event in the event queue
      */
-    public void executeNextEvent(){
+    public void executeNextEvent() {
         if (!eventQueue.isEmpty()) {
             ScheduledEvent currentScheduledEvent = eventQueue.poll();
-            Event currentEvent = currentScheduledEvent.getEvent();
-            currentTime = currentScheduledEvent.getTime();
+            Event currentEvent = currentScheduledEvent.event();
+            currentTime = currentScheduledEvent.time();
             currentEvent.execute();
         }
     }
@@ -109,10 +89,10 @@ public class Simulator {
      *
      * @return The next event to be executed in the simulator
      */
-    public Event peekEvent(){
+    public Event peekEvent() {
         if (!eventQueue.isEmpty()) {
             ScheduledEvent currentEvent = eventQueue.peek();
-            return currentEvent.getEvent();
+            return currentEvent.event();
         } else {
             return null;
         }
@@ -133,11 +113,24 @@ public class Simulator {
      * @param event The event to be executed
      * @param remainingTimeToExecution The time remaining to execution time of
      *                                 the event.
+     * @return the scheduled event
      */
-    public void putEvent(Event event, double remainingTimeToExecution){
+    public ScheduledEvent putEvent(Event event, double remainingTimeToExecution) {
         ScheduledEvent sEvent = new ScheduledEvent(event, currentTime + remainingTimeToExecution, insertedEvents);
         eventQueue.add(sEvent);
         insertedEvents++;
+        return sEvent;
+    }
+
+    /**
+     * Removes an event already available in the event queue. It is specially useful
+     * for processes that are ongoing such as packet receiving process or block mining
+     * process.
+     *
+     * @param scheduledEvent The event to be executed
+     */
+    public void removeEvent(ScheduledEvent scheduledEvent) {
+        this.eventQueue.remove(scheduledEvent);
     }
 
     /**

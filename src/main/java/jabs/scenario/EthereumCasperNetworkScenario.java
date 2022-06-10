@@ -1,6 +1,7 @@
 package jabs.scenario;
 
 import jabs.consensus.algorithm.CasperFFG;
+import jabs.network.networks.BitcoinGlobalProofOfWorkNetworkWithoutTx;
 import jabs.network.networks.GlobalNetwork;
 import jabs.network.networks.GlobalProofOfWorkNetwork;
 import jabs.network.networks.stats.sixglobalregions.bitcoin.BitcoinProofOfWorkGlobalNetworkStats6Regions;
@@ -11,11 +12,8 @@ import jabs.simulator.event.PacketDeliveryEvent;
 import jabs.log.AbstractLogger;
 import jabs.network.message.VoteMessage;
 import jabs.network.networks.CasperFFGGlobalBlockchainNetwork;
-import jabs.network.node.nodes.Node;
+import jabs.simulator.event.TxGenerationProcessRandomNetworkNode;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
-
-import static jabs.simulator.event.EventFactory.createBlockGenerationEvents;
-import static jabs.simulator.event.EventFactory.createTxGenerationEvents;
 
 public class EthereumCasperNetworkScenario extends AbstractScenario {
     public final int numOfMiners;
@@ -50,8 +48,9 @@ public class EthereumCasperNetworkScenario extends AbstractScenario {
 
     @Override
     protected void insertInitialEvents() {
-        createTxGenerationEvents(simulator, randomnessEngine, network, ((int) (simulationStopTime*txGenerationRate)), (long)(1/txGenerationRate));
-        createBlockGenerationEvents(simulator, randomnessEngine, (GlobalProofOfWorkNetwork) network, ((int) (simulationStopTime*blockGenerationRate)), (long)(1/blockGenerationRate));
+        ((CasperFFGGlobalBlockchainNetwork<?>) network).startAllMiningProcesses();
+        simulator.putEvent(new TxGenerationProcessRandomNetworkNode(simulator, network, randomnessEngine,
+                1/txGenerationRate), 0);
     }
 
     @Override

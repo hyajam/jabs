@@ -8,11 +8,15 @@
 
 JABS - Just Another Blockchain Simulator.
 
-JABS is a blockchain network simulator aimed at researching consensus algorithms for performance and security. it is designed to easily handel simulation of networks as large as normal public blockchain networks (~10000 nodes) in reasonable time.
-  
-  
+JABS is a blockchain network simulator aimed at researching consensus 
+algorithms for performance and security. it is designed to easily handel
+simulation of networks as large as normal public blockchain networks 
+(~10000 nodes) in reasonable time.
+
+
 ## Installation
-First, you should have ```git```,  ```openjdk-17-jdk``` and ```maven``` installed.
+First, you should have ```git```,  ```openjdk-17-jdk``` and ```maven``` 
+installed.
 ```shell script
 $ sudo apt install git openjdk-17-jdk maven
 ```
@@ -25,15 +29,35 @@ Use ```maven``` to make a jar file.
 $ cd jabs
 $ mvn clean install
 ```
-You might need to set ```JAVA_HOME``` to java 8.0 home directory:
+You might need to set ```JAVA_HOME``` to java home directory (this 
+might vary depending on your linux distribution and jdk version):
 ```shell
 $ JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/; mvn clean install
 ```
-Then to run the compiled jar file.-
+Then to run the compiled jar file.
 
 ```shell script
-$ java -jar target/jabs-<version>.jar
+$ java -jar target/jabs.jar
 ```
+
+
+### Installation using Dockerfile
+Clone the repository using git:
+```shell script
+$ git clone https://github.com/hyajam/jabs.git
+```
+Build the docker image:
+```shell script
+$ docker build -t jabs .
+```
+Run the docker container:
+```shell script
+$ docker run -t jabs
+```
+The ```Dockerfile``` is designed to support caching dependencies
+therefore by editing the source code you do not need to download 
+new dependencies unless your changes include changes to ```pom.xml``` file
+
 
 ## Usage
 Currently, you can use JABS by editing Main.java file and creating new scenarios for your tests.

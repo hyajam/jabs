@@ -10,6 +10,7 @@ import jabs.network.networks.Network;
 import jabs.network.node.nodes.MinerNode;
 import jabs.network.node.nodes.Node;
 import jabs.simulator.Simulator;
+import jabs.simulator.event.BlockMiningProcess;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,6 +21,7 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
     protected Set<EthereumTx> memPool = new HashSet<>();
     protected Set<EthereumBlock> alreadyUncledBlocks = new HashSet<>();
     protected final long hashPower;
+    protected Simulator.ScheduledEvent miningProcess;
     static final long MAXIMUM_BLOCK_GAS = 12500000;
 
     public EthereumMinerNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, long hashPower) {
@@ -59,6 +61,24 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
                         this, this, new DataMessage(ethereumBlockWithTx)
                 )
         );
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void startMining() {
+        BlockMiningProcess blockMiningProcess = new BlockMiningProcess(this.simulator, this.network.getRandom(),
+                this.consensusAlgorithm.getCanonicalChainHead().getDifficulty()/((double) this.hashPower), this);
+        this.miningProcess = this.simulator.putEvent(blockMiningProcess, blockMiningProcess.timeToNextGeneration());
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void stopMining() {
+        simulator.removeEvent(this.miningProcess);
     }
 
     public long getHashPower() {
