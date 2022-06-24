@@ -21,7 +21,8 @@ public abstract class PeerBlockchainNode<B extends SingleParentBlock<B>, T exten
     protected final HashSet<Vote> alreadySeenVotes = new HashSet<>();
     protected final LocalBlockTree<B> localBlockTree;
 
-    public PeerBlockchainNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, AbstractP2PConnections routingTable,
+    public PeerBlockchainNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
+                              long uploadBandwidth, AbstractP2PConnections routingTable,
                               AbstractChainBasedConsensus<B, T> consensusAlgorithm) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, routingTable, consensusAlgorithm);
         this.consensusAlgorithm = consensusAlgorithm;

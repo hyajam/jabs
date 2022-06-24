@@ -1,6 +1,7 @@
 package jabs.consensus.algorithm;
 
 import jabs.consensus.blockchain.LocalBlockTree;
+import jabs.consensus.config.DAGsperConfig;
 import jabs.ledgerdata.*;
 import jabs.ledgerdata.dagsper.DAGsperVote;
 import jabs.ledgerdata.ethereum.EthereumBlock;
@@ -34,10 +35,10 @@ public class DAGsper<B extends SingleParentBlock<B>, T extends Tx<T>> extends Gh
 
     private DescriptiveStatistics blockFinalizationTimes = null;
 
-    public DAGsper(LocalBlockTree<B> localBlockTree, int checkpointSpace, int numOfStakeholders) {
-        super(localBlockTree);
-        this.checkpointSpace = checkpointSpace;
-        this.numOfStakeholders = numOfStakeholders;
+    public DAGsper(LocalBlockTree<B> localBlockTree, DAGsperConfig daGsperConfig) {
+        super(localBlockTree, daGsperConfig);
+        this.checkpointSpace = daGsperConfig.checkpointSpace();
+        this.numOfStakeholders = daGsperConfig.numOfStakeholders();
         finalizedBlocks.add(localBlockTree.getGenesisBlock());
         justifiedBlocks.add(localBlockTree.getGenesisBlock());
         indirectlyFinalizedBlocks.add(localBlockTree.getGenesisBlock());

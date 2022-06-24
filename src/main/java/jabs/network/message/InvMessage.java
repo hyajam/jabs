@@ -2,7 +2,7 @@ package jabs.network.message;
 
 import jabs.ledgerdata.Hash;
 
-import static jabs.network.networks.BlockFactory.INV_MESSAGE_OVERHEAD;
+import static jabs.ledgerdata.BlockFactory.INV_MESSAGE_OVERHEAD;
 
 public class InvMessage extends Message {
     private final Hash hash;

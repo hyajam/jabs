@@ -1,12 +1,16 @@
 package jabs.consensus.algorithm;
 
 import jabs.consensus.blockchain.LocalBlockDAG;
+import jabs.consensus.config.TangleIOTAConsensusConfig;
 import jabs.ledgerdata.tangle.TangleBlock;
 import jabs.ledgerdata.tangle.TangleTx;
 
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ *
+ */
 public class TangleIOTA extends AbstractDAGBasedConsensus<TangleBlock, TangleTx> {
     protected final HashMap<TangleBlock, Integer> blockAccWeights = new HashMap<>();
 
@@ -15,7 +19,7 @@ public class TangleIOTA extends AbstractDAGBasedConsensus<TangleBlock, TangleTx>
      *
      * @param localBlockDAG local block tree in the node's memory
      */
-    public TangleIOTA(LocalBlockDAG<TangleBlock> localBlockDAG) {
+    public TangleIOTA(LocalBlockDAG<TangleBlock> localBlockDAG, TangleIOTAConsensusConfig tangleIOTAConsensusConfig) {
         super(localBlockDAG);
         this.newIncomingBlock(localBlockDAG.getGenesisBlock());
     }

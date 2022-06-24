@@ -3,7 +3,7 @@ package jabs.ledgerdata.bitcoin;
 import jabs.ledgerdata.SingleParentBlock;
 import jabs.network.node.nodes.Node;
 
-import static jabs.network.networks.BlockFactory.BITCOIN_INV_SIZE;
+import static jabs.ledgerdata.BlockFactory.BITCOIN_INV_SIZE;
 
 public class BitcoinBlock extends SingleParentBlock<BitcoinBlock> {
     protected final double difficulty;

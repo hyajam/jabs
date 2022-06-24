@@ -1,11 +1,13 @@
 package jabs.network.node.nodes.bitcoin;
 
 import jabs.consensus.algorithm.AbstractChainBasedConsensus;
+import jabs.consensus.config.ChainBasedConsensusConfig;
+import jabs.consensus.config.NakamotoConsensusConfig;
 import jabs.ledgerdata.bitcoin.BitcoinBlock;
 import jabs.ledgerdata.bitcoin.BitcoinTx;
 import jabs.network.message.DataMessage;
 import jabs.network.message.Packet;
-import jabs.network.networks.BlockFactory;
+import jabs.ledgerdata.BlockFactory;
 import jabs.network.networks.Network;
 import jabs.network.node.nodes.MinerNode;
 import jabs.simulator.Simulator;
@@ -20,8 +22,10 @@ public class BitcoinMinerNodeWithoutTx extends BitcoinMinerNode implements Miner
     }
 
     public BitcoinMinerNodeWithoutTx(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
-                                     long uploadBandwidth, BitcoinBlock genesisBlock, long hashPower) {
-        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, genesisBlock, hashPower);
+                                     long uploadBandwidth, long hashPower, BitcoinBlock genesisBlock,
+                                     ChainBasedConsensusConfig chainBasedConsensusConfig) {
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, hashPower, genesisBlock,
+                (NakamotoConsensusConfig) chainBasedConsensusConfig);
     }
 
     @Override

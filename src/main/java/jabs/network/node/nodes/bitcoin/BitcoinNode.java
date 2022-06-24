@@ -3,13 +3,14 @@ package jabs.network.node.nodes.bitcoin;
 import jabs.consensus.blockchain.LocalBlockTree;
 import jabs.consensus.algorithm.AbstractChainBasedConsensus;
 import jabs.consensus.algorithm.NakamotoConsensus;
+import jabs.consensus.config.NakamotoConsensusConfig;
 import jabs.ledgerdata.Vote;
 import jabs.ledgerdata.bitcoin.BitcoinBlock;
 import jabs.ledgerdata.bitcoin.BitcoinTx;
 import jabs.network.message.InvMessage;
 import jabs.network.message.Packet;
 import jabs.network.networks.Network;
-import jabs.network.networks.TransactionFactory;
+import jabs.ledgerdata.TransactionFactory;
 import jabs.network.node.nodes.PeerBlockchainNode;
 import jabs.network.node.nodes.Node;
 import jabs.network.p2p.BitcoinCoreP2P;
@@ -17,14 +18,13 @@ import jabs.simulator.Simulator;
 
 public class BitcoinNode extends PeerBlockchainNode<BitcoinBlock, BitcoinTx> {
     public BitcoinNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
-                       BitcoinBlock genesisBlock) {
+                       BitcoinBlock genesisBlock, NakamotoConsensusConfig nakamotoConsensusConfig) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new BitcoinCoreP2P(),
-                new NakamotoConsensus<>(new LocalBlockTree<>(genesisBlock)));
+                new NakamotoConsensus<>(new LocalBlockTree<>(genesisBlock), nakamotoConsensusConfig));
     }
 
     public BitcoinNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
-                       BitcoinBlock genesisBlock,
                        AbstractChainBasedConsensus<BitcoinBlock, BitcoinTx> consensusAlgorithm) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new BitcoinCoreP2P(), consensusAlgorithm);

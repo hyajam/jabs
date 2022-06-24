@@ -1,6 +1,7 @@
 package jabs.consensus.algorithm;
 
 import jabs.consensus.blockchain.LocalBlockTree;
+import jabs.consensus.config.CasperFFGConfig;
 import jabs.ledgerdata.*;
 import jabs.ledgerdata.casper.CasperFFGLink;
 import jabs.ledgerdata.casper.CasperFFGVote;
@@ -11,6 +12,10 @@ import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 import java.util.*;
 
+/**
+ * @param <B>
+ * @param <T>
+ */
 public class CasperFFG<B extends SingleParentBlock<B>, T extends Tx<T>> extends GhostProtocol<B, T>
         implements VotingBasedConsensus<B, T>, DeterministicFinalityConsensus<B,T> {
     private final HashMap<CasperFFGLink<B>, HashMap<Node, CasperFFGVote<B>>> votes = new HashMap<>();
@@ -26,15 +31,22 @@ public class CasperFFG<B extends SingleParentBlock<B>, T extends Tx<T>> extends 
 
     private DescriptiveStatistics blockFinalizationTimes = null;
 
-    public CasperFFG(LocalBlockTree<B> localBlockTree, int checkpointSpace, int numOfStakeholders) {
-        super(localBlockTree);
-        this.checkpointSpace = checkpointSpace;
-        this.numOfStakeholders = numOfStakeholders;
+    /**
+     * @param localBlockTree
+     * @param casperFFGConfig
+     */
+    public CasperFFG(LocalBlockTree<B> localBlockTree, CasperFFGConfig casperFFGConfig) {
+        super(localBlockTree, casperFFGConfig);
+        this.checkpointSpace = casperFFGConfig.checkpointSpace();
+        this.numOfStakeholders = casperFFGConfig.numOfStakeholders();
         this.justifiedBlocks.add(localBlockTree.getGenesisBlock());
         this.finalizedBlocks.add(localBlockTree.getGenesisBlock());
         this.indirectlyFinalizedBlocks.add(localBlockTree.getGenesisBlock());
     }
 
+    /**
+     * @param blockFinalizationTimes
+     */
     public void enableFinalizationTimeRecords(DescriptiveStatistics blockFinalizationTimes) {
         this.blockFinalizationTimes = blockFinalizationTimes;
     }

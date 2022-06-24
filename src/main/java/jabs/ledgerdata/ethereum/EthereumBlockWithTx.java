@@ -3,8 +3,8 @@ package jabs.ledgerdata.ethereum;
 import jabs.ledgerdata.BlockWithTx;
 import jabs.network.node.nodes.ethereum.EthereumMinerNode;
 
-import static jabs.network.networks.BlockFactory.ETHEREUM_BLOCK_HEADER_SIZE;
-import static jabs.network.networks.BlockFactory.ETHEREUM_BLOCK_HASH_SIZE;
+import static jabs.ledgerdata.BlockFactory.ETHEREUM_BLOCK_HEADER_SIZE;
+import static jabs.ledgerdata.BlockFactory.ETHEREUM_BLOCK_HASH_SIZE;
 
 import java.util.HashSet;
 import java.util.Set;

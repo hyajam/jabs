@@ -1,11 +1,17 @@
 package jabs.consensus.algorithm;
 
 import jabs.consensus.blockchain.LocalBlockTree;
+import jabs.consensus.config.ConsensusAlgorithmConfig;
 import jabs.ledgerdata.SingleParentBlock;
 import jabs.ledgerdata.Tx;
 import jabs.network.node.nodes.PeerBlockchainNode;
 
-public abstract class AbstractChainBasedConsensus<B extends SingleParentBlock<B>, T extends Tx<T>> extends AbstractDAGBasedConsensus<B, T> {
+/**
+ * @param <B>
+ * @param <T>
+ */
+public abstract class AbstractChainBasedConsensus<B extends SingleParentBlock<B>, T extends Tx<T>>
+        extends AbstractDAGBasedConsensus<B, T> {
     /**
      * Local Block Tree in Nodes Memory
      */
