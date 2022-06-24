@@ -68,7 +68,18 @@ $ docker build -t jabs .
 
 Run the docker container.
 ```shell script
-$ docker run -t jabs
+$ docker run -v "$(pwd)/_output":/app/_output -t jabs
+```
+
+If you want to prevent generating root owned files in `_output` directory use the following command in case you have
+`id` command in your shell.
+```shell script
+$ docker run --rm --user $(id -u):$(id -g) -v "$(pwd)/_output":/app/_output -t jabs
+```
+
+There is a chance that your user id and group number is 1000. Thus, the following might work well.
+```shell script
+$ docker run --rm --user 1000:1000 -v "$(pwd)/_output":/app/_output -t jabs
 ```
 
 The `Dockerfile` is designed to support caching dependencies

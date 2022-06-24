@@ -9,6 +9,13 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
     private final double simulationStopTime;
     private final double averageBlockInterval;
 
+    /**
+     * @param name
+     * @param seed
+     * @param logger
+     * @param simulationStopTime
+     * @param averageBlockInterval
+     */
     public NormalEthereumNetworkScenario(String name, long seed, AbstractLogger logger,
                                          double simulationStopTime, double averageBlockInterval) {
         super(name, seed, logger);
@@ -20,8 +27,7 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
     public void createNetwork() {
         EthereumGlobalProofOfWorkNetwork<?> ethereumNetwork = new EthereumGlobalProofOfWorkNetwork<>(randomnessEngine,
                 new EthereumProofOfWorkGlobalNetworkStats6Regions(randomnessEngine));
-        this.network = new EthereumGlobalProofOfWorkNetwork<>(randomnessEngine,
-                new EthereumProofOfWorkGlobalNetworkStats6Regions(randomnessEngine));
+        this.network = ethereumNetwork;
         ethereumNetwork.populateNetwork(simulator, new GhostProtocolConfig(this.averageBlockInterval));
     }
 
