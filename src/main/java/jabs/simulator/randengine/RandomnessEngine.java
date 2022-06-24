@@ -1,6 +1,7 @@
 package jabs.simulator.randengine;
 
 import org.apache.commons.math3.distribution.ExponentialDistribution;
+import org.apache.commons.math3.distribution.LogNormalDistribution;
 import org.apache.commons.math3.distribution.ParetoDistribution;
 import org.apache.commons.math3.random.MersenneTwister;
 
@@ -72,8 +73,13 @@ public class RandomnessEngine extends MersenneTwister {
         return this.nextDouble() * max;
     }
 
-    public double sampleExponentialDistribution(double averageTimeBetweenGenerations) {
-        ExponentialDistribution expDist = new ExponentialDistribution(this, averageTimeBetweenGenerations);
+    public double sampleExponentialDistribution(double mean) {
+        ExponentialDistribution expDist = new ExponentialDistribution(this, mean);
+        return expDist.sample();
+    }
+
+    public double sampleLogNormalDistribution(double median, double stdDev) {
+        LogNormalDistribution expDist = new LogNormalDistribution(this, median, stdDev);
         return expDist.sample();
     }
 

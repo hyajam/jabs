@@ -1,21 +1,26 @@
 package jabs.consensus.algorithm;
 
 import jabs.consensus.blockchain.LocalBlockTree;
+import jabs.consensus.config.ConsensusAlgorithmConfig;
+import jabs.consensus.config.GhostProtocolConfig;
 import jabs.ledgerdata.SingleParentBlock;
 import jabs.ledgerdata.Tx;
 
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class GhostProtocol<B extends SingleParentBlock<B>, T extends Tx<T>> extends AbstractChainBasedConsensus<B, T> {
+public class GhostProtocol<B extends SingleParentBlock<B>, T extends Tx<T>>
+        extends AbstractChainBasedConsensus<B, T> {
     private final HashMap<B, Integer> totalWeights = new HashMap<>();
     public static int DEFAULT_GHOST_WEIGHT = 1;
     protected B originOfGhost;
+    private final double averageBlockMiningInterval;
 
-    public GhostProtocol(LocalBlockTree<B> localBlockTree) {
+    public GhostProtocol(LocalBlockTree<B> localBlockTree, GhostProtocolConfig ghostProtocolConfig) {
         super(localBlockTree);
         this.originOfGhost = localBlockTree.getGenesisBlock();
         this.newIncomingBlock(localBlockTree.getGenesisBlock());
+        this.averageBlockMiningInterval = ghostProtocolConfig.averageBlockMiningInterval();
     }
 
     @Override

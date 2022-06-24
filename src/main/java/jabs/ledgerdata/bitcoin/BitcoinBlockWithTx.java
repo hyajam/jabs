@@ -5,7 +5,7 @@ import jabs.network.node.nodes.bitcoin.BitcoinMinerNode;
 import java.util.HashSet;
 import java.util.Set;
 
-import static jabs.network.networks.BlockFactory.BITCOIN_BLOCK_HEADER_SIZE;
+import static jabs.ledgerdata.BlockFactory.BITCOIN_BLOCK_HEADER_SIZE;
 
 public class BitcoinBlockWithTx extends BitcoinBlock {
     private final Set<BitcoinTx> Txs;

@@ -3,6 +3,7 @@ package jabs.network.node.nodes.iota;
 import jabs.consensus.algorithm.AbstractDAGBasedConsensus;
 import jabs.consensus.algorithm.TangleIOTA;
 import jabs.consensus.blockchain.LocalBlockDAG;
+import jabs.consensus.config.TangleIOTAConsensusConfig;
 import jabs.ledgerdata.Vote;
 import jabs.ledgerdata.tangle.TangleTx;
 import jabs.ledgerdata.tangle.TangleBlock;
@@ -22,10 +23,19 @@ public class IOTANode extends PeerDLTNode<TangleBlock, TangleTx> implements Mine
 
     protected Simulator.ScheduledEvent blockGenerationProcess;
 
+    /**
+     * @param simulator
+     * @param network
+     * @param nodeID
+     * @param downloadBandwidth
+     * @param uploadBandwidth
+     * @param routingTable
+     * @param tangleIOTAConsensusConfig
+     */
     public IOTANode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
-                    AbstractP2PConnections routingTable) {
+                    AbstractP2PConnections routingTable, TangleIOTAConsensusConfig tangleIOTAConsensusConfig) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, routingTable,
-                new TangleIOTA(new LocalBlockDAG<>(TANGLE_GENESIS_BLOCK)));
+                new TangleIOTA(new LocalBlockDAG<>(TANGLE_GENESIS_BLOCK), tangleIOTAConsensusConfig));
     }
 
     /**

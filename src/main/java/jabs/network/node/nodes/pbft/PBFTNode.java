@@ -1,5 +1,4 @@
 package jabs.network.node.nodes.pbft;
-
 import jabs.consensus.blockchain.LocalBlockTree;
 import jabs.consensus.algorithm.PBFT;
 import jabs.ledgerdata.Vote;
@@ -18,7 +17,9 @@ public class PBFTNode extends PeerBlockchainNode<PBFTBlock, PBFTTx> {
     public PBFTNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, int numAllParticipants) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new PBFTP2P(),
-                new PBFT<>(simulator, numAllParticipants, new LocalBlockTree<>(PBFT_GENESIS_BLOCK)));
+                new PBFT<>(new LocalBlockTree<>(PBFT_GENESIS_BLOCK), numAllParticipants)
+        );
+        this.consensusAlgorithm.setNode(this);
     }
 
     @Override

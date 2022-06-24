@@ -1,12 +1,9 @@
 package jabs.consensus.algorithm;
 
 import jabs.consensus.blockchain.LocalBlockTree;
-import jabs.ledgerdata.SingleParentBlock;
-import jabs.ledgerdata.Tx;
-import jabs.ledgerdata.Vote;
+import jabs.ledgerdata.*;
 import jabs.ledgerdata.pbft.*;
 import jabs.network.message.VoteMessage;
-import jabs.network.networks.BlockFactory;
 import jabs.network.node.nodes.Node;
 import jabs.network.node.nodes.pbft.PBFTNode;
 import jabs.simulator.Simulator;
@@ -62,7 +59,7 @@ public class PBFT<B extends SingleParentBlock<B>, T extends Tx<T>> extends Abstr
         COMMITTING
     }
 
-    public PBFT(Simulator simulator, int numAllParticipants, LocalBlockTree<B> localBlockTree) {
+    public PBFT(LocalBlockTree<B> localBlockTree, int numAllParticipants) {
         super(localBlockTree);
         this.numAllParticipants = numAllParticipants;
         this.currentMainChainHead = localBlockTree.getGenesisBlock();
@@ -137,6 +134,24 @@ public class PBFT<B extends SingleParentBlock<B>, T extends Tx<T>> extends Abstr
     @Override
     public void newIncomingBlock(B block) {
 
+    }
+
+    /**
+     * @param block
+     * @return
+     */
+    @Override
+    public boolean isBlockConfirmed(B block) {
+        return false;
+    }
+
+    /**
+     * @param block
+     * @return
+     */
+    @Override
+    public boolean isBlockValid(B block) {
+        return false;
     }
 
     public int getCurrentViewNumber() {

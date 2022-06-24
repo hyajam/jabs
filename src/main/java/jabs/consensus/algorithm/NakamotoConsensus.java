@@ -1,14 +1,18 @@
 package jabs.consensus.algorithm;
 
+import jabs.consensus.config.NakamotoConsensusConfig;
 import jabs.ledgerdata.SingleParentBlock;
 import jabs.ledgerdata.Tx;
 import jabs.consensus.blockchain.LocalBlockTree;
 
-public class NakamotoConsensus<B extends SingleParentBlock<B>, T extends Tx<T>> extends AbstractChainBasedConsensus<B, T> {
+public class NakamotoConsensus<B extends SingleParentBlock<B>, T extends Tx<T>>
+        extends AbstractChainBasedConsensus<B, T> {
     private int longestChainLen = -1;
+    private final double averageBlockMiningInterval;
 
-    public NakamotoConsensus(LocalBlockTree<B> localBlockTree) {
+    public NakamotoConsensus(LocalBlockTree<B> localBlockTree, NakamotoConsensusConfig nakamotoConsensusConfig) {
         super(localBlockTree);
+        this.averageBlockMiningInterval = nakamotoConsensusConfig.averageBlockMiningInterval();
         this.newIncomingBlock(localBlockTree.getGenesisBlock());
     }
 
@@ -24,5 +28,9 @@ public class NakamotoConsensus<B extends SingleParentBlock<B>, T extends Tx<T>> 
     @Override
     protected void updateChain() {
         this.acceptedBlocks = this.localBlockTree.getAllAncestors(this.currentMainChainHead);
+    }
+
+    public double getAverageBlockMiningInterval() {
+        return averageBlockMiningInterval;
     }
 }

@@ -1,6 +1,7 @@
 package jabs.network.node.nodes.ethereum;
 
 import jabs.consensus.algorithm.AbstractChainBasedConsensus;
+import jabs.consensus.config.GhostProtocolConfig;
 import jabs.ledgerdata.ethereum.EthereumBlock;
 import jabs.ledgerdata.ethereum.EthereumBlockWithTx;
 import jabs.ledgerdata.ethereum.EthereumTx;
@@ -15,7 +16,7 @@ import jabs.simulator.event.BlockMiningProcess;
 import java.util.HashSet;
 import java.util.Set;
 
-import static jabs.network.networks.BlockFactory.ETHEREUM_MIN_DIFFICULTY;
+import static jabs.ledgerdata.BlockFactory.ETHEREUM_MIN_DIFFICULTY;
 
 public class EthereumMinerNode extends EthereumNode implements MinerNode {
     protected Set<EthereumTx> memPool = new HashSet<>();
@@ -24,8 +25,10 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
     protected Simulator.ScheduledEvent miningProcess;
     static final long MAXIMUM_BLOCK_GAS = 12500000;
 
-    public EthereumMinerNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, long hashPower) {
-        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth);
+    public EthereumMinerNode(Simulator simulator, Network network, int nodeID,
+                             long downloadBandwidth, long uploadBandwidth, long hashPower, EthereumBlock genesisBlock,
+                             GhostProtocolConfig ghostProtocolConfig) {
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, genesisBlock, ghostProtocolConfig);
         this.hashPower = hashPower;
     }
 

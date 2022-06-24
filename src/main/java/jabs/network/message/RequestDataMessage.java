@@ -2,7 +2,7 @@ package jabs.network.message;
 
 import jabs.ledgerdata.Hash;
 
-import static jabs.network.networks.BlockFactory.GET_DATA_OVERHEAD;
+import static jabs.ledgerdata.BlockFactory.GET_DATA_OVERHEAD;
 
 public class RequestDataMessage extends Message {
     private final Hash payloadHash;

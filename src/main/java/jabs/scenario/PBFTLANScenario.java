@@ -1,10 +1,12 @@
 package jabs.scenario;
 
+import jabs.consensus.config.ConsensusAlgorithmConfig;
+import jabs.consensus.config.PBFTConsensusConfig;
 import jabs.ledgerdata.pbft.PBFTPrePrepareVote;
 import jabs.log.AbstractLogger;
 import jabs.network.message.VoteMessage;
-import jabs.network.networks.BlockFactory;
-import jabs.network.networks.PBFTLocalLANNetwork;
+import jabs.ledgerdata.BlockFactory;
+import jabs.network.networks.pbft.PBFTLocalLANNetwork;
 import jabs.network.node.nodes.Node;
 import jabs.network.node.nodes.pbft.PBFTNode;
 
@@ -23,7 +25,7 @@ public class PBFTLANScenario extends AbstractScenario {
     @Override
     public void createNetwork() {
         network = new PBFTLocalLANNetwork(randomnessEngine);
-        network.populateNetwork(this.simulator, this.numNodes);
+        network.populateNetwork(this.simulator, this.numNodes, new PBFTConsensusConfig());
     }
 
     @Override

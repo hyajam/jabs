@@ -5,6 +5,10 @@ import jabs.ledgerdata.Tx;
 
 import java.util.HashSet;
 
+/**
+ * @param <B>
+ * @param <T>
+ */
 public abstract class AbstractConsensusAlgorithm<B extends Block<B>, T extends Tx<T>>
         implements ConsensusAlgorithm<B, T> {
 

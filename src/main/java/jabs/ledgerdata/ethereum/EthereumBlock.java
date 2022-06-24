@@ -5,14 +5,14 @@ import jabs.network.node.nodes.ethereum.EthereumMinerNode;
 
 import java.util.Set;
 
-import static jabs.network.networks.BlockFactory.ETHEREUM_BLOCK_HASH_SIZE;
+import static jabs.ledgerdata.BlockFactory.ETHEREUM_BLOCK_HASH_SIZE;
 
 public class EthereumBlock extends SingleParentBlock<EthereumBlock> {
     private final Set<EthereumBlock> uncles;
-    private final long difficulty;
+    private final double difficulty;
 
     public EthereumBlock(int size, int height, double creationTime, EthereumMinerNode creator, EthereumBlock parent,
-                         Set<EthereumBlock> uncles, long difficulty) {
+                         Set<EthereumBlock> uncles, double difficulty) {
         super(size, height, creationTime, creator, parent, ETHEREUM_BLOCK_HASH_SIZE);
         this.uncles = uncles;
         this.difficulty = difficulty;
@@ -27,7 +27,7 @@ public class EthereumBlock extends SingleParentBlock<EthereumBlock> {
         return this.uncles;
     }
 
-    public long getDifficulty() {
+    public double getDifficulty() {
         return this.difficulty;
     }
 }
