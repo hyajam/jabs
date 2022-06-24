@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/main/java/jabs/ledgerdata/TransactionFactory.java
 package jabs.ledgerdata;
+========
+package jabs.network.networks;
+>>>>>>>> f30dfce1c361791b860e16abb2f777a6af208ade:src/main/java/jabs/network/networks/TransactionFactory.java
 
 import jabs.ledgerdata.bitcoin.BitcoinTx;
 import jabs.ledgerdata.ethereum.EthereumTx;
