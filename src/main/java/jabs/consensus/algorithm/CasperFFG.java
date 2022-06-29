@@ -100,7 +100,7 @@ public class CasperFFG<B extends SingleParentBlock<B>, T extends Tx<T>> extends 
 
     @Override
     protected void updateChain() {
-        this.acceptedBlocks = this.localBlockTree.getAllAncestors(this.currentMainChainHead);
+        this.confirmedBlocks = this.localBlockTree.getAllAncestors(this.currentMainChainHead);
         if ((currentMainChainHead.getHeight() - checkpointSpace) > latestCheckpoint) {
             latestCheckpoint = currentMainChainHead.getHeight() - (currentMainChainHead.getHeight() % checkpointSpace);
 

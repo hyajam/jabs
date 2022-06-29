@@ -6,7 +6,7 @@ import java.util.Objects;
 
 /**
  */
-public class GhostProtocolConfig extends NakamotoConsensusConfig {
+public class GhostProtocolConfig extends ChainBasedConsensusConfig {
     /**
      * @param averageBlockMiningInterval
      */

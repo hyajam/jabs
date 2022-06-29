@@ -1,6 +1,7 @@
 package jabs;
 
 import jabs.log.AbstractLogger;
+import jabs.log.BlockConfirmationLogger;
 import jabs.log.BlockGenerationLogger;
 import jabs.scenario.AbstractScenario;
 import jabs.scenario.BitcoinGlobalNetworkScenario;
@@ -25,9 +26,9 @@ public class Main {
         // Simulate one day in the life of Bitcoin network
         // Nakamoto protocol with block every 600 seconds
         // Around 16000 nodes with 30 miners
-        logger = new BlockGenerationLogger(Paths.get("_output/bitcoin-simulation-log.csv"));
+        logger = new BlockConfirmationLogger(Paths.get("_output/bitcoin-simulation-log.csv"));
         scenario = new BitcoinGlobalNetworkScenario("One day in the life of Bitcoin", 1, logger,
-                86400, 600);
+                86400, 600, 6);
         scenario.run();
 
         // Simulate 1 hour in the life of Ethereum network

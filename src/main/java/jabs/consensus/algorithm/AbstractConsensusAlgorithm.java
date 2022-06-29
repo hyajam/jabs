@@ -15,12 +15,12 @@ public abstract class AbstractConsensusAlgorithm<B extends Block<B>, T extends T
     /**
      * All accepted blocks (received and agreed) for the consensus algorithm
      */
-    protected HashSet<B> acceptedBlocks = new HashSet<>();
+    protected HashSet<B> confirmedBlocks = new HashSet<>();
 
     /**
      * All accepted transactions (residing inside accepted blocks)
      */
-    protected final HashSet<T> acceptedTxs = new HashSet<>();
+    protected final HashSet<T> confirmedTxs = new HashSet<>();
 
     /**
      * When a new block is received by the node this function should be called.
@@ -53,7 +53,7 @@ public abstract class AbstractConsensusAlgorithm<B extends Block<B>, T extends T
      */
     @Override
     public boolean isBlockConfirmed(B block) {
-        return acceptedBlocks.contains(block);
+        return confirmedBlocks.contains(block);
     }
 
     /**
@@ -67,7 +67,7 @@ public abstract class AbstractConsensusAlgorithm<B extends Block<B>, T extends T
      */
     @Override
     public boolean isTxConfirmed(T tx) {
-        return acceptedTxs.contains(tx);
+        return confirmedTxs.contains(tx);
     }
 
     /**
@@ -77,8 +77,8 @@ public abstract class AbstractConsensusAlgorithm<B extends Block<B>, T extends T
      * @return The total number of blocks agreed by consensus algorithm
      */
     @Override
-    public int getNumOfAcceptedBlocks() {
-        return acceptedBlocks.size();
+    public int getNumOfConfirmedBlocks() {
+        return confirmedBlocks.size();
     }
 
     /**
@@ -87,7 +87,7 @@ public abstract class AbstractConsensusAlgorithm<B extends Block<B>, T extends T
      * @return Total number of accepted transactions by the consensus algorithm
      */
     @Override
-    public int getNumOfAcceptedTxs() {
-        return acceptedTxs.size();
+    public int getNumOfConfirmedTxs() {
+        return confirmedTxs.size();
     }
 }
