@@ -6,7 +6,6 @@ import jabs.ledgerdata.pbft.*;
 import jabs.network.message.VoteMessage;
 import jabs.network.node.nodes.Node;
 import jabs.network.node.nodes.pbft.PBFTNode;
-import jabs.simulator.Simulator;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -172,6 +171,6 @@ public class PBFT<B extends SingleParentBlock<B>, T extends Tx<T>> extends Abstr
 
     @Override
     protected void updateChain() {
-        this.acceptedBlocks.add(this.currentMainChainHead);
+        this.confirmedBlocks.add(this.currentMainChainHead);
     }
 }

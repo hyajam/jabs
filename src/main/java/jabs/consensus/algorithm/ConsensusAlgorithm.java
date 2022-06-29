@@ -1,6 +1,5 @@
 package jabs.consensus.algorithm;
 
-import jabs.consensus.config.ConsensusAlgorithmConfig;
 import jabs.ledgerdata.Block;
 import jabs.ledgerdata.Tx;
 
@@ -36,11 +35,11 @@ public interface ConsensusAlgorithm<B extends Block<B>, T extends Tx<T>> {
     /**
      * @return
      */
-    int getNumOfAcceptedBlocks();
+    int getNumOfConfirmedBlocks();
 
     /**
      * @return
      */
-    int getNumOfAcceptedTxs();
+    int getNumOfConfirmedTxs();
 
 }

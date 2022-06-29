@@ -175,7 +175,7 @@ public class DAGsper<B extends SingleParentBlock<B>, T extends Tx<T>> extends Gh
 
     @Override
     protected void updateChain() {
-        acceptedBlocks = localBlockTree.getAllAncestors(currentMainChainHead);
+        confirmedBlocks = localBlockTree.getAllAncestors(currentMainChainHead);
         if (currentMainChainHead.getHeight() > 0) {
             if ((currentMainChainHead.getHeight() % checkpointSpace) == (peerBlockchainNode.nodeID % checkpointSpace)) {
                 B latestConnectedJBlock = finalizedBlocks.last();

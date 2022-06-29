@@ -1,7 +1,6 @@
 package jabs.consensus.algorithm;
 
 import jabs.consensus.blockchain.LocalBlockTree;
-import jabs.consensus.config.ConsensusAlgorithmConfig;
 import jabs.consensus.config.GhostProtocolConfig;
 import jabs.ledgerdata.SingleParentBlock;
 import jabs.ledgerdata.Tx;
@@ -64,6 +63,6 @@ public class GhostProtocol<B extends SingleParentBlock<B>, T extends Tx<T>>
 
     @Override
     protected void updateChain() {
-        this.acceptedBlocks = this.localBlockTree.getAllAncestors(this.currentMainChainHead);
+        this.confirmedBlocks = this.localBlockTree.getAllAncestors(this.currentMainChainHead);
     }
 }
