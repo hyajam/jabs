@@ -1,31 +1,42 @@
 package jabs.log;
 
 import jabs.ledgerdata.Block;
-import jabs.simulator.event.Event;
-import jabs.simulator.event.PacketDeliveryEvent;
 import jabs.network.message.DataMessage;
 import jabs.network.message.Message;
 import jabs.network.message.Packet;
+import jabs.network.node.nodes.Node;
+import jabs.simulator.event.Event;
+import jabs.simulator.event.PacketDeliveryEvent;
 
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
-public class BlockDeliveryLogger extends AbstractCSVLogger {
+public class BlockPropagationDelayLogger extends AbstractCSVLogger {
+    private final double shareOfNodesReceivedBlock;
+    private final HashMap<Block, HashSet<Node>> ReceivedBy = new HashMap<>();
+
     /**
      * creates an abstract CSV logger
-     * @param writer this is output CSV of the logger
+     *
+     * @param writer                    this is output CSV of the logger
+     * @param shareOfNodesReceivedBlock
      */
-    public BlockDeliveryLogger(Writer writer) {
+    public BlockPropagationDelayLogger(Writer writer, double shareOfNodesReceivedBlock) {
         super(writer);
+        this.shareOfNodesReceivedBlock = shareOfNodesReceivedBlock;
     }
 
     /**
      * creates an abstract CSV logger
      * @param path this is output path of CSV file
      */
-    public BlockDeliveryLogger(Path path) throws IOException {
+    public BlockPropagationDelayLogger(Path path, double shareOfNodesReceivedBlock) throws IOException {
         super(path);
+        this.shareOfNodesReceivedBlock = shareOfNodesReceivedBlock;
     }
 
     @Override
@@ -43,9 +54,21 @@ public class BlockDeliveryLogger extends AbstractCSVLogger {
     protected boolean csvOutputConditionAfterEvent() {
         Event event = this.scenario.getSimulator().peekEvent();
         if (event instanceof PacketDeliveryEvent) {
-            Message message = ((PacketDeliveryEvent) event).packet.getMessage();
+            Packet packet = ((PacketDeliveryEvent) event).packet;
+            Message message = packet.getMessage();
             if (message instanceof DataMessage) {
-                return (((DataMessage) message).getData() instanceof Block);
+                if (((DataMessage) message).getData() instanceof Block) {
+                    Block block = ((Block) ((DataMessage) message).getData());
+                    Node Receiver = packet.getTo();
+                    if (ReceivedBy.containsKey(block)) {
+                        ReceivedBy.get(block).add(Receiver);
+                    } else {
+                        ReceivedBy.put(block, new HashSet<>());
+                        ReceivedBy.get(block).add(Receiver);
+                    }
+                    int exactNumber = (int)(this.scenario.getNetwork().getAllNodes().size() * shareOfNodesReceivedBlock);
+                    return (ReceivedBy.get(block).size() == exactNumber);
+                }
             }
         }
         return false;
@@ -58,7 +81,7 @@ public class BlockDeliveryLogger extends AbstractCSVLogger {
 
     @Override
     protected String[] csvHeaderOutput() {
-        return new String[]{"Time", "DelayFromCreation", "BlockHeight", "BlockCreator", "BlockSize", "BlockHashCode", "Receiver", "Sender"};
+        return new String[]{"Time", "PropagationDelay", "BlockHashCode", "BlockHeight", "BlockCreator", "BlockSize"};
     }
 
     @Override
@@ -70,12 +93,10 @@ public class BlockDeliveryLogger extends AbstractCSVLogger {
         return new String[]{
                 Double.toString(this.scenario.getSimulator().getCurrentTime()),
                 Double.toString(this.scenario.getSimulator().getCurrentTime() - block.getCreationTime()),
+                Integer.toString(block.hashCode()),
                 Integer.toString(block.getHeight()),
                 Integer.toString(block.getCreator().nodeID),
                 Integer.toString(block.getSize()),
-                Integer.toString(block.hashCode()),
-                Integer.toString(packet.getTo().nodeID),
-                Integer.toString(packet.getFrom().nodeID)
         };
     }
 }

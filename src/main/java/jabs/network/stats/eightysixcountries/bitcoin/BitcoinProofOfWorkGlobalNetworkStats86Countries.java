@@ -2,8 +2,6 @@ package jabs.network.stats.eightysixcountries.bitcoin;
 
 import jabs.network.stats.ProofOfWorkGlobalNetworkStats;
 import jabs.network.stats.eightysixcountries.EightySixCountries;
-import jabs.network.stats.sixglobalregions.SixRegions;
-import jabs.network.stats.sixglobalregions.bitcoin.BitcoinNodeGlobalNetworkStats6Regions;
 import jabs.simulator.randengine.RandomnessEngine;
 
 import static jabs.network.stats.sixglobalregions.ethereum.EthereumNodeGlobalNetworkStats6Regions.ETHEREUM_NUM_NODES_2022;
@@ -52,7 +50,7 @@ public class BitcoinProofOfWorkGlobalNetworkStats86Countries extends BitcoinNode
      */
     @Override
     public double shareOfMinersToAllNodes() {
-        return BITCOIN_NUM_MINERS_2022/(double)ETHEREUM_NUM_NODES_2022;
+        return BITCOIN_NUM_MINERS_2022/(double)BITCOIN_NUM_NODES_2022;
     }
 
     @Override

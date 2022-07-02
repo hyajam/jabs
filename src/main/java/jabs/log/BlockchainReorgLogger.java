@@ -1,22 +1,21 @@
 package jabs.log;
 
 import jabs.ledgerdata.Block;
-import jabs.network.node.nodes.MinerNode;
 import jabs.network.node.nodes.Node;
 import jabs.simulator.event.BlockConfirmationEvent;
-import jabs.simulator.event.BlockMiningProcess;
+import jabs.simulator.event.BlockchainReorgEvent;
 import jabs.simulator.event.Event;
 
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Path;
 
-public class BlockConfirmationLogger extends AbstractCSVLogger {
+public class BlockchainReorgLogger extends AbstractCSVLogger {
     /**
      * creates an abstract CSV logger
      * @param writer this is output CSV of the logger
      */
-    public BlockConfirmationLogger(Writer writer) {
+    public BlockchainReorgLogger(Writer writer) {
         super(writer);
     }
 
@@ -24,7 +23,7 @@ public class BlockConfirmationLogger extends AbstractCSVLogger {
      * creates an abstract CSV logger
      * @param path this is output path of CSV file
      */
-    public BlockConfirmationLogger(Path path) throws IOException {
+    public BlockchainReorgLogger(Path path) throws IOException {
         super(path);
     }
 
@@ -42,7 +41,7 @@ public class BlockConfirmationLogger extends AbstractCSVLogger {
     @Override
     protected boolean csvOutputConditionAfterEvent() {
         Event event = this.scenario.getSimulator().peekEvent();
-        return event instanceof BlockConfirmationEvent;
+        return event instanceof BlockchainReorgEvent;
     }
 
     @Override
@@ -52,23 +51,23 @@ public class BlockConfirmationLogger extends AbstractCSVLogger {
 
     @Override
     protected String[] csvHeaderOutput() {
-        return new String[]{"Time", "NodeID", "BlockHeight", "BlockHashCode", "BlockSize", "BlockCreationTime", "BlockCreator"};
+        return new String[]{"Time", "NodeID", "BlockHeight", "BlockCreationTime", "BlockCreator", "ReorgLength"};
     }
 
     @Override
     protected String[] csvLineOutput() {
         Event event = this.scenario.getSimulator().peekEvent();
-        Node node = ((BlockConfirmationEvent) event).getNode();
-        Block block = ((BlockConfirmationEvent) event).getBlock();
+        Node node = ((BlockchainReorgEvent) event).getNode();
+        Block block = ((BlockchainReorgEvent) event).getBlock();
+        int reorgLength = ((BlockchainReorgEvent) event).getReorgLength();
 
         return new String[]{
                 Double.toString(this.scenario.getSimulator().getCurrentTime()),
                 Integer.toString(node.nodeID),
                 Integer.toString(block.getHeight()),
-                Integer.toString(block.hashCode()),
-                Integer.toString(block.getSize()),
                 Double.toString(block.getCreationTime()),
-                Integer.toString(block.getCreator().nodeID)
+                Integer.toString(block.getCreator().nodeID),
+                Integer.toString(reorgLength)
         };
     }
 }

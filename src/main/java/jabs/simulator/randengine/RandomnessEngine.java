@@ -4,6 +4,7 @@ import org.apache.commons.math3.distribution.ExponentialDistribution;
 import org.apache.commons.math3.distribution.LogNormalDistribution;
 import org.apache.commons.math3.distribution.ParetoDistribution;
 import org.apache.commons.math3.random.MersenneTwister;
+import org.apache.commons.math3.util.FastMath;
 
 import java.util.Collections;
 import java.util.List;
@@ -79,7 +80,7 @@ public class RandomnessEngine extends MersenneTwister {
     }
 
     public double sampleLogNormalDistribution(double median, double stdDev) {
-        LogNormalDistribution expDist = new LogNormalDistribution(this, median, stdDev);
+        LogNormalDistribution expDist = new LogNormalDistribution(this, FastMath.log(median), stdDev);
         return expDist.sample();
     }
 

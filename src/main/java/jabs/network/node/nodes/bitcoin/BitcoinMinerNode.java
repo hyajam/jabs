@@ -2,8 +2,9 @@ package jabs.network.node.nodes.bitcoin;
 
 import jabs.consensus.algorithm.AbstractChainBasedConsensus;
 import jabs.consensus.config.NakamotoConsensusConfig;
-import jabs.ledgerdata.bitcoin.BitcoinBlock;
+import jabs.ledgerdata.bitcoin.BitcoinBlockWithoutTx;
 import jabs.ledgerdata.bitcoin.BitcoinBlockWithTx;
+import jabs.ledgerdata.bitcoin.BitcoinCompactBlock;
 import jabs.ledgerdata.bitcoin.BitcoinTx;
 import jabs.network.message.DataMessage;
 import jabs.network.message.Packet;
@@ -23,14 +24,14 @@ public class BitcoinMinerNode extends BitcoinNode implements MinerNode {
     static final long MAXIMUM_BLOCK_SIZE = 1800000;
 
     public BitcoinMinerNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
-                            long uploadBandwidth, BitcoinBlock genesisBlock, long hashPower,
-                            AbstractChainBasedConsensus<BitcoinBlock, BitcoinTx> consensusAlgorithm) {
+                            long uploadBandwidth, BitcoinBlockWithoutTx genesisBlock, long hashPower,
+                            AbstractChainBasedConsensus<BitcoinBlockWithoutTx, BitcoinTx> consensusAlgorithm) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, consensusAlgorithm);
         this.hashPower = hashPower;
     }
 
     public BitcoinMinerNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
-                            long uploadBandwidth, long hashPower, BitcoinBlock genesisBlock,
+                            long uploadBandwidth, long hashPower, BitcoinBlockWithoutTx genesisBlock,
                             NakamotoConsensusConfig nakamotoConsensusConfig) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, genesisBlock, nakamotoConsensusConfig);
         this.hashPower = hashPower;
@@ -39,7 +40,7 @@ public class BitcoinMinerNode extends BitcoinNode implements MinerNode {
 
     @Override
     public void generateNewBlock() {
-        BitcoinBlock canonicalChainHead = this.consensusAlgorithm.getCanonicalChainHead();
+        BitcoinBlockWithoutTx canonicalChainHead = this.consensusAlgorithm.getCanonicalChainHead();
 
         Set<BitcoinTx> blockTxs = new HashSet<>();
         long totalTxSize = 0;
@@ -56,9 +57,11 @@ public class BitcoinMinerNode extends BitcoinNode implements MinerNode {
                 this.getConsensusAlgorithm().getCanonicalChainHead(), this, blockTxs,
                 canonicalChainHead.getDifficulty()); // TODO: Difficulty adjustment?
 
+        BitcoinCompactBlock bitcoinCompactBlock = new BitcoinCompactBlock(bitcoinBlockWithTx);
+
         this.processIncomingPacket(
                 new Packet(
-                        this, this, new DataMessage(bitcoinBlockWithTx)
+                        this, this, new DataMessage(bitcoinCompactBlock)
                 )
         );
     }

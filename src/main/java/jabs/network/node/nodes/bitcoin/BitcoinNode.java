@@ -5,7 +5,7 @@ import jabs.consensus.algorithm.AbstractChainBasedConsensus;
 import jabs.consensus.algorithm.NakamotoConsensus;
 import jabs.consensus.config.NakamotoConsensusConfig;
 import jabs.ledgerdata.Vote;
-import jabs.ledgerdata.bitcoin.BitcoinBlock;
+import jabs.ledgerdata.bitcoin.BitcoinBlockWithoutTx;
 import jabs.ledgerdata.bitcoin.BitcoinTx;
 import jabs.network.message.InvMessage;
 import jabs.network.message.Packet;
@@ -16,16 +16,16 @@ import jabs.network.node.nodes.Node;
 import jabs.network.p2p.BitcoinCoreP2P;
 import jabs.simulator.Simulator;
 
-public class BitcoinNode extends PeerBlockchainNode<BitcoinBlock, BitcoinTx> {
+public class BitcoinNode extends PeerBlockchainNode<BitcoinBlockWithoutTx, BitcoinTx> {
     public BitcoinNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
-                       BitcoinBlock genesisBlock, NakamotoConsensusConfig nakamotoConsensusConfig) {
+                       BitcoinBlockWithoutTx genesisBlock, NakamotoConsensusConfig nakamotoConsensusConfig) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new BitcoinCoreP2P(),
                 new NakamotoConsensus<>(new LocalBlockTree<>(genesisBlock), nakamotoConsensusConfig));
     }
 
     public BitcoinNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
-                       AbstractChainBasedConsensus<BitcoinBlock, BitcoinTx> consensusAlgorithm) {
+                       AbstractChainBasedConsensus<BitcoinBlockWithoutTx, BitcoinTx> consensusAlgorithm) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new BitcoinCoreP2P(), consensusAlgorithm);
     }
@@ -36,7 +36,7 @@ public class BitcoinNode extends PeerBlockchainNode<BitcoinBlock, BitcoinTx> {
     }
 
     @Override
-    protected void processNewBlock(BitcoinBlock bitcoinBlock) {
+    protected void processNewBlock(BitcoinBlockWithoutTx bitcoinBlock) {
         this.consensusAlgorithm.newIncomingBlock(bitcoinBlock);
         this.broadcastBlockInvMessage(bitcoinBlock);
     }
@@ -56,7 +56,7 @@ public class BitcoinNode extends PeerBlockchainNode<BitcoinBlock, BitcoinTx> {
         }
     }
 
-    protected void broadcastBlockInvMessage(BitcoinBlock block) {
+    protected void broadcastBlockInvMessage(BitcoinBlockWithoutTx block) {
         for (Node neighbor:this.p2pConnections.getNeighbors()) {
             this.nodeNetworkInterface.addToUpLinkQueue(
                     new Packet(this, neighbor,

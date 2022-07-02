@@ -6,6 +6,8 @@ import jabs.simulator.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -19,7 +21,7 @@ public abstract class AbstractScenario {
     protected Network network;
     protected Simulator simulator;
     protected RandomnessEngine randomnessEngine;
-    protected AbstractLogger logger;
+    protected List<AbstractLogger> loggers = new ArrayList<>();
     long progressMessageIntervals;
     final String name;
 
@@ -65,14 +67,16 @@ public abstract class AbstractScenario {
     /**
      * creates an abstract scenario with a user defined name
      * @param seed this value gives the simulation a randomnessEngine seed
-     * @param logger this is output log of the scenario
      */
-    public AbstractScenario(String name, long seed, AbstractLogger logger) {
+    public AbstractScenario(String name, long seed) {
         this.randomnessEngine = new RandomnessEngine(seed);
         this.name = name;
         simulator = new Simulator();
-        this.logger = logger;
         this.progressMessageIntervals = TimeUnit.SECONDS.toNanos(2);
+    }
+
+    public void AddNewLogger(AbstractLogger logger) {
+        this.loggers.add(logger);
     }
 
     /**
@@ -92,14 +96,20 @@ public abstract class AbstractScenario {
         this.createNetwork();
         this.insertInitialEvents();
 
-        logger.setScenario(this);
-        logger.initialLog();
+        for (AbstractLogger logger:this.loggers) {
+            logger.setScenario(this);
+            logger.initialLog();
+        }
         long simulationStartingTime = System.nanoTime();
         long lastProgressMessageTime = simulationStartingTime;
         while (simulator.thereIsMoreEvents() && !this.simulationStopCondition()) {
-            logger.logBeforeEvent();
+            for (AbstractLogger logger:this.loggers) {
+                logger.logBeforeEvent();
+            }
             simulator.executeNextEvent();
-            logger.logAfterEvent();
+            for (AbstractLogger logger:this.loggers) {
+                logger.logAfterEvent();
+            }
             if (System.nanoTime() - lastProgressMessageTime > this.progressMessageIntervals) {
                 double realTime = TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - simulationStartingTime);
                 double simulationTime = this.simulator.getCurrentTime();
@@ -112,7 +122,9 @@ public abstract class AbstractScenario {
                 lastProgressMessageTime = System.nanoTime();
             }
         }
-        logger.finalLog();
+        for (AbstractLogger logger:this.loggers) {
+            logger.finalLog();
+        }
 
         System.err.printf("Finished %s.\n", this.name);
     }

@@ -28,7 +28,7 @@ public class BitcoinNodeGlobalNetworkStats86Countries extends GlobalNetworkStats
             0.0303708063566804, 0.241671571512654, 0.000117716303708064, 0.000470865214832254,
             0.00117716303708064, 0.125132430841672
     };
-    public static final int BITCOIN_NUM_NODES_2022 = 16052;
+    public static final int BITCOIN_NUM_NODES_2022 = 7983;
 
     public BitcoinNodeGlobalNetworkStats86Countries(RandomnessEngine randomnessEngine) {
         super(randomnessEngine);

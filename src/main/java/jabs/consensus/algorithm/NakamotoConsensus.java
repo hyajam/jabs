@@ -6,10 +6,11 @@ import jabs.ledgerdata.Tx;
 import jabs.consensus.blockchain.LocalBlockTree;
 import jabs.simulator.Simulator;
 import jabs.simulator.event.BlockConfirmationEvent;
+import jabs.simulator.event.BlockchainReorgEvent;
 
 public class NakamotoConsensus<B extends SingleParentBlock<B>, T extends Tx<T>>
         extends AbstractChainBasedConsensus<B, T> {
-    private int longestChainLen = -1;
+    private int longestChainLen = 0;
     private final double averageBlockMiningInterval;
     private final int confirmationDepth;
 
@@ -17,12 +18,22 @@ public class NakamotoConsensus<B extends SingleParentBlock<B>, T extends Tx<T>>
         super(localBlockTree);
         this.averageBlockMiningInterval = nakamotoConsensusConfig.averageBlockMiningInterval();
         this.confirmationDepth = nakamotoConsensusConfig.getConfirmationDepth();
-        this.newIncomingBlock(localBlockTree.getGenesisBlock());
+        this.currentMainChainHead = localBlockTree.getGenesisBlock();
     }
 
     @Override
     public void newIncomingBlock(B block) {
         if (block.getHeight() > longestChainLen) {
+            if (!(localBlockTree.getAncestorOfHeight(block, this.longestChainLen)
+                    .equals(this.currentMainChainHead))) {
+                Simulator simulator = this.peerDLTNode.getSimulator();
+                double currentTime = simulator.getCurrentTime();
+                simulator.putEvent(
+                        new BlockchainReorgEvent(currentTime, this.peerDLTNode, block,
+                                block.getHeight() - this.longestChainLen),
+                        0
+                );
+            }
             this.longestChainLen = block.getHeight();
             this.currentMainChainHead = block;
             this.updateChain();
@@ -39,7 +50,7 @@ public class NakamotoConsensus<B extends SingleParentBlock<B>, T extends Tx<T>>
             double currentTime = simulator.getCurrentTime();
             simulator.putEvent(
                     new BlockConfirmationEvent(currentTime, this.peerDLTNode, highestConfirmedBlock),
-                    currentTime);
+                    0);
         }
     }
 

@@ -116,7 +116,7 @@ public class GlobalNetworkStats86Countries implements NetworkStats<EightySixCoun
             87.01, 171.21, 187.6, 245.52, 104.23, 106.16, 93.11, 280.67, 143.9, 149.33, 58.29, 242.13, 213.3, 15.93,
             188.09, 255.41, 203.24, 21.31, 240.63, 11.54, 52.79, 18.47, 73.92, 208.84, 122.19, 222.64, 172.59, 31.19,
             94.45, 63.46};
-    public static final double DOWNLOAD_BANDWIDTH_SHAPE = 3;
+    public static final double DOWNLOAD_BANDWIDTH_SHAPE = 1.8;
     protected static final double[] UPLOAD_BANDWIDTH_AVERAGE = {
             27.66, 2.15, 31.57, 24.93, 27.1, 47.59, 25.82, 81.71, 78.97, 31.9, 92.17, 204.37, 53.56, 59.96, 38.56,
             47.08, 27.08, 52.03, 172.94, 75.42, 73.58, 171.96, 29.8, 35.84, 34.56, 9.52, 10.99, 15.85, 225.49, 110.46,
@@ -124,7 +124,7 @@ public class GlobalNetworkStats86Countries implements NetworkStats<EightySixCoun
             27.2, 25.77, 145.62, 16.8, 106.33, 129.2, 15.58, 152.08, 14.56, 42.1, 45.01, 84.52, 62.27, 76.75, 209.59,
             105.56, 43.54, 28.91, 255.65, 58.52, 46.6, 43.28, 198.1, 191.51, 9.33, 157.91, 169.23, 192.2, 18.63, 190.31,
             5.21, 21.19, 19.66, 74.87, 111.02, 35.47, 83.75, 51.33, 26.43, 82.17, 27.06};
-    public static final double UPLOAD_BANDWIDTH_SHAPE = 3;
+    public static final double UPLOAD_BANDWIDTH_SHAPE = 1.8;
 
     public static final double LATENCY_PARETO_SHAPE = 5;
 
@@ -138,11 +138,6 @@ public class GlobalNetworkStats86Countries implements NetworkStats<EightySixCoun
         double mean = GLOBAL_LATENCY_BY_REGION[fromPosition.getValue()][toPosition.getValue()];
         double scale = ((LATENCY_PARETO_SHAPE-1)/LATENCY_PARETO_SHAPE) * mean;
         return randomnessEngine.sampleParetoDistribution(scale, LATENCY_PARETO_SHAPE)/1000;
-    }
-
-    private long sampleBandwidthByRegion(EightySixCountries region, Map<EightySixCountries, List<Double>> dist,
-                                         long[] bins) {
-        return randomnessEngine.sampleDistributionWithBins(dist.get(region), bins);
     }
 
     @Override
