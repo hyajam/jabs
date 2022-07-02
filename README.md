@@ -105,7 +105,7 @@ Currently, the following consensus algorithms are implemented in JABS:
 ## Roadmap ##
 
 - [x] Add new block mining process that can support adjustable difficulty.
-- [ ] Add multiple loggers and scenarios in main class.
+- [x] Add multiple loggers and scenarios in main class.
 - [ ] Add detailed comparison with other simulators in README.md.
 - [ ] Add new network latency stats that has countries instead of continents.
 - [ ] Add events for network churn.

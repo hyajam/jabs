@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Path;
 
-public class BitcoinAllMessagesLogger extends AbstractCSVLogger {
+public class AllPassedMessagesLogger extends AbstractCSVLogger {
     /**
      * creates an abstract CSV logger
      * @param writer this is output CSV of the logger
      */
-    public BitcoinAllMessagesLogger(Writer writer) {
+    public AllPassedMessagesLogger(Writer writer) {
         super(writer);
     }
 
@@ -22,7 +22,7 @@ public class BitcoinAllMessagesLogger extends AbstractCSVLogger {
      * creates an abstract CSV logger
      * @param path this is output path of CSV file
      */
-    public BitcoinAllMessagesLogger(Path path) throws IOException {
+    public AllPassedMessagesLogger(Path path) throws IOException {
         super(path);
     }
 

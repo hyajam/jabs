@@ -12,13 +12,12 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
     /**
      * @param name
      * @param seed
-     * @param logger
      * @param simulationStopTime
      * @param averageBlockInterval
      */
-    public NormalEthereumNetworkScenario(String name, long seed, AbstractLogger logger,
+    public NormalEthereumNetworkScenario(String name, long seed,
                                          double simulationStopTime, double averageBlockInterval) {
-        super(name, seed, logger);
+        super(name, seed);
         this.simulationStopTime = simulationStopTime;
         this.averageBlockInterval = averageBlockInterval;
     }

@@ -1,6 +1,6 @@
 package jabs.ledgerdata;
 
-import jabs.ledgerdata.bitcoin.BitcoinBlock;
+import jabs.ledgerdata.bitcoin.BitcoinBlockWithoutTx;
 import jabs.ledgerdata.ethereum.EthereumBlock;
 import jabs.ledgerdata.pbft.PBFTBlock;
 import jabs.network.node.nodes.bitcoin.BitcoinMinerNode;
@@ -22,6 +22,11 @@ public final class BlockFactory {
     public static final int INV_MESSAGE_OVERHEAD = 1;
     public static final int ETHEREUM_HELLO_MESSAGE_SIZE = 16;
 
+    private static final long[] BITCOIN_COMPACT_BLOCK_SIZE_2020_BINS = {
+            30, 3624, 7668, 11910, 16644, 21828, 27558, 30672, 31662, 32544, 33420, 34878, 35544, 36198, 36840, 37476,
+            38130, 38838, 39630, 40674, 42732, 72714
+    };
+
     private static final long[] BITCOIN_BLOCK_SIZE_2020_BINS = {
             196, 119880, 254789, 396047, 553826, 726752, 917631, 1021479, 1054560, 1084003, 1113136, 1138722, 1161695,
             1183942, 1205734, 1227090, 1248408, 1270070, 1293647, 1320186, 1354939, 1423459, 2422858
@@ -36,9 +41,13 @@ public final class BlockFactory {
         return (int) randomnessEngine.sampleDistributionWithBins(BITCOIN_BLOCK_SIZE_2020, BITCOIN_BLOCK_SIZE_2020_BINS);
     }
 
-    public static BitcoinBlock sampleBitcoinBlock(Simulator simulator, RandomnessEngine randomnessEngine,
-                                                  BitcoinMinerNode creator, BitcoinBlock parent, double difficulty) {
-        return new BitcoinBlock(sampleBitcoinBlockSize(randomnessEngine), parent.getHeight() + 1,
+    public static int sampleBitcoinCompactBlockSize(RandomnessEngine randomnessEngine) {
+        return (int) randomnessEngine.sampleDistributionWithBins(BITCOIN_BLOCK_SIZE_2020, BITCOIN_BLOCK_SIZE_2020_BINS);
+    }
+
+    public static BitcoinBlockWithoutTx sampleBitcoinBlock(Simulator simulator, RandomnessEngine randomnessEngine,
+                                                           BitcoinMinerNode creator, BitcoinBlockWithoutTx parent, double difficulty) {
+        return new BitcoinBlockWithoutTx(sampleBitcoinBlockSize(randomnessEngine), parent.getHeight() + 1,
                 simulator.getCurrentTime(), creator, parent, difficulty);
     }
 
