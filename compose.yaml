@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  jabs:
+    build:
+      context: .
+      args:
+        user: appuser
+        group: appuser
+        uid: 1000
+        gid: 1000
+    volumes:
+      - type: bind
+        source: ./src/
+        target: /app/src/
+        read_only: true
+      - type: bind
+        source: ./_output/
+        target: /app/_output/
+    command: /bin/sh -c "
+      mvn package &&
+      su appuser -c 'cd /app/ && java -jar ./target/jabs.jar'
+      "
