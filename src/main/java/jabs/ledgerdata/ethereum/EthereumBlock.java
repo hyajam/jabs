@@ -12,8 +12,8 @@ public class EthereumBlock extends SingleParentBlock<EthereumBlock> {
     private final double difficulty;
 
     public EthereumBlock(int size, int height, double creationTime, EthereumMinerNode creator, EthereumBlock parent,
-                         Set<EthereumBlock> uncles, double difficulty) {
-        super(size, height, creationTime, creator, parent, ETHEREUM_BLOCK_HASH_SIZE);
+                         Set<EthereumBlock> uncles, double difficulty, double weight) {
+        super(size, height, creationTime, creator, parent, ETHEREUM_BLOCK_HASH_SIZE, weight);
         this.uncles = uncles;
         this.difficulty = difficulty;
 

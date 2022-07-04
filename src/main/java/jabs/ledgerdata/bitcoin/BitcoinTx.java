@@ -9,7 +9,6 @@ public class BitcoinTx extends Tx<BitcoinTx> {
     public BitcoinTx(int size) {
         super(size, BITCOIN_INV_SIZE);
     }
-
     public BitcoinTxCompactID getCompactID() {
         return this.compactID;
     }

@@ -3,6 +3,7 @@ package jabs.ledgerdata;
 import jabs.ledgerdata.bitcoin.BitcoinBlockWithoutTx;
 import jabs.ledgerdata.ethereum.EthereumBlock;
 import jabs.ledgerdata.pbft.PBFTBlock;
+import jabs.network.node.nodes.Node;
 import jabs.network.node.nodes.bitcoin.BitcoinMinerNode;
 import jabs.network.node.nodes.ethereum.EthereumMinerNode;
 import jabs.network.node.nodes.pbft.PBFTNode;
@@ -46,9 +47,10 @@ public final class BlockFactory {
     }
 
     public static BitcoinBlockWithoutTx sampleBitcoinBlock(Simulator simulator, RandomnessEngine randomnessEngine,
-                                                           BitcoinMinerNode creator, BitcoinBlockWithoutTx parent, double difficulty) {
+                                                           Node creator, BitcoinBlockWithoutTx parent,
+                                                           double difficulty, double weight) {
         return new BitcoinBlockWithoutTx(sampleBitcoinBlockSize(randomnessEngine), parent.getHeight() + 1,
-                simulator.getCurrentTime(), creator, parent, difficulty);
+                simulator.getCurrentTime(), creator, parent, difficulty, weight);
     }
 
     public static PBFTBlock samplePBFTBlock(Simulator simulator, RandomnessEngine randomnessEngine, PBFTNode creator, PBFTBlock parent) {
@@ -57,8 +59,8 @@ public final class BlockFactory {
     }
 
     public static EthereumBlock sampleEthereumBlock(Simulator simulator, RandomnessEngine randomnessEngine, EthereumMinerNode creator, EthereumBlock parent,
-                                                    Set<EthereumBlock> uncles) {
+                                                    Set<EthereumBlock> uncles, double weight) {
         return new EthereumBlock(sampleBitcoinBlockSize(randomnessEngine), parent.getHeight() + 1,
-                simulator.getCurrentTime(), creator, parent, uncles, ETHEREUM_MIN_DIFFICULTY); // TODO: Block Size
+                simulator.getCurrentTime(), creator, parent, uncles, ETHEREUM_MIN_DIFFICULTY, weight); // TODO: Block Size
     }
 }

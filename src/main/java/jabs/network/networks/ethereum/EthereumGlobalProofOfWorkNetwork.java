@@ -26,7 +26,7 @@ public class EthereumGlobalProofOfWorkNetwork<R extends Enum<R>> extends
      */
     @Override
     public EthereumBlock genesisBlock(double difficulty) {
-        return new EthereumBlock(0, 0, 0, null, null, new HashSet<>(), difficulty);
+        return new EthereumBlock(0, 0, 0, null, null, new HashSet<>(), difficulty, 0);
     }
 
     @Override
