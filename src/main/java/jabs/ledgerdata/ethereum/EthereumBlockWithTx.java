@@ -13,8 +13,9 @@ public class EthereumBlockWithTx extends EthereumBlock implements BlockWithTx<Et
     private final Set<EthereumTx> Txs;
     private final long totalGas;
 
-    public EthereumBlockWithTx(int height, double creationTime, EthereumMinerNode creator, EthereumBlock parent, Set<EthereumBlock> uncles, Set<EthereumTx> txs, long difficulty) {
-        super(0, height, creationTime, creator, parent, uncles, difficulty);
+    public EthereumBlockWithTx(int height, double creationTime, EthereumMinerNode creator, EthereumBlock parent,
+                               Set<EthereumBlock> uncles, Set<EthereumTx> txs, long difficulty, double weight) {
+        super(0, height, creationTime, creator, parent, uncles, difficulty, weight);
         Txs = txs;
 
         int totalSize = ETHEREUM_BLOCK_HEADER_SIZE;

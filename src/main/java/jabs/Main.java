@@ -1,13 +1,10 @@
 package jabs;
 
 import jabs.log.*;
-import jabs.network.stats.sixglobalregions.GlobalNetworkStats6Region;
-import jabs.network.stats.sixglobalregions.SixRegions;
 import jabs.scenario.AbstractScenario;
 import jabs.scenario.BitcoinGlobalNetworkScenario;
 import jabs.scenario.NormalEthereumNetworkScenario;
 import jabs.scenario.PBFTLANScenario;
-import jabs.simulator.randengine.RandomnessEngine;
 
 import java.io.IOException;
 import java.nio.file.Paths;

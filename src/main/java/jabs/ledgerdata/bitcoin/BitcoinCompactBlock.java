@@ -11,8 +11,8 @@ public class BitcoinCompactBlock extends BitcoinBlockWithoutTx {
     private final Set<BitcoinTxCompactID> TxCompactIDs = new HashSet<>();
 
     public BitcoinCompactBlock(int height, double creationTime, Node creator, BitcoinBlockWithoutTx parent,
-                               Set<BitcoinTx> txs, double difficulty) {
-        super(0, height, creationTime, creator, parent, difficulty);
+                               Set<BitcoinTx> txs, double difficulty, double weight) {
+        super(0, height, creationTime, creator, parent, difficulty, weight);
 
         int totalSize = BITCOIN_BLOCK_HEADER_SIZE;
         for (BitcoinTx tx:txs) {
@@ -25,7 +25,7 @@ public class BitcoinCompactBlock extends BitcoinBlockWithoutTx {
 
     public BitcoinCompactBlock(BitcoinBlockWithTx block) {
         super(0, block.getHeight(), block.getCreationTime(), block.getCreator(), block.getParent(),
-                block.difficulty);
+                block.difficulty, block.getWeight());
 
         int totalSize = BITCOIN_BLOCK_HEADER_SIZE;
 

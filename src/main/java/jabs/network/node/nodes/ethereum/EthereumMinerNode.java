@@ -55,9 +55,11 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
             totalGas += ethereumTx.getGas();
         }
 
+        double weight = this.network.getRandom().sampleExponentialDistribution(1);
         EthereumBlockWithTx ethereumBlockWithTx = new EthereumBlockWithTx(
                 canonicalChainHead.getHeight()+1, simulator.getCurrentTime(), this,
-                this.getConsensusAlgorithm().getCanonicalChainHead(), tipBlocks, blockTxs, ETHEREUM_MIN_DIFFICULTY); // TODO: Difficulty?
+                this.getConsensusAlgorithm().getCanonicalChainHead(), tipBlocks, blockTxs, ETHEREUM_MIN_DIFFICULTY,
+                weight); // TODO: Difficulty?
 
         this.processIncomingPacket(
                 new Packet(

@@ -24,7 +24,7 @@ public class BitcoinGlobalProofOfWorkNetwork<R extends Enum<R>> extends
      */
     @Override
     public BitcoinBlockWithoutTx genesisBlock(double difficulty) {
-        return new BitcoinBlockWithoutTx(0, 0, 0, null, null, difficulty);
+        return new BitcoinBlockWithoutTx(0, 0, 0, null, null, difficulty, 0);
     }
 
     @Override
