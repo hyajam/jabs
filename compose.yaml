@@ -14,8 +14,8 @@ services:
         target: /app/src/
         read_only: true
       - type: bind
-        source: ./_output/
-        target: /app/_output/
+        source: ./output/
+        target: /app/output/
     command: /bin/sh -c "
       mvn package &&
       su appuser -c 'cd /app/ && java -jar ./target/jabs.jar'

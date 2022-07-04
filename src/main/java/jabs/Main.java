@@ -25,13 +25,13 @@ public class Main {
         // Around 8000 nodes with 30 miners
         scenario = new BitcoinGlobalNetworkScenario("One day in the life of Bitcoin", 1,
                 86400, 600, 6);
-        scenario.AddNewLogger(new BlockchainReorgLogger(Paths.get("_output/bitcoin-reorgs-log.csv")));
-        scenario.AddNewLogger(new BlockConfirmationLogger(Paths.get("_output/bitcoin-confirmations-log.csv")));
-        scenario.AddNewLogger(new BlockDeliveryLogger(Paths.get("_output/bitcoin-block-delivery-log.csv")));
+        scenario.AddNewLogger(new BlockchainReorgLogger(Paths.get("output/bitcoin-reorgs-log.csv")));
+        scenario.AddNewLogger(new BlockConfirmationLogger(Paths.get("output/bitcoin-confirmations-log.csv")));
+        scenario.AddNewLogger(new BlockDeliveryLogger(Paths.get("output/bitcoin-block-delivery-log.csv")));
         scenario.AddNewLogger(new BlockPropagationDelayLogger(
-                Paths.get("_output/bitcoin-50-propagation-delay-log.csv"),0.5));
+                Paths.get("output/bitcoin-50-propagation-delay-log.csv"),0.5));
         scenario.AddNewLogger(new BlockPropagationDelayLogger(
-                Paths.get("_output/bitcoin-90-propagation-delay-log.csv"),0.9));
+                Paths.get("output/bitcoin-90-propagation-delay-log.csv"),0.9));
         scenario.run();
 
         // Simulate 1 hour in the life of Ethereum network
@@ -39,13 +39,13 @@ public class Main {
         // Around 6000 nodes with 37 miners
         scenario = new NormalEthereumNetworkScenario("One hour in the life of Ethereum", 1,
                 3600, 14);
-        scenario.AddNewLogger(new BlockGenerationLogger(Paths.get("_output/ethereum-simulation-log.csv")));
+        scenario.AddNewLogger(new BlockGenerationLogger(Paths.get("output/ethereum-simulation-log.csv")));
         scenario.run();
 
         // Simulate PBFT Lan network of 40 nodes for 1 hour
         scenario = new PBFTLANScenario("One hour of a PBFT lan Network", 1,
                 40, 3600);
-        scenario.AddNewLogger(new BlockGenerationLogger(Paths.get("_output/pbft-simulation-log.csv")));
+        scenario.AddNewLogger(new BlockGenerationLogger(Paths.get("output/pbft-simulation-log.csv")));
         scenario.run();
     }
 }
