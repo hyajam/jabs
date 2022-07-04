@@ -12,7 +12,7 @@ import java.util.HashSet;
  *
  */
 public class TangleIOTA extends AbstractDAGBasedConsensus<TangleBlock, TangleTx> {
-    protected final HashMap<TangleBlock, Integer> blockAccWeights = new HashMap<>();
+    protected final HashMap<TangleBlock, Double> blockAccWeights = new HashMap<>();
 
     /**
      * Creates a Tangle Consensus Algorithm
