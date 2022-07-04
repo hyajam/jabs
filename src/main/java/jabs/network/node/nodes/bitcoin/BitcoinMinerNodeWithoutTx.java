@@ -33,9 +33,10 @@ public class BitcoinMinerNodeWithoutTx extends BitcoinMinerNode implements Miner
     public void generateNewBlock() {
         BitcoinBlockWithoutTx canonicalChainHead = this.consensusAlgorithm.getCanonicalChainHead();
 
+        double weight = this.network.getRandom().sampleExponentialDistribution(1);
         BitcoinBlockWithoutTx bitcoinBlockWithoutTX = BlockFactory.sampleBitcoinBlock(this.simulator,
                 this.getNetwork().getRandom(), this, canonicalChainHead,
-                canonicalChainHead.getDifficulty()); // TODO: Difficulty adjustment?
+                canonicalChainHead.getDifficulty(), weight); // TODO: Difficulty adjustment?
 
         BitcoinCompactBlockWithoutTx compactBlock = new BitcoinCompactBlockWithoutTx(bitcoinBlockWithoutTX);
 
