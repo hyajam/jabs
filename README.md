@@ -54,19 +54,20 @@ $ java -jar target/jabs.jar
 
 
 ### Installation using Dockerfile ###
-This installation method should work on any system that has `docker` installed.
+This installation method should work on any system that has `docker` and `git` installed.
 
 First clone the repository using git.
 ```shell script
 $ git clone https://github.com/hyajam/jabs.git
 ```
 
-Build the docker image.
+Build the docker image. This step requires an active connection to the internet.
 ```shell script
 $ docker build -t jabs .
 ```
 
-Run the docker container.
+Run the docker container. For running the container usually you do not need an 
+internet connection.
 ```shell script
 $ docker run -v "$(pwd)/_output":/app/_output -t jabs
 ```
@@ -86,6 +87,20 @@ The `Dockerfile` is designed to support caching dependencies
 therefore by editing the source code you do not need to download 
 new dependencies unless your changes include altering to `pom.xml` file.
 
+### Installation using Docker-Compose ###
+The easiest method for running jabs is using ```docker-compose```. You need
+to have ```git``` and ```docker-compose``` installed on your system. Clone 
+the repository using git.
+```shell script
+$ git clone https://github.com/hyajam/jabs.git
+```
+
+Then, use docker compose to build an image and run the container. The output 
+of simulation will be automatically sent to ```output/``` folder.
+```shell script
+$ cd jabs
+$ docker-compose up
+```
 
 ## Quick Start ##
 
