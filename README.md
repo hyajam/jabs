@@ -52,41 +52,6 @@ Then to run the compiled jar file.
 $ java -jar target/jabs.jar
 ```
 
-
-### Installation using Dockerfile ###
-This installation method should work on any system that has `docker` and `git` installed.
-
-First clone the repository using git.
-```shell script
-$ git clone https://github.com/hyajam/jabs.git
-```
-
-Build the docker image. This step requires an active connection to the internet.
-```shell script
-$ docker build -t jabs .
-```
-
-Run the docker container. For running the container usually you do not need an 
-internet connection.
-```shell script
-$ docker run -v "$(pwd)/_output":/app/_output -t jabs
-```
-
-If you want to prevent generating root owned files in `_output` directory use the following command in case you have
-`id` command in your shell.
-```shell script
-$ docker run --rm --user $(id -u):$(id -g) -v "$(pwd)/_output":/app/_output -t jabs
-```
-
-There is a chance that your user id and group number is 1000. Thus, the following might work well.
-```shell script
-$ docker run --rm --user 1000:1000 -v "$(pwd)/_output":/app/_output -t jabs
-```
-
-The `Dockerfile` is designed to support caching dependencies
-therefore by editing the source code you do not need to download 
-new dependencies unless your changes include altering to `pom.xml` file.
-
 ### Installation using Docker-Compose ###
 The easiest method for running jabs is using ```docker-compose```. You need
 to have ```git``` and ```docker-compose``` installed on your system. Clone 
@@ -102,6 +67,10 @@ $ cd jabs
 $ docker-compose up
 ```
 
+If your user id and group id are not 1000 you might need to change the 
+values in `Dockerfile` and `compose.yaml` accordingly. You might be able to
+find your user id and group id using commands `id -u` and `id -g` in linux.
+
 ## Quick Start ##
 
 
@@ -116,13 +85,15 @@ Currently, the following consensus algorithms are implemented in JABS:
  2. Ghost protocol
  3. PBFT
  4. Casper FFG
+ 5. IOTA Tangle
+ 6. Nakamoto Heaviest-Chain
 
 ## Roadmap ##
 
 - [x] Add new block mining process that can support adjustable difficulty.
 - [x] Add multiple loggers and scenarios in main class.
 - [ ] Add detailed comparison with other simulators in README.md.
-- [ ] Add new network latency stats that has countries instead of continents.
+- [x] Add new network latency stats that has countries instead of continents.
 - [ ] Add events for network churn.
 - [ ] Exploring possible multithreading options.
 - [ ] Add new consensus algorithms:
