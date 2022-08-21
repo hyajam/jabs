@@ -2,7 +2,6 @@ package jabs.network.networks.ethereum;
 
 import jabs.consensus.config.ChainBasedConsensusConfig;
 import jabs.consensus.config.GhostProtocolConfig;
-import jabs.ledgerdata.Block;
 import jabs.ledgerdata.ethereum.EthereumBlock;
 import jabs.network.networks.GlobalProofOfWorkNetwork;
 import jabs.network.stats.*;
@@ -26,7 +25,8 @@ public class EthereumGlobalProofOfWorkNetwork<R extends Enum<R>> extends
      */
     @Override
     public EthereumBlock genesisBlock(double difficulty) {
-        return new EthereumBlock(0, 0, 0, null, null, new HashSet<>(), difficulty, 0);
+        return new EthereumBlock(0, 0, 0, null, null, new HashSet<>(), difficulty,
+                0);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class EthereumGlobalProofOfWorkNetwork<R extends Enum<R>> extends
     }
 
     @Override
-    public EthereumMinerNode createSampleMiner(Simulator simulator, int nodeID, long hashPower,
+    public EthereumMinerNode createSampleMiner(Simulator simulator, int nodeID, double hashPower,
                                                EthereumBlock genesisBlock,
                                                ChainBasedConsensusConfig chainBasedConsensusConfig) {
         R region = this.sampleMinerRegion();

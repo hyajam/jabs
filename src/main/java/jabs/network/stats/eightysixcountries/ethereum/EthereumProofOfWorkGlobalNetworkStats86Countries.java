@@ -49,6 +49,8 @@ public class EthereumProofOfWorkGlobalNetworkStats86Countries extends EthereumNo
 
     public static final int ETHEREUM_NUM_MINERS_2022 = 37;
 
+    public static final long ETHEREUM_DIFFICULTY_2022 = 2097;
+
 
     @Override
     public SixRegions sampleMinerRegion() {
@@ -56,7 +58,7 @@ public class EthereumProofOfWorkGlobalNetworkStats86Countries extends EthereumNo
     }
 
     @Override
-    public long sampleMinerHashPower() {
+    public double sampleMinerHashPower() {
         return randomnessEngine.sampleDistributionWithBins(ETHEREUM_HASH_POWER_DISTRIBUTION_2022,
                 ETHEREUM_HASH_POWER_DISTRIBUTION_BIN_2022);
     }

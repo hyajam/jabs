@@ -4,7 +4,6 @@ import jabs.ledgerdata.bitcoin.BitcoinBlockWithoutTx;
 import jabs.ledgerdata.ethereum.EthereumBlock;
 import jabs.ledgerdata.pbft.PBFTBlock;
 import jabs.network.node.nodes.Node;
-import jabs.network.node.nodes.bitcoin.BitcoinMinerNode;
 import jabs.network.node.nodes.ethereum.EthereumMinerNode;
 import jabs.network.node.nodes.pbft.PBFTNode;
 import jabs.simulator.randengine.RandomnessEngine;

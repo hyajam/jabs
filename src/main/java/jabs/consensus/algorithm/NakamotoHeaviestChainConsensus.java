@@ -2,14 +2,13 @@ package jabs.consensus.algorithm;
 
 import jabs.consensus.blockchain.LocalBlockTree;
 import jabs.consensus.config.NakamotoConsensusConfig;
-import jabs.ledgerdata.SingleParentBlock;
+import jabs.ledgerdata.SingleParentPoWBlock;
 import jabs.ledgerdata.Tx;
 import jabs.simulator.Simulator;
-import jabs.simulator.event.BlockchainReorgEvent;
 
 import java.util.HashSet;
 
-public class NakamotoHeaviestChainConsensus<B extends SingleParentBlock<B>, T extends Tx<T>>
+public class NakamotoHeaviestChainConsensus<B extends SingleParentPoWBlock<B>, T extends Tx<T>>
         extends AbstractChainBasedConsensus<B, T> {
     private double heaviestChainWeight = 0;
     private final double averageBlockMiningInterval;
@@ -30,16 +29,6 @@ public class NakamotoHeaviestChainConsensus<B extends SingleParentBlock<B>, T ex
             totalWeight += ancestorBlock.getWeight();
         }
         if (totalWeight > heaviestChainWeight) {
-            if (!(localBlockTree.getAncestorOfHeight(block, this.currentMainChainHead.getHeight())
-                    .equals(this.currentMainChainHead))) {
-                Simulator simulator = this.peerDLTNode.getSimulator();
-                double currentTime = simulator.getCurrentTime();
-                simulator.putEvent(
-                        new BlockchainReorgEvent(currentTime, this.peerDLTNode, block,
-                                block.getHeight() - this.currentMainChainHead.getHeight()),
-                        0
-                );
-            }
             this.heaviestChainWeight = totalWeight;
             this.currentMainChainHead = block;
             this.updateChain();

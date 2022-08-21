@@ -1,8 +1,11 @@
 package jabs.scenario;
 
 import jabs.consensus.config.NakamotoConsensusConfig;
+import jabs.ledgerdata.bitcoin.BitcoinBlockWithoutTx;
 import jabs.network.networks.bitcoin.BitcoinGlobalProofOfWorkNetworkWithoutTx;
 import jabs.network.stats.eightysixcountries.bitcoin.BitcoinProofOfWorkGlobalNetworkStats86Countries;
+
+import static jabs.network.stats.eightysixcountries.bitcoin.BitcoinProofOfWorkGlobalNetworkStats86Countries.BITCOIN_DIFFICULTY_2022;
 
 public class BitcoinGlobalNetworkScenario extends AbstractScenario {
     public final double stopTime;
@@ -36,7 +39,8 @@ public class BitcoinGlobalNetworkScenario extends AbstractScenario {
                 (randomnessEngine, new BitcoinProofOfWorkGlobalNetworkStats86Countries(randomnessEngine));
         this.network = bitcoinNetwork;
         bitcoinNetwork.populateNetwork(simulator,
-                new NakamotoConsensusConfig(this.averageBlockInterval, confirmationDepth));
+                new NakamotoConsensusConfig(BitcoinBlockWithoutTx.generateGenesisBlock(BITCOIN_DIFFICULTY_2022),
+                        this.averageBlockInterval, this.confirmationDepth));
     }
 
     /**

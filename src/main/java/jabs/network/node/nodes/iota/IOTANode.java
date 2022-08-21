@@ -1,6 +1,5 @@
 package jabs.network.node.nodes.iota;
 
-import jabs.consensus.algorithm.AbstractDAGBasedConsensus;
 import jabs.consensus.algorithm.TangleIOTA;
 import jabs.consensus.blockchain.LocalBlockDAG;
 import jabs.consensus.config.TangleIOTAConsensusConfig;
@@ -15,11 +14,10 @@ import jabs.network.node.nodes.Node;
 import jabs.network.node.nodes.PeerDLTNode;
 import jabs.network.p2p.AbstractP2PConnections;
 import jabs.simulator.Simulator;
-import jabs.simulator.event.BlockMiningProcess;
 
 public class IOTANode extends PeerDLTNode<TangleBlock, TangleTx> implements MinerNode {
     public static final TangleBlock TANGLE_GENESIS_BLOCK =
-            new TangleBlock(0, 0, 0, null, null, 32, new TangleTx(1650, 32),1);
+            new TangleBlock(0, 0, 0, null, null, 32, new TangleTx(1650, 32),1, 0);
 
     protected Simulator.ScheduledEvent blockGenerationProcess;
 
@@ -110,7 +108,7 @@ public class IOTANode extends PeerDLTNode<TangleBlock, TangleTx> implements Mine
      * @return
      */
     @Override
-    public long getHashPower() {
+    public double getHashPower() {
         return 0;
     }
 }

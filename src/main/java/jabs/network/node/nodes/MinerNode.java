@@ -7,5 +7,5 @@ public interface MinerNode {
 
     void stopMining();
 
-    long getHashPower();
+    double getHashPower();
 }

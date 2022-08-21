@@ -15,7 +15,8 @@ public class BitcoinGlobalProofOfWorkNetworkWithoutTx<R extends Enum<R>> extends
     }
 
     @Override
-    public BitcoinMinerNode createSampleMiner(Simulator simulator, int nodeID, long hashPower, BitcoinBlockWithoutTx genesisBlock,
+    public BitcoinMinerNode createSampleMiner(Simulator simulator, int nodeID, double hashPower,
+                                              BitcoinBlockWithoutTx genesisBlock,
                                               ChainBasedConsensusConfig chainBasedConsensusConfig) {
         R region = this.sampleRegion();
         return new BitcoinMinerNodeWithoutTx(simulator, this, nodeID, this.sampleDownloadBandwidth(region),

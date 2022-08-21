@@ -1,12 +1,13 @@
 package jabs.consensus.config;
 
 import jabs.ledgerdata.Block;
+import jabs.ledgerdata.SingleParentBlock;
 
 import java.util.Objects;
 
 /**
  */
-public final class CasperFFGConfig extends GhostProtocolConfig {
+public final class CasperFFGConfig<B extends SingleParentBlock<B>> extends GhostProtocolConfig<B> {
     private final int checkpointSpace;
     private final int numOfStakeholders;
 
@@ -14,8 +15,8 @@ public final class CasperFFGConfig extends GhostProtocolConfig {
      * @param checkpointSpace
      * @param numOfStakeholders
      */
-    public CasperFFGConfig(double averageBlockMiningInterval, int checkpointSpace, int numOfStakeholders) {
-        super(averageBlockMiningInterval);
+    public CasperFFGConfig(B genesisBlock, double averageBlockMiningInterval, int checkpointSpace, int numOfStakeholders) {
+        super(genesisBlock, averageBlockMiningInterval);
         this.checkpointSpace = checkpointSpace;
         this.numOfStakeholders = numOfStakeholders;
     }

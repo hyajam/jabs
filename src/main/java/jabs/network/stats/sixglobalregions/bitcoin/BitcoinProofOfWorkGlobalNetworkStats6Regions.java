@@ -38,7 +38,7 @@ public class BitcoinProofOfWorkGlobalNetworkStats6Regions extends BitcoinNodeGlo
     }
 
     @Override
-    public long sampleMinerHashPower() {
+    public double sampleMinerHashPower() {
         return randomnessEngine.sampleDistributionWithBins(BITCOIN_HASH_POWER_DISTRIBUTION_2022, BITCOIN_HASH_POWER_DISTRIBUTION_BIN_2022);
     }
 

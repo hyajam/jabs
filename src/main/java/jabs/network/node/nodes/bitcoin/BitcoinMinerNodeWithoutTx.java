@@ -16,14 +16,14 @@ import jabs.simulator.Simulator;
 
 public class BitcoinMinerNodeWithoutTx extends BitcoinMinerNode implements MinerNode {
     public BitcoinMinerNodeWithoutTx(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
-                                     long uploadBandwidth, long hashPower, BitcoinBlockWithoutTx genesisBlock,
+                                     long uploadBandwidth, double hashPower,
                                      AbstractChainBasedConsensus<BitcoinBlockWithoutTx, BitcoinTx> consensusAlgorithm) {
-        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, genesisBlock, hashPower,
+        super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, hashPower,
                 consensusAlgorithm);
     }
 
     public BitcoinMinerNodeWithoutTx(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
-                                     long uploadBandwidth, long hashPower, BitcoinBlockWithoutTx genesisBlock,
+                                     long uploadBandwidth, double hashPower, BitcoinBlockWithoutTx genesisBlock,
                                      ChainBasedConsensusConfig chainBasedConsensusConfig) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, hashPower, genesisBlock,
                 (NakamotoConsensusConfig) chainBasedConsensusConfig);
@@ -48,7 +48,7 @@ public class BitcoinMinerNodeWithoutTx extends BitcoinMinerNode implements Miner
     }
 
     @Override
-    public long getHashPower() {
+    public double getHashPower() {
         return this.hashPower;
     }
 }

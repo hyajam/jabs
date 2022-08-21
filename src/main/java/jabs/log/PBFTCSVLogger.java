@@ -4,6 +4,7 @@ import jabs.ledgerdata.Vote;
 import jabs.ledgerdata.pbft.PBFTCommitVote;
 import jabs.ledgerdata.pbft.PBFTPrePrepareVote;
 import jabs.ledgerdata.pbft.PBFTPrepareVote;
+import jabs.simulator.event.Event;
 import jabs.simulator.event.PacketDeliveryEvent;
 import jabs.network.message.Packet;
 import jabs.network.message.VoteMessage;
@@ -35,20 +36,20 @@ public class PBFTCSVLogger extends AbstractCSVLogger {
     }
 
     @Override
-    protected boolean csvOutputConditionBeforeEvent() {
+    protected boolean csvOutputConditionBeforeEvent(Event event) {
         return false;
     }
 
     @Override
-    protected boolean csvOutputConditionAfterEvent() {
-        if (this.scenario.getSimulator().peekEvent() instanceof PacketDeliveryEvent) {
+    protected boolean csvOutputConditionAfterEvent(Event event) {
+        if (event instanceof PacketDeliveryEvent) {
             return ((PacketDeliveryEvent) this.scenario.getSimulator().peekEvent()).packet.getMessage() instanceof VoteMessage;
         }
         return false;
     }
 
     @Override
-    protected boolean csvOutputConditionFinal() {
+    protected boolean csvOutputConditionFinalPerNode() {
         return false;
     }
 
@@ -58,8 +59,8 @@ public class PBFTCSVLogger extends AbstractCSVLogger {
     }
 
     @Override
-    protected String[] csvLineOutput() {
-        Packet packet = ((PacketDeliveryEvent) this.scenario.getSimulator().peekEvent()).packet;
+    protected String[] csvEventOutput(Event event) {
+        Packet packet = ((PacketDeliveryEvent) event).packet;
         Vote vote = ((VoteMessage) packet.getMessage()).getVote();
 
         String voteType = "";

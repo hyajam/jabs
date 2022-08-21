@@ -46,13 +46,12 @@ public class BlockPropagationDelayLogger extends AbstractCSVLogger {
     }
 
     @Override
-    protected boolean csvOutputConditionBeforeEvent() {
+    protected boolean csvOutputConditionBeforeEvent(Event event) {
         return false;
     }
 
     @Override
-    protected boolean csvOutputConditionAfterEvent() {
-        Event event = this.scenario.getSimulator().peekEvent();
+    protected boolean csvOutputConditionAfterEvent(Event event) {
         if (event instanceof PacketDeliveryEvent) {
             Packet packet = ((PacketDeliveryEvent) event).packet;
             Message message = packet.getMessage();
@@ -75,7 +74,7 @@ public class BlockPropagationDelayLogger extends AbstractCSVLogger {
     }
 
     @Override
-    protected boolean csvOutputConditionFinal() {
+    protected boolean csvOutputConditionFinalPerNode() {
         return false;
     }
 
@@ -85,8 +84,7 @@ public class BlockPropagationDelayLogger extends AbstractCSVLogger {
     }
 
     @Override
-    protected String[] csvLineOutput() {
-        Event event = this.scenario.getSimulator().peekEvent();
+    protected String[] csvEventOutput(Event event) {
         Packet packet = ((PacketDeliveryEvent) event).packet;
         Block block = ((Block) ((DataMessage) packet.getMessage()).getData());
 

@@ -25,7 +25,7 @@ public class BitcoinCompactBlock extends BitcoinBlockWithoutTx {
 
     public BitcoinCompactBlock(BitcoinBlockWithTx block) {
         super(0, block.getHeight(), block.getCreationTime(), block.getCreator(), block.getParent(),
-                block.difficulty, block.getWeight());
+                block.getDifficulty(), block.getWeight());
 
         int totalSize = BITCOIN_BLOCK_HEADER_SIZE;
 

@@ -1,9 +1,11 @@
 package jabs.scenario;
 
 import jabs.consensus.config.GhostProtocolConfig;
-import jabs.log.AbstractLogger;
+import jabs.ledgerdata.ethereum.EthereumBlock;
 import jabs.network.networks.ethereum.EthereumGlobalProofOfWorkNetwork;
 import jabs.network.stats.sixglobalregions.ethereum.EthereumProofOfWorkGlobalNetworkStats6Regions;
+
+import static jabs.network.stats.eightysixcountries.ethereum.EthereumProofOfWorkGlobalNetworkStats86Countries.ETHEREUM_DIFFICULTY_2022;
 
 public class NormalEthereumNetworkScenario extends AbstractScenario {
     private final double simulationStopTime;
@@ -27,7 +29,9 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
         EthereumGlobalProofOfWorkNetwork<?> ethereumNetwork = new EthereumGlobalProofOfWorkNetwork<>(randomnessEngine,
                 new EthereumProofOfWorkGlobalNetworkStats6Regions(randomnessEngine));
         this.network = ethereumNetwork;
-        ethereumNetwork.populateNetwork(simulator, new GhostProtocolConfig(this.averageBlockInterval));
+        ethereumNetwork.populateNetwork(simulator,
+                new GhostProtocolConfig(EthereumBlock.generateGenesisBlock(ETHEREUM_DIFFICULTY_2022),
+                        this.averageBlockInterval));
     }
 
     @Override

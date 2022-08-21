@@ -1,6 +1,7 @@
 package jabs.log;
 
 import jabs.ledgerdata.Block;
+import jabs.network.node.nodes.Node;
 import jabs.simulator.event.Event;
 import jabs.simulator.event.PacketDeliveryEvent;
 import jabs.network.message.DataMessage;
@@ -35,13 +36,12 @@ public class BlockDeliveryLogger extends AbstractCSVLogger {
     }
 
     @Override
-    protected boolean csvOutputConditionBeforeEvent() {
+    protected boolean csvOutputConditionBeforeEvent(Event event) {
         return false;
     }
 
     @Override
-    protected boolean csvOutputConditionAfterEvent() {
-        Event event = this.scenario.getSimulator().peekEvent();
+    protected boolean csvOutputConditionAfterEvent(Event event) {
         if (event instanceof PacketDeliveryEvent) {
             Message message = ((PacketDeliveryEvent) event).packet.getMessage();
             if (message instanceof DataMessage) {
@@ -52,7 +52,7 @@ public class BlockDeliveryLogger extends AbstractCSVLogger {
     }
 
     @Override
-    protected boolean csvOutputConditionFinal() {
+    protected boolean csvOutputConditionFinalPerNode() {
         return false;
     }
 
@@ -62,8 +62,7 @@ public class BlockDeliveryLogger extends AbstractCSVLogger {
     }
 
     @Override
-    protected String[] csvLineOutput() {
-        Event event = this.scenario.getSimulator().peekEvent();
+    protected String[] csvEventOutput(Event event) {
         Packet packet = ((PacketDeliveryEvent) event).packet;
         Block block = ((Block) ((DataMessage) packet.getMessage()).getData());
 
