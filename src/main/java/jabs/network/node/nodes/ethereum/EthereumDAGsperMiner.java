@@ -9,7 +9,7 @@ import jabs.simulator.Simulator;
 
 public class EthereumDAGsperMiner extends EthereumMinerNode {
     public EthereumDAGsperMiner(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
-                                long uploadBandwidth, long hashPower, EthereumBlock genesisBlock,
+                                long uploadBandwidth, double hashPower, EthereumBlock genesisBlock,
                                 DAGsperConfig daGsperConfig) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, hashPower,
                 new DAGsper<>(new LocalBlockTree<>(genesisBlock), daGsperConfig));

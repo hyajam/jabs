@@ -25,7 +25,7 @@ public abstract class AbstractChainBasedConsensus<B extends SingleParentBlock<B>
     /**
      * The latest block agreed by consensus algorithm (Current agreed state by the Node)
      */
-    protected B currentMainChainHead = null;
+    protected B currentMainChainHead;
 
     /**
      * Creates a Abstract Blockchain Consensus Algorithm

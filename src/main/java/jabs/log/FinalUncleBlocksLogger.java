@@ -1,22 +1,31 @@
 package jabs.log;
 
+import jabs.consensus.algorithm.ConsensusAlgorithm;
+import jabs.consensus.blockchain.LocalBlockTree;
 import jabs.ledgerdata.Block;
-import jabs.network.node.nodes.MinerNode;
+import jabs.ledgerdata.Data;
+import jabs.ledgerdata.SingleParentPoWBlock;
+import jabs.network.message.DataMessage;
+import jabs.network.message.Message;
 import jabs.network.node.nodes.Node;
-import jabs.simulator.event.BlockConfirmationEvent;
-import jabs.simulator.event.BlockMiningProcess;
+import jabs.network.node.nodes.PeerBlockchainNode;
+import jabs.network.node.nodes.PeerDLTNode;
 import jabs.simulator.event.Event;
+import jabs.simulator.event.PacketReceivingProcess;
 
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Path;
 
-public class BlockConfirmationLogger extends AbstractCSVLogger {
+/**
+ *
+ */
+public class FinalUncleBlocksLogger extends AbstractCSVLogger {
     /**
      * creates an abstract CSV logger
      * @param writer this is output CSV of the logger
      */
-    public BlockConfirmationLogger(Writer writer) {
+    public FinalUncleBlocksLogger(Writer writer) {
         super(writer);
     }
 
@@ -24,7 +33,7 @@ public class BlockConfirmationLogger extends AbstractCSVLogger {
      * creates an abstract CSV logger
      * @param path this is output path of CSV file
      */
-    public BlockConfirmationLogger(Path path) throws IOException {
+    public FinalUncleBlocksLogger(Path path) throws IOException {
         super(path);
     }
 
@@ -41,32 +50,35 @@ public class BlockConfirmationLogger extends AbstractCSVLogger {
 
     @Override
     protected boolean csvOutputConditionAfterEvent(Event event) {
-        return event instanceof BlockConfirmationEvent;
-    }
-
-    @Override
-    protected boolean csvOutputConditionFinalPerNode() {
         return false;
     }
 
     @Override
+    protected boolean csvOutputConditionFinalPerNode() {
+        return true;
+    }
+
+    @Override
     protected String[] csvHeaderOutput() {
-        return new String[]{"Time", "NodeID", "BlockHeight", "BlockHashCode", "BlockSize", "BlockCreationTime", "BlockCreator"};
+        return new String[]{"NodeID", "CanonicalChainLength", "NumUncles"};
     }
 
     @Override
     protected String[] csvEventOutput(Event event) {
-        Node node = ((BlockConfirmationEvent) event).getNode();
-        Block block = ((BlockConfirmationEvent) event).getBlock();
+        return new String[0];
+    }
+
+    @Override
+    protected String[] csvNodeOutput(Node node) {
+        int canonicalHeadLen =
+                ((PeerBlockchainNode) node).getConsensusAlgorithm().getCanonicalChainHead().getHeight();
+        int totalBlocks = ((PeerBlockchainNode) node).getConsensusAlgorithm().getLocalBlockTree().size();
+        int numUncles = totalBlocks - canonicalHeadLen - 1; // The genesis block shall not be counted
 
         return new String[]{
-                Double.toString(this.scenario.getSimulator().getCurrentTime()),
                 Integer.toString(node.nodeID),
-                Integer.toString(block.getHeight()),
-                Integer.toString(block.hashCode()),
-                Integer.toString(block.getSize()),
-                Double.toString(block.getCreationTime()),
-                Integer.toString(block.getCreator().nodeID)
+                Integer.toString(canonicalHeadLen),
+                Integer.toString(numUncles),
         };
     }
 }

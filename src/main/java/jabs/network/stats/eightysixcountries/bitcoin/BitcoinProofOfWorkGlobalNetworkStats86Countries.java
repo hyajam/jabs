@@ -35,13 +35,15 @@ public class BitcoinProofOfWorkGlobalNetworkStats86Countries extends BitcoinNode
 
     public static final int BITCOIN_NUM_MINERS_2022 = 30;
 
+    public static final long BITCOIN_DIFFICULTY_2022 = 225;
+
     @Override
     public EightySixCountries sampleMinerRegion() {
         return EightySixCountries.sixRegionsValues[randomnessEngine.sampleFromDistribution(BITCOIN_MINER_REGION_DISTRIBUTION_2020)];
     }
 
     @Override
-    public long sampleMinerHashPower() {
+    public double sampleMinerHashPower() {
         return randomnessEngine.sampleDistributionWithBins(BITCOIN_HASH_POWER_DISTRIBUTION_2022, BITCOIN_HASH_POWER_DISTRIBUTION_BIN_2022);
     }
 

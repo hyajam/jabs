@@ -31,7 +31,8 @@ public class CasperFFGGlobalBlockchainNetwork<R extends Enum<R>> extends Ethereu
     }
 
     @Override
-    public EthereumCasperMiner createSampleMiner(Simulator simulator, int nodeID, long hashPower, EthereumBlock genesisBlock,
+    public EthereumCasperMiner createSampleMiner(Simulator simulator, int nodeID, double hashPower,
+                                                 EthereumBlock genesisBlock,
                                                  ChainBasedConsensusConfig chainBasedConsensusConfig) {
         R region = (R) sampleRegion();
         return new EthereumCasperMiner(simulator, this, nodeID, this.sampleDownloadBandwidth(region),

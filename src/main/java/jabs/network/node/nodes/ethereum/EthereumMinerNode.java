@@ -21,18 +21,19 @@ import static jabs.ledgerdata.BlockFactory.ETHEREUM_MIN_DIFFICULTY;
 public class EthereumMinerNode extends EthereumNode implements MinerNode {
     protected Set<EthereumTx> memPool = new HashSet<>();
     protected Set<EthereumBlock> alreadyUncledBlocks = new HashSet<>();
-    protected final long hashPower;
+    protected final double hashPower;
     protected Simulator.ScheduledEvent miningProcess;
     static final long MAXIMUM_BLOCK_GAS = 12500000;
 
     public EthereumMinerNode(Simulator simulator, Network network, int nodeID,
-                             long downloadBandwidth, long uploadBandwidth, long hashPower, EthereumBlock genesisBlock,
+                             long downloadBandwidth, long uploadBandwidth, double hashPower, EthereumBlock genesisBlock,
                              GhostProtocolConfig ghostProtocolConfig) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, genesisBlock, ghostProtocolConfig);
         this.hashPower = hashPower;
     }
 
-    public EthereumMinerNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, long hashPower,
+    public EthereumMinerNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
+                             long uploadBandwidth, double hashPower,
                              AbstractChainBasedConsensus<EthereumBlock, EthereumTx> consensusAlgorithm) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, consensusAlgorithm);
         this.hashPower = hashPower;
@@ -86,7 +87,7 @@ public class EthereumMinerNode extends EthereumNode implements MinerNode {
         simulator.removeEvent(this.miningProcess);
     }
 
-    public long getHashPower() {
+    public double getHashPower() {
         return this.hashPower;
     }
 

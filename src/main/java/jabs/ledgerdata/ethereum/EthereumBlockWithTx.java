@@ -33,6 +33,11 @@ public class EthereumBlockWithTx extends EthereumBlock implements BlockWithTx<Et
         totalGas = totalGasTemp;
     }
 
+    public static EthereumBlockWithTx generateGenesisBlock(long difficulty) {
+        return new EthereumBlockWithTx(0, 0, null, null, new HashSet<>(),
+                new HashSet<>(), difficulty, 0);
+    }
+
     @Override
     public Set<EthereumTx> getTxs() { return new HashSet<>(this.Txs); }
 

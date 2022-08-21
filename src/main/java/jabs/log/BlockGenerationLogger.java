@@ -33,18 +33,17 @@ public class BlockGenerationLogger extends AbstractCSVLogger {
     }
 
     @Override
-    protected boolean csvOutputConditionBeforeEvent() {
+    protected boolean csvOutputConditionBeforeEvent(Event event) {
         return false;
     }
 
     @Override
-    protected boolean csvOutputConditionAfterEvent() {
-        Event event = this.scenario.getSimulator().peekEvent();
+    protected boolean csvOutputConditionAfterEvent(Event event) {
         return event instanceof BlockMiningProcess;
     }
 
     @Override
-    protected boolean csvOutputConditionFinal() {
+    protected boolean csvOutputConditionFinalPerNode() {
         return false;
     }
 
@@ -54,8 +53,7 @@ public class BlockGenerationLogger extends AbstractCSVLogger {
     }
 
     @Override
-    protected String[] csvLineOutput() {
-        Event event = this.scenario.getSimulator().peekEvent();
+    protected String[] csvEventOutput(Event event) {
         MinerNode miner = ((BlockMiningProcess) event).getMiner();
         Node node = ((Node) miner);
 

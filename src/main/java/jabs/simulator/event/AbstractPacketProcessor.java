@@ -20,7 +20,7 @@ public abstract class AbstractPacketProcessor implements Event {
             }
     }
 
-    public final Node node;
+    protected final Node node;
 
     public AbstractPacketProcessor(Simulator simulator, Network network, RandomnessEngine randomnessEngine, Node node) {
         this.simulator = simulator;
@@ -38,6 +38,11 @@ public abstract class AbstractPacketProcessor implements Event {
         packetsQueue.add(timedPacket);
     }
 
+    public Packet peek() {
+        TimedPacket timedPacket = this.packetsQueue.peek();
+        return timedPacket.packet;
+    }
+
     public void execute() {
         TimedPacket timedPacket = this.packetsQueue.poll();
         if (timedPacket != null) {
@@ -50,4 +55,8 @@ public abstract class AbstractPacketProcessor implements Event {
 
     public abstract double processingTime(Packet packet);
     protected abstract void sendPacketToNextProcess(Packet packet);
+
+    public Node getNode() {
+        return node;
+    }
 }

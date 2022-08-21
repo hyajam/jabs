@@ -1,6 +1,7 @@
 package jabs.log;
 
 import jabs.scenario.AbstractScenario;
+import jabs.simulator.event.Event;
 
 import java.io.IOException;
 
@@ -29,13 +30,13 @@ public abstract class AbstractLogger {
      * Before each event this function will be called. This can be used to log
      * information that emphasis on the changes each event causes.
      */
-    abstract public void logBeforeEvent();
+    abstract public void logBeforeEvent(Event event);
 
     /**
      * This function will be called after each event. Most information should
      * be logged using this function.
      */
-    abstract public void logAfterEvent();
+    abstract public void logAfterEvent(Event event);
 
     /**
      * At the end of the scenario this function will be called and can be used for

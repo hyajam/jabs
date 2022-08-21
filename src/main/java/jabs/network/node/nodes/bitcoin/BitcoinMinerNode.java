@@ -18,20 +18,20 @@ import java.util.Set;
 
 public class BitcoinMinerNode extends BitcoinNode implements MinerNode {
     protected Set<BitcoinTx> memPool = new HashSet<>();
-    protected final long hashPower;
+    protected final double hashPower;
     protected Simulator.ScheduledEvent miningProcess;
 
     static final long MAXIMUM_BLOCK_SIZE = 1800000;
 
     public BitcoinMinerNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
-                            long uploadBandwidth, BitcoinBlockWithoutTx genesisBlock, long hashPower,
+                            long uploadBandwidth, double hashPower,
                             AbstractChainBasedConsensus<BitcoinBlockWithoutTx, BitcoinTx> consensusAlgorithm) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, consensusAlgorithm);
         this.hashPower = hashPower;
     }
 
     public BitcoinMinerNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
-                            long uploadBandwidth, long hashPower, BitcoinBlockWithoutTx genesisBlock,
+                            long uploadBandwidth, double hashPower, BitcoinBlockWithoutTx genesisBlock,
                             NakamotoConsensusConfig nakamotoConsensusConfig) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth, genesisBlock, nakamotoConsensusConfig);
         this.hashPower = hashPower;
@@ -87,7 +87,7 @@ public class BitcoinMinerNode extends BitcoinNode implements MinerNode {
     }
 
     @Override
-    public long getHashPower() {
+    public double getHashPower() {
         return this.hashPower;
     }
 }

@@ -1,13 +1,11 @@
 package jabs.consensus.config;
 
-import jabs.ledgerdata.Block;
-
-import java.util.Objects;
+import jabs.ledgerdata.SingleParentBlock;
 
 /**
  *
  */
-public final class DAGsperConfig extends GhostProtocolConfig {
+public final class DAGsperConfig<B extends SingleParentBlock<B>> extends GhostProtocolConfig<B> {
     private final int checkpointSpace;
     private final int numOfStakeholders;
 
@@ -16,8 +14,9 @@ public final class DAGsperConfig extends GhostProtocolConfig {
      * @param checkpointSpace
      * @param numOfStakeholders
      */
-    public DAGsperConfig(Block genesisBlock, double averageBlockMiningInterval, int checkpointSpace, int numOfStakeholders) {
-        super(averageBlockMiningInterval);
+    public DAGsperConfig(B genesisBlock, double averageBlockMiningInterval, int checkpointSpace,
+                         int numOfStakeholders) {
+        super(genesisBlock, averageBlockMiningInterval);
         this.checkpointSpace = checkpointSpace;
         this.numOfStakeholders = numOfStakeholders;
     }

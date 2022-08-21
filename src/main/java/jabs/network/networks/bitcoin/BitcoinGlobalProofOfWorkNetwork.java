@@ -36,7 +36,7 @@ public class BitcoinGlobalProofOfWorkNetwork<R extends Enum<R>> extends
     }
 
     @Override
-    public BitcoinMinerNode createSampleMiner(Simulator simulator, int nodeID,  long hashPower,
+    public BitcoinMinerNode createSampleMiner(Simulator simulator, int nodeID, double hashPower,
                                               BitcoinBlockWithoutTx genesisBlock,
                                               ChainBasedConsensusConfig chainBasedConsensusConfig) {
         R region = (R) this.sampleRegion();

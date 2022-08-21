@@ -40,7 +40,7 @@ public class EthereumProofOfWorkGlobalNetworkStats6Regions extends EthereumNodeG
     }
 
     @Override
-    public long sampleMinerHashPower() {
+    public double sampleMinerHashPower() {
         return randomnessEngine.sampleDistributionWithBins(ETHEREUM_HASH_POWER_DISTRIBUTION_2022,
                 ETHEREUM_HASH_POWER_DISTRIBUTION_BIN_2022);
     }

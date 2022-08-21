@@ -2,6 +2,7 @@ package jabs.scenario;
 
 import jabs.log.AbstractLogger;
 import jabs.network.networks.Network;
+import jabs.simulator.event.Event;
 import jabs.simulator.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
@@ -103,12 +104,13 @@ public abstract class AbstractScenario {
         long simulationStartingTime = System.nanoTime();
         long lastProgressMessageTime = simulationStartingTime;
         while (simulator.thereIsMoreEvents() && !this.simulationStopCondition()) {
+            Event event = simulator.peekEvent();
             for (AbstractLogger logger:this.loggers) {
-                logger.logBeforeEvent();
+                logger.logBeforeEvent(event);
             }
             simulator.executeNextEvent();
             for (AbstractLogger logger:this.loggers) {
-                logger.logAfterEvent();
+                logger.logAfterEvent(event);
             }
             if (System.nanoTime() - lastProgressMessageTime > this.progressMessageIntervals) {
                 double realTime = TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - simulationStartingTime);

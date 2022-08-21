@@ -36,7 +36,8 @@ public class BitcoinNodeGlobalNetworkStats86Countries extends GlobalNetworkStats
 
     @Override
     public EightySixCountries sampleRegion() {
-        return EightySixCountries.sixRegionsValues[randomnessEngine.sampleFromDistribution(BITCOIN_COUNTRIES_DISTRIBUTION_2022)];
+        return EightySixCountries.sixRegionsValues[
+                randomnessEngine.sampleFromDistribution(BITCOIN_COUNTRIES_DISTRIBUTION_2022)];
     }
 
     @Override

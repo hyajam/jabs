@@ -1,16 +1,14 @@
 package jabs.consensus.config;
 
-import jabs.ledgerdata.Block;
-
-import java.util.Objects;
+import jabs.ledgerdata.SingleParentBlock;
 
 /**
  */
-public class GhostProtocolConfig extends ChainBasedConsensusConfig {
+public class GhostProtocolConfig<B extends SingleParentBlock<B>> extends ChainBasedConsensusConfig<B> {
     /**
      * @param averageBlockMiningInterval
      */
-    public GhostProtocolConfig(double averageBlockMiningInterval) {
-        super(averageBlockMiningInterval);
+    public GhostProtocolConfig(B genesisBlock, double averageBlockMiningInterval) {
+        super(genesisBlock, averageBlockMiningInterval);
     }
 }

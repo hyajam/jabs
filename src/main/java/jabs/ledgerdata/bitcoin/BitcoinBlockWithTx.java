@@ -1,9 +1,6 @@
 package jabs.ledgerdata.bitcoin;
 
-import jabs.network.node.nodes.MinerNode;
 import jabs.network.node.nodes.Node;
-import jabs.network.node.nodes.bitcoin.BitcoinMinerNode;
-import jabs.network.node.nodes.bitcoin.BitcoinNode;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,4 +24,12 @@ public class BitcoinBlockWithTx extends BitcoinBlockWithoutTx {
     }
 
     public Set<BitcoinTx> getTxs() { return new HashSet<>(this.Txs); }
+
+    /**
+     * @param difficulty The difficulty of starting genesis block
+     * @return returns
+     */
+    public static BitcoinBlockWithTx generateGenesisBlock(double difficulty) {
+        return new BitcoinBlockWithTx(0, 0, null, null, new HashSet<>(), 0, 0);
+    }
 }

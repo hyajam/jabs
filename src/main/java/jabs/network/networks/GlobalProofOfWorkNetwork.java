@@ -3,6 +3,7 @@ package jabs.network.networks;
 import jabs.consensus.config.ChainBasedConsensusConfig;
 import jabs.consensus.config.ConsensusAlgorithmConfig;
 import jabs.ledgerdata.Block;
+import jabs.ledgerdata.ProofOfWorkBlock;
 import jabs.network.stats.MinerGlobalRegionDistribution;
 import jabs.network.stats.ProofOfWorkGlobalNetworkStats;
 import jabs.network.node.nodes.MinerNode;
@@ -46,14 +47,14 @@ public abstract class GlobalProofOfWorkNetwork<N extends Node, M extends MinerNo
         nodeTypes.put((N) node, sampleMinerRegion());
     }
 
-    protected long sampleHashPower() {
+    protected double sampleHashPower() {
         return minerDistribution.sampleMinerHashPower();
     }
 
     public abstract B genesisBlock(double difficulty);
     public abstract N createSampleNode(Simulator simulator, int nodeID, B genesisBlock,
                                        ChainBasedConsensusConfig chainBasedConsensusConfig);
-    public abstract M createSampleMiner(Simulator simulator, int nodeID, long hashPower, B genesisBlock,
+    public abstract M createSampleMiner(Simulator simulator, int nodeID, double hashPower, B genesisBlock,
                                         ChainBasedConsensusConfig chainBasedConsensusConfig);
 
 
@@ -67,24 +68,26 @@ public abstract class GlobalProofOfWorkNetwork<N extends Node, M extends MinerNo
         this.populateNetwork(simulator, numMiners, numNodes-numMiners, consensusAlgorithmConfig);
     }
 
-
     public void populateNetwork(Simulator simulator, int numMiners, int numNonMiners,
                                 ConsensusAlgorithmConfig consensusAlgorithmConfig) {
         long totalHashPower = 0;
-        List<Long> hashPowers = new ArrayList<>();
+        List<Double> hashPowers = new ArrayList<>();
         for (int i = 0; i < numMiners; i++) {
-            long hashPower = sampleHashPower();
+            double hashPower = sampleHashPower();
             hashPowers.add(hashPower);
             totalHashPower += hashPower;
         }
 
         ChainBasedConsensusConfig chainBasedConsensusConfig = (ChainBasedConsensusConfig) consensusAlgorithmConfig;
+        double miningInterval = chainBasedConsensusConfig.averageBlockMiningInterval();
+        B genesisBlock = (B) chainBasedConsensusConfig.getGenesisBlock();
+        double genesisDifficulty = ((ProofOfWorkBlock) genesisBlock).getDifficulty();
 
-        double difficulty = totalHashPower * chainBasedConsensusConfig.averageBlockMiningInterval();
-        B genesisBlock = this.genesisBlock(difficulty);
+        double hashPowerScale = genesisDifficulty / (totalHashPower * miningInterval);
 
         for (int i = 0; i < numMiners; i++) {
-            this.addMiner(createSampleMiner(simulator, i, hashPowers.get(i), genesisBlock, chainBasedConsensusConfig));
+            this.addMiner(createSampleMiner(simulator, i, hashPowerScale * hashPowers.get(i), genesisBlock,
+                    chainBasedConsensusConfig));
         }
 
         for (int i = 0; i < numNonMiners; i++) {
