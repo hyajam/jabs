@@ -126,5 +126,13 @@ public abstract class Node {
     public Network getNetwork() {
         return this.network;
     }
+
+    /**
+     * getter method for node ID
+     * @return node's ID
+     */
+    public int getNodeID() {
+        return this.nodeID;
+    }
 }
 
