@@ -34,7 +34,7 @@ public abstract class AbstractPacketProcessor implements Event {
     }
 
     public void addToQueue(Packet packet) {
-        TimedPacket timedPacket = new TimedPacket(packet, simulator.getCurrentTime());
+        TimedPacket timedPacket = new TimedPacket(packet, simulator.getSimulationTime());
         packetsQueue.add(timedPacket);
     }
 

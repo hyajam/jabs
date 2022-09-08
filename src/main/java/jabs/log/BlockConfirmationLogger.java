@@ -1,10 +1,8 @@
 package jabs.log;
 
 import jabs.ledgerdata.Block;
-import jabs.network.node.nodes.MinerNode;
 import jabs.network.node.nodes.Node;
 import jabs.simulator.event.BlockConfirmationEvent;
-import jabs.simulator.event.BlockMiningProcess;
 import jabs.simulator.event.Event;
 
 import java.io.IOException;
@@ -60,7 +58,7 @@ public class BlockConfirmationLogger extends AbstractCSVLogger {
         Block block = ((BlockConfirmationEvent) event).getBlock();
 
         return new String[]{
-                Double.toString(this.scenario.getSimulator().getCurrentTime()),
+                Double.toString(this.scenario.getSimulator().getSimulationTime()),
                 Integer.toString(node.nodeID),
                 Integer.toString(block.getHeight()),
                 Integer.toString(block.hashCode()),

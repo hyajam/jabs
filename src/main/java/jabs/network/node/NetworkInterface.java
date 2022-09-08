@@ -9,7 +9,7 @@ import jabs.network.node.nodes.Node;
 import jabs.simulator.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
 
-public class NodeNetworkInterface {
+public class NetworkInterface {
     /**
      * Node's total download bandwidth
      */
@@ -74,7 +74,7 @@ public class NodeNetworkInterface {
      * @param downloadBandwidth The total down-link bandwidth of this node
      * @param uploadBandwidth The total up-link bandwidth of this node
      */
-    public NodeNetworkInterface(Simulator simulator, Node node, long downloadBandwidth, long uploadBandwidth) {
+    public NetworkInterface(Simulator simulator, Node node, long downloadBandwidth, long uploadBandwidth) {
         this.simulator = simulator;
         this.downloadBandwidth = downloadBandwidth;
         this.uploadBandwidth = uploadBandwidth;

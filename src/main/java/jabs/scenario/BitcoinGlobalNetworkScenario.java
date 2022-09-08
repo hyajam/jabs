@@ -57,6 +57,6 @@ public class BitcoinGlobalNetworkScenario extends AbstractScenario {
      */
     @Override
     protected boolean simulationStopCondition() {
-        return simulator.getCurrentTime() > stopTime;
+        return simulator.getSimulationTime() > stopTime;
     }
 }

@@ -72,7 +72,7 @@ public class PBFTCSVLogger extends AbstractCSVLogger {
             voteType = "PREPREPARE";
         }
 
-        return new String[]{Double.toString(this.scenario.getSimulator().getCurrentTime()), voteType,
+        return new String[]{Double.toString(this.scenario.getSimulator().getSimulationTime()), voteType,
                 Integer.toString(vote.getVoter().nodeID), Integer.toString(packet.getFrom().nodeID),
                 Integer.toString(packet.getTo().nodeID)};
     }

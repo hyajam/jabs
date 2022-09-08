@@ -3,7 +3,7 @@ package jabs.network.node.nodes;
 import jabs.network.message.Message;
 import jabs.network.message.Packet;
 import jabs.network.networks.Network;
-import jabs.network.node.NodeNetworkInterface;
+import jabs.network.node.NetworkInterface;
 import jabs.network.p2p.AbstractP2PConnections;
 import jabs.simulator.Simulator;
 
@@ -17,7 +17,7 @@ public abstract class Node {
      * Node's network interface
      * This object handles all packet sending/receiving in network
      */
-    protected final NodeNetworkInterface nodeNetworkInterface;
+    protected final NetworkInterface networkInterface;
 
     /**
      * Node's P2P connections
@@ -49,7 +49,7 @@ public abstract class Node {
     public Node(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, AbstractP2PConnections p2pConnections) {
         this.nodeID = nodeID;
         this.network = network;
-        this.nodeNetworkInterface = new NodeNetworkInterface(simulator,this, downloadBandwidth, uploadBandwidth);
+        this.networkInterface = new NetworkInterface(simulator,this, downloadBandwidth, uploadBandwidth);
         this.p2pConnections = p2pConnections;
         this.p2pConnections.setNode(this);
         this.simulator = simulator;
@@ -73,22 +73,22 @@ public abstract class Node {
      * Simulates a crash fault. It stops packet delivery to and from the node.
      */
     public void crash() {
-        nodeNetworkInterface.takeDown();
+        networkInterface.takeDown();
     }
 
     /**
      * Restores the node from a crash fault. New packets can be delivered to and from the node.
      */
     public void restore() {
-        nodeNetworkInterface.bringUp();
+        networkInterface.bringUp();
     }
 
     /**
      * Returns node network interface
      * @return nodes network interface
      */
-    public NodeNetworkInterface getNodeNetworkInterface() {
-        return this.nodeNetworkInterface;
+    public NetworkInterface getNodeNetworkInterface() {
+        return this.networkInterface;
     }
 
     /**
@@ -105,7 +105,7 @@ public abstract class Node {
      */
     public void broadcastMessage(Message message) {
         for (Node neighbor:this.p2pConnections.getNeighbors()) {
-            this.nodeNetworkInterface.addToUpLinkQueue(
+            this.networkInterface.addToUpLinkQueue(
                     new Packet(this, neighbor, message)
             );
         }

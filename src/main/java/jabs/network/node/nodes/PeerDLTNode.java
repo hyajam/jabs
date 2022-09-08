@@ -1,9 +1,7 @@
 package jabs.network.node.nodes;
 
-import jabs.consensus.algorithm.AbstractChainBasedConsensus;
 import jabs.consensus.algorithm.AbstractDAGBasedConsensus;
 import jabs.consensus.blockchain.LocalBlockDAG;
-import jabs.consensus.blockchain.LocalBlockTree;
 import jabs.ledgerdata.*;
 import jabs.network.message.*;
 import jabs.network.networks.Network;
@@ -49,7 +47,7 @@ public abstract class PeerDLTNode<B extends Block<B>, T extends Tx<T>> extends N
                         }
                     } else {
                         for (B parent: block.getParents()){
-                            this.nodeNetworkInterface.addToUpLinkQueue(
+                            this.networkInterface.addToUpLinkQueue(
                                     new Packet(this, packet.getFrom(),
                                             new RequestDataMessage(parent.getHash())
                                     )
@@ -69,7 +67,7 @@ public abstract class PeerDLTNode<B extends Block<B>, T extends Tx<T>> extends N
             if (hash.getData() instanceof Block){
                 if (!alreadySeenTxs.containsKey(hash)) {
                     alreadySeenTxs.put(hash, null);
-                    this.nodeNetworkInterface.addToUpLinkQueue(
+                    this.networkInterface.addToUpLinkQueue(
                             new Packet(this, packet.getFrom(),
                                     new RequestDataMessage(hash)
                             )
@@ -78,7 +76,7 @@ public abstract class PeerDLTNode<B extends Block<B>, T extends Tx<T>> extends N
             } else if (hash.getData() instanceof Tx) {
                 if (!alreadySeenBlocks.containsKey(hash)) {
                     alreadySeenBlocks.put(hash, null);
-                    this.nodeNetworkInterface.addToUpLinkQueue(
+                    this.networkInterface.addToUpLinkQueue(
                             new Packet(this, packet.getFrom(),
                                     new RequestDataMessage(hash)
                             )
@@ -91,7 +89,7 @@ public abstract class PeerDLTNode<B extends Block<B>, T extends Tx<T>> extends N
                 if (alreadySeenBlocks.containsKey(hash)) {
                     B block = alreadySeenBlocks.get(hash);
                     if (block != null) {
-                        this.nodeNetworkInterface.addToUpLinkQueue(
+                        this.networkInterface.addToUpLinkQueue(
                                 new Packet(this, packet.getFrom(),
                                         new DataMessage(block)
                                 )
@@ -102,7 +100,7 @@ public abstract class PeerDLTNode<B extends Block<B>, T extends Tx<T>> extends N
                 if (alreadySeenTxs.containsKey(hash)) {
                     T tx = alreadySeenTxs.get(hash);
                     if (tx != null) {
-                        this.nodeNetworkInterface.addToUpLinkQueue(
+                        this.networkInterface.addToUpLinkQueue(
                                 new Packet(this, packet.getFrom(),
                                         new DataMessage(tx)
                                 )

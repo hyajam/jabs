@@ -1,9 +1,7 @@
 package jabs.scenario;
 
-import jabs.consensus.config.ConsensusAlgorithmConfig;
 import jabs.consensus.config.PBFTConsensusConfig;
 import jabs.ledgerdata.pbft.PBFTPrePrepareVote;
-import jabs.log.AbstractLogger;
 import jabs.network.message.VoteMessage;
 import jabs.ledgerdata.BlockFactory;
 import jabs.network.networks.pbft.PBFTLocalLANNetwork;
@@ -43,6 +41,6 @@ public class PBFTLANScenario extends AbstractScenario {
 
     @Override
     public boolean simulationStopCondition() {
-        return (simulator.getCurrentTime() > this.simulationStopTime);
+        return (simulator.getSimulationTime() > this.simulationStopTime);
     }
 }
