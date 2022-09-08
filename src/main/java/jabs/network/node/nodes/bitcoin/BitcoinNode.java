@@ -48,7 +48,7 @@ public class BitcoinNode extends PeerBlockchainNode<BitcoinBlockWithoutTx, Bitco
 
     protected void broadcastTxInvMessage(BitcoinTx tx) {
         for (Node neighbor:this.p2pConnections.getNeighbors()) {
-            this.nodeNetworkInterface.addToUpLinkQueue(
+            this.networkInterface.addToUpLinkQueue(
                     new Packet(this, neighbor,
                             new InvMessage(tx.getHash().getSize(), tx.getHash())
                     )
@@ -58,7 +58,7 @@ public class BitcoinNode extends PeerBlockchainNode<BitcoinBlockWithoutTx, Bitco
 
     protected void broadcastBlockInvMessage(BitcoinBlockWithoutTx block) {
         for (Node neighbor:this.p2pConnections.getNeighbors()) {
-            this.nodeNetworkInterface.addToUpLinkQueue(
+            this.networkInterface.addToUpLinkQueue(
                     new Packet(this, neighbor,
                             new InvMessage(block.getHash().getSize(), block.getHash())
                     )

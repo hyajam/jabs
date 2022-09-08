@@ -58,7 +58,7 @@ public class BlockGenerationLogger extends AbstractCSVLogger {
         Node node = ((Node) miner);
 
         return new String[]{
-                Double.toString(this.scenario.getSimulator().getCurrentTime()),
+                Double.toString(this.scenario.getSimulator().getSimulationTime()),
                 Double.toString(node.nodeID),
         };
     }

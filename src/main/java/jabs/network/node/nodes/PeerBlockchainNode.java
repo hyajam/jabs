@@ -46,7 +46,7 @@ public abstract class PeerBlockchainNode<B extends SingleParentBlock<B>, T exten
                             this.processNewBlock(newBlock);
                         }
                     } else {
-                        this.nodeNetworkInterface.addToUpLinkQueue(
+                        this.networkInterface.addToUpLinkQueue(
                                 new Packet(this, packet.getFrom(),
                                         new RequestDataMessage(block.getParent().getHash())
                                 )
@@ -65,7 +65,7 @@ public abstract class PeerBlockchainNode<B extends SingleParentBlock<B>, T exten
             if (hash.getData() instanceof Block){
                 if (!alreadySeenTxs.containsKey(hash)) {
                     alreadySeenTxs.put(hash, null);
-                    this.nodeNetworkInterface.addToUpLinkQueue(
+                    this.networkInterface.addToUpLinkQueue(
                             new Packet(this, packet.getFrom(),
                                     new RequestDataMessage(hash)
                             )
@@ -74,7 +74,7 @@ public abstract class PeerBlockchainNode<B extends SingleParentBlock<B>, T exten
             } else if (hash.getData() instanceof Tx) {
                 if (!alreadySeenBlocks.containsKey(hash)) {
                     alreadySeenBlocks.put(hash, null);
-                    this.nodeNetworkInterface.addToUpLinkQueue(
+                    this.networkInterface.addToUpLinkQueue(
                             new Packet(this, packet.getFrom(),
                                     new RequestDataMessage(hash)
                             )
@@ -87,7 +87,7 @@ public abstract class PeerBlockchainNode<B extends SingleParentBlock<B>, T exten
                 if (alreadySeenBlocks.containsKey(hash)) {
                     B block = alreadySeenBlocks.get(hash);
                     if (block != null) {
-                        this.nodeNetworkInterface.addToUpLinkQueue(
+                        this.networkInterface.addToUpLinkQueue(
                                 new Packet(this, packet.getFrom(),
                                         new DataMessage(block)
                                 )
@@ -98,7 +98,7 @@ public abstract class PeerBlockchainNode<B extends SingleParentBlock<B>, T exten
                 if (alreadySeenTxs.containsKey(hash)) {
                     T tx = alreadySeenTxs.get(hash);
                     if (tx != null) {
-                        this.nodeNetworkInterface.addToUpLinkQueue(
+                        this.networkInterface.addToUpLinkQueue(
                                 new Packet(this, packet.getFrom(),
                                         new DataMessage(tx)
                                 )

@@ -51,7 +51,7 @@ public class Main {
         // Simulate PBFT Lan network of 40 nodes for 1 hour
         scenario = new PBFTLANScenario("One hour of a PBFT lan Network", 1,
                 40, 3600);
-        scenario.AddNewLogger(new BlockGenerationLogger(Paths.get("output/pbft-simulation-log.csv")));
+        scenario.AddNewLogger(new PBFTCSVLogger(Paths.get("output/pbft-simulation-log.csv")));
         scenario.run();
     }
 }

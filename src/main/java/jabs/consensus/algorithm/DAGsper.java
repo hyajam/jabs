@@ -135,7 +135,7 @@ public class DAGsper<B extends SingleParentBlock<B>, T extends Tx<T>> extends Gh
         if (!indirectlyFinalizedBlocks.contains(newlyFinalizedBlock)) {
             indirectlyFinalizedBlocks.add(newlyFinalizedBlock);
             if (blockFinalizationTimes != null) {
-                blockFinalizationTimes.addValue(peerBlockchainNode.getSimulator().getCurrentTime() - newlyFinalizedBlock.getCreationTime());
+                blockFinalizationTimes.addValue(peerBlockchainNode.getSimulator().getSimulationTime() - newlyFinalizedBlock.getCreationTime());
             }
         }
 
@@ -162,7 +162,7 @@ public class DAGsper<B extends SingleParentBlock<B>, T extends Tx<T>> extends Gh
 
             for (B block:ancestors) {
                 if (blockFinalizationTimes != null) {
-                    blockFinalizationTimes.addValue(peerBlockchainNode.getSimulator().getCurrentTime() - block.getCreationTime());
+                    blockFinalizationTimes.addValue(peerBlockchainNode.getSimulator().getSimulationTime() - block.getCreationTime());
                 }
                 if (block instanceof BlockWithTx) {
                     finalizedTxs.addAll(((BlockWithTx<T>) block).getTxs());

@@ -30,13 +30,13 @@ public abstract class AbstractLogger {
      * Before each event this function will be called. This can be used to log
      * information that emphasis on the changes each event causes.
      */
-    abstract public void logBeforeEvent(Event event);
+    abstract public void logBeforeEachEvent(Event event);
 
     /**
      * This function will be called after each event. Most information should
      * be logged using this function.
      */
-    abstract public void logAfterEvent(Event event);
+    abstract public void logAfterEachEvent(Event event);
 
     /**
      * At the end of the scenario this function will be called and can be used for
