@@ -18,14 +18,14 @@ public abstract class AbstractCSVLogger extends AbstractLogger {
     }
 
     @Override
-    public void logBeforeEvent(Event event) {
+    public void logBeforeEachEvent(Event event) {
         if (this.csvOutputConditionBeforeEvent(event)) {
             loggerCSV.writeRow(this.csvEventOutput(event));
         }
     }
 
     @Override
-    public void logAfterEvent(Event event) {
+    public void logAfterEachEvent(Event event) {
         if (this.csvOutputConditionAfterEvent(event)) {
             loggerCSV.writeRow(this.csvEventOutput(event));
         }

@@ -49,17 +49,17 @@ public final class BlockFactory {
                                                            Node creator, BitcoinBlockWithoutTx parent,
                                                            double difficulty, double weight) {
         return new BitcoinBlockWithoutTx(sampleBitcoinBlockSize(randomnessEngine), parent.getHeight() + 1,
-                simulator.getCurrentTime(), creator, parent, difficulty, weight);
+                simulator.getSimulationTime(), creator, parent, difficulty, weight);
     }
 
     public static PBFTBlock samplePBFTBlock(Simulator simulator, RandomnessEngine randomnessEngine, PBFTNode creator, PBFTBlock parent) {
         return new PBFTBlock(sampleBitcoinBlockSize(randomnessEngine), parent.getHeight() + 1,
-                simulator.getCurrentTime(), creator, parent); // TODO: Size of PBFT Blocks
+                simulator.getSimulationTime(), creator, parent); // TODO: Size of PBFT Blocks
     }
 
     public static EthereumBlock sampleEthereumBlock(Simulator simulator, RandomnessEngine randomnessEngine, EthereumMinerNode creator, EthereumBlock parent,
                                                     Set<EthereumBlock> uncles, double weight) {
         return new EthereumBlock(sampleBitcoinBlockSize(randomnessEngine), parent.getHeight() + 1,
-                simulator.getCurrentTime(), creator, parent, uncles, ETHEREUM_MIN_DIFFICULTY, weight); // TODO: Block Size
+                simulator.getSimulationTime(), creator, parent, uncles, ETHEREUM_MIN_DIFFICULTY, weight); // TODO: Block Size
     }
 }

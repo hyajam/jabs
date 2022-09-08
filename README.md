@@ -9,7 +9,7 @@
 JABS - Just Another Blockchain Simulator.
 
 JABS is a blockchain network simulator aimed at researching consensus 
-algorithms for performance and security. it is designed to easily handel
+algorithms for performance and security. It is designed to easily handel
 simulation of networks as large as normal public blockchain networks 
 (~10000 nodes) in reasonable time.
 
@@ -87,6 +87,7 @@ Currently, the following consensus algorithms are implemented in JABS:
  4. Casper FFG
  5. IOTA Tangle
  6. Nakamoto Heaviest-Chain
+ 7. Robust Round Robin
 
 ## Roadmap ##
 

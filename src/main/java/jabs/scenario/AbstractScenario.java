@@ -67,6 +67,7 @@ public abstract class AbstractScenario {
 
     /**
      * creates an abstract scenario with a user defined name
+     * @param name scenario name string
      * @param seed this value gives the simulation a randomnessEngine seed
      */
     public AbstractScenario(String name, long seed) {
@@ -76,6 +77,10 @@ public abstract class AbstractScenario {
         this.progressMessageIntervals = TimeUnit.SECONDS.toNanos(2);
     }
 
+    /**
+     * Adds a new logger module to the simulation scenario
+     * @param logger the logger module
+     */
     public void AddNewLogger(AbstractLogger logger) {
         this.loggers.add(logger);
     }
@@ -91,6 +96,7 @@ public abstract class AbstractScenario {
     /**
      * When called starts the simulation and runs everything to the end of simulation. This also
      * logs events using the logger object.
+     * @throws IOException
      */
     public void run() throws IOException {
         System.err.printf("Staring %s...\n", this.name);
@@ -103,18 +109,18 @@ public abstract class AbstractScenario {
         }
         long simulationStartingTime = System.nanoTime();
         long lastProgressMessageTime = simulationStartingTime;
-        while (simulator.thereIsMoreEvents() && !this.simulationStopCondition()) {
+        while (simulator.isThereMoreEvents() && !this.simulationStopCondition()) {
             Event event = simulator.peekEvent();
             for (AbstractLogger logger:this.loggers) {
-                logger.logBeforeEvent(event);
+                logger.logBeforeEachEvent(event);
             }
             simulator.executeNextEvent();
             for (AbstractLogger logger:this.loggers) {
-                logger.logAfterEvent(event);
+                logger.logAfterEachEvent(event);
             }
             if (System.nanoTime() - lastProgressMessageTime > this.progressMessageIntervals) {
                 double realTime = TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - simulationStartingTime);
-                double simulationTime = this.simulator.getCurrentTime();
+                double simulationTime = this.simulator.getSimulationTime();
                 System.err.printf(
                         "Simulation in progress... " +
                                 "Elapsed Real Time: %d:%02d:%02d, Elapsed Simulation Time: %d:%02d:%02d\n",

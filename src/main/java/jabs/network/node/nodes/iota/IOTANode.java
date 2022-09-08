@@ -64,7 +64,7 @@ public class IOTANode extends PeerDLTNode<TangleBlock, TangleTx> implements Mine
 
     protected void broadcastBlockInvMessage(TangleBlock block) {
         for (Node neighbor:this.p2pConnections.getNeighbors()) {
-            this.nodeNetworkInterface.addToUpLinkQueue(
+            this.networkInterface.addToUpLinkQueue(
                     new Packet(this, neighbor,
                             new InvMessage(block.getHash().getSize(), block.getHash())
                     )

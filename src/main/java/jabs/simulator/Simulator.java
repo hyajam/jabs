@@ -21,7 +21,7 @@ public class Simulator {
     /**
      * The simulation execution time of the most recent event
      */
-    private double currentTime = 0L;
+    private double simulationTime = 0L;
 
     /**
      * Number of events inserted in the event queue till now (whether simulated
@@ -78,7 +78,7 @@ public class Simulator {
         if (!eventQueue.isEmpty()) {
             ScheduledEvent currentScheduledEvent = eventQueue.poll();
             Event currentEvent = currentScheduledEvent.event();
-            currentTime = currentScheduledEvent.time();
+            simulationTime = currentScheduledEvent.time();
             currentEvent.execute();
         }
     }
@@ -102,7 +102,7 @@ public class Simulator {
      * Check if more events exist in the event queue to be simulated
      * @return True if there is any event in the queue
      */
-    public boolean thereIsMoreEvents() {
+    public boolean isThereMoreEvents() {
         return !eventQueue.isEmpty();
     }
 
@@ -116,7 +116,7 @@ public class Simulator {
      * @return the scheduled event
      */
     public ScheduledEvent putEvent(Event event, double remainingTimeToExecution) {
-        ScheduledEvent sEvent = new ScheduledEvent(event, currentTime + remainingTimeToExecution, insertedEvents);
+        ScheduledEvent sEvent = new ScheduledEvent(event, simulationTime + remainingTimeToExecution, insertedEvents);
         eventQueue.add(sEvent);
         insertedEvents++;
         return sEvent;
@@ -137,7 +137,7 @@ public class Simulator {
      * Returns the simulation time that the latest event has executed
      * @return Simulation time of the latest simulated event
      */
-    public double getCurrentTime() { return currentTime; }
+    public double getSimulationTime() { return simulationTime; }
 
     /**
      * Clears the event queue from any more events. Restarts the current time of
@@ -145,7 +145,7 @@ public class Simulator {
      */
     public void reset() {
         eventQueue.clear();
-        currentTime = 0;
+        simulationTime = 0;
     }
 }
 

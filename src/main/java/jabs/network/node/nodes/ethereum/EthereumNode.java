@@ -52,7 +52,7 @@ public class EthereumNode extends PeerBlockchainNode<EthereumBlock, EthereumTx> 
         if (this.consensusAlgorithm instanceof VotingBasedConsensus) {
             ((VotingBasedConsensus) this.consensusAlgorithm).newIncomingVote(vote);
             for (Node neighbor : this.p2pConnections.getNeighbors()) {
-                this.nodeNetworkInterface.addToUpLinkQueue(
+                this.networkInterface.addToUpLinkQueue(
                         new Packet(this, neighbor,
                                 new VoteMessage(vote)
                         )
@@ -70,13 +70,13 @@ public class EthereumNode extends PeerBlockchainNode<EthereumBlock, EthereumTx> 
         for (int i = 0; i < this.p2pConnections.getNeighbors().size(); i++) {
             Node neighbor = this.p2pConnections.getNeighbors().get(i);
             if (i < sqrt(this.p2pConnections.getNeighbors().size())){
-                this.nodeNetworkInterface.addToUpLinkQueue(
+                this.networkInterface.addToUpLinkQueue(
                         new Packet(this, neighbor,
                                 new DataMessage(ethereumBlock)
                         )
                 );
             } else {
-                this.nodeNetworkInterface.addToUpLinkQueue(
+                this.networkInterface.addToUpLinkQueue(
                         new Packet(this, neighbor,
                                 new InvMessage(ethereumBlock.getHash().getSize(), ethereumBlock.getHash())
                         )
@@ -88,7 +88,7 @@ public class EthereumNode extends PeerBlockchainNode<EthereumBlock, EthereumTx> 
     protected void broadcastTransaction(EthereumTx tx, Node excludeNeighbor) {
         for (Node neighbor:this.p2pConnections.getNeighbors()) {
             if (neighbor != excludeNeighbor){
-                this.nodeNetworkInterface.addToUpLinkQueue(
+                this.networkInterface.addToUpLinkQueue(
                         new Packet(this, neighbor,
                                 new DataMessage(tx)
                         )

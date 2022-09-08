@@ -13,7 +13,6 @@ import java.io.Writer;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
 public class BlockPropagationDelayLogger extends AbstractCSVLogger {
     private final double shareOfNodesReceivedBlock;
@@ -89,8 +88,8 @@ public class BlockPropagationDelayLogger extends AbstractCSVLogger {
         Block block = ((Block) ((DataMessage) packet.getMessage()).getData());
 
         return new String[]{
-                Double.toString(this.scenario.getSimulator().getCurrentTime()),
-                Double.toString(this.scenario.getSimulator().getCurrentTime() - block.getCreationTime()),
+                Double.toString(this.scenario.getSimulator().getSimulationTime()),
+                Double.toString(this.scenario.getSimulator().getSimulationTime() - block.getCreationTime()),
                 Integer.toString(block.hashCode()),
                 Integer.toString(block.getHeight()),
                 Integer.toString(block.getCreator().nodeID),

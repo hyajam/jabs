@@ -41,6 +41,6 @@ public class NormalEthereumNetworkScenario extends AbstractScenario {
 
     @Override
     public boolean simulationStopCondition() {
-        return (simulator.getCurrentTime() > simulationStopTime);
+        return (simulator.getSimulationTime() > simulationStopTime);
     }
 }
