@@ -54,7 +54,7 @@ public class BitcoinMinerNode extends BitcoinNode implements MinerNode {
 
         double weight = this.network.getRandom().sampleExponentialDistribution(1);
         BitcoinBlockWithTx bitcoinBlockWithTx = new BitcoinBlockWithTx(
-                canonicalChainHead.getHeight()+1, simulator.getCurrentTime(),
+                canonicalChainHead.getHeight()+1, simulator.getSimulationTime(),
                 this.getConsensusAlgorithm().getCanonicalChainHead(), this, blockTxs,
                 canonicalChainHead.getDifficulty(), weight); // TODO: Difficulty adjustment?
 

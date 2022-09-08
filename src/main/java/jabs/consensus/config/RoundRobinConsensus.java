@@ -57,7 +57,7 @@ public class RoundRobinConsensus<B extends SingleParentBlock<B>, T extends Tx<T>
             B highestConfirmedBlock =  localBlockTree.getAncestorOfHeight(currentMainChainHead, heightOfConfirmedBlocks);
             this.confirmedBlocks = this.localBlockTree.getAllAncestors(highestConfirmedBlock);
             Simulator simulator = this.peerDLTNode.getSimulator();
-            double currentTime = simulator.getCurrentTime();
+            double currentTime = simulator.getSimulationTime();
             simulator.putEvent(
                     new BlockConfirmationEvent(currentTime, this.peerDLTNode, highestConfirmedBlock),
                     0);

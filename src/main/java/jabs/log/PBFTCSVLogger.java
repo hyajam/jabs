@@ -43,7 +43,9 @@ public class PBFTCSVLogger extends AbstractCSVLogger {
     @Override
     protected boolean csvOutputConditionAfterEvent(Event event) {
         if (event instanceof PacketDeliveryEvent) {
-            return ((PacketDeliveryEvent) this.scenario.getSimulator().peekEvent()).packet.getMessage() instanceof VoteMessage;
+            PacketDeliveryEvent deliveryEvent = (PacketDeliveryEvent) event;
+            Packet packet = deliveryEvent.packet;
+            return packet.getMessage() instanceof VoteMessage;
         }
         return false;
     }
@@ -55,7 +57,7 @@ public class PBFTCSVLogger extends AbstractCSVLogger {
 
     @Override
     protected String[] csvHeaderOutput() {
-        return new String[]{"Vote message type", "Voter ID", "From Node", "To Node"};
+        return new String[]{"Simulation time, Vote message type", "Voter ID", "From Node", "To Node"};
     }
 
     @Override
@@ -72,7 +74,7 @@ public class PBFTCSVLogger extends AbstractCSVLogger {
             voteType = "PREPREPARE";
         }
 
-        return new String[]{Double.toString(this.scenario.getSimulator().getCurrentTime()), voteType,
+        return new String[]{Double.toString(this.scenario.getSimulator().getSimulationTime()), voteType,
                 Integer.toString(vote.getVoter().nodeID), Integer.toString(packet.getFrom().nodeID),
                 Integer.toString(packet.getTo().nodeID)};
     }

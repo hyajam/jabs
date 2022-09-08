@@ -1,7 +1,6 @@
 package jabs.log;
 
 import jabs.ledgerdata.Block;
-import jabs.network.node.nodes.Node;
 import jabs.simulator.event.Event;
 import jabs.simulator.event.PacketDeliveryEvent;
 import jabs.network.message.DataMessage;
@@ -67,8 +66,8 @@ public class BlockDeliveryLogger extends AbstractCSVLogger {
         Block block = ((Block) ((DataMessage) packet.getMessage()).getData());
 
         return new String[]{
-                Double.toString(this.scenario.getSimulator().getCurrentTime()),
-                Double.toString(this.scenario.getSimulator().getCurrentTime() - block.getCreationTime()),
+                Double.toString(this.scenario.getSimulator().getSimulationTime()),
+                Double.toString(this.scenario.getSimulator().getSimulationTime() - block.getCreationTime()),
                 Integer.toString(block.getHeight()),
                 Integer.toString(block.getCreator().nodeID),
                 Integer.toString(block.getSize()),

@@ -6,11 +6,9 @@ import jabs.ledgerdata.Data;
 import jabs.ledgerdata.SingleParentPoWBlock;
 import jabs.network.message.DataMessage;
 import jabs.network.message.Message;
-import jabs.network.message.Packet;
 import jabs.network.node.nodes.Node;
 import jabs.network.node.nodes.PeerBlockchainNode;
 import jabs.simulator.event.Event;
-import jabs.simulator.event.PacketDeliveryEvent;
 import jabs.simulator.event.PacketReceivingProcess;
 
 import java.io.IOException;
@@ -99,7 +97,7 @@ public class BlockchainReorgLogger<B extends SingleParentPoWBlock<B>> extends Ab
         int reorgLength = nodeChainHead.getHeight() - commonAncestor.getHeight();
 
         return new String[]{
-                Double.toString(this.scenario.getSimulator().getCurrentTime()),
+                Double.toString(this.scenario.getSimulator().getSimulationTime()),
                 Integer.toString(this.currentNode.nodeID),
                 Integer.toString(nodeChainHead.getHeight()),
                 Double.toString(nodeChainHead.getCreationTime()),

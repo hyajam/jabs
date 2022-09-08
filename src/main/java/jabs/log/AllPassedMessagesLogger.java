@@ -58,7 +58,7 @@ public class AllPassedMessagesLogger extends AbstractCSVLogger {
         Message message = packet.getMessage();
 
         return new String[]{
-                Double.toString(this.scenario.getSimulator().getCurrentTime()),
+                Double.toString(this.scenario.getSimulator().getSimulationTime()),
                 message.getClass().getSimpleName(),
                 Integer.toString(packet.getFrom().nodeID),
                 Integer.toString(packet.getTo().nodeID),
