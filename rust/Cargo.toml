@@ -1,0 +1,8 @@
+[package]
+name = "jabs"
+version = "0.0.1"
+authors = ["Seyyed Arash Azimi, Habib Yajam"]
+edition = "2021"
+
+[dependencies]
+priority-queue = "1.3.1"
