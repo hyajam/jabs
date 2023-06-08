@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Yajam"
+  given-names: "Habib"
+  orcid: "https://orcid.org/0000-0003-4344-7446"
+- family-names: "Ebadi"
+  given-names: "Elnaz"
+- family-names: "Akhaee"
+  given-names: "Mohammad Ali"
+title: "JABS: Just Another Blockchain Simulator"
+version: 0.2.0
+date-released: 2023-06-08
+url: "https://github.com/hyajam/jabs"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Yajam"
+    given-names: "Habib"
+    orcid: "https://orcid.org/0000-0003-4344-7446"
+  - family-names: "Ebadi"
+    given-names: "Elnaz"
+  - family-names: "Akhaee"
+    given-names: "Mohammad Ali"
+  doi: "10.1109/TNSE.2023.3282916"
+  journal: "IEEE Transactions on Network Science and Engineering"
+  month: 6
+  start: 1 # First page number
+  end: 12 # Last page number
+  title: "Yajam, Habib and Ebadi, Elnaz and Akhaee, Mohammad Ali"
+  year: 2023

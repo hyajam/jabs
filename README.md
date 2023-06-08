@@ -128,6 +128,23 @@ Steps for code contribution to the project:
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
+## Publications ##
+
+Please use the following bibtex reference to cite our paper:
+
+```
+@ARTICLE{10144349,
+  author={Yajam, Habib and Ebadi, Elnaz and Akhaee, Mohammad Ali},
+  journal={IEEE Transactions on Network Science and Engineering}, 
+  title={JABS: A Blockchain Simulator for Researching Consensus Algorithms}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1-12},
+  doi={10.1109/TNSE.2023.3282916}
+  }
+```
+
 ## Contact ##
 
 Habib Yajam - [@habibyajam](https://twitter.com/HabibYajam) - habib.yajam@gmail.com
