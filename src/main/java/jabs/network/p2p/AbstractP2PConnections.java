@@ -9,7 +9,7 @@ import java.util.List;
 // TODO recheck if it is a better method for implementing Abstract Routing Table
 public abstract class AbstractP2PConnections {
     protected Node node;
-    protected final List<Node> neighbors = new ArrayList<>();
+    protected final List<Node> peerNeighbors = new ArrayList<>();
 
     protected Node getNode() {
         return node;
@@ -18,7 +18,7 @@ public abstract class AbstractP2PConnections {
         this.node = node;
     }
     public List<Node> getNeighbors(){
-        return this.neighbors;
+        return this.peerNeighbors;
     }
     public abstract void connectToNetwork(Network network);
     public abstract boolean requestConnection(Node node);

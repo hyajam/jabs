@@ -3,6 +3,7 @@ package jabs.network.node.nodes.iota;
 import jabs.consensus.algorithm.TangleIOTA;
 import jabs.consensus.blockchain.LocalBlockDAG;
 import jabs.consensus.config.TangleIOTAConsensusConfig;
+import jabs.ledgerdata.Query;
 import jabs.ledgerdata.Vote;
 import jabs.ledgerdata.tangle.TangleTx;
 import jabs.ledgerdata.tangle.TangleBlock;
@@ -93,6 +94,11 @@ public class IOTANode extends PeerDLTNode<TangleBlock, TangleTx> implements Mine
      */
     @Override
     protected void processNewVote(Vote vote) {
+
+    }
+
+    @Override
+    protected void processNewQuery(Query query) {
 
     }
 
