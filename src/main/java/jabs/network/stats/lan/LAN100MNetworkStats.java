@@ -5,7 +5,7 @@ import jabs.simulator.randengine.RandomnessEngine;
 
 public class LAN100MNetworkStats implements NetworkStats<SingleNodeType> {
     protected final RandomnessEngine randomnessEngine;
-    protected static final double LAN_AVERAGE_LATENCY = 0.002; // 2 milli seconds
+    protected static final double LAN_AVERAGE_LATENCY = 0.02; // 20 milli seconds
     protected static final double LATENCY_PARETO_SHAPE = 5;
     protected static final long LAN_AVERAGE_BANDWIDTH = 100000000;
     

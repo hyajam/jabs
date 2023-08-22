@@ -46,6 +46,11 @@ public class BitcoinNode extends PeerBlockchainNode<BitcoinBlockWithoutTx, Bitco
 
     }
 
+    @Override
+    protected void processNewQuery(jabs.ledgerdata.Query query) {
+
+    }
+
     protected void broadcastTxInvMessage(BitcoinTx tx) {
         for (Node neighbor:this.p2pConnections.getNeighbors()) {
             this.networkInterface.addToUpLinkQueue(
