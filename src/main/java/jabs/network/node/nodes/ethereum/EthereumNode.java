@@ -62,6 +62,11 @@ public class EthereumNode extends PeerBlockchainNode<EthereumBlock, EthereumTx> 
     }
 
     @Override
+    protected void processNewQuery(jabs.ledgerdata.Query query) {
+
+    }
+
+    @Override
     public void generateNewTransaction() {
         broadcastTransaction(TransactionFactory.sampleEthereumTransaction(network.getRandom()));
     }

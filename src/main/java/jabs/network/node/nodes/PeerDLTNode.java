@@ -19,6 +19,7 @@ public abstract class PeerDLTNode<B extends Block<B>, T extends Tx<T>> extends N
     protected final HashMap<Hash, T> alreadySeenTxs = new HashMap<>();
     protected final HashMap<Hash, B> alreadySeenBlocks = new HashMap<>();
     protected final HashSet<Vote> alreadySeenVotes = new HashSet<>();
+    protected final HashSet<Query> alreadySeenQueries = new HashSet<>();
     protected final LocalBlockDAG<B> localBlockTree;
 
     public PeerDLTNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, AbstractP2PConnections routingTable,
@@ -114,13 +115,19 @@ public abstract class PeerDLTNode<B extends Block<B>, T extends Tx<T>> extends N
                 alreadySeenVotes.add(vote);
                 this.processNewVote(vote);
             }
+        }else if (message instanceof QueryMessage) {
+            Query query = ((QueryMessage) message).getQuery();
+            if (!alreadySeenQueries.contains(query)) {
+                alreadySeenQueries.add(query);
+                this.processNewQuery(query);
+            }
         }
     }
 
     protected abstract void processNewTx(T tx, Node from);
     protected abstract void processNewBlock(B block);
     protected abstract void processNewVote(Vote vote);
-
+    protected abstract void processNewQuery(Query query);
     public AbstractDAGBasedConsensus<B, T> getConsensusAlgorithm() {
         return this.consensusAlgorithm;
     }

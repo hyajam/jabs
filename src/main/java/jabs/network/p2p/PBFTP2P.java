@@ -6,7 +6,7 @@ import jabs.network.node.nodes.Node;
 public class PBFTP2P extends AbstractP2PConnections {
     @Override
     public void connectToNetwork(Network network) {
-        this.neighbors.addAll(network.getAllNodes());
+        this.peerNeighbors.addAll(network.getAllNodes());
         node.getNodeNetworkInterface().connectNetwork(network, network.getRandom());
     }
 
