@@ -8,6 +8,8 @@ import jabs.network.node.nodes.ethereum.EthereumMinerNode;
 import jabs.network.node.nodes.pbft.PBFTNode;
 import jabs.simulator.randengine.RandomnessEngine;
 import jabs.simulator.Simulator;
+import jabs.ledgerdata.snow.SnowBlock;
+import jabs.network.node.nodes.snow.SnowNode;
 
 import java.util.Set;
 
@@ -55,6 +57,11 @@ public final class BlockFactory {
     public static PBFTBlock samplePBFTBlock(Simulator simulator, RandomnessEngine randomnessEngine, PBFTNode creator, PBFTBlock parent) {
         return new PBFTBlock(sampleBitcoinBlockSize(randomnessEngine), parent.getHeight() + 1,
                 simulator.getSimulationTime(), creator, parent); // TODO: Size of PBFT Blocks
+    }
+
+    public static SnowBlock sampleSnowBlock(Simulator simulator, RandomnessEngine randomnessEngine, SnowNode creator, SnowBlock parent) {
+        return new SnowBlock(sampleBitcoinBlockSize(randomnessEngine), parent.getHeight() + 1,
+                simulator.getSimulationTime(), creator, parent); // TODO: Size of Snow Blocks
     }
 
     public static EthereumBlock sampleEthereumBlock(Simulator simulator, RandomnessEngine randomnessEngine, EthereumMinerNode creator, EthereumBlock parent,

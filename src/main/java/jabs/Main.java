@@ -2,10 +2,7 @@ package jabs;
 
 import jabs.ledgerdata.bitcoin.BitcoinBlockWithoutTx;
 import jabs.log.*;
-import jabs.scenario.AbstractScenario;
-import jabs.scenario.BitcoinGlobalNetworkScenario;
-import jabs.scenario.NormalEthereumNetworkScenario;
-import jabs.scenario.PBFTLANScenario;
+import jabs.scenario.*;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -20,7 +17,7 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         AbstractScenario scenario;
-
+/*
         // Simulate one day in the life of Bitcoin network
         // Nakamoto protocol with block every 600 seconds
         // Around 8000 nodes with 30 miners
@@ -52,6 +49,12 @@ public class Main {
         scenario = new PBFTLANScenario("One hour of a PBFT lan Network", 1,
                 40, 3600);
         scenario.AddNewLogger(new PBFTCSVLogger(Paths.get("output/pbft-simulation-log.csv")));
+        scenario.run();
+*/
+        // Simulate Snow LAN network of 40 nodes for 1 hour
+        scenario = new SnowLANScenario("One hour of a Snow lan Network", 1, 40,
+                3600);
+        scenario.AddNewLogger(new SnowCSVLogger(Paths.get("output/snow-simulation-log.csv")));
         scenario.run();
     }
 }
