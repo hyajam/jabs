@@ -38,6 +38,11 @@ public class PBFTNode extends PeerBlockchainNode<PBFTBlock, PBFTTx> {
     }
 
     @Override
+    protected void processNewQuery(jabs.ledgerdata.Query query) {
+
+    }
+
+    @Override
     public void generateNewTransaction() {
         // nothing for now
     }

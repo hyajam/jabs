@@ -110,6 +110,23 @@ public abstract class Node {
             );
         }
     }
+    /**
+     * Forces the node to respond a message to the inquirer
+     * @param message The message to be responded
+     */
+    public void respondQuery(Message message, Node destination) {
+        this.networkInterface.addToUpLinkQueue(
+                new Packet(this, destination, message));
+    }
+
+    /**
+     * Forces the node to query from its sampled neighbors
+     * @param message The message to be queried
+     */
+    public void query(Message message, Node destination) {
+        this.networkInterface.addToUpLinkQueue(
+                new Packet(this, destination, message));
+    }
 
     /**
      * Returns node's simulator

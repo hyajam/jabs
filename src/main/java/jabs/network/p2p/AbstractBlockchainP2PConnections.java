@@ -43,7 +43,7 @@ public abstract class AbstractBlockchainP2PConnections extends AbstractP2PConnec
     public boolean requestConnection(Node remoteNode) {
         if (this.inbound.size() <= (this.maxConnections - this.numOutboundConnections)) {
             this.inbound.add(remoteNode);
-            this.neighbors.add(remoteNode);
+            this.peerNeighbors.add(remoteNode);
             return true;
         } else {
             return false;
@@ -52,6 +52,6 @@ public abstract class AbstractBlockchainP2PConnections extends AbstractP2PConnec
 
     public void addOutbound(Node remoteNode) {
         this.outbound.add(remoteNode);
-        this.neighbors.add(remoteNode);
+        this.peerNeighbors.add(remoteNode);
     }
 }

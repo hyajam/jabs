@@ -19,6 +19,7 @@ public abstract class PeerBlockchainNode<B extends SingleParentBlock<B>, T exten
     protected final HashMap<Hash, T> alreadySeenTxs = new HashMap<>();
     protected final HashMap<Hash, B> alreadySeenBlocks = new HashMap<>();
     protected final HashSet<Vote> alreadySeenVotes = new HashSet<>();
+    protected final HashSet<Query> alreadySeenQueries = new HashSet<>();
     protected final LocalBlockTree<B> localBlockTree;
 
     public PeerBlockchainNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth,
@@ -112,11 +113,18 @@ public abstract class PeerBlockchainNode<B extends SingleParentBlock<B>, T exten
                 alreadySeenVotes.add(vote);
                 this.processNewVote(vote);
             }
+        }else if (message instanceof QueryMessage) {
+            Query query = ((QueryMessage) message).getQuery();
+            if (!alreadySeenQueries.contains(query)) {
+                alreadySeenQueries.add(query);
+                this.processNewQuery(query);
+            }
         }
     }
 
     protected abstract void processNewBlock(B block);
     protected abstract void processNewVote(Vote vote);
+    protected abstract void processNewQuery(Query query);
 
     public AbstractChainBasedConsensus<B, T> getConsensusAlgorithm() {
         return this.consensusAlgorithm;
