@@ -13,14 +13,14 @@ import jabs.network.p2p.SnowP2P;
 import jabs.simulator.Simulator;
 
 public class SnowNode extends PeerBlockchainNode<SnowBlock, SnowTx> {
-    public static final SnowBlock SNOW_GENESIS_BLOCK =
-            new SnowBlock(0, 0, 0, null, null);
+    public static final SnowBlock SNOW_GENESIS_BLOCK = new SnowBlock(0, 0, 0, null, null);
     public SnowBlock currentBlock;
-    public SnowNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth, int numAllParticipants) {
+
+    public SnowNode(Simulator simulator, Network network, int nodeID, long downloadBandwidth, long uploadBandwidth,
+            int numAllParticipants) {
         super(simulator, network, nodeID, downloadBandwidth, uploadBandwidth,
                 new SnowP2P(),
-                new Snow<>(new LocalBlockTree<>(SNOW_GENESIS_BLOCK), numAllParticipants)
-        );
+                new Snow<>(new LocalBlockTree<>(SNOW_GENESIS_BLOCK), numAllParticipants));
         this.consensusAlgorithm.setNode(this);
     }
 
@@ -33,14 +33,17 @@ public class SnowNode extends PeerBlockchainNode<SnowBlock, SnowTx> {
     protected void processNewBlock(SnowBlock block) {
         // nothing for now
     }
+
     @Override
     protected void processNewVote(Vote vote) {
 
     }
+
     @Override
     protected void processNewQuery(Query query) {
         ((Snow<SnowBlock, SnowTx>) this.consensusAlgorithm).newIncomingQuery(query);
     }
+
     @Override
     public void generateNewTransaction() {
         // nothing for now

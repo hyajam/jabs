@@ -32,7 +32,7 @@ public class SnowLocalLANNetwork extends Network<SnowNode, SingleNodeType> {
             this.addNode(createNewSnowNode(simulator, i, numNodes), SingleNodeType.LAN_NODE);
         }
 
-        for (Node node:this.getAllNodes()) {
+        for (Node node : this.getAllNodes()) {
             node.getP2pConnections().connectToNetwork(this);
         }
     }
